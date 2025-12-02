@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lector paginado - 23tres amores</title>
+  <style>
+    :root {
+      --page-width: 780px;
+      --page-height: 900px;
+      --page-padding: 28px;
+      --font-size: 18px;
+      --line-height: 1.6;
+      --bg: #f3eee6;
+      --accent: #c55e3d;
+      --ink: #231d1a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      background: radial-gradient(120% 120% at 10% 10%, #fefcf8, #efe7dd 45%, #e2d7c8);
+      color: var(--ink);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 22px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      color: #4f453f;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #dfd5c9;
+      border-radius: 14px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px 18px;
+    }
+
+    .panel h2 {
+      grid-column: 1 / -1;
+      margin: 0 0 4px;
+      font-size: 17px;
+      color: #3c342f;
+      letter-spacing: 0.2px;
+    }
+
+    .control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px dashed #e0d5c7;
+      border-radius: 10px;
+      background: #fbf8f4;
+    }
+
+    .control label {
+      flex: 1;
+      font-size: 14px;
+      color: #473e38;
+    }
+
+    .control input[type="range"] {
+      flex: 2;
+      accent-color: var(--accent);
+    }
+
+    .value {
+      min-width: 70px;
+      font-variant-numeric: tabular-nums;
+      color: #6b5e55;
+      text-align: right;
+    }
+
+    .page-shell { display: flex; flex-direction: column; gap: 10px; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .nav button {
+      background: var(--accent);
+      color: #fff8f5;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(197, 94, 61, 0.25);
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+
+    .nav button:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(197, 94, 61, 0.3); }
+    .nav button:active { transform: translateY(0); box-shadow: 0 6px 14px rgba(197, 94, 61, 0.2); }
+
+    .indicator {
+      flex: 1;
+      text-align: center;
+      font-weight: 600;
+      color: #3c342f;
+    }
+
+    .page-frame {
+      perspective: 1400px;
+      perspective-origin: 50% 50%;
+    }
+
+    #pageViewport {
+      width: var(--page-width);
+      height: var(--page-height);
+      padding: var(--page-padding);
+      background: linear-gradient(120deg, #fdfbf9 0%, #f7f0e7 100%);
+      border-radius: 16px;
+      border: 1px solid #d8ccbd;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      margin: 0 auto;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      transform-origin: center;
+      transform-style: preserve-3d;
+      position: relative;
+      backface-visibility: hidden;
+    }
+
+    #pageViewport::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.12));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      border-radius: inherit;
+    }
+
+    #pageViewport.flip-next {
+      animation: flipNext 520ms ease;
+      transform-origin: left center;
+    }
+
+    #pageViewport.flip-prev {
+      animation: flipPrev 520ms ease;
+      transform-origin: right center;
+    }
+
+    #pageViewport.flip-next::after,
+    #pageViewport.flip-prev::after {
+      opacity: 1;
+    }
+
+    @keyframes flipNext {
+      0%   { transform: rotateY(0deg) translateX(0); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+      25%  { transform: rotateY(-18deg) translateX(-6px) scale(0.995); box-shadow: 8px 12px 38px rgba(0,0,0,0.18); }
+      60%  { transform: rotateY(12deg) translateX(10px) scale(0.996); box-shadow: -10px 12px 34px rgba(0,0,0,0.14); }
+      100% { transform: rotateY(0deg) translateX(0); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    }
+
+    @keyframes flipPrev {
+      0%   { transform: rotateY(0deg) translateX(0); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+      25%  { transform: rotateY(18deg) translateX(6px) scale(0.995); box-shadow: -8px 12px 38px rgba(0,0,0,0.18); }
+      60%  { transform: rotateY(-12deg) translateX(-10px) scale(0.996); box-shadow: 10px 12px 34px rgba(0,0,0,0.14); }
+      100% { transform: rotateY(0deg) translateX(0); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    }
+
+    #pageContent {
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      color: var(--ink);
+      scroll-snap-align: start;
+      hyphens: auto;
+      word-break: break-word;
+    }
+
+    #pageContent h2,
+    #pageContent h3 {
+      margin: 18px 0 12px;
+      letter-spacing: 0.6px;
+      font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      font-weight: 800;
+    }
+
+    #pageContent h2 {
+      font-size: 30px;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-bottom: 2px solid #dfb8a9;
+      padding-bottom: 6px;
+    }
+
+    #pageContent h3 {
+      font-size: 22px;
+      color: #3b2c26;
+      background: linear-gradient(90deg, rgba(197, 94, 61, 0.08), transparent);
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    #pageContent p { margin: 0 0 16px; text-align: justify; }
+
+    #pageContent em { font-style: italic; color: #8d3f1f; }
+
+    .status {
+      color: #6b5e55;
+      font-size: 14px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .status .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #5fa36a;
+      box-shadow: 0 0 0 3px rgba(95, 163, 106, 0.2);
+    }
+
+    .manual-load {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: #4f453f;
+    }
+
+    .file-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #2f7d4d;
+      color: #fff8f5;
+      padding: 8px 14px;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(47, 125, 77, 0.25);
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .file-btn input { display: none; }
+    .manual-load small { color: #6b5e55; }
+
+    @media (max-width: 820px) {
+      :root { --page-width: 100%; }
+      #pageViewport { width: 100%; }
+      .nav { gap: 10px; }
+      .indicator { width: 100%; order: 3; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Lector paginado de "23tres amores..."</h1>
+      <p>Las palabras entre asteriscos se renderizan en itálica. Ajusta el área de lectura y navega página a página.</p>
+      <div class="status"><span class="dot" aria-hidden="true"></span><span id="loadStatus">Cargando documento...</span></div>
+      <div class="manual-load" id="manualLoad" hidden>
+        <label class="file-btn">
+          Seleccionar archivo .md
+          <input type="file" id="filePicker" accept=".md,text/markdown">
+        </label>
+        <small>Pulsa para cargar manualmente si el archivo no se abre.</small>
+      </div>
+    </header>
+
+    <section class="panel" aria-label="Controles de formato y paginación">
+      <h2>Controles rápidos</h2>
+
+      <div class="control">
+        <label for="height">Altura de página (longitud)</label>
+        <input type="range" id="height" min="480" max="1300" value="900" step="10">
+        <span class="value" data-for="height">900 px</span>
+      </div>
+
+      <div class="control">
+        <label for="width">Anchura de página</label>
+        <input type="range" id="width" min="520" max="1100" value="780" step="10">
+        <span class="value" data-for="width">780 px</span>
+      </div>
+
+      <div class="control">
+        <label for="fontSize">Tamaño de texto</label>
+        <input type="range" id="fontSize" min="14" max="26" value="18" step="1">
+        <span class="value" data-for="fontSize">18 px</span>
+      </div>
+
+      <div class="control">
+        <label for="lineHeight">Altura de línea</label>
+        <input type="range" id="lineHeight" min="1.2" max="2.2" value="1.6" step="0.05">
+        <span class="value" data-for="lineHeight">1.60</span>
+      </div>
+
+      <div class="control">
+        <label for="padding">Margen interior (zona de paginación)</label>
+        <input type="range" id="padding" min="12" max="80" value="28" step="1">
+        <span class="value" data-for="padding">28 px</span>
+      </div>
+    </section>
+
+    <section class="page-shell" aria-live="polite">
+      <div class="nav">
+        <button type="button" id="prev">← Página anterior</button>
+        <div class="indicator" id="indicator">Página 1 / 1</div>
+        <button type="button" id="next">Página siguiente →</button>
+      </div>
+
+      <div class="page-frame">
+        <div id="pageViewport" aria-label="Área de lectura paginada">
+          <article id="pageContent"></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const viewport = document.getElementById('pageViewport');
+      const content = document.getElementById('pageContent');
+      const indicator = document.getElementById('indicator');
+      const statusEl = document.getElementById('loadStatus');
+      const manualLoad = document.getElementById('manualLoad');
+      const filePicker = document.getElementById('filePicker');
+      const mdFileName = '23tres amores arabes COMPLETO.md';
+      const mdPath = new URL(encodeURI(mdFileName), window.location.href).href;
+
+      const state = { width: 780, height: 900, fontSize: 18, lineHeight: 1.6, padding: 28, totalPages: 1 };
+      const controls = ['height', 'width', 'fontSize', 'lineHeight', 'padding'];
+
+      controls.forEach(id => {
+        const input = document.getElementById(id);
+        const valueEl = document.querySelector(`.value[data-for="${id}"]`);
+        input.addEventListener('input', () => {
+          const val = parseFloat(input.value);
+          state[id === 'height' ? 'height' : id === 'width' ? 'width' : id === 'fontSize' ? 'fontSize' : id === 'lineHeight' ? 'lineHeight' : 'padding'] = val;
+          valueEl.textContent = id === 'lineHeight' ? val.toFixed(2) : `${Math.round(val)} px`;
+          applyLayout();
+        });
+      });
+
+      document.getElementById('prev').addEventListener('click', () => changePage(-1));
+      document.getElementById('next').addEventListener('click', () => changePage(1));
+      viewport.addEventListener('scroll', () => updateIndicator());
+      window.addEventListener('resize', () => updatePages());
+      filePicker.addEventListener('change', handleFileSelect);
+
+      if (location.protocol === 'file:') {
+        statusEl.textContent = 'Abierto como archivo local: usa "Seleccionar archivo .md" o levanta un servidor local.';
+        manualLoad.hidden = false;
+      } else {
+        loadMarkdown();
+      }
+
+      async function loadMarkdown() {
+        try {
+          const res = await fetch(mdPath);
+          if (!res.ok) throw new Error('No se pudo cargar el documento');
+          const text = await res.text();
+          setContent(text, 'Documento cargado');
+        } catch (error) {
+          statusEl.textContent = 'No se pudo cargar el archivo automáticamente. Carga el MD manualmente.';
+          manualLoad.hidden = false;
+          content.innerHTML = '<p>No se pudo leer el archivo. Pulsa "Seleccionar archivo .md" o abre el HTML desde un servidor local.</p>';
+        }
+      }
+
+      function handleFileSelect(event) {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          const text = e.target?.result || '';
+          setContent(String(text), `Documento cargado (${file.name})`);
+        };
+        reader.readAsText(file);
+      }
+
+      function setContent(text, statusText) {
+        content.innerHTML = toHtml(text);
+        statusEl.textContent = statusText;
+        applyLayout();
+      }
+
+      function applyLayout() {
+        viewport.style.width = `${state.width}px`;
+        viewport.style.height = `${state.height}px`;
+        viewport.style.padding = `${state.padding}px`;
+        content.style.fontSize = `${state.fontSize}px`;
+        content.style.lineHeight = state.lineHeight;
+        updatePages();
+      }
+
+      function updatePages() {
+        state.totalPages = Math.max(1, Math.ceil(content.scrollHeight / viewport.clientHeight));
+        updateIndicator();
+      }
+
+      function changePage(delta) {
+        const current = Math.max(1, Math.round(viewport.scrollTop / viewport.clientHeight) + 1);
+        const target = clamp(current + delta, 1, state.totalPages);
+        triggerPageTurn(delta > 0 ? 'next' : 'prev');
+        viewport.scrollTo({ top: (target - 1) * viewport.clientHeight, behavior: 'smooth' });
+        updateIndicator(target);
+      }
+
+      function updateIndicator(currentOverride) {
+        const current = currentOverride || Math.max(1, Math.round(viewport.scrollTop / viewport.clientHeight) + 1);
+        indicator.textContent = `Página ${current} / ${state.totalPages}`;
+      }
+
+      function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
+
+      function triggerPageTurn(direction) {
+        const cls = direction === 'prev' ? 'flip-prev' : 'flip-next';
+        viewport.classList.remove('flip-next', 'flip-prev');
+        // force reflow to restart animation
+        void viewport.offsetWidth;
+        viewport.classList.add(cls);
+      }
+
+      function toHtml(md) {
+        const blocks = md.replace(/\r/g, '').split(/\n{2,}/).map(b => b.trim()).filter(Boolean);
+
+        const html = blocks.map(block => {
+          const normalized = block.replace(/\n+/g, ' ');
+          const escaped = escapeHtml(normalized);
+          const inline = escaped.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+          if (/^#{1,6}\s+/.test(normalized)) {
+            const level = Math.min(3, normalized.match(/^#+/)[0].length + 1);
+            const text = inline.replace(/^#{1,6}\s+/, '');
+            return `<h${level}>${text}</h${level}>`;
+          }
+
+          if (/^\d+\.\s+/.test(normalized)) {
+            const text = inline.replace(/^\d+\.\s+/, '');
+            return `<h3>${text}</h3>`;
+          }
+
+          return `<p>${inline}</p>`;
+        });
+
+        return html.join('\n');
+      }
+
+      function escapeHtml(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+    })();
+  </script>
+</body>
+</html>
