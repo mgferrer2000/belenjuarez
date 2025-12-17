@@ -1,12 +1,13 @@
 import { Book, Collaboration, ArtPiece, Track, SocialLink } from './types';
+import destierroCover from './documentación/2.1 LIBROS/DESTIERRO EN CUATRO ANGULOS/Portada-cuatroangulospeque.png';
 
 export const BOOKS: Book[] = [
   {
     id: '1',
-    title: 'Horizonte de Sucesos',
-    year: '2023',
-    description: 'Una exploración lírica sobre los límites de la percepción y el amor. Donde la física se encuentra con el sentimiento.',
-    coverUrl: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=300&q=80',
+    title: 'Destierro en cuatro ángulos',
+    year: '1999',
+    description: 'Primer libro publicado en 1999, en la Editorial Devenir. El libro está dividido en cuatro capítulos Tierra, Agua, Aire y Fuego donde se repiten los títulos de los poemas. De tal forma que se puede leer de forma lineal (por capítulos) o tomando los poemas de igual título de cada capítulo convirtiéndose en un único poema deslizándose por los cuatro elementos. En palabras de Antonio Enrique (Turia, nº 53) «El libro, así, rueda sobre sí mismo y se desplaza en elipse: posee los ejes de rotación (en sus poemas) y de traslación (las partes en que éstos se vertebran).» La temática gira en torno al tiempo donde se sostiene la vida, y todas las miserias que en ella acontecen: El tiempo y la desintegración de todo lo viviente, la inutilidad de las pasiones, la condición de exilio del ser humano, la tentación de la violencia, la radical ineptitud para el gozo, constituyen algunos de sus temas recurrentes.',
+    coverUrl: destierroCover,
     purchaseUrl: '#'
   },
   {

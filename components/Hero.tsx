@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.4 }}
           className="text-5xl md:text-8xl font-serif font-medium text-ink mb-8 leading-tight"
         >
-          La arquitectura <br /> del silencio
+          La arquitectura <br /> del verso
         </motion.h1>
 
         <motion.p

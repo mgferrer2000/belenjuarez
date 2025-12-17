@@ -1,0 +1,106 @@
+EL ORO LÍQUIDO 
+
+(el aceite de oliva en la cultura)
+
+Edición de José Antonio Santano, 2008
+
+BELÉN JUÁREZ
+
+
+
+HOMBRE OLIVO
+
+
+
+Mar que asienta las raíces del árbol vital, 
+
+conflicto de años que se beben bajo la hierba, 
+
+alta estirpe del más silencioso de mis árboles.
+
+
+
+&nbsp;		*Tú ...*
+
+
+
+*Tú,* 
+
+cansado vegetal de la vida oleosa, 
+
+gota de sigilo, anfibio de charca verde 
+
+me vences, a pesar de tus olivas amargas, 
+
+arenas de un sol chispeante asesino, 
+
+caliente amor de las noches braceantes, 
+
+me rindo al brote de tus siglos, 
+
+me rindo, cual jugada vencida de laureles.
+
+
+
+Tú, 
+
+un cuerpo desgastado de incertidumbre, 
+
+tres patas de un piano natural, 
+
+dedos de amor, verde oliva 
+
+que alzan al monte la música del viento, 
+
+que atrapan la decadencia salvaje de los años.
+
+
+
+Y más olivos de versos, 
+
+y más voces guardando tu mundo, 
+
+más inercia de sueños en la noche, 
+
+oculto sexo del hombre invertebrado.
+
+
+
+Mientes, cual sol atrapado entre tus ramas, 
+
+a pesar de la molienda de tus oros, 
+
+conocen tus hermanos que cumplieron condena 
+
+la paz de tu nombre, la guerra mojada, 
+
+la abundancia de tus infiernos, 
+
+el origen de tu casa.
+
+
+
+De ti me unto, 
+
+pez de la ofrenda pagana, 
+
+pacto de la vida caimán 
+
+árbol de la fúlgida ensenada, 
+
+bahía de los bienes enraizados 
+
+sobre la tierra hembra pedregosa.
+
+
+
+
+
+*Tú,* 
+
+*hombre olivo de mis aplausos ...*
+
+
+
+
+
