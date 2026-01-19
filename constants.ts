@@ -1,32 +1,42 @@
 import { Book, Collaboration, ArtPiece, Track, SocialLink } from './types';
 import destierroCover from './documentación/2.1 LIBROS/DESTIERRO EN CUATRO ANGULOS/Portada-cuatroangulospeque.png';
+import nocheCover from './documentación/2.1 LIBROS/LA NOCHE DE AYER/PORTADA-LA_NOCHE_DE_AYER.jpg';
 
 export const BOOKS: Book[] = [
   {
     id: '1',
     title: 'Destierro en cuatro ángulos',
     year: '1999',
-    description: 'Primer libro publicado en 1999, en la Editorial Devenir. El libro está dividido en cuatro capítulos Tierra, Agua, Aire y Fuego donde se repiten los títulos de los poemas. De tal forma que se puede leer de forma lineal (por capítulos) o tomando los poemas de igual título de cada capítulo convirtiéndose en un único poema deslizándose por los cuatro elementos. En palabras de Antonio Enrique (Turia, nº 53) «El libro, así, rueda sobre sí mismo y se desplaza en elipse: posee los ejes de rotación (en sus poemas) y de traslación (las partes en que éstos se vertebran).» La temática gira en torno al tiempo donde se sostiene la vida, y todas las miserias que en ella acontecen: El tiempo y la desintegración de todo lo viviente, la inutilidad de las pasiones, la condición de exilio del ser humano, la tentación de la violencia, la radical ineptitud para el gozo, constituyen algunos de sus temas recurrentes.',
+    description: `Primer libro publicado en 1999, en la Editorial Devenir. El libro está dividido en cuatro capítulos Tierra, Agua, Aire y Fuego donde se repiten los títulos de los poemas. De tal forma que se puede leer de forma lineal (por capítulos) o tomando los poemas de igual título de cada capítulo convirtiéndose en un único poema deslizándose por los cuatro elementos. En palabras de Antonio Enrique (Turia, nº 53) «El libro, así, rueda sobre sí mismo y se desplaza en elipse: posee los ejes de rotación (en sus poemas) y de traslación (las partes en que éstos se vertebran).» La temática gira en torno al tiempo donde se sostiene la vida, y todas las miserias que en ella acontecen: El tiempo y la desintegración de todo lo viviente, la inutilidad de las pasiones, la condición de exilio del ser humano, la tentación de la violencia, la radical ineptitud para el gozo, constituyen algunos de sus temas recurrentes.`,
     coverUrl: destierroCover,
-    purchaseUrl: '#'
+    purchaseUrl: '#',
+    downloads: [
+      { label: 'Descargar Libro', url: '/downloads/destierro_en_cuatro_angulos.pdf' }
+    ]
   },
   {
     id: '2',
-    title: 'La Geometría del Silencio',
-    year: '2021',
-    description: 'Versos que dibujan las formas que deja la ausencia. Un poemario intimista y desgarrador.',
-    coverUrl: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=300&q=80',
-    purchaseUrl: '#'
+    title: 'La Noche de Ayer',
+    year: '2001',
+    description: `La Noche de Ayer, segundo libro de Belén, presenta una estructura dividida en tres tiempos con diez poemas cada uno. La temática del texto alude a un Pasado (el de cualquier persona) entretejido en un Presente donde los versos llegan con tal fuerza que se podría confundir con un caos lingüístico. No es así. El equilibrio lingüístico es. Existen recuerdos que se mezclan en el plano del Presente como imágenes superpuestas de una misma realidad pasada. El concepto de Espacio/Tiempo que entendemos en el mundo en que vivimos, son variables no constantes en otras dimensiones universales. De ahí que este poemario sea, tal vez, tan críptico; procede del subconsciente y de la memoria del poeta. De esa memoria donde unos niños fueron obligados a caminar por sendas diferentes.`,
+    coverUrl: nocheCover,
+    purchaseUrl: '#',
+    downloads: [
+      { label: 'Prólogo', url: '/downloads/Prologo_de_Antonio_Enrique-La_noche_de _ayer.pdf' },
+      { label: 'Selección de poemas', url: '/downloads/Seleccion_poemas-la_noche_de_ayer.pdf' }
+    ]
   },
   {
     id: '3',
-    title: 'Raíces de Vidrio',
-    year: '2019',
-    description: 'Opera prima. La fragilidad de la memoria y la dureza del olvido.',
+    title: 'Horizonte de Sucesos',
+    year: '2026  (pendiente de publicar por Huerga & Fierro)',
+    description: `Tras una larga pausa para centrarse en su carrera profesional, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
     coverUrl: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=300&q=80',
     purchaseUrl: '#'
   }
 ];
+
+
 
 export const COLLABORATIONS: Collaboration[] = [
   { id: '1', publication: 'Revista Literaria "El Viento"', title: 'Tres poemas de invierno', type: 'Revista', date: 'Dic 2023' },

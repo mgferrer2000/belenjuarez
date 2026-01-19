@@ -5,6 +5,7 @@ export interface Book {
   description: string;
   coverUrl: string;
   purchaseUrl?: string;
+  downloads?: { label: string; url: string }[];
 }
 
 export interface Collaboration {
