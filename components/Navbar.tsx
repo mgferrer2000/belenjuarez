@@ -30,12 +30,15 @@ const Navbar: React.FC = () => {
       path: '/obra-literaria',
       submenu: [
         { name: 'Libros', path: '/obra-literaria/libros' },
-        { name: 'Antologías y Revistas', path: '/obra-literaria/antologias' },
+        { name: 'Reseñas sobre libros', path: '/obra-literaria/resenas-libros' },
+        { name: 'Poemas en antologías y revistas', path: '/obra-literaria/antologias' },
         { name: 'Plaquettes', path: '/obra-literaria/plaquettes' },
         { name: 'Relatos', path: '/obra-literaria/relatos' },
-        { name: 'Crítica Literaria', path: '/obra-literaria/critica' },
-        { name: 'Artículos', path: '/obra-literaria/articulos' },
+        { name: 'Crítica literaria', path: '/obra-literaria/critica' },
+        { name: 'Crítica libros legado andalusí', path: '/obra-literaria/critica-andalusi' },
+        { name: 'Prólogos y capítulos de libro', path: '/obra-literaria/prologos' },
         { name: 'Traducción', path: '/obra-literaria/traduccion' },
+        { name: 'Entrevistas a escritores', path: '/obra-literaria/entrevistas' },
       ]
     },
     { name: 'Poesía Visual', path: '/poesia-visual' },
@@ -80,7 +83,7 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <Link to="/" className={`text-2xl font-serif font-bold tracking-wider z-50 transition-colors ${textColorClass}`}>
-          BELÉN JUAREZ
+          BELÉN JUÁREZ
         </Link>
 
         {/* Desktop Nav */}
@@ -106,13 +109,13 @@ const Navbar: React.FC = () => {
 
               {/* Desktop Dropdown */}
               {link.submenu && (
-                <div className="absolute left-0 mt-2 w-56 bg-paper shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left">
+                <div className="absolute left-0 mt-2 w-max bg-paper shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left">
                   <div className="py-2 flex flex-col">
                     {link.submenu.map((subItem) => (
                       <Link
                         key={subItem.path}
                         to={subItem.path}
-                        className="px-6 py-3 text-sm text-ink/70 hover:text-deep-red hover:bg-gray-50 transition-colors text-left"
+                        className="px-6 py-3 text-sm text-ink/70 hover:text-deep-red hover:bg-gray-50 transition-colors text-left whitespace-nowrap"
                       >
                         {subItem.name}
                       </Link>

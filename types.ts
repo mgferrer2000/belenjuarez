@@ -15,6 +15,12 @@ export interface Collaboration {
   type: 'Revista' | 'Antología' | 'Crítica';
   url?: string;
   date: string;
+  description: string;
+  coverUrl: string;
+  imagePosition?: string; // e.g. 'top', 'center', 'bottom' or specific values
+  fullText?: string;
+  images?: string[]; // Array of illustrative image URLs
+  purchaseUrl?: string; // Optional purchase link for the magazine/anthology
 }
 
 export interface ArtPiece {

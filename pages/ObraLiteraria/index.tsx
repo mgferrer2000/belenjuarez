@@ -5,12 +5,15 @@ const ObraLiteraria: React.FC = () => {
     const location = useLocation();
     const links = [
         { name: 'Libros', path: '/obra-literaria/libros' },
-        { name: 'Antologías y Revistas', path: '/obra-literaria/antologias' },
+        { name: 'Reseñas sobre libros', path: '/obra-literaria/resenas-libros' },
+        { name: 'Poemas en antologías y revistas', path: '/obra-literaria/antologias' },
         { name: 'Plaquettes', path: '/obra-literaria/plaquettes' },
         { name: 'Relatos', path: '/obra-literaria/relatos' },
-        { name: 'Crítica Literaria', path: '/obra-literaria/critica' },
-        { name: 'Artículos', path: '/obra-literaria/articulos' },
+        { name: 'Crítica literaria', path: '/obra-literaria/critica' },
+        { name: 'Crítica libros legado andalusí', path: '/obra-literaria/critica-andalusi' },
+        { name: 'Prólogos y capítulos de libro', path: '/obra-literaria/prologos' },
         { name: 'Traducción', path: '/obra-literaria/traduccion' },
+        { name: 'Entrevistas a escritores', path: '/obra-literaria/entrevistas' },
     ];
 
     return (
@@ -23,7 +26,7 @@ const ObraLiteraria: React.FC = () => {
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`text-sm uppercase tracking-widest hover:text-deep-red transition-colors ${location.pathname === link.path ? 'text-deep-red font-bold border-b-2 border-deep-red' : 'text-ink/60'
+                                className={`text-sm uppercase tracking-widest hover:text-deep-red transition-colors whitespace-nowrap ${location.pathname === link.path ? 'text-deep-red font-bold border-b-2 border-deep-red' : 'text-ink/60'
                                     }`}
                             >
                                 {link.name}

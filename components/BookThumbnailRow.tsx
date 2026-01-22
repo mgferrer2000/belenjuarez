@@ -2,14 +2,14 @@ import React from 'react';
 import { BOOKS } from '../constants';
 
 export const BookThumbnailRow: React.FC = () => (
-    <div className="grid md:grid-cols-3 gap-12 mb-12">
+    <div className="grid md:grid-cols-2 gap-12 mb-12">
         {BOOKS.map((book) => (
             <div key={book.id} className="flex flex-col group">
-                <div className="relative w-full mb-6 rounded-sm shadow-lg overflow-hidden aspect-[2/3]">
+                <div className="relative w-full mb-6 rounded-sm shadow-lg overflow-hidden aspect-video">
                     <img
                         src={book.coverUrl}
                         alt={`${book.title} cover`}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
 
                     {(book.downloads || (book.purchaseUrl && book.purchaseUrl !== '#')) && (
