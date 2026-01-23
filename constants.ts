@@ -441,13 +441,50 @@ hombre olivo de mis aplausos ...`,
   },
   {
     id: '8',
-    publication: 'Y EN EL CENTRO LA PERSONA',
-    title: 'Y en el Centro la Persona',
+    publication: 'Proyecto Encuentro de Letras Celestes',
+    title: 'HOMBRE OLIVO',
     type: 'Antología',
-    date: '2020',
-    description: 'Participación en la obra colectiva "Y en el Centro la Persona".',
-    coverUrl: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80',
-    fullText: 'Contenido pendiente de añadir...',
+    date: '2025',
+    description: 'Edición de Diego Castillo Barco y Pedro Luis Ibáñez Lérida. La Puebla de los Infantes. Sevilla.',
+    coverUrl: '/images/antologias/encuentro_letras_celestes_cover.jpg',
+    imagePosition: 'center 90%',
+    fullText: `HOMBRE OLIVO
+Proyecto Encuentro de Letras Celestes
+Edición de Diego Castillo Barco y Pedro Luis Ibáñez Lérida
+La Puebla de los Infantes. Sevilla. 2025
+
+[[IMG:R:0]]
+Cansado vegetal de la vida oleosa,
+gota de sigilo, anfibio de charca verde,
+me vences, con olivas tan amargas,
+como arenas de un sol chispeante, indiferente,
+como ardiente amor de mil noches de galernas.
+ 
+Me rindo al brote de tus siglos,
+me rindo cual jugada vencida de laureles,
+como cuerpo desgastado de incertidumbre,
+con dedos de amor verdemar,
+que alzan al monte la música del viento,
+que atrapan el ocaso salvaje de los años.
+ 
+Y más olivos de versos, más voces guardando tu mundo,
+más inercia de sueños en la noche,
+oculto sexo del hombre invertebrado.
+ 
+Mientes, cual duende atrapado entre tus ramas,
+a pesar de la molienda de tus oros,
+conocen tus hermanos que cumplieron la vida,
+la paz de tu nombre paloma, la guerra mojada,
+la abundancia de tus avernos, el origen de tu casa antigua.
+ 
+De ti me unto como hembra pedregosa,
+pues eres pez de la ofrenda pagana,
+pacto del verso caimán,
+bahía de la fúlgida ensenada,
+árbol de los años enraizados en mis sienes.`,
+    images: [
+      '/images/antologias/hombre_olivo_ilustracion.jpg'
+    ],
     purchaseUrl: '#'
   }
 ];
