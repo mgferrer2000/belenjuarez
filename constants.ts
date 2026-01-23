@@ -291,35 +291,151 @@ de conmover a los sensatos.
   },
   {
     id: '5',
-    publication: 'POETAS POR LA PAZ',
-    title: 'Poetas por la Paz',
-    type: 'Antología',
-    date: '2022',
-    description: 'Antología solidaria "Poetas por la Paz".',
-    coverUrl: 'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?auto=format&fit=crop&w=600&q=80',
-    fullText: 'Contenido pendiente de añadir...',
-    purchaseUrl: '#'
+    publication: 'Revista Ánfora Nova 97-98',
+    title: 'Las hijas de Dionisios',
+    type: 'Revista',
+    date: '2014',
+    description: 'Poema "Las hijas de Dionisios" en Ánfora Nova / Universos del Vino.',
+    coverUrl: '/images/antologias/anfora_97_98.jpg',
+    fullText: `Ánfora Nova
+Universos del Vino
+Antología Internacional
+Nº 97-98. 2014.
+Pág 102
+
+[[IMG:R:0]]
+En el eterno grial de silueta plateada y púrpura,
+las hijas de Dionisos se reparten tus semillas.
+Son las escondidas épocas,
+dueñas del viento que meció el vientre de tus madres,
+vides de perpetuos años, esposas diminutas del sol.
+Ellas,
+las hijas de Dionisos, ríen y juegan alejadas de la cordura,
+cercadas por las redes del amor,
+se visten de siglos y trasparencias.
+y pronuncian desde la altiva copa argentada
+que Eva escondía su sexo tras una hoja de vid.
+
+> ¿Quién saboreó, pues, la manzana?
+> ¿Acaso nos mintieron?
+
+Tu cuerpo se dibuja desde Enotria hasta el infinito,
+como cuenta de sanguíneo río sobre los años del Hombre.
+Mas, se conozco como gozo escarlata,
+que reposa bajo la tierra de tus antepasados,
+como imagen del amante que esconde su furor,
+como hedor que alimenta el sueño y la demencia,
+como sonido que desprenden las hijas de Dionisos al nombrarte.
+
+Se dilata en tu seno,
+flotando en tus lagos, con sus alas mojadas,
+la historia de dioses y mortales que te bebieron.
+Esculpieron tus viñas con los brazos del sol,
+mintieron y mataron a los elocuentes que
+insistían en maldecir tu nombre.
+Construyeron la Gran Vasija de la suave locura
+donde habitó el Amor y la Poesía,
+con las gotas de tu sudor,
+mientras Ellas, las hijas de Dionisos,
+a las que llaman las eternas horas del Hombre
+siguen sonriendo, bebiéndote, y
+repartiéndose tus semillas.`,
+    images: [
+      '/images/antologias/anfora_97_98_ilustracion.jpg'
+    ]
   },
   {
     id: '6',
-    publication: 'REPÚBLICA DE LAS LETRAS N.94',
-    title: 'República de las Letras N.94',
-    type: 'Revista',
-    date: '2021',
-    description: 'Colaboración en el número 94 de República de las Letras.',
-    coverUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80',
-    fullText: 'Contenido pendiente de añadir...',
-    purchaseUrl: '#'
+    publication: 'Con Voz Propia (María Rosal)',
+    title: 'En Altamira',
+    type: 'Antología',
+    date: '2006',
+    description: 'Poema "En Altamira" en la antología Con Voz Propia.',
+    coverUrl: '/images/antologias/con_voz_propia.jpg',
+    fullText: `Con voz propia
+María Rosal
+
+Estudio y Antología Comentada
+de la poesía escrita por Mujeres
+(1970-2005)
+Ed. Renacimiento. Iluminaciones
+
+**EN ALTAMIRA**
+Belén Juárez, pág 159
+
+El primero de sus quehaceres,
+buscar similitud a un cuerpo ya caliente,
+que pisa tierra, que bebe, que respira.
+Contener el fuego, averiguar el Sol,
+cambiar los ídolos por piedras,
+y hacerse piedra que resista la destrucción.
+No viene la mujer a sus espaldas
+oculta razones a la vuelta de los siglos,
+y fuego será su consentimiento,
+>> su cueva deseada
+>> su quema caliente,
+>> su amor por hacer.
+Fue en Altamira, pero nunca existió el fuego.
+
+
+Destierro en cuatro ángulos. 1999.`
   },
   {
     id: '7',
-    publication: 'TURIA',
-    title: 'Turia',
-    type: 'Revista',
-    date: '2021',
-    description: 'Publicación en la revista cultural Turia.',
-    coverUrl: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=600&q=80',
-    fullText: 'Contenido pendiente de añadir...',
+    publication: 'El Oro Líquido. Antología',
+    title: 'Hombre Olivo',
+    type: 'Antología',
+    date: '2008',
+    description: 'Poema "Hombre Olivo" en la antología El Oro Líquido.',
+    coverUrl: '/images/antologias/el_oro_liquido_cover.jpg',
+    fullText: `HOMBRE OLIVO
+BELÉN JUÁREZ
+
+[[IMG:R:0]]
+Mar que asienta las raíces del árbol vital,
+conflicto de años que se beben bajo la hierba,
+alta estirpe del más silencioso de mis árboles.
+>>> Tú …
+Tú,
+cansado vegetal de la vida oleosa,
+gota de sigilo, anfibio de charca verde
+me vences, a pesar de tus olivas amargas,
+arenas de un sol chispeante asesino,
+caliente amor de las noches braceantes,
+me rindo al brote de tus siglos,
+me rindo, cual jugada vencida de laureles.
+
+Tú,
+un cuerpo desgastado de incertidumbre,
+tres patas de un piano natural,
+dedos de amor, verde oliva
+que alzan al monte la música del viento,
+que atrapan la decadencia salvaje de los años.
+
+Y más olivos de versos,
+y más voces guardando tu mundo,
+más inercia de sueños en la noche,
+oculto sexo del hombre invertebrado.
+
+Mientes, cual sol atrapado entre tus ramas,
+a pesar de la molienda de tus oros,
+conocen tus hermanos que cumplieron condena
+la paz de tu nombre, la guerra mojada,
+la abundancia de tus infiernos,
+el origen de tu casa
+
+De ti me unto,
+pez de la ofrenda pagana,
+pacto de la vida caimán
+árbol de la fúlgida ensenada,
+bahía de los bienes enraizados
+sobre la tierra hembra pedregosa.
+
+Tú,
+hombre olivo de mis aplausos ...`,
+    images: [
+      '/images/antologias/hombre_olivo_ilustracion.jpg'
+    ],
     purchaseUrl: '#'
   },
   {

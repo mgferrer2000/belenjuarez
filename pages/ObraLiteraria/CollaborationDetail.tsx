@@ -50,16 +50,7 @@ const CollaborationDetail: React.FC = () => {
                         </div>
 
                         <div className="space-y-3">
-                            {collaboration.purchaseUrl && (
-                                <a
-                                    href={collaboration.purchaseUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block w-full text-center py-2 px-4 bg-ink text-paper text-sm uppercase tracking-widest hover:bg-deep-red transition-colors flex items-center justify-center gap-2"
-                                >
-                                    <ShoppingCart size={14} /> Comprar
-                                </a>
-                            )}
+
 
                             {collaboration.url && (
                                 <a
@@ -133,8 +124,15 @@ const CollaborationDetail: React.FC = () => {
                             // Function to interpret markdown per line
                             const renderParagraphContent = (text: string) => {
                                 return text.split('\n').map((line, i) => {
-                                    const isIndented = line.trim().startsWith('> ');
-                                    const lineContent = isIndented ? line.trim().substring(2) : line;
+                                    const doubleIndentedMatch = line.match(/^\s*>>>\s*(.*)$/);
+                                    const centeredMatch = !doubleIndentedMatch && line.match(/^\s*>>\s*(.*)$/);
+                                    const indentedMatch = !doubleIndentedMatch && !centeredMatch && line.match(/^\s*>\s*(.*)$/);
+
+                                    const isDoubleIndented = !!doubleIndentedMatch;
+                                    const isCentered = !!centeredMatch;
+                                    const isIndented = !!indentedMatch;
+
+                                    const lineContent = isDoubleIndented ? doubleIndentedMatch![1] : (isCentered ? centeredMatch![1] : (isIndented ? indentedMatch![1] : line));
 
                                     // Bold parsing
                                     const parts = lineContent.split(/(\*\*.*?\*\*)/g).map((part, j) => {
@@ -145,9 +143,15 @@ const CollaborationDetail: React.FC = () => {
                                     });
 
                                     // Return styled block
-                                    // Use min-h to keep empty lines visible
+                                    let className = 'block ';
+                                    if (isDoubleIndented) className += 'pl-24';
+                                    else if (isCentered) className += 'text-center w-full';
+                                    else if (isIndented) className += 'pl-12 italic';
+
+                                    if (line.trim() === '') className += ' h-4';
+
                                     return (
-                                        <span key={i} className={`block ${isIndented ? 'pl-12 italic' : ''} ${line.trim() === '' ? 'h-4' : ''}`}>
+                                        <span key={i} className={className}>
                                             {parts.length > 0 && parts[0] !== "" ? parts : (line.trim() === '' ? <br /> : parts)}
                                         </span>
                                     );
