@@ -21,7 +21,8 @@ const Antologias: React.FC = () => {
                                     <img
                                         src={collab.coverUrl}
                                         alt={collab.title}
-                                        className={`w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ${collab.imagePosition ? `object-${collab.imagePosition}` : 'object-center'}`}
+                                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                        style={{ objectPosition: collab.imagePosition || 'center' }}
                                     />
                                 </div>
                             </Link>

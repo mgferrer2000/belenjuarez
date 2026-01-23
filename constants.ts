@@ -388,6 +388,7 @@ Destierro en cuatro ángulos. 1999.`
     date: '2008',
     description: 'Poema "Hombre Olivo" en la antología El Oro Líquido.',
     coverUrl: '/images/antologias/el_oro_liquido_cover.jpg',
+    imagePosition: 'center 20%',
     fullText: `HOMBRE OLIVO
 BELÉN JUÁREZ
 
@@ -395,7 +396,6 @@ BELÉN JUÁREZ
 Mar que asienta las raíces del árbol vital,
 conflicto de años que se beben bajo la hierba,
 alta estirpe del más silencioso de mis árboles.
-
 >>> Tú …
 Tú,
 cansado vegetal de la vida oleosa,
