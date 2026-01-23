@@ -11,13 +11,13 @@ const Antologias: React.FC = () => {
                 Poemas en antologías y revistas
             </h3>
 
-            <div className="space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
                 {[...COLLABORATIONS]
                     .sort((a, b) => parseInt(a.date) - parseInt(b.date))
                     .map((collab) => (
-                        <article key={collab.id} className="flex flex-col md:flex-row gap-8 items-start fade-in">
+                        <article key={collab.id} className="flex flex-col sm:flex-row gap-6 items-start fade-in">
                             {/* Image Column */}
-                            <div className="w-full md:w-1/4 lg:w-1/5 flex-shrink-0">
+                            <div className="w-full sm:w-1/3 flex-shrink-0">
                                 <Link to={`/obra-literaria/antologias/${collab.id}`} className="block group">
                                     <div className="aspect-video overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300">
                                         <img
