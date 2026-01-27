@@ -100,9 +100,10 @@ const CollaborationDetail: React.FC = () => {
                             const leftImages = imgMatches.filter(m => m[1] === 'L');
                             const rightImages = imgMatches.filter(m => m[1] === 'R');
                             const bottomRightImages = imgMatches.filter(m => m[1] === 'BR');
+                            const bottomImages = imgMatches.filter(m => m[1] === 'B');
 
                             const renderImages = (matches: RegExpMatchArray[]) => (
-                                <div className="flex flex-col gap-4 w-40 md:w-48">
+                                <div className="flex flex-col gap-4 w-48 md:w-56">
                                     {matches.map((match, i) => {
                                         const imgIndex = parseInt(match[2]);
                                         const imgUrl = collaboration.images?.[imgIndex];
@@ -134,13 +135,23 @@ const CollaborationDetail: React.FC = () => {
 
                                     const lineContent = isDoubleIndented ? doubleIndentedMatch![1] : (isCentered ? centeredMatch![1] : (isIndented ? indentedMatch![1] : line));
 
-                                    // Bold parsing
-                                    const parts = lineContent.split(/(\*\*.*?\*\*)/g).map((part, j) => {
-                                        if (part.startsWith('**') && part.endsWith('**')) {
-                                            return <strong key={j} className="font-bold text-ink">{part.slice(2, -2)}</strong>;
+                                    // Bold, Italic, and Bold+Italic parsing
+                                    const parts = lineContent.split(/(\*\*\*.*?\*\*\*)/g).map((part, j) => {
+                                        if (part.startsWith('***') && part.endsWith('***')) {
+                                            return <strong key={j} className="font-bold text-ink"><em className="italic">{part.slice(3, -3)}</em></strong>;
                                         }
-                                        return part;
-                                    });
+                                        return part.split(/(\*\*.*?\*\*)/g).map((subPart, k) => {
+                                            if (subPart.startsWith('**') && subPart.endsWith('**')) {
+                                                return <strong key={`${j}-${k}`} className="font-bold text-ink">{subPart.slice(2, -2)}</strong>;
+                                            }
+                                            return subPart.split(/(_.*?_)/g).map((innerPart, m) => {
+                                                if (innerPart.startsWith('_') && innerPart.endsWith('_')) {
+                                                    return <em key={`${j}-${k}-${m}`} className="italic">{innerPart.slice(1, -1)}</em>;
+                                                }
+                                                return innerPart;
+                                            });
+                                        });
+                                    }).flat(2);
 
                                     // Return styled block
                                     let className = 'block ';
@@ -157,6 +168,34 @@ const CollaborationDetail: React.FC = () => {
                                     );
                                 });
                             };
+
+                            // Bottom alignment (Row below text)
+                            if (bottomImages.length > 0) {
+                                return (
+                                    <div key={index} className="mb-4">
+                                        <p className="text-justify mb-8">
+                                            {renderParagraphContent(cleanText)}
+                                        </p>
+                                        <div className="flex flex-wrap justify-center gap-8 w-full">
+                                            {bottomImages.map((match, i) => {
+                                                const imgIndex = parseInt(match[2]);
+                                                const imgUrl = collaboration.images?.[imgIndex];
+                                                if (!imgUrl) return null;
+
+                                                return (
+                                                    <div key={i} className="rounded-lg overflow-hidden shadow-md border border-gray-100 w-48 md:w-56 flex-shrink-0">
+                                                        <img
+                                                            src={imgUrl}
+                                                            alt={`Ilustración para ${collaboration.title}`}
+                                                            className="w-full h-auto object-cover"
+                                                        />
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                );
+                            }
 
                             // Bottom Right alignment (Flexbox)
                             if (bottomRightImages.length > 0) {

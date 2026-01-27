@@ -15,14 +15,12 @@ const Bio: React.FC = () => {
         >
           <div className="aspect-[3/4] w-full overflow-hidden rounded-sm shadow-xl">
             <img
-              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80"
+              src="/images/sobrebelen/pluma5.png"
               alt="Belén Juarez Portrait"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-paper border border-ink/10 p-4 shadow-lg flex items-center justify-center hidden md:flex">
-            <span className="font-serif italic text-2xl text-deep-red">BJ</span>
-          </div>
+
         </motion.div>
 
         <div>

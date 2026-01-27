@@ -1,7 +1,4 @@
 import { Book, Collaboration, ArtPiece, Track, SocialLink } from './types';
-import destierroCover from './documentación/2 LA ARQUITEXTURA DEL VERSO/OBRA LITERARIA/1 LIBROS/DESTIERRO EN CUATRO ANGULOS/1A PARA MIGUE/DESTIERRO EN CUATRO ANGULOS.jpg';
-import nocheCover from './documentación/2 LA ARQUITEXTURA DEL VERSO/OBRA LITERARIA/1 LIBROS/LA NOCHE DE AYER/1B PARA MIGUE/FOTO PORTADA LA NOCHE DE AYER.jpg';
-import horizonteCover from './documentación/2 LA ARQUITEXTURA DEL VERSO/OBRA LITERARIA/1 LIBROS/HORIZONTE_DE_SUCESOS/PORTADA-HORIZONTE_DE_SUCESOS.png';
 
 export const BOOKS: Book[] = [
   {
@@ -9,7 +6,7 @@ export const BOOKS: Book[] = [
     title: 'Destierro en cuatro ángulos',
     year: '1999',
     description: `Primer libro publicado en 1999, en la Editorial Devenir. El libro está dividido en cuatro capítulos Tierra, Agua, Aire y Fuego donde se repiten los títulos de los poemas. De tal forma que se puede leer de forma lineal (por capítulos) o tomando los poemas de igual título de cada capítulo convirtiéndose en un único poema deslizándose por los cuatro elementos. En palabras de Antonio Enrique (Turia, nº 53) «El libro, así, rueda sobre sí mismo y se desplaza en elipse: posee los ejes de rotación (en sus poemas) y de traslación (las partes en que éstos se vertebran).» La temática gira en torno al tiempo donde se sostiene la vida, y todas las miserias que en ella acontecen: El tiempo y la desintegración de todo lo viviente, la inutilidad de las pasiones, la condición de exilio del ser humano, la tentación de la violencia, la radical ineptitud para el gozo, constituyen algunos de sus temas recurrentes.`,
-    coverUrl: destierroCover,
+    coverUrl: '/images/libros/destierro_en_cuatro_angulos.jpg',
     purchaseUrl: '#',
     downloads: [
       { label: 'Descargar Libro', url: '/downloads/destierro_en_cuatro_angulos.pdf' }
@@ -20,7 +17,7 @@ export const BOOKS: Book[] = [
     title: 'La Noche de Ayer',
     year: '2001',
     description: `La Noche de Ayer, segundo libro de Belén, presenta una estructura dividida en tres tiempos con diez poemas cada uno. La temática del texto alude a un Pasado (el de cualquier persona) entretejido en un Presente donde los versos llegan con tal fuerza que se podría confundir con un caos lingüístico. No es así. El equilibrio lingüístico es. Existen recuerdos que se mezclan en el plano del Presente como imágenes superpuestas de una misma realidad pasada. El concepto de Espacio/Tiempo que entendemos en el mundo en que vivimos, son variables no constantes en otras dimensiones universales. De ahí que este poemario sea, tal vez, tan críptico; procede del subconsciente y de la memoria del poeta. De esa memoria donde unos niños fueron obligados a caminar por sendas diferentes.`,
-    coverUrl: nocheCover,
+    coverUrl: '/images/libros/la_noche_de_ayer.jpg',
     purchaseUrl: '#',
     downloads: [
       { label: 'Prólogo', url: '/downloads/Prologo_de_Antonio_Enrique-La_noche_de _ayer.pdf' },
@@ -32,7 +29,7 @@ export const BOOKS: Book[] = [
     title: 'Horizonte de Sucesos',
     year: '2026  (pendiente de publicar por Huerga & Fierro)',
     description: `Tras una larga pausa para centrarse en su carrera profesional, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
-    coverUrl: horizonteCover,
+    coverUrl: '/images/libros/horizonte_de_sucesos.png',
     purchaseUrl: '#'
   }
 ];
@@ -52,7 +49,7 @@ export const COLLABORATIONS: Collaboration[] = [
 Actas del VIII Encuentro de mujeres poetas
 En memoria de Ernestina de Champourcin
 
-POÉTICA
+**POÉTICA**
 "Ella me permite hablar hoy..."
 
 BELÉN JUÁREZ
@@ -62,35 +59,39 @@ pág 120 VII Encuentro Mujeres Poetas
 
 Solamente me veo capaz de soltarme de mi espacio y de mi tiempo en los sueños, y por eso algunos autores me han nombrado como -la poeta que atrapa la otra realidad desde el subconsciente-. ¿El subconsciente? Tal vez..., allí sí puedo vivir otra realidad sin preocuparme de mis horas o de mis movimientos, allí sí puedo intuirla. La Poesía nos hace humanos. Ella nos recuerda que tenemos la capacidad de la intuición, así pues, podemos olfatear sus aromas universales. Ciertamente he publicado poco, pero he escrito mucho desde la edad de 9 años, hoy me bañan ya cuarenta guitarras en mi tiempo... La primera vez hablé de la Tridimensionalidad de la Poesía allá en 1999 cuando me lancé a publicar un primer libro, y después vino La Noche de Ayer, un libro que Antonio Enrique describió en el prólogo como críptico, imposible de penetrar desde fuera. Cierto es, la forma mía de poetizar es dejarme fluir, descender o ascender desde la memoria, desde esa otra dimensión libre y total que nos invade cuando no poseemos el control de la conciencia. Sólo allí soy poeta, y ser poeta no me hace poseedora de nada. A Ella, a la Poesía no la posee nadie, por eso jamás hablo de -mi poesía-, pues mía no es, en todo caso yo soy -su poeta- otra guerrera más de este planeta tan puntual como pequeño. Aquel libro así lo demostró, trenzas de un tiempo donde el ayer sobrepasaba el presente. Y sigo escribiendo su nebulosa, sensaciones que a veces se me pliegan como dos universos paralelos intentando entrar en mí. He escrito teatro aún sin publicar, he escrito la memoria de los hombres, y recientemente he escrito "El Universo de las Luces". Jamás tuve prisa por publicar, sencillamente sucederá cuando tenga que suceder. En el Universo de la Luces, lo único interesante para mí es que sus versos han tenido la bondad de elegirme para expresar tan honda emoción vivida por un ser desde la otra estela de la realidad y una mujer que habita en cualquier lugar de este tiempo.... Agradezco, pues a la Poesía el querer que sea poeta, el dejarme escribir lo que ella me dicta, los versos de su distancia, de su amor y de su casa.
 
-[[IMG:R:0]][[IMG:R:1]]
-POEMA
-Belén Juárez
-Del libro inédito El Universo de las luces
+**POEMA**
+
+Del libro inédito _El Universo de las luces_
 VIII, pág 153
 
 Y fueron las vibraciones de un grito contra el tiempo,
 y contra el tiempo que se expandía usando peldaños, y
 que sufría a golpe de puños.
+
 Fueron en busca de los vientos de Orión,
 una y otra noche sobre la escapada
 de la eterna dimensión de lo imposible.
 Ganaron la placidez de ignorar el mundo
 escrito sobre las malditas horas de templanza y sueño.
+
 -Entrégate al agua,
 a la cálida e intocable esencia del amor
 que protege el recuerdo de una cuerda
 que ahorca desde otro universo
 tu cuello y mi música...
+
 -Bellas fueron tus sonrisas desde el agua que todo lo puede,
 como un dios de fuerzas satisfechas e insuperables,
 bellos tus perfiles y las sombras inventadas
 para ese otro universo que existe, que existe,
 que nos existe...
 
-
 Se quejaba el soldado
 de las miles de sensaciones que prendían su alma,
-de las ocultos y brutales cantos del Universo impuesto.`,
+de las ocultos y brutales cantos del Universo impuesto.
+
+[[IMG:B:0]] [[IMG:B:1]]
+`,
     images: [
       '/images/antologias/orion_3.png',
       '/images/antologias/personajes_3.png'
@@ -104,16 +105,13 @@ de las ocultos y brutales cantos del Universo impuesto.`,
     date: '1999',
     description: 'Poemas "Sobra el Destino" en la Revista Alhucema 2-3.',
     coverUrl: '/images/antologias/alhucema_2_3.jpg',
-    fullText: `Del libro Destierro en cuatro ángulos, pág 21
+    fullText: `Del libro _Destierro en cuatro ángulos_, pág 21
 
 **SOBRA EL DESTINO**
-**en aire**
+***En Aire***
 
-Hoy te recuerdo
-con la extraña sensación de que siempre fuiste mío.
-Y tal vez hoy, seas
-ese pedazo de carne que un perro roba,
-y que arranca
+Hoy son los celos,
+mañana el desatino inconsciente de una verdad que arranca
 la mentira al otro lado de una puerta.
 
 Hoy serán los celos a un destino
@@ -128,8 +126,9 @@ y dormir, dormir siempre
 en el recuerdo del destino imperturbable.
 
 
+
 **SOBRA EL DESTINO**
-**en fuego**
+***En Fuego***
 
 No, a inclinarse a la sobriedad de los hechos, en
 coronas de la noche que
@@ -147,8 +146,8 @@ los motivos de pensar en apariencia y
 un azar, que se mezcla en alegrías.
 
 Dentro un destino, apresa,
-                                           consume,
-                                           devora.`
+consume, 
+devora.`
   },
   {
     id: '3',
@@ -160,50 +159,39 @@ Dentro un destino, apresa,
     coverUrl: '/images/antologias/alhucema_5.jpg',
     fullText: `Alhucema, nº5, pág 38
 
-**De su libro inédito: Tierra de mujer**
+**De su libro inédito:** ***Tierra de mujer***
 
-Venir y provocar el rostro que
-promete por las selvas de un dios,
-llegar a la constancia de seguir amando,
-amor, amor y amar,
-y quererse en la sombra de un cuerpo hermoso
+Venir y provocar el rostro que 
+promete por las selvas de un dios, 
+llegar a la constancia de seguir amando, 
+amor, amor y amar, 
+y quererse en la sombra de un cuerpo hermoso 
 que estrecha en su cintura el verbo del agua.
-
-Y siguiendo en la casa blanca del mismo elemento,
-me inquieta la hora antigua en este cuenco
-que a veces sin vida viene a la duda
+ 
+Y siguiendo en la casa blanca del mismo elemento, 
+me inquieta la hora antigua en este cuenco 
+que a veces sin vida viene a la duda 
 de ser vana mujer, muda en su palabra.
 
-Pienso, pienso en las alquimias de esta alcoba,
-invento amargo de la advertencia sin retorno,
+[[IMG:R:0]]
+Pienso, pienso en las alquimias de esta alcoba, 
+invento amargo de la advertencia sin retorno, 
 pienso, pienso y averiguo.
-
-Llegar sin amar a veces sacude el alma,
-a veces el cansancio, a veces un triunfo débil
+ 
+Llegar sin amar a veces sacude el alma, 
+a veces el cansancio, a veces un triunfo débil 
 y nunca dormir el hambre.
-
-Y quiero de mi retorno al cuerpo,
-versar mi nombre,
-subir del amor a la curva,
-imitar unos ojos,
-sudar en la cama de la obediencia,
+ 
+Y quiero de mi retorno al cuerpo, 
+versar mi nombre, 
+subir del amor a la curva, 
+imitar unos ojos, 
+sudar en la cama de la obediencia, 
 olvidando su rostro caído tras la noche.
-
-
-**De su libro inédito: París uno**
-
-Baja las escaleras en el placer
-y por primera vez un cuento y un lobo
-que la espera, al otro lado de la noticia,
-se encela y cubre su rostro,
--se ha escapado-, dice
--de la fábula del camino-
-Porque sabe que la voz grave no cambia el sustento,
-ni viste el pijama de ancianos
-de su pelo el oleaje de la niebla
-que le cubre los barrotes del paso,
-y está oscuro,
-que en la luz, el libro se cierra...`
+`,
+    images: [
+      '/images/antologias/Alhucema5_ilustracion.jpg'
+    ]
   },
   {
     id: '4',
@@ -217,70 +205,72 @@ que en la luz, el libro se cierra...`
     fullText: `Del libro La Noche de Ayer
 Ánfora Nova, nº39-40. 1999
 
-Los momentos de satisfacción de antaño
-no provocan placer. Rastrear la causa de un instante
-                                                                            afable
+1.
+
+Los momentos de satisfacción de antaño 
+no provocan placer. Rastrear la causa de un instante afable                                                         
 merece cuentas en la memoria de los tiempos.
 
-Pienso en toda oportunidad de exigir
-la prontitud de un nacimiento.
+Pienso en toda oportunidad de exigir 
+la prontitud de un nacimiento. 
 Sublevar este manantial de fuegos
-a veces silencia la fuerza, sin embargo
-el pincel que ramea la luz a contraluz y
+a veces silencia la fuerza, sin embargo 
+el pincel que ramea la vida a contraluz y 
 enreda circunstancias de vuelos
 no piensa en definir los arcos plurales y reales.
 
-> Y por qué a consecuencia de tu amor
-> sigue este occidente de palabras…
+	> Y por qué a consecuencia de tu amor 
+	> sigue este occidente de palabras…
 
 [[IMG:R:0]]
-Difícil la constancia de un tiempo
-de engaños. Fallecen los juguetes seniles,
-las benditas horas de patios y besos,
+  Difícil la constancia de un tiempo 
+de engaños. Fallecen los juguetes seniles, 
+las benditas horas de patios y besos, 
 y los jueves de descanso sobre las paredes…
-> Piensa, Amor, que la garganta aún procura
-> los versos de ayer, y esta luz
-> me iguala a tu recuerdo...
-
-A causa del fracaso de un eclipse,
-esta noche joven se adentra en la tierra,
+ 
+	> Piensa, Amor, que la garganta aún procura 
+	> los versos de ayer, y esta luz 
+	> me iguala a tu recuerdo...
+ 
+A causa del fracaso de un eclipse, 
+esta noche joven se adentra en la tierra, 
 e insulta a los Idus de Marzo.
-
-Vivir de noches improntas
+ 
+Vivir de noches improntas 
 sacude todo lo bello de un pensamiento izquierdo
 y adecúa de argumentos y arcillas
-la sabia ofrenda de los dioses laicos.
-
+la sabia ofrenda de los dioses laicos. 
+ 
 Tres verbos ceden al vacío su figura,
- y de ninguno se conoce su infinito.
-Y dónde la razón de hacer oblicua
-esta promesa y seguir sin justicia
+ y de ninguno se conoce su infinito. 
+Y dónde la razón de hacer oblicua 
+esta promesa y seguir sin justicia 
 a establecer la noche...
 
-> Incierto el tacto de esta cama
-> que sujeta un cuerpo sin flores...
+	> Incierto el tacto de esta cama 
+	> que sujeta un cuerpo sin flores...
 
 
+2.
 
-
-
-Se cambia a menudo la lentitud de olvidar el mar
-por una guerra sin curso, y esta sentencia abundante
+Se cambia a menudo la lentitud de olvidar el mar 
+por una guerra sin curso, y esta sentencia abundante 
 aclama a los inciertos y averigua los azares.
 
-Decir la verdad no es propio de ancianos y
-sin embargo, proclaman augurios, no se oculta.
-Define la larga edad toda la experiencia ganada y aún por ganar,
-y se anticipa a la noche una y otra vez,
+Decir la verdad no es propio de ancianos y 
+sin embargo, proclaman augurios, no se oculta. 
+Define la larga edad toda la experiencia ganada y aún por ganar, 
+y se anticipa a la noche una y otra vez, 
 a pesar de haberle negado la cordura.
 
 [[IMG:R:1]]
-De todos los ocasos este Mayor sabía y sospechaba,
-desde entonces, imagina ausencias prohibidas,
-anuncia su fortuna desde el tejado,
+De todos los ocasos este Mayor sabía y sospechaba, 
+desde entonces, imagina ausencias prohibidas, 
+anuncia su fortuna desde el tejado, 
 y concluye su enseñanza en un silencio.
-En el tiempo citado,
-el primero de los verbos define su buena intención
+ 
+En el tiempo citado, 
+el primero de los verbos define su buena intención 
 de conmover a los sensatos.
 
 > Amar durante las estrellas es propio de sabios.`,
@@ -304,41 +294,50 @@ Nº 97-98. 2014.
 Pág 102
 
 [[IMG:R:0]]
-En el eterno grial de silueta plateada y púrpura,
-las hijas de Dionisos se reparten tus semillas.
-Son las escondidas épocas,
-dueñas del viento que meció el vientre de tus madres,
+En el eterno grial de silueta plateada y púrpura, 
+las hijas de Dionisos se reparten tus semillas. 
+Son las escondidas épocas, 
+dueñas del viento que meció el vientre de tus madres, 
 vides de perpetuos años, esposas diminutas del sol.
-Ellas,
-las hijas de Dionisos, ríen y juegan alejadas de la cordura,
-cercadas por las redes del amor,
+ 
+Ellas, 
+las hijas de Dionisos, ríen y juegan alejadas de la cordura, 
+cercadas por las redes del amor, 
 se visten de siglos y trasparencias.
-y pronuncian desde la altiva copa argentada
+ 
+Ellas, 
+las cómplices del tiempo, tus amantes, los eternos años, 
+te beben sin cesar...
+ 
+Ellas son las hijas del líquido febril que empapa de locura la razón, 
+las que consagran la huella del tiempo 
+sobre las sienes del hombre indiferente, 
+y pronuncian desde la altiva copa argentada 
 que Eva escondía su sexo tras una hoja de vid.
-
-> ¿Quién saboreó, pues, la manzana?
-> ¿Acaso nos mintieron?
-
-Tu cuerpo se dibuja desde Enotria hasta el infinito,
-como cuenta de sanguíneo río sobre los años del Hombre.
+ 
+  >¿Quién saboreó, pues, la manzana? 
+  >¿Acaso nos mintieron?
+ 
+Tu cuerpo se dibuja desde Enotria hasta el infinito, 
+como cuenta de sanguíneo río sobre los años del Hombre. 
 Mas, se conozco como gozo escarlata,
-que reposa bajo la tierra de tus antepasados,
-como imagen del amante que esconde su furor,
-como hedor que alimenta el sueño y la demencia,
+que reposa bajo la tierra de tus antepasados, 
+como imagen del amante que esconde su furor, 
+como hedor que alimenta el sueño y la demencia, 
 como sonido que desprenden las hijas de Dionisos al nombrarte.
-
-Se dilata en tu seno,
-flotando en tus lagos, con sus alas mojadas,
-la historia de dioses y mortales que te bebieron.
-Esculpieron tus viñas con los brazos del sol,
-mintieron y mataron a los elocuentes que
-insistían en maldecir tu nombre.
-Construyeron la Gran Vasija de la suave locura
-donde habitó el Amor y la Poesía,
-con las gotas de tu sudor,
-mientras Ellas, las hijas de Dionisos,
-a las que llaman las eternas horas del Hombre
-siguen sonriendo, bebiéndote, y
+ 
+Se dilata en tu seno, 
+flotando en tus lagos, con sus alas mojadas, 
+la historia de dioses y mortales que te bebieron. 
+Esculpieron tus viñas con los brazos del sol, 
+mintieron y mataron a los elocuentes que 
+insistían en maldecir tu nombre. 
+Construyeron la Gran Vasija de la suave locura 
+donde habitó el Amor y la Poesía, 
+con las gotas de tu sudor, 
+mientras Ellas, las hijas de Dionisos, 
+a las que llaman las eternas horas del Hombre 
+siguien sonriendo, bebiéndote, y 
 repartiéndose tus semillas.`,
     images: [
       '/images/antologias/anfora_97_98_ilustracion.jpg'
@@ -346,53 +345,53 @@ repartiéndose tus semillas.`,
   },
   {
     id: '6',
-    publication: 'Con Voz Propia (María Rosal)',
+    publication: 'Con Voz Propia (María Rosal) - Estudio y Antología Comentada de la poesía escrita por Mujeres (1970-2005). Ed. Renacimiento. Iluminaciones',
     title: 'En Altamira',
     type: 'Antología',
     date: '2006',
     description: 'Poema "En Altamira" en la antología Con Voz Propia.',
     coverUrl: '/images/antologias/con_voz_propia.jpg',
-    fullText: `Con voz propia
-María Rosal
-
-Estudio y Antología Comentada
-de la poesía escrita por Mujeres
-(1970-2005)
-Ed. Renacimiento. Iluminaciones
+    fullText: `
 
 **EN ALTAMIRA**
-Belén Juárez, pág 159
+_Destierro en cuatro ángulos_. 1999 pág 159
 
-El primero de sus quehaceres,
-buscar similitud a un cuerpo ya caliente,
+[[IMG:R:0]]
+El primero de sus quehaceres, 
+ 
+buscar similitud a un cuerpo ya caliente, 
 que pisa tierra, que bebe, que respira.
-Contener el fuego, averiguar el Sol,
-cambiar los ídolos por piedras,
+ 
+Contener el fuego, averiguar el Sol, 
+cambiar los ídolos por piedras, 
 y hacerse piedra que resista la destrucción.
-No viene la mujer a sus espaldas
-oculta razones a la vuelta de los siglos,
-y fuego será su consentimiento,
+ 
+No viene la mujer a sus espaldas 
+oculta razones a la vuelta de los siglos, 
+y fuego será su consentimiento, 
+ 
 >> su cueva deseada
 >> su quema caliente,
 >> su amor por hacer.
-Fue en Altamira, pero nunca existió el fuego.
-
-
-Destierro en cuatro ángulos. 1999.`
+ 
+Fue en Altamira, pero nunca existió el fuego.`,
+    images: [
+      '/images/antologias/ALTAMIRA.jpg'
+    ]
   },
   {
     id: '7',
-    publication: 'El Oro Líquido. Antología',
+    publication: 'El Oro Liquido. El aceite de oliva en la cultura. Ed. de José Antonio Santano',
     title: 'Hombre Olivo',
     type: 'Antología',
     date: '2008',
     description: 'Poema "Hombre Olivo" en la antología El Oro Líquido.',
     coverUrl: '/images/antologias/el_oro_liquido_cover.jpg',
     imagePosition: 'center 20%',
-    fullText: `HOMBRE OLIVO
-BELÉN JUÁREZ
+    fullText: `
 
-[[IMG:R:0]]
+
+
 Mar que asienta las raíces del árbol vital,
 conflicto de años que se beben bajo la hierba,
 alta estirpe del más silencioso de mis árboles.
@@ -402,22 +401,23 @@ cansado vegetal de la vida oleosa,
 gota de sigilo, anfibio de charca verde
 me vences, a pesar de tus olivas amargas,
 arenas de un sol chispeante asesino,
-caliente amor de las noches braceantes,
+caliente amor de las noches braceadoras,
 me rindo al brote de tus siglos,
 me rindo, cual jugada vencida de laureles.
 
+[[IMG:R:0]]
 Tú,
 un cuerpo desgastado de incertidumbre,
 tres patas de un piano natural,
 dedos de amor, verde oliva
 que alzan al monte la música del viento,
 que atrapan la decadencia salvaje de los años.
-
+ 
 Y más olivos de versos,
 y más voces guardando tu mundo,
 más inercia de sueños en la noche,
 oculto sexo del hombre invertebrado.
-
+ 
 Mientes, cual sol atrapado entre tus ramas,
 a pesar de la molienda de tus oros,
 conocen tus hermanos que cumplieron condena
@@ -474,7 +474,7 @@ oculto sexo del hombre invertebrado.
 Mientes, cual duende atrapado entre tus ramas,
 a pesar de la molienda de tus oros,
 conocen tus hermanos que cumplieron la vida,
-la paz de tu nombre paloma, la guerra mojada,
+la paz de tu nombre _paloma_, la guerra mojada,
 la abundancia de tus avernos, el origen de tu casa antigua.
  
 De ti me unto como hembra pedregosa,
@@ -483,7 +483,7 @@ pacto del verso caimán,
 bahía de la fúlgida ensenada,
 árbol de los años enraizados en mis sienes.`,
     images: [
-      '/images/antologias/hombre_olivo_ilustracion.jpg'
+      '/images/antologias/hombreolivo2.jpg'
     ],
     purchaseUrl: '#'
   }
