@@ -773,11 +773,11 @@ Ocupa el rincón más pequeño de las sensaciones,
 por próximo que encuentre la palabra oculta,
 no se averigua la venia de ser amado.
 
-- Entrego a mis labios licencia de amar
-En pleno derecho,
-pero nunca edificar quisiera 
-sobre cielos perdidos,
-la esencia de un cuerpo infinito.
+_- Entrego a mis labios licencia de amar_
+_En pleno derecho ,_
+_pero nunca edificar quisiera_
+_sobre cielos perdidos,_
+_la esencia de un cuerpo infinito._
 
 Viejo es el lugar del tiempo,
 desde la experiencia.`,
