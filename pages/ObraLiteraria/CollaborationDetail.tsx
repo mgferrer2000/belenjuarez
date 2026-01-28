@@ -24,7 +24,7 @@ const CollaborationDetail: React.FC = () => {
 
     // Split full text into paragraphs
     const paragraphs = collaboration.fullText
-        ? collaboration.fullText.split('\n\n').filter(p => p.trim().length > 0)
+        ? collaboration.fullText.trim().split('\n\n')
         : [collaboration.description];
 
     return (
@@ -213,20 +213,13 @@ const CollaborationDetail: React.FC = () => {
 
                             if (leftImages.length > 0 || rightImages.length > 0) {
                                 return (
-                                    <div key={index} className="flex flex-col md:flex-row gap-10 mb-4 items-start">
-                                        {leftImages.length > 0 && (
-                                            <div className="flex-shrink-0 order-2 md:order-1 self-center md:self-start">
-                                                {renderImages(leftImages)}
-                                            </div>
-                                        )}
-                                        <p className="flex-1 order-1 md:order-2 text-justify">
+                                    <div key={index} className="mb-4">
+                                        <div className={`md:w-56 w-full ${leftImages.length > 0 ? 'md:float-left md:mr-10' : 'md:float-right md:ml-10'} mb-6 self-center md:self-start`}>
+                                            {renderImages(leftImages.length > 0 ? leftImages : rightImages)}
+                                        </div>
+                                        <p className="text-justify">
                                             {renderParagraphContent(cleanText)}
                                         </p>
-                                        {rightImages.length > 0 && (
-                                            <div className="flex-shrink-0 order-3 self-center md:self-start">
-                                                {renderImages(rightImages)}
-                                            </div>
-                                        )}
                                     </div>
                                 );
                             }

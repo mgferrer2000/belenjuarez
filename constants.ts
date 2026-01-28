@@ -486,6 +486,304 @@ bahía de la fúlgida ensenada,
       '/images/antologias/hombreolivo2.jpg'
     ],
     purchaseUrl: '#'
+  },
+  {
+    id: '9',
+    publication: 'EntreRíos. Revista de Arte y Letras',
+    title: 'Septiembre entre azules',
+    type: 'Revista',
+    date: '2005',
+    description: 'Nº 0. 2005',
+    coverUrl: '/images/antologias/entrerrios.jpeg',
+    imagePosition: 'top',
+    fullText: `SOBRE este _Azul_, 
+la verticalidad de una febril respiración 
+festejando un acantilado, 
+antifaz del eco, violentamente universal.
+
+Al pie..., el mar entre tus dedos 
+asombrados de tanta libertad por estrenar, 
+siendo el decálogo de tu imagen 
+el silencio que irrumpe entre tus ruidos, 
+allá... en lo más alto de tu cuerpo.
+
+[[IMG:R:0]]Procedes de un mundo cual susurro de las aves 
+cayendo sobre la estirpe de las aguas, 
+un trono de avanzadas espumas y sirenas 
+averiguo entre tus sienes.
+
+Y fuimos, allí donde la llave de tu castillo es 
+el propio cielo cerrado a los ojos ajenos. 
+Fuimos... donde el poder de tu voz 
+se hizo luz entre la hierba y mi sombra.
+
+Fuimos, al alcance de los corales que te lloran 
+las décadas que no viviste, 
+al encuentro de los aires que funden los azules 
+de tu mar y mi cielo.
+
+Fuimos, allí donde los días no son necesarios, 
+donde existe la _Verdad_ sobre una piedra, 
+escrita tu bondad 
+al abrigo de un cálido sol de septiembre.`,
+    images: [
+      '/images/antologias/ilustracion_entrerrios.png'
+    ]
+  },
+  {
+    id: '10',
+    publication: 'Ilustre Colegio de Gestores Administrativos de Granada, Jaén y Almería',
+    title: 'POETAS POR LA PAZ',
+    type: 'Antología',
+    date: '2002',
+    description: 'Participación en la antología Poetas por la Paz.',
+    coverUrl: '/images/antologias/PORTADA_poetas-paz.jpg',
+    imagePosition: 'top',
+    fullText: `>> **PALESTINA**
+
+Un mundo de declives
+nos obliga a invertir las manos.
+
+Manos donde todo reproche de vientos
+se condensa en razones y en causas estrechas
+de nuestra memoria.
+
+Sé de los motivos que 
+obligan al cambio de rostro 
+de un mismo elemento.
+Elemento
+de la idea profunda, donde la _Paz_ 
+recrea los azules de todo un tiempo de conciencia 
+y _Guerra_, en su definición, 
+existe en la cara oculta de la Luna.
+
+[[IMG:R:0]]Y por denuncia, no nos queda más pasaje que 
+ser viajeros de lucha con armas de deseo, 
+porque ver morir a los infantes no es más grave 
+que destruir la propia identidad de pueblos, 
+porque mi casa se disculpa como hálito de conciencia 
+mientras la otra casa pierde sus registros de propiedad.
+Yo sé de los poetas que aman la tranquilidad, y 
+concluyen sus días en the más terrible de las cegueras,
+yo sé de las presencias equivocadas tras una copa de buen vino,
+y que van, 
+ocupando sus conversaciones, 
+con la lástima de los pueblos, 
+siendo la más terrible de las guerras 
+el comento de la muerte ajena.
+
+Ocupo a todos los palestinos en mi pensamiento, 
+y los abrazo en mi realidad y en la de vosotros, 
+conservo los ojos del poeta palestino 
+como tatuaje en los míos para siempre 
+porque aquel silencio que duró instantes 
+me dieron la causa de sus lágrimas…
+
+Me ambienta su aire de preguntas, 
+me dice con suma paciencia,
+
+_— Tú, poeta español y dónde tu palabra…—_
+
+Me habló de su pueblo, 
+de la existencia de personas, and 
+de la no existencia de su tiempo, 
+me preguntó por qué ellos 
+sólo pueden ver la cara oculta de la Luna 
+por qué se nace tridimensional en el mundo 
+por qué y dónde las razones del Gran Sol…
+
+_—Tú poeta español… y dónde tu palabra en esta noche…—_
+
+
+
+>> **... Y MI DENUNCIA...**
+
+> A todos los señores poderosos del mundo...
+
+Desde qué asombroso estado 
+el misterio del tenebroso movimiento 
+alcanza la conciencia 
+dejando el alma al amparo del _Ser de la Noche_...
+
+_Noche_ se define como espacio 
+de nuestra propia sangre negra, 
+como habitáculo que invita 
+a los ojos del que no está, 
+y se nos manifiesta...
+
+_Noche_, 
+donde se alcanzan 
+movimientos de placer, 
+a través de la más cruel de las sinfonías.
+[[IMG:R:1]]
+_Noche_, 
+lugar donde el rojo destello, 
+convertido en caballo, 
+vibra y nos besa el misterio más cierto, 
+más acertado, más real, más incesante, 
+más inequívoco a la cercanía de su zarpa...
+
+Tener la presencia de su entorno en nuestro cuello, 
+sus alas de atrevido y fétido aire, 
+solapando su amor 
+en la cubierta de nuestra piel...
+
+Vino, 
+hasta el lugar de las luces, 
+murió siendo serpiente del Edén, 
+resucitó entre los tiempos 
+de todos los cadáveres benevolentes, 
+respiró el aroma de todas las guerras, 
+desapareció para los incrédulos, 
+se hizo inteligente en el Mundo, 
+creó su propia estirpe, con rabo, cuernos y garras...
+
+_Todo esto yo lo sé_... 
+Hoy se encuentra frente a mí, 
+deseando coronarme con su semen, 
+sin embargo..., no advierte en su torpeza, 
+que... 
+_AZRAEL..., soy Yo._`,
+    images: [
+      '/images/antologias/ilustracion_poetas-paz.png',
+      '/images/antologias/ilustracion2_poetasporlapaz.png'
+    ]
+  },
+  {
+    id: '11',
+    publication: 'REPÚBLICA DE LAS LETRAS',
+    title: 'Ciencia y Literatura',
+    type: 'Revista',
+    date: '2006',
+    description: 'Nº 94 Febrero 2006. Einstein un científico humanista.',
+    coverUrl: '/images/antologias/Repblica_letras_PORTADA.png',
+    imagePosition: 'bottom',
+    fullText: `>> **I.**
+
+[[IMG:R:0]]Fue niña transformada en tortura de edades,
+cuando disonaron sus vientos de agosto,
+por las llagas de su torso.
+Alcanza el silbido de la muerte
+una sigla de vahídos sobre la inocencia,
+y de nuevo el día sobre la vida,
+una obertura defiende los cantos
+de un rapto al amor sobre los años…
+
+Fue que los perfiles de aquella voz
+rescató la sonrisa perdida del estío,
+tejiendo sobre la hierba seca
+la gracia de volver a nacer
+desde las ruinas del amor embalsamado.
+Su nombre deleitó los sonidos,
+como una dádiva de recompensas fugaces,
+celebró en sus ojos un certero silencio de bondades,
+transformó la sentencia de muerte
+en hoguera de indulgencias,
+transformó el miedo en aguamiel de otoño,
+soportó la calma de las manos de su niña,
+se hizo amor en sus estrellas,
+tan pronto su sonrisa descubrió
+la magia de ser fiel a la aventura.
+
+_Su nombre está grabado en una piedra_
+_su nombre sellado en el tiempo ya existido…_
+
+
+
+>> **II.**
+
+_Querida mía,_
+uso mi gobierno allá desde mi mundo
+para traerte la madrugada y la quietud
+a los alcázares de tu alboroto.
+traigo el orden de mi conciencia
+desdele perfil de las luces
+que me alcanzaron hacia ti;
+traigo a tus murallas mis barcos celestes,
+el capricho de los cometas,
+el recuerdo de mis sombras,
+los años y mis brújulas,
+[[IMG:R:1]]
+los rojos de mis luces,
+la orbe de otro tiempo,
+el principio de los astros
+el sacro delito de volver a enfrentarme 
+a mi destierro.
+
+Querida mía,
+porque viajaste conmigo 
+sobre el tornado de la creación,
+y comprendiste mi apariencia de ser hombre
+en tu sonrisa.
+
+
+
+>> **III.**
+
+Y descendieron a la tierra de las hadas,
+celebraron entre aires recelosos,
+entre alegres vegetales
+el desorden de ocultar las amarguras.
+celebraron y brindaron por la vida,
+y combatieron en el duelo de su suerte,
+aceptaron el reto de tildar y escribir su universo,
+sobre un día de áureos adornos,
+ornamentos de alegres ruiseñores y abejas,
+que ganaron su alimento bajo la hiedra.
+
+Y descendieron al ardor de las aguas,
+poza de plateadas olas,
+camino de renacimientos,
+donde se quedaron las trenzas de su pelo,
+su vestido y su calzado,
+donde fue bautizada,
+donde él no tocó el agua,
+y sin embargo pronunció la callada oblación
+desde su luz.
+
+_La niña lo supo siempre,_
+_Supo que fue bautizada_
+_por el soldado de las estrellas._`,
+    images: [
+      '/images/antologias/Republica_letrasI1.png',
+      '/images/antologias/Republica_letrasI2.jpg'
+    ]
+  },
+  {
+    id: '12',
+    publication: 'Turia. Revista Cultural. Número 53',
+    title: 'Discuto con el mar',
+    type: 'Revista',
+    date: '2000',
+    description: 'Revista cultural número 53. Teruel.',
+    coverUrl: '/images/antologias/Turia_PORTADA.jpg',
+    imagePosition: 'top',
+    fullText: `>> «El mar al fausto beso,
+>> En olas mil se riza…»
+
+>>> Estébanez Calderón
+
+[[IMG:R:0]]DISCUTO con el mar su beso más profundo.
+Y me niega a veces su templado aire,
+sabor a sal, desmesurada tempestad, 
+            precisa luz de gravedades.
+
+Mirarse en unos brazos azules
+Ocupa el rincón más pequeño de las sensaciones,
+por próximo que encuentre la palabra oculta,
+no se averigua la venia de ser amado.
+
+- Entrego a mis labios licencia de amar
+En pleno derecho,
+pero nunca edificar quisiera 
+sobre cielos perdidos,
+la esencia de un cuerpo infinito.
+
+Viejo es el lugar del tiempo,
+desde la experiencia.`,
+    images: [
+      '/images/antologias/Turia_Imagen1.png'
+    ]
   }
 ];
 
