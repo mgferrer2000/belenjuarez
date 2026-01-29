@@ -60,6 +60,7 @@ export interface Track {
   title: string;
   duration: string;
   poemSource: string;
+  spotifyId?: string;
 }
 
 export interface SocialLink {
