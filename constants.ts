@@ -1,4 +1,4 @@
-import { Book, Collaboration, ArtPiece, Track, SocialLink } from './types';
+import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle } from './types';
 
 export const BOOKS: Book[] = [
   {
@@ -796,12 +796,292 @@ export const ALBUM_TRACKS: Track[] = [
 ];
 
 export const ART_PIECES: ArtPiece[] = [
-  { id: '1', title: 'Estudio de manos', medium: 'Carboncillo', imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=400&q=80', aspectRatio: 'portrait' },
-  { id: '2', title: 'Paisaje onírico', medium: 'Acuarela', imageUrl: 'https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=600&q=80', aspectRatio: 'landscape' },
-  { id: '3', title: 'Autorretrato fragmentado', medium: 'Óleo', imageUrl: 'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=500&q=80', aspectRatio: 'square' },
-  { id: '4', title: 'Boceto urbano', medium: 'Tinta', imageUrl: 'https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&w=400&q=80', aspectRatio: 'portrait' },
-  { id: '5', title: 'Abstracción I', medium: 'Acrílico', imageUrl: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=600&q=80', aspectRatio: 'landscape' },
-  { id: '6', title: 'La espera', medium: 'Grafito', imageUrl: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80', aspectRatio: 'square' },
+  {
+    id: '1',
+    title: '40 Guitarras de Plata',
+    medium: 'Óleo sobre lienzo',
+    year: '2005',
+    imageUrl: '/images/cuadros/40 GUITARRAS DE PLATA 2005.JPEG',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  {
+    id: '2',
+    title: 'Abencerrajes',
+    medium: 'Técnica mixta',
+    year: '1997',
+    imageUrl: '/images/cuadros/ABENCERRAJES 1997.png',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '3',
+    title: 'Barco',
+    medium: 'Óleo',
+    year: '1999',
+    imageUrl: '/images/cuadros/BARCO 1999.JPEG',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  {
+    id: '4',
+    title: 'Composición I',
+    medium: 'Tinta china',
+    imageUrl: '/images/cuadros/COMPOSICION 1.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '5',
+    title: 'Composición II',
+    medium: 'Tinta china',
+    imageUrl: '/images/cuadros/COMPOSICION 2.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '6',
+    title: 'Torres Vedras',
+    medium: 'Óleo',
+    year: '1998',
+    imageUrl: '/images/cuadros/CUADRO 2 Torres Exposición colectiva Torres Vedras, Portugal, 1998.JPEG',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  {
+    id: '7',
+    title: 'El baile de la flor',
+    medium: 'Técnica mixta',
+    year: '1999',
+    imageUrl: '/images/cuadros/EL BAILE DE LA FLOR. PEDRO GARCIARIAS y BELEN JUAREZ.JPEG',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  {
+    id: '8',
+    title: 'Flor Tinta China',
+    medium: 'Tinta china',
+    imageUrl: '/images/cuadros/FLOR TINTA CHINA.JPEG',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '9',
+    title: 'Flor',
+    medium: 'Tinta china',
+    year: '1999',
+    imageUrl: '/images/cuadros/FLOR. 1999.JPEG',
+    aspectRatio: 'square',
+    category: 'cuadros'
+  },
+  {
+    id: '10',
+    title: 'Hombre Elefante',
+    medium: 'Carboncillo',
+    year: '1990',
+    imageUrl: '/images/cuadros/HOMBRE ELEFANTE 1990.png',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '11',
+    title: 'Hotel Castelar Buenos Aires',
+    medium: 'Técnica mixta',
+    year: '1998',
+    imageUrl: '/images/cuadros/HOTEL CASTELAR BUENOS AIRES 1998.png',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  {
+    id: '12',
+    title: 'Ilustración Ficciones I',
+    medium: 'Tinta',
+    year: '1999',
+    imageUrl: '/images/cuadros/ILUSTRACION FICCIONES Especial primavera_verano 1999_1.JPEG',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '13',
+    title: 'Ilustración Ficciones II',
+    medium: 'Tinta',
+    year: '1999',
+    imageUrl: '/images/cuadros/ILUSTRACION FICCIONES Especial primavera_verano 1999_2.jpeg',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  {
+    id: '14',
+    title: 'Sin título (Guitarra)',
+    medium: 'Técnica mixta',
+    imageUrl: '/images/cuadros/IMG_1881.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '15',
+    title: 'La Dama de la Capucha',
+    medium: 'Técnica mixta',
+    year: '1995',
+    imageUrl: '/images/cuadros/LA DAMA DE LA CAPUCHA 1995.png',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '16',
+    title: 'Reflejo en el espejo',
+    medium: 'Óleo',
+    year: '1999',
+    imageUrl: '/images/cuadros/REFLEJO EN EL ESPEJO 1999.JPEG',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '17',
+    title: 'Rostro I',
+    medium: 'Carboncillo',
+    imageUrl: '/images/cuadros/ROSTRO 1.JPEG',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '18',
+    title: 'Rostro II',
+    medium: 'Carboncillo',
+    year: '1995',
+    imageUrl: '/images/cuadros/ROSTRO 21995.JPEG',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '19',
+    title: 'Tinta I',
+    medium: 'Tinta',
+    imageUrl: '/images/cuadros/TINTA 1.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '20',
+    title: 'Tinta II',
+    medium: 'Tinta',
+    imageUrl: '/images/cuadros/TINTA 2.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '21',
+    title: 'Tinta III',
+    medium: 'Tinta',
+    imageUrl: '/images/cuadros/TINTA 3.jpeg',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  {
+    id: '22',
+    title: 'Tinta IV',
+    medium: 'Tinta',
+    imageUrl: '/images/cuadros/TINTA 4.jpeg',
+    aspectRatio: 'landscape',
+    category: 'cuadros'
+  },
+  // BOCETOS A LÁPIZ
+  {
+    id: '23',
+    title: 'Mujer I (Boceto)',
+    medium: 'Lápiz',
+    year: '1998',
+    imageUrl: '/images/cuadros/Lapiz/MUJER 1 1998.png',
+    aspectRatio: 'portrait',
+    category: 'bocetos'
+  },
+  {
+    id: '24',
+    title: 'Mujer II (Boceto)',
+    medium: 'Lápiz',
+    year: '1998',
+    imageUrl: '/images/cuadros/Lapiz/MUJER 2 1998.png',
+    aspectRatio: 'portrait',
+    category: 'bocetos'
+  },
+  {
+    id: '25',
+    title: 'Mujer III (Boceto)',
+    medium: 'Lápiz',
+    year: '1998',
+    imageUrl: '/images/cuadros/Lapiz/MUJER 3 1998.png',
+    aspectRatio: 'portrait',
+    category: 'bocetos'
+  }
+];
+
+export const ILLUSTRATED_BOOKS: IllustratedBook[] = [
+  {
+    id: 'noches-azules',
+    title: 'Noches Azules del Alma',
+    year: '1999',
+    description: 'Ilustraciones interiores para el poemario Noches Azules del Alma.',
+    coverUrl: '/images/ilustraciones/Nochesazulesdelalma/PORTADA.jpeg',
+    illustrations: [
+      { id: 'na1', title: 'Ilustración I', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/1.jpeg', aspectRatio: 'portrait' },
+      { id: 'na2', title: 'Ilustración II', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/2.jpeg', aspectRatio: 'portrait' },
+      { id: 'na3', title: 'Ilustración III', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/3.jpeg', aspectRatio: 'portrait' },
+      { id: 'na4', title: 'Ilustración IV', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/4.jpeg', aspectRatio: 'portrait' },
+      { id: 'na5', title: 'Ilustración V', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/5.jpeg', aspectRatio: 'portrait' },
+      { id: 'na6', title: 'Ilustración VI', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/6.jpeg', aspectRatio: 'portrait' },
+      { id: 'na7', title: 'Ilustración VII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/7.jpeg', aspectRatio: 'portrait' },
+      { id: 'na8', title: 'Ilustración VIII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/8.jpeg', aspectRatio: 'portrait' },
+      { id: 'na9', title: 'Ilustración IX', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/9.jpeg', aspectRatio: 'portrait' },
+      { id: 'na10', title: 'Ilustración X', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/10.jpeg', aspectRatio: 'portrait' },
+    ]
+  },
+  {
+    id: 'plaquette-ficciones',
+    title: 'Plaquette Ficciones 4',
+    description: 'Colección de ilustraciones para la Plaquette Ficciones 4.',
+    coverUrl: '/images/ilustraciones/Plaquette_ficciones4/PORTADA.jpeg',
+    illustrations: [
+      { id: 'pf1', title: 'Plaquette I', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p1.png', aspectRatio: 'portrait' },
+      { id: 'pf2', title: 'Plaquette II', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p2.png', aspectRatio: 'portrait' },
+      { id: 'pf3', title: 'Plaquette III', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p3.png', aspectRatio: 'portrait' },
+      { id: 'pf4', title: 'Plaquette IV', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p4(2).jpeg', aspectRatio: 'portrait' },
+      { id: 'pf5', title: 'Plaquette V', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p5(2).jpeg', aspectRatio: 'portrait' },
+      { id: 'pf6', title: 'Plaquette VI', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p6(2).jpeg', aspectRatio: 'portrait' },
+      { id: 'pf7', title: 'Plaquette VII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p7(2).jpeg', aspectRatio: 'portrait' },
+      { id: 'pf8', title: 'Plaquette VIII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p8b.jpeg', aspectRatio: 'portrait' },
+      { id: 'pf9', title: 'Plaquette IX', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p9b.jpeg', aspectRatio: 'portrait' },
+      { id: 'pf10', title: 'Plaquette X', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p10b.jpeg', aspectRatio: 'portrait' },
+      { id: 'pf11', title: 'Plaquette XI', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p11b.jpeg', aspectRatio: 'portrait' },
+      { id: 'pf12', title: 'Plaquette XII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p12b.jpeg', aspectRatio: 'portrait' },
+      { id: 'pf13', title: 'Plaquette XIII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p13b.jpeg', aspectRatio: 'portrait' },
+      { id: 'pf14', title: 'Plaquette XIV', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p14b.jpeg', aspectRatio: 'portrait' },
+      { id: 'pf15', title: 'Plaquette XV', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p15b.jpeg', aspectRatio: 'portrait' },
+    ]
+  }
+];
+
+export const ART_CRITIQUES: ArtArticle[] = [
+  {
+    id: 'critica-campus-1999',
+    title: 'Rostros',
+    author: 'Eva María Vicente Galán',
+    publication: 'Revista Campus',
+    date: 'Junio de 1999',
+    extraInfo: 'Número 54, editada por la Universidad de Granada',
+    coverUrl: '/images/Critica-artistica/Portada_CAmpus_numero_54_Junio_1999.jpeg',
+    images: [
+      '/images/Critica-artistica/revista_campus.jpg',
+      '/images/Critica-artistica/rostro_de_perro.jpg',
+      '/images/Critica-artistica/rostros.jpg'
+    ],
+    content: `En la Facultad de Ciencias expuso Belén Juárez sus "Rostros" hasta el 10 de Mayo. En torno a esta temática obsesiva, la joven artista ha desarrollado una interesante serie de trabajos que sienta claramente las bases de lo que en un futuro puede ser un más amplio desarrollo de las esotéricas ideas que dan forma y vigencia a esos recuerdos, premoniciones y sensaciones que impregnan totalmente su afán creador.
+
+LA GRAN inquietud de Belén por expresar ese gran caudal de sentimiento artístico que la agita, esos "fantasmas" del pasado y del futuro, que ella intenta exorcizar con su gesto, esas formas enmarañadas que son un claro reflejo de esa visceral amalgama de ambigüedades que constituye en resumen la existencia, se ha manifestado claramente en esta reciente exposición, a lo largo de toda la obra expuesta, agrupada en tres series muy definidas, y que incluía además una sugerente escultura, evidente germen de futuras y más ambiciosas producciones.
+
+En estas tres series: pastel, tinta y óleo, todas trabajadas sobre papel, se evidencia la clara determinación de la joven autora por progresar en el terreno del arte, en sus recursos matéricos y en sus conceptos de fondo y de forma. Y lógicamente, el gesto y el grafismo son una extraordinaria base, en los inicios de toda trayectoria artística, para el asentamiento de las bases cognoscitivas imprescindibles en este difícil ámbito. A veces con timidez, Belén Juárez se ha internado por el camino indicado por el que su propia intuición creadora le ha dictado. 
+
+El negro es el protagonista indiscutible de estas misteriosas obras, en las que, más que organicidad, lo que se palpa es el frío metálico y deshumanizado de los submundos imposibles a los que puede abocar la mente humana. El negro, como adecuadísimo contrapunto a los tonos pastel, a los rotundos y vivos empastes de óleo, y como único definidor de esa especial dicotomía, que entre lo surreal y lo abstracto, lo Kandinskiano y lo postmoderno, caracterizan fundamentalmente la obra expuesta por Belén. El negro, como expresión de lo trágico como equilibrio y referencia entre las deshilvanadas masas cromáticas, que la joven pintora cohesiona gracias a él. Pues el color y las formas que éste puede sugerir, o definir con sus gradaciones, su interpretación, su profundidad y sus contrastes, es claramente el más duro reto que Belén Juárez tiene ahora por delante. En estas primeras concepciones, resulta grata la limpidez y el equilibrio que su sentido cromático manifiesta, y que evidentemente se acrecentarán y enriquecerán con la praxis, a medida que su evidente esfuerzo investigador vaya desarrollando nuevas y más comprometidas posibilidades técnicas, que darán cada vez mayor impulso a esa su indiscutible imaginación artística, poblada de rostros, de color, de trazos y de sentimiento.`
+  }
 ];
 
 export const SOCIALS: SocialLink[] = [

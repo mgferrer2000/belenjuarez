@@ -29,6 +29,30 @@ export interface ArtPiece {
   medium: string;
   imageUrl: string;
   aspectRatio: 'portrait' | 'landscape' | 'square';
+  year?: string;
+  description?: string;
+  category?: 'cuadros' | 'bocetos';
+}
+
+export interface IllustratedBook {
+  id: string;
+  title: string;
+  year?: string;
+  description?: string;
+  coverUrl: string;
+  illustrations: ArtPiece[];
+}
+
+export interface ArtArticle {
+  id: string;
+  title: string;
+  author: string;
+  publication: string;
+  date: string;
+  content: string;
+  coverUrl: string;
+  images?: string[];
+  extraInfo?: string;
 }
 
 export interface Track {
