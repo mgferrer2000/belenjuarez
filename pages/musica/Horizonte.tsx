@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ALBUM_TRACKS } from '../../constants';
-import { Play, Music as MusicIcon, Disc, ExternalLink } from 'lucide-react';
+import { Play, Music as MusicIcon, Disc, ExternalLink, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Horizonte: React.FC = () => {
@@ -15,7 +15,7 @@ const Horizonte: React.FC = () => {
 
         // Show hint briefly
         setShowHint(true);
-        setTimeout(() => setShowHint(false), 4000);
+        setTimeout(() => setShowHint(false), 5000);
     };
 
     return (
@@ -73,7 +73,7 @@ const Horizonte: React.FC = () => {
             </div>
 
             {/* Player Section */}
-            <div className="lg:w-96">
+            <div className="lg:w-96 relative">
                 <div className="sticky top-32 space-y-8">
                     {/* Main Album Portrait */}
                     <motion.div
@@ -82,7 +82,7 @@ const Horizonte: React.FC = () => {
                         className="relative aspect-square rounded-sm overflow-hidden shadow-2xl border border-white/10 group"
                     >
                         <img
-                            src="/images/libros/horizonte_de_sucesos.png"
+                            src="/images/Horizonte_de_Sucesos/1 PORTADA.JPG"
                             alt="Horizonte de Sucesos Cover"
                             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                         />
@@ -93,7 +93,7 @@ const Horizonte: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Spotify Embed Player */}
+                    {/* Spotify Embed Player wrapper with relative positioning for the toast */}
                     <div className="relative">
                         <AnimatePresence mode="wait">
                             {currentSpotifyId ? (
@@ -118,18 +118,21 @@ const Horizonte: React.FC = () => {
                             ) : null}
                         </AnimatePresence>
 
-                        {/* Interaction Hint Overlay */}
+                        {/* SUBTLE INTERACTION HINT (TOAST STYLE) */}
                         <AnimatePresence>
                             {showHint && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    className="absolute -top-12 left-0 right-0 flex justify-center z-20 pointer-events-none"
+                                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    className="absolute -top-14 left-0 right-0 z-50 flex justify-center pointer-events-none"
                                 >
-                                    <div className="bg-gold/90 text-ink text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-lg backdrop-blur-sm border border-white/20 whitespace-nowrap">
-                                        Usa el reproductor para escuchar el tema
+                                    <div className="bg-gold text-ink text-[11px] font-bold uppercase tracking-[0.15em] px-4 py-2.5 rounded shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-2 border border-white/20">
+                                        <Info size={14} />
+                                        <span>Click en el reproductor para escuchar</span>
                                     </div>
+                                    {/* Small arrow pointing down */}
+                                    <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gold rotate-45 border-r border-b border-white/10"></div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
