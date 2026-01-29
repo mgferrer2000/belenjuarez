@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ALBUM_TRACKS } from '../../constants';
 import { Play, Music as MusicIcon, Disc, ExternalLink, Info, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,15 +8,26 @@ const Horizonte: React.FC = () => {
     const [currentSpotifyId, setCurrentSpotifyId] = useState<string | null>(ALBUM_TRACKS[0].spotifyId || null);
     const [activeTrackId, setActiveTrackId] = useState<string | null>(ALBUM_TRACKS[0].id);
     const [showHint, setShowHint] = useState(false);
+    const hintTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const handleTrackSelect = (track: any) => {
         setActiveTrackId(track.id);
         if (track.spotifyId) setCurrentSpotifyId(track.spotifyId);
 
-        // Show hint briefly
+        // Clear previous timeout if exists
+        if (hintTimeoutRef.current) clearTimeout(hintTimeoutRef.current);
+
+        // Show hint with a small delay to ensure render
         setShowHint(true);
-        setTimeout(() => setShowHint(false), 5000);
+        hintTimeoutRef.current = setTimeout(() => setShowHint(false), 5000);
     };
+
+    // Cleanup on unmount
+    useEffect(() => {
+        return () => {
+            if (hintTimeoutRef.current) clearTimeout(hintTimeoutRef.current);
+        };
+    }, []);
 
     return (
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 pb-20 relative">
@@ -73,7 +84,7 @@ const Horizonte: React.FC = () => {
             </div>
 
             {/* Player Section */}
-            <div className="lg:w-96 relative">
+            <div className="lg:w-96">
                 <div className="sticky top-32 space-y-8">
                     {/* Main Album Portrait */}
                     <motion.div
@@ -93,8 +104,8 @@ const Horizonte: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Spotify Embed Player wrapper with relative positioning for the toast */}
-                    <div className="relative">
+                    {/* Spotify Embed Player wrapper with HIGHER z-index for the toast */}
+                    <div className="relative z-[100]">
                         <AnimatePresence mode="wait">
                             {currentSpotifyId ? (
                                 <motion.div
@@ -118,21 +129,21 @@ const Horizonte: React.FC = () => {
                             ) : null}
                         </AnimatePresence>
 
-                        {/* SUBTLE INTERACTION HINT (TOAST STYLE) */}
+                        {/* SUBTLE INTERACTION HINT (TOAST STYLE) - Fixed position and visibility */}
                         <AnimatePresence>
                             {showHint && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    className="absolute -top-14 left-0 right-0 z-50 flex justify-center pointer-events-none"
+                                    exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                                    className="absolute -top-16 left-0 right-0 z-[110] flex justify-center pointer-events-none"
                                 >
-                                    <div className="bg-gold text-ink text-[11px] font-bold uppercase tracking-[0.15em] px-4 py-2.5 rounded shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-2 border border-white/20">
-                                        <Info size={14} />
+                                    <div className="bg-gold text-ink text-[11px] font-bold uppercase tracking-[0.15em] px-4 py-2.5 rounded shadow-[0_15px_40px_rgba(0,0,0,0.7)] flex items-center gap-2 border border-white/30 whitespace-nowrap">
+                                        <Info size={14} className="text-ink" />
                                         <span>Click en el reproductor para escuchar</span>
+                                        {/* Small arrow pointing down */}
+                                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-4 h-4 bg-gold rotate-45 border-r border-b border-white/20"></div>
                                     </div>
-                                    {/* Small arrow pointing down */}
-                                    <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gold rotate-45 border-r border-b border-white/10"></div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
