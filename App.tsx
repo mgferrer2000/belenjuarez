@@ -13,6 +13,7 @@ import Relatos from './pages/ObraLiteraria/Relatos';
 import CriticaLiteraria from './pages/ObraLiteraria/Critica';
 import Traduccion from './pages/ObraLiteraria/Traduccion';
 import ResenasLibros from './pages/ObraLiteraria/ResenasLibros';
+import ResenaDetail from './pages/ObraLiteraria/ResenaDetail';
 import CriticaAndalusi from './pages/ObraLiteraria/CriticaAndalusi';
 import Prologos from './pages/ObraLiteraria/Prologos';
 import Entrevistas from './pages/ObraLiteraria/Entrevistas';
@@ -40,6 +41,7 @@ function App() {
               <Route index element={<Navigate to="libros" replace />} />
               <Route path="libros" element={<Libros />} />
               <Route path="resenas-libros" element={<ResenasLibros />} />
+              <Route path="resenas-libros/:id" element={<ResenaDetail />} />
               <Route path="antologias" element={<Antologias />} />
               <Route path="antologias/:id" element={<CollaborationDetail />} />
               <Route path="plaquettes" element={<Plaquettes />} />

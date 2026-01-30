@@ -64,6 +64,18 @@ export interface Track {
   youtubeId?: string;
 }
 
+export interface BookReview {
+  id: string;
+  title: string;
+  bookTitle: string;
+  author: string;
+  publication: string;
+  date: string;
+  coverUrl: string;
+  condensedQuote: string;
+  fullContent: string;
+}
+
 export interface SocialLink {
   platform: string;
   url: string;

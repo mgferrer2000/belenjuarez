@@ -1,4 +1,4 @@
-import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle } from './types';
+import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview } from './types';
 
 export const BOOKS: Book[] = [
   {
@@ -1098,6 +1098,59 @@ LA GRAN inquietud de Belén por expresar ese gran caudal de sentimiento artísti
 En estas tres series: pastel, tinta y óleo, todas trabajadas sobre papel, se evidencia la clara determinación de la joven autora por progresar en el terreno del arte, en sus recursos matéricos y en sus conceptos de fondo y de forma. Y lógicamente, el gesto y el grafismo son una extraordinaria base, en los inicios de toda trayectoria artística, para el asentamiento de las bases cognoscitivas imprescindibles en este difícil ámbito. A veces con timidez, Belén Juárez se ha internado por el camino indicado por el que su propia intuición creadora le ha dictado. 
 
 El negro es el protagonista indiscutible de estas misteriosas obras, en las que, más que organicidad, lo que se palpa es el frío metálico y deshumanizado de los submundos imposibles a los que puede abocar la mente humana. El negro, como adecuadísimo contrapunto a los tonos pastel, a los rotundos y vivos empastes de óleo, y como único definidor de esa especial dicotomía, que entre lo surreal y lo abstracto, lo Kandinskiano y lo postmoderno, caracterizan fundamentalmente la obra expuesta por Belén. El negro, como expresión de lo trágico como equilibrio y referencia entre las deshilvanadas masas cromáticas, que la joven pintora cohesiona gracias a él. Pues el color y las formas que éste puede sugerir, o definir con sus gradaciones, su interpretación, su profundidad y sus contrastes, es claramente el más duro reto que Belén Juárez tiene ahora por delante. En estas primeras concepciones, resulta grata la limpidez y el equilibrio que su sentido cromático manifiesta, y que evidentemente se acrecentarán y enriquecerán con la praxis, a medida que su evidente esfuerzo investigador vaya desarrollando nuevas y más comprometidas posibilidades técnicas, que darán cada vez mayor impulso a esa su indiscutible imaginación artística, poblada de rostros, de color, de trazos y de sentimiento.`
+  }
+];
+
+export const BOOK_REVIEWS: BookReview[] = [
+  {
+    id: 'la-noche-de-ayer-extramuros',
+    title: 'La Noche de Ayer',
+    bookTitle: 'La Noche de Ayer',
+    author: 'Enrique Villagrasa',
+    publication: 'Extramuros, Nº26',
+    date: '2002',
+    coverUrl: '/images/resenas/Extramuros_PORTADA.jpg',
+    condensedQuote: '[...] La poetisa, pintora, traductora, antóloga, crítica e investigadora de la Universidad de Granada, Belén Juárez, vuelve a sorprender a propios y extraños con la publicación de su segundo poemario, La Noche de Ayer. Una poesía moderna que tiene sentido del ritmo y educado oído... cuidadosa construcción externa y palabras bien delimitadas con exactitud de términos. De verdad que es todo un gran logro este poemario, de obligada lectura. [...]',
+    fullContent: `Creo que Francisco Morales lomas tiene razón en Poesía andaluza en libertad al señalar que «La poesía de la última década se caracteriza por la variedad, el desdén hacia la política, la preocupación por los temas sociales, la lírica metafísica o abstracta, el surrealismo, la poesía del rock, el realismo sucio, neobarroquismo, misticismo heterodoxo, culturalismo; en definitiva, las mismas tendencias que ya había experimentado la lírica de los ochenta, sin grandes aportaciones».
+
+Y mira tú por donde la poetisa, pintora, traductora, antóloga, crítica e investigadora de la Universidad de Granada, Belén Juárez (París, 1965), vuelve a sorprender a propios y extraños con la publicación de su segundo poemario, como tal, La Noche de Ayer (Alhulia), tras Destierro en cuatro ángulos (Devenir, 1999). Sorpresa grata, como veremos, tras nuestra lectura.
+
+Morales Lomas no conociese la poesía de Juárez, que sí aporta novedades y es una poesía moderna que tiene sentido del ritmo y educado oído, con endecasílabos y alejandrinos, en general, y como poeta conoce el lenguaje que maneja y sabe qué precisa concepción el poema necesita: cuidadosa construcción externa y palabras bien delimitadas con exactitud de términos y en donde desaparecen los espacios vacíos, de retórica grandilocuente y palabrería. De verdad que es todo un gran logro este poemario. La noche de ayer, de obligada lectura.
+
+El poemario, cuidado de continente y contenido, cuenta con el acertado preliminar del poeta y crítico granadino Antonio Enrique, quien no duda en avisar de la peculiar estructura de la poesía de la autora.
+
+La noche de ayer es un poemario bien estructurado, dividido en tres tiempos con diez poemas en cada parte. El libro está dedicado al poeta, al lector y a la poesía. Porque la poesía está escrita por el poeta y el poeta es en ella y en el lector: « Al poeta allá donde exista, allá donde sea, del mundo, del tiempo…, su hogar».
+
+Belén Juárez escribe una poesía donde habla de sus obsesiones estéticas y éticas: desde aquella cita latina del apresúrate despacio, del amor perdido, al mismo estar lejos de la ciudad que la vio nacer; emotivas y existenciales: recordar el ansiado paraíso perdido (de la infancia), el mundo de la noche vivida de ayer, del verbo acontecido y sus versos, en páginas y poemas grandemente meditados e hilvanados.
+
+Creo que es la imagen de la lucha que sostiene Jacob con su Dios por lograr la bendición, imagen del combate espiritual como tal, y el sueño que tiene también Jacob al pie de la escalera por alcanzar la Luz, que es la imagen de poeta en su peculiar lucha con la poesía, por alcanzarla y ser bendecido por Ella.
+
+Es un libro unitario en los tres tiempos. Es el mejor libro leído de finales del siglo pasado y abre una puerta enclavada en la realidad poética como palabra inventada para este nuevo siglo, para la poesía escrita por mujeres y hombres a la poesía toda escrita en el panorama mundial, por lo que sé y conozco.
+
+Belén indaga en todo y por todo, existencia y demás mística del ser humano llámese como se llame y tenga la religión que tenga. Es una poeta que bebe de las fuentes de la poesía arábigo andaluza. Granada con sus ecos, luces y sombras, tiene de nuevo una poeta, quien tiene presente la noche de ayer, la noche de la verdadera poesía no la de anécdota mal elevada por ellos y ellas a la categoría de poesía. Esto sí es poesía.`
+  },
+  {
+    id: 'un-mandala-de-libro-turia',
+    title: 'Un mandala de libro',
+    bookTitle: 'Destierro en cuatro ángulos',
+    author: 'Antonio Enrique',
+    publication: 'Turia nº 53',
+    date: 'Junio, 2000',
+    coverUrl: '/images/resenas/Turia_PORTADA.jpg',
+    condensedQuote: '[...] Libro éste, cerrado, primigenio, cíclico, silente, sin tiempo. Volcado al futuro. Iniciático. Profético en lo que tiene de adivinación y, al mismo tiempo, elegiaco por el lamento hondo que subyace en su bella y severa impasividad. Los cuatro ángulos del tiempo, las cuatro esquinas del universo que a su propia destrucción y muerte asiste. [...]',
+    fullContent: `Posee cuatro partes, acogidas a las materias cósmicas, y cada una de estas partes -tierra, agua, aire y fuego, por este orden- acoge a su vez doce poemas, titulados siempre lo mismo e igualmente distribuidos en análogo orden. El libro, así, rueda sobre sí mismo y se desplaza en elipse: posee los ejes de rotación (en sus poemas) y de traslación (las partes en que éstos se vertebran).
+
+¿En torno a qué idea o ideas oscila y se mueve este Destierro en cuatro ángulos, orbital y planetario? El tiempo y la desintegración de todo lo viviente, la inutilidad de las pasiones, la condición de exilio del ser humano, la tentación de la violencia, la radical ineptitud para el gozo, constituyen algunos de sus temas recurrentes. Los ejes, sin embargo, en torno a los cuales gira esta gran manzana del mundo transfigurada en libro, no son otros que la Nada y su enmascaramiento -contingente, banal- en la Vida. Estamos, pues, ante un texto iniciático: lo que se ve (y leemos) es símbolo de lo invisible, su forma transitoria.
+
+Su autora, Belén Juárez, nació en París en 1965. Vive en Granada. Es, también pintora y traductora francesa, notoria y selectiva, corre a la par del espíritu de esa cultura, consistente en establecer un orden -estético, vital, mental- entre lo disperso; articular, en definitiva, lo visible en lo metafísico.
+
+Libro, pues, así -digámoslo ya: mandálico, estático y cinético simultáneamente-, admite el caleidoscopio de dos lecturas distintas: diacrónica o vertical (por partes, de primera a cuarta) y sincrónica y horizontal (cada poema en sus cuatro tiempos). Podremos advertir no sólo la graduación de una misma idea rectora a través de cuatro tonalidades diferentes, sino la esferidad externa, su unidad de conjunto, su densidad extraordinaria.
+
+El estilo es críptico, la sintaxis abrupta, ritual el tono, coral la composición: la metáfora absorbente, brillante, seca, brusca, obsesiva. Porque la metáfora no sólo es aquí la configuración del mito esencial y la fragmentación del símbolo global de la existencia, sino que se erige en propia norma de lenguaje, única vía para desvelar el sentido oculto de la vida.
+
+El lenguaje se sustantiviza, se mineraliza. Todo él, sus elementos, se ordenan, se imantan hacia esa metáfora ancestral, sustitutiva de la Nada, siempre en relación con el ser: el Destierro. El destierro como destino y naturaleza. Somos dioses, fuimos dioses, lo seremos de nuevo cuando muramos.
+
+Libro éste, cerrado, primigenio, cíclico, silente, sin tiempo. Volcado al futuro. Iniciático. Profético en lo que tiene de adivinación y, al mismo tiempo, elegiaco por el lamento hondo que subyace en su bella y severa impasividad. Gravita, levita. Envuelve. Invade, secuestra. Los cuatro ángulos del tiempo, las cuatro esquinas del universo que a su propia destrucción y muerte asiste. Una entropía que delimita sus confines.`
   }
 ];
 
