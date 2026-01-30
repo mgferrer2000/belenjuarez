@@ -29,9 +29,9 @@ const ResenasLibros: React.FC = () => {
                     {/* Content Preview */}
                     <div className="flex-1 space-y-6">
                         <div className="space-y-2">
-                            <h4 className="text-gold-accent font-sans text-xs uppercase tracking-[0.3em] font-bold">Reseña de libro</h4>
+                            <h4 className="text-gold-accent font-sans text-xs uppercase tracking-[0.3em] font-bold">Reseña de {review.bookTitle}</h4>
                             <h2 className="text-3xl md:text-4xl font-serif text-ink italic leading-tight">
-                                {review.title}
+                                "{review.title}"
                             </h2>
                             <p className="text-sm font-sans text-ink/60 uppercase tracking-widest">
                                 {review.publication} — {review.date}
