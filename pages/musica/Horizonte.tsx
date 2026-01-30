@@ -8,11 +8,13 @@ const Horizonte: React.FC = () => {
     const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
     const [activeTrackId, setActiveTrackId] = useState<string | null>(ALBUM_TRACKS[0].id);
     const [showHint, setShowHint] = useState(false);
+    const [hasInteracted, setHasInteracted] = useState(false);
     const hintTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const handleTrackSelect = (track: any) => {
         setActiveTrackId(track.id);
         setCurrentTrackIndex(track.youtubeIndex ?? 0);
+        setHasInteracted(true); // Mark interaction to allow autoplay
 
         // Show hint to tell user to interact with the player
         setShowHint(true);
@@ -116,7 +118,7 @@ const Horizonte: React.FC = () => {
                                 className="relative rounded-sm overflow-hidden shadow-2xl bg-black border border-white/10 aspect-square w-full"
                             >
                                 <iframe
-                                    src={`https://www.youtube.com/embed/videoseries?list=${youtubePlaylistId}&index=${currentTrackIndex}&autoplay=1`}
+                                    src={`https://www.youtube.com/embed/videoseries?list=${youtubePlaylistId}&index=${currentTrackIndex}&autoplay=${hasInteracted ? 1 : 0}`}
                                     width="100%"
                                     height="100%"
                                     frameBorder="0"
