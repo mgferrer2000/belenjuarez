@@ -61,7 +61,7 @@ export interface Track {
   duration: string;
   poemSource: string;
   spotifyId?: string;
-  youtubeIndex?: number;
+  youtubeId?: string;
 }
 
 export interface SocialLink {
