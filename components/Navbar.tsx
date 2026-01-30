@@ -47,8 +47,8 @@ const Navbar: React.FC = () => {
       path: '/arte',
       submenu: [
         { name: 'Cuadros', path: '/arte/cuadros' },
-        { name: 'Crítica Artística', path: '/arte/critica' },
         { name: 'Ilustración de Libros', path: '/arte/ilustracion' },
+        { name: 'Crítica Artística', path: '/arte/critica' },
       ]
     },
     {
