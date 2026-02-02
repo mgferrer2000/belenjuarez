@@ -1,4 +1,4 @@
-import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview } from './types';
+import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview, Plaquette } from './types';
 
 export const BOOKS: Book[] = [
   {
@@ -1111,23 +1111,19 @@ export const BOOK_REVIEWS: BookReview[] = [
     date: '2002',
     coverUrl: '/images/resenas/Extramuros_PORTADA.jpg',
     condensedQuote: '[...] La poetisa, pintora, traductora, antóloga, crítica e investigadora de la Universidad de Granada, Belén Juárez, vuelve a sorprender a propios y extraños con la publicación de su segundo poemario, La Noche de Ayer. Una poesía moderna que tiene sentido del ritmo y educado oído... cuidadosa construcción externa y palabras bien delimitadas con exactitud de términos. De verdad que es todo un gran logro este poemario, de obligada lectura. [...]',
-    fullContent: `Creo que Francisco Morales lomas tiene razón en Poesía andaluza en libertad al señalar que «La poesía de la última década se caracteriza por la variedad, el desdén hacia la política, la preocupación por los temas sociales, la lírica metafísica o abstracta, el surrealismo, la poesía del rock, el realismo sucio, neobarroquismo, misticismo heterodoxo, culturalismo; en definitiva, las mismas tendencias que ya había experimentado la lírica de los ochenta, sin grandes aportaciones».
+    fullContent: `Creo que Francisco Morales lomas tiene razón en Poesía andaluza en libertad (una aproximación antológica a los poetas andaluces del último cuarto de siglo (Corona del Sur) al señalar en la página 45 del estudio introductorio que «La poesía de la última década se caracteriza por la variedad, el desdén hacia la política, la preocupación por los temas sociales, la lírica metafísica o abstracta, el surrealismo, la poesía del rock, el realismo sucio, neobarroquismo, misticismo heterodoxo, culturalismo; en definitiva, las mismas tendencias que ya había experimentado la lírica de los ochenta, sin grandes aportaciones». Y mira tú por donde la poetisa, pintora, traductora, antóloga, crítica e investigadora de la Universidad de Granada, Belén Juárez (París, 1965), vuelve a sorprender a propios y extraños con la publicación de su segundo poemario, como tal, La Noche de Ayer (Alhulia), tras Destierro en cuatro ángulos (Devenir, 1999). Sorpresa grata, como veremos, tras nuestra lectura. Por las fechas en que apareció la citada antología es muy probable que Morales Lomas no conociese la poesía de Juárez, que sí aporta novedades y es una poesía moderna que tiene sentido del ritmo y educado oído, con endecasílabos y alejandrinos, en general, y como poeta conoce el lenguaje que maneja y sabe qué precisa concepción el poema necesita: cuidadosa construcción externa y palabras bien delimitadas con exactitud de términos y en donde desaparecen los espacios vacíos, de retórica grandilocuente y palabrería. De verdad que es todo un gran logro este poemario. La noche de ayer, de obligada lectura.
 
-Y mira tú por donde la poetisa, pintora, traductora, antóloga, crítica e investigadora de la Universidad de Granada, Belén Juárez (París, 1965), vuelve a sorprender a propios y extraños con la publicación de su segundo poemario, como tal, La Noche de Ayer (Alhulia), tras Destierro en cuatro ángulos (Devenir, 1999). Sorpresa grata, como veremos, tras nuestra lectura.
+El poemario, cuidado de continente y contenido, como queda dicho cuenta con el acertado preliminar del poeta y crítico granadino Antonio Enrique, quien no duda en avisar de la peculiar estructura de la poesía de la autora.
 
-Morales Lomas no conociese la poesía de Juárez, que sí aporta novedades y es una poesía moderna que tiene sentido del ritmo y educado oído, con endecasílabos y alejandrinos, en general, y como poeta conoce el lenguaje que maneja y sabe qué precisa concepción el poema necesita: cuidadosa construcción externa y palabras bien delimitadas con exactitud de términos y en donde desaparecen los espacios vacíos, de retórica grandilocuente y palabrería. De verdad que es todo un gran logro este poemario. La noche de ayer, de obligada lectura.
+La noche de ayer es un poemario bien estructurado, dividido en tres tiempos con diez poemas en cada parte. El libro está dedicado al poeta, al lector y a la poesía. Porque la poesía está escrita por el poeta y el poeta es en ella y en el lector: «Al poeta allá donde exista, allá donde sea, del mundo, del tiempo…, su hogar». Pautas ofrecidas por Juárez para que sepamos a qué atenernos en la lectura de esta noche de San Juan, fecha significativa de impresión del libro y de la poesía española universal, sin fronteras, con Juan de la Cruz a la cabeza y J.R.J y J.A. Valente. El primer tiempo lo abre una cita de Manuel Mantero: «Éranos niños, pájaros de cuenta./ Éramos lo que sobre de la tormenta, / sexo escupido, edén falsificado/ y lamentabilísima osamenta / de un dios en estertor, crucificado». El segundo tiempo lo abre la cita de José Hierro: «Cuando la vida se detiene, / se escribe lo pasado o lo imposible / para que los demás vivan aquello / que ya vivió (o no vivió) el poeta». Y el tercer tiempo está presidido por una cita de Miguel Delibes: «Al hombre, por el mero hecho de vivir, / le era necesario aprender antes a desprenderse / de todo con una sonrisa de escepticismo. / -Vivir es ir pendiendo me decía…» Creo que está claro por dónde camina la poeta y qué hallaremos en su noche, las citas muy cuidadas y acetadas dan buena cuenta de ello y el poema en cursiva que recorre el libro también: desde el poema cuarto (pág 26) del primer tiempo al verso final del poema treinta y último del libro.
 
-El poemario, cuidado de continente y contenido, cuenta con el acertado preliminar del poeta y crítico granadino Antonio Enrique, quien no duda en avisar de la peculiar estructura de la poesía de la autora.
+Belen Juárez escribe una poesía donde habla de sus obsesiones estéticas y éticas: desde aquella cita latina del apresúrate despacio, del amor perdido, al mismo estar lejos de la ciudad que la vio nacer; emotivas y existenciales: recordar el ansiado paraíso perdido (de la infancia), el mundo de la noche vivida de ayer, del verbo acontecido y sus versos, en páginas y poemas grandemente meditados e hilvanados: «Tres verbos ceden al vacío su figura, » (pág 44); «el primero de los verbos define su buena intención / de conmover a los sensatos». (pág. 46) «El segundo de los verbos recrea los deseos / y sigue perturbando a los sensatos.» Y, el tercero de los verbos comprende a los otros, / entender su poco uso cuesta un tono de justicia.»
 
-La noche de ayer es un poemario bien estructurado, dividido en tres tiempos con diez poemas en cada parte. El libro está dedicado al poeta, al lector y a la poesía. Porque la poesía está escrita por el poeta y el poeta es en ella y en el lector: « Al poeta allá donde exista, allá donde sea, del mundo, del tiempo…, su hogar».
+Creo que es la imagen de la lucha que sostiene Jacob con su Dios por lograr la bendición, imagen del combate espiritual como tal, y el sueño que tiene también Jacob al pie de la escalera por alcanzar la Luz, que es la imagen de poeta en su peculiar lucha con la poesía, por alcanzarla y ser bendecido por Ella. «Hubo una noche, perla de perlas (…) / de paraísos perdidos…» Es un libro cerrado, firme: no tiene nada de cuaderno de pruebas de un aprendiz en este oficio, lo domina bien este quehacer demiurgo: «Porque todo desde las estrellas se susurra, / y viene la medida a establecer su noche.»; para nada son apuntes, como en otras u otros poetas y poetisas del triste panorama poético español. Belén Juárez sabe quien es y ejerce de tal. Es poeta. «Conservo la belleza de estos años, / a mitad de precio. Y guardo en mágicos lenguajes / el placer de haber sido en el lugar de las hadas, / servidor de fábulas narradas. (…) ». Sabe el camino y el sendero que debe recorrer en y con su poesía: «Y por qué a consecuencia de tu amor / sigue este accidente de palabras…».
 
-Belén Juárez escribe una poesía donde habla de sus obsesiones estéticas y éticas: desde aquella cita latina del apresúrate despacio, del amor perdido, al mismo estar lejos de la ciudad que la vio nacer; emotivas y existenciales: recordar el ansiado paraíso perdido (de la infancia), el mundo de la noche vivida de ayer, del verbo acontecido y sus versos, en páginas y poemas grandemente meditados e hilvanados.
+El libro con sus ecos diversos, plurales, con poemas que van desde los tres versos a los veintiiós versos de gran intensidad todos ellos, en los que actúa la filosofía más profunda en todos y cada uno, y tiene como hilo conductor la búsqueda de la poesía, como ya hemos visto con los verbos, de la pasión, del deseo, de la atracción por algunas realidades que están o recorren el poemario. «Holanda está lejos, y París y las estrellas,». Es un libro unitario en los tres tiempos. Es el mejor libro leído de finales del siglo pasado y abre una puerta enclavada en la realidad poética como palabra inventada: «Raro el momento de la lluvia que no moja», para este nuevo siglo, para la poesía escrita por mujeres y hombres a la poesía toda escrita en el panorama mundial, por lo que sé y conozco: «Sin embargo, queda la Poesía que consiguió crecer convirtiéndose en Dama a costa de la propia materia engendrada y desintegrada en los momentos, y éste, ciertamente, es el mayor de los honores a que puede aspirar El Poeta» (pág 126 de Versos para un fin de Mileno, Ayuntamiento de Motril).
 
-Creo que es la imagen de la lucha que sostiene Jacob con su Dios por lograr la bendición, imagen del combate espiritual como tal, y el sueño que tiene también Jacob al pie de la escalera por alcanzar la Luz, que es la imagen de poeta en su peculiar lucha con la poesía, por alcanzarla y ser bendecido por Ella.
-
-Es un libro unitario en los tres tiempos. Es el mejor libro leído de finales del siglo pasado y abre una puerta enclavada en la realidad poética como palabra inventada para este nuevo siglo, para la poesía escrita por mujeres y hombres a la poesía toda escrita en el panorama mundial, por lo que sé y conozco.
-
-Belén indaga en todo y por todo, existencia y demás mística del ser humano llámese como se llame y tenga la religión que tenga. Es una poeta que bebe de las fuentes de la poesía arábigo andaluza. Granada con sus ecos, luces y sombras, tiene de nuevo una poeta, quien tiene presente la noche de ayer, la noche de la verdadera poesía no la de anécdota mal elevada por ellos y ellas a la categoría de poesía. Esto sí es poesía.`
+Belén indaga en todo y por todo, existencia y demás mística del ser humano llámese como se llame y tenga la religión que tenga. Es una poeta que bebe de las fuentes de la poesía arábigo andaluza. «Piensa, Amor, que la garganta aún procura / los versos de ayer, y esta luz / me iguala a tu recuerdo…» (pág 43) para bien de todos los lectores y es que Granada con sus ecos, luces y sombras, tiene de nuevo una poeta, quien tiene presente la noche de ayer, la noche de la verdadera poesía no la de anécdota mal elevada por ellos y ellas a la categoría de poesía. Esto sí es poesía y lo demás son historias de periodistas metidos a reseñistas o de reseñistas metidos a periodistas, que de todo hay: «Cierto es que el amor lo destruye todo, / a pesar de su buen nombre…». Y Belén Juárez como Baudelaire puede decir «Je sens vibrer en moi todas las passions», o con sus palabras: «Brillar entre los peces, advierte que el amor existe».`
   },
   {
     id: 'un-mandala-de-libro-turia',
@@ -1138,19 +1134,220 @@ Belén indaga en todo y por todo, existencia y demás mística del ser humano ll
     date: 'Junio, 2000',
     coverUrl: '/images/resenas/Turia_PORTADA.jpg',
     condensedQuote: '[...] Libro éste, cerrado, primigenio, cíclico, silente, sin tiempo. Volcado al futuro. Iniciático. Profético en lo que tiene de adivinación y, al mismo tiempo, elegiaco por el lamento hondo que subyace en su bella y severa impasividad. Los cuatro ángulos del tiempo, las cuatro esquinas del universo que a su propia destrucción y muerte asiste. [...]',
-    fullContent: `Posee cuatro partes, acogidas a las materias cósmicas, y cada una de estas partes -tierra, agua, aire y fuego, por este orden- acoge a su vez doce poemas, titulados siempre lo mismo e igualmente distribuidos en análogo orden. El libro, así, rueda sobre sí mismo y se desplaza en elipse: posee los ejes de rotación (en sus poemas) y de traslación (las partes en que éstos se vertebran).
+    fullContent: `Posee cuatro partes, acogidas a las materias cósmicas, y cada una de estas partes -tierra, agua, aire y fuego, por este orden- acoge a su vez doce poemas, titulados siempre lo mismo e igualmente distribuidos en análogo orden. El libro, así, rueda sobre sí mismo y se desplaza en elipse: posee los ejes de rotación (en sus poemas) y de traslación (las partes en que éstos se vertebran). Ahora bien, ¿en torno a qué idea o ideas oscila y se mueve este Destierro en cuatro ángulos, orbital y planetario? El tiempo y la desintegración de todo lo viviente, la inutilidad de las pasiones, la condición de exilio del ser humano, la tentación de la violencia, la radical ineptitud para el gozo, constituyen algunos de sus temas recurrentes. Los ejes, sin embargo, en torno a los cuales gira esta gran manzana del mundo transfigurada en libro, no son otros que la Nada y su enmascaramiento -contingente, banal- en la Vida. Estamos, pues, ante un texto iniciático: lo que se ve (y leemos) es símbolo de lo invisible, su forma transitoria. Y no es nada frecuente encontrar un libro así como ópera prima. Su autora, Belén Juárez, nació en París en 1965. Vive en Granada. Es, también pintora y traductora francesa, notoria y selectiva, corre a la par del espíritu de esa cultura, consistente en establecer un orden -estético, vital, mental- entre lo disperso; articular, en definitiva, lo visible en lo metafísico.
 
-¿En torno a qué idea o ideas oscila y se mueve este Destierro en cuatro ángulos, orbital y planetario? El tiempo y la desintegración de todo lo viviente, la inutilidad de las pasiones, la condición de exilio del ser humano, la tentación de la violencia, la radical ineptitud para el gozo, constituyen algunos de sus temas recurrentes. Los ejes, sin embargo, en torno a los cuales gira esta gran manzana del mundo transfigurada en libro, no son otros que la Nada y su enmascaramiento -contingente, banal- en la Vida. Estamos, pues, ante un texto iniciático: lo que se ve (y leemos) es símbolo de lo invisible, su forma transitoria.
+Libro, pues, así -digámoslo ya: mandálico, estático y cinético simultáneamente-, admite el caleidoscopio de dos lecturas distintas: diacrónica o vertical (por partes, de primera a cuarta) y sincrónica y horizontal (cada poema en sus cuatro tiempos). Me atrevo a sugerir esta última, como más esclarecedora. Si de este modo lo hacemos, podremos advertir no sólo la graduación de una misma idea rectora a través de cuatro tonalidades diferentes, sino la esferidad externa, su unidad de conjunto, su densidad extraordinaria. Bien evidente resalta que cada poema, inserto en cada una de las cuatro secciones, actúa a semejanza de un hueco en el ensamblaje de una rueda con otra, a cuyo movimiento se impulsan las restantes, en esta maquinaria tan terrenal como celeste; de hecho, unos mismos sintagmas («sandalias del pescador», «trono de la poca vergüenza», «morder los antebrazos», «cuerpos hermosos y no tan hermosos», etc) varían su posición de poema a poema igualmente titulados, en un movimiento imperceptible pero real, igual que las estrellas de magnitud semejante en un cielo nocturno. Quiero decir, existe un tiempo mental dentro de un orden cronológico: una prehistoria sísmica, correspondiente al tránsito de la larva al homo erectus («Me declaro invisible», «Es necesaria la guerra», «En Altamira»; una era de mitos, previa al establecimiento de la Ley («Tiempo de castidad», «No a los dueños de la no-palabra», «Sobra el destino»); la época de la razón y la conciencia del paso del tiempo («Vida», «Grayas en la juventud», «El recreo de Zeus») y otro terminal, de disolución del ego y desamparo ante esa esfinge de la Nada, encubierta por el azar («Cuento mi edad», «No al amor», «Necesito rezar»).
 
-Su autora, Belén Juárez, nació en París en 1965. Vive en Granada. Es, también pintora y traductora francesa, notoria y selectiva, corre a la par del espíritu de esa cultura, consistente en establecer un orden -estético, vital, mental- entre lo disperso; articular, en definitiva, lo visible en lo metafísico.
-
-Libro, pues, así -digámoslo ya: mandálico, estático y cinético simultáneamente-, admite el caleidoscopio de dos lecturas distintas: diacrónica o vertical (por partes, de primera a cuarta) y sincrónica y horizontal (cada poema en sus cuatro tiempos). Podremos advertir no sólo la graduación de una misma idea rectora a través de cuatro tonalidades diferentes, sino la esferidad externa, su unidad de conjunto, su densidad extraordinaria.
-
-El estilo es críptico, la sintaxis abrupta, ritual el tono, coral la composición: la metáfora absorbente, brillante, seca, brusca, obsesiva. Porque la metáfora no sólo es aquí la configuración del mito esencial y la fragmentación del símbolo global de la existencia, sino que se erige en propia norma de lenguaje, única vía para desvelar el sentido oculto de la vida.
-
-El lenguaje se sustantiviza, se mineraliza. Todo él, sus elementos, se ordenan, se imantan hacia esa metáfora ancestral, sustitutiva de la Nada, siempre en relación con el ser: el Destierro. El destierro como destino y naturaleza. Somos dioses, fuimos dioses, lo seremos de nuevo cuando muramos.
+El estilo es críptico, la sintaxis abrupta, ritual el tono, coral la composición: la metáfora absorbente, brillante, seca, brusca, obsesiva. Porque la metáfora no sólo es aquí la configuración del mito esencial y la fragmentación del símbolo global de la existence, sino que se erige en propia norma de lenguaje, única vía para desvelar el sentido oculto de la vida. Por eso tiene algo de «zarza ardiente» esta concepción de la metáfora. La cual precisa de su propio ámbito expresivo: transiciones rápidas, omisión de los predicativos, fusión de las personas primera y tercera, adjetivación reducida, adverbialización mínima en el contexto. El lenguaje así se sustantiviza, se mineraliza. Todo él, sus elementos, se ordenan, se imantan hacia esa metáfora ancestral, sustitutiva de la Nada, siempre en relación con el ser: el Destierro. El destierro como destino y naturaleza. Somos dioses, fuimos dioses, lo seremos de nuevo cuando muramos.
 
 Libro éste, cerrado, primigenio, cíclico, silente, sin tiempo. Volcado al futuro. Iniciático. Profético en lo que tiene de adivinación y, al mismo tiempo, elegiaco por el lamento hondo que subyace en su bella y severa impasividad. Gravita, levita. Envuelve. Invade, secuestra. Los cuatro ángulos del tiempo, las cuatro esquinas del universo que a su propia destrucción y muerte asiste. Una entropía que delimita sus confines.`
+  }
+];
+
+export const PLAQUETTES: Plaquette[] = [
+  {
+    id: 'la-reflexion-de-boabdil',
+    title: 'La reflexión de Boabdil',
+    event: 'Día mundial de la Poesía',
+    date: '21 de marzo de 2025',
+    location: 'Recital en Librería sostiene Pereira, Granada',
+    publication: 'Revista Alhucema, Colección libros',
+    credits: 'Texto e ilustración: Belén Juárez',
+    coverUrl: '/images/Plaquettes/Plaquette_portada.jpeg',
+    illustrationUrl: '/images/Plaquettes/Plaquette_ilustracion.png',
+    sections: [
+      {
+        number: 1,
+        title: 'Ayúdale en nombre del profeta',
+        content: `Roja tierra de ensanchados silencios,
+abiertas oquedades en la lejanía de los ojos,
+estimo las monedas del tiempo,
+por no ser nadie en torpezas pasadas.
+Vengo por los desiertos de mi presente,
+y castigo mi galope con el sol que quema
+mi ambigua estirpe día y noche,
+y me enciendo en la muerte,
+que mi vencido nombre bien anunció,
+de las arenas el regreso.
+Y dime, ¿qué puedo reprochar a mis hermanos,
+que lucharon por tierra santa sin advertir,
+la ira de los vergeles y mis jardines?
+Ata a este hombre, o desátale, y
+rinde al pensamiento dicha de descanso,
+que estoy ya muerto,
+y acaso no lo ves...`
+      },
+      {
+        number: 2,
+        title: '¡Ay de aquel que gozara en vida del paraíso mejor le fuera no haber nacido...!',
+        content: `Ropa y agua a la tristeza entrego,
+y fuerza para dormir la causa,
+de estas mis manos ya teñidas de nada, pues
+encuentro en mi fuego el recuerdo creciente
+de esta aventura frente a la Sierra de las Nevadas.
+Porque más valiera el olvido del rey de las luces.
+El escudo de nazaríes en mi pecho tatuado,
+me quema las pupilas por siempre apagadas.
+Soy de los mortales la burla de la lejanía,
+donde tanto mar acumuló paraísos de aromas, y
+forestas invocadas al buen dios,
+restando a los verdes goces, esta leyenda.
+Porque soy Boabdil,
+de mis amigos o enemigos,
+el rey desventurado.... Ab? Abd All?h.`
+      },
+      {
+        number: 3,
+        title: 'Es verdad..., el agua y los surtidores lloraban por mí',
+        content: `Alza la Torre en Vela de ruiseñores, y
+asientan en siglos todo el honor de los cielos ocultos,
+escrita la verdad de un rugir de melodías,
+aquello que siento desde el alma,
+fue soñado y velado en tiempos pasados.
+Vuelvo a batir mis alas en las alas de mi sangre, y
+a lo lejos sigo viendo,
+las crecidas fuentes de patios y naranjos.
+De mi Alhambra lloran surtidores, y
+su sonido de voces atardece entre las aguas.
+Y miro temeroso a mi abuelo ciego que,
+sabio y paciente de todos los tiempos,
+veía desde sus labios, las rosas de un dios,
+anunciando paraísos cumplidos en ésta,
+mi tierra pasada.
+Con los ojos se nubla la sombra de los altares,
+sin embargo, en mis ojos tras las rejas,
+intuyo un mar de olvidos,
+entre paños húmedos.`
+      },
+      {
+        number: 4,
+        title: 'La ambición de los tímidos resulta después la más segura',
+        content: `¿Cuál es la sabiduría de un esposo
+que trae a la danza la fidelidad de un linaje?
+Poco recupero al pagar la Paz,
+y mucho pierdo con el alza de un cuchillo
+que me dio la guerra.`
+      },
+      {
+        number: 5,
+        title: 'Nada',
+        content: `Nada es el deseo de torreones y aljibes,
+nada la diestra de la justicia de un rey,
+y mucho los graves de una voz de mujer, que
+duerme en los brazos abiertos de la ambición de un reino.
+Pues enamorada gana
+bálsamos de mirra, sándalo y ámbar,
+y toca la centella de un huerto de mieles.
+Y mucho habré de pensar en los hermanos, que
+edificaran banderas en la hermosura de un deseo.
+Nada,
+nada será el anuncio de romances castellanos...`
+      },
+      {
+        number: 6,
+        title: 'Que el saber sea vuestra riqueza',
+        content: `Del conocimiento alcancé la dicha de
+sabios que me amaron,
+miro mis alfombras que callaron el roce de rodillas,
+por no perturbar la densa suerte de la vida.
+Porque el buen dios acertó en el fuego de Hefesto
+que maldijo el barro de alfareros,
+y otorgó lujos en divanes y otomanas,
+a mi buena ventura de anchos muros y aposentos.
+Ángeles en la luz, y reverencian
+las cabriolas de éste, mi maestro de blancos,
+que encerró entre mis manos,
+la energía moral de la Sabiduría.
+Niño era y niño soy en la dignidad de musulmanes,
+y el mejor de mis valles, la dote de mi abuelo,
+que me otorgó ser Maestro de Soberanos.
+Un sabio sabe lo que vale un rey,
+pero un rey no sabe lo que vale un sabio…
+-me dijo en sueños Alí ibn Abí Tálib-
+Vale pues, mi ruina en la conquista,
+todo el oro y sedas de Damasco,
+por un soplo de aquella voz de entendimiento,
+que vistió en mis barbas todo el color de la prudencia.`
+      },
+      {
+        number: 7,
+        title: 'Tu regalo será este caballo',
+        content: `Y perfection en los bienes a entregar,
+que buen cordel de la mano de la templanza llevarás.
+Pues no hubo asambleas de diligencias,
+fui lázaro en mi honor de emir pequeño.
+Acércate, - me dice la sabia fuente de las sorpresas-
+acércate a los enemigos del Reino de Horizontes, y
+anticípate al tacto de sus hedores de tierra infértil...
+Y tú, mi querido Azor, entregarás
+mi linaje a los mortales, y serás
+príncipe que dona
+a los señores de Castilla y Aragón en noble aceifa,
+acendrados bienes de lunas y soles sarracenos,
+y batirás en tu relincho,
+éste, el motivo de mi realeza,
+ésta, la sangre de mi sangre,
+éste, mi reino cubierto de verdes glorias
+de tiempos y ademanes...`
+      },
+      {
+        number: 8,
+        title: 'A veces la necesidad nos empuja hacia la Ciencia',
+        content: `Lánguido influjo de paz,
+otorgó a la razón todo el color de la Ciencia.
+Aritmética trenzada en la condición
+de noble aventura. Números arábigos
+que danzaron entre pliegos,
+dieron su vida a las lumbreras de mis torres.
+Abrazo de Botánica y Física dejamos escrito
+en favor de infieles y bizarros,
+cual herencia y pago de esta tierra,
+tejida en bellos silencios.
+Y oración in aeternum regalada a Ciudad Santa,
+como granada de rojas suertes.
+Éste fue el último destino de aquel,
+el primer mapa que aberró dichas posteriores,
+al sol de venidas Españas.
+Pues el Sancta Sanctorum y la locura de harenes
+no fue suficiente,
+las arcadas y baños en nombre del buen profeta,
+no restaron la profunda admiración sagrada al orar.
+Surgió de la Ciencia y de nuestro saber,
+el primer pergamino que entregó direcciones
+a vista de nopales, brezos y arroyos.
+Y fuimos agradecidos desde el atrio de templos,
+salones, torres, balcones y orillas,
+fingiendo en áureos surtidores,
+la confusa ilusión del buen dios de atardeceres.`
+      },
+      {
+        number: 9,
+        title: 'Porque tiene miedo...',
+        content: `Abondos bienes que humillan
+el azul de una raza,
+y sírvanse abismos a las lanzas,
+por los aceros que rendirán cristianos,
+a la tierra oblicua de escorpiones.
+Pues acepto la ira de los miedos, y
+la parte de tributo sórdido que pretende
+la parada de esta expedición.
+Al-Zagal acedado en su lenguaje
+de disciplina ciega y admitida,
+a corduras y obediencias,
+siente en sus venas de buen batiente,
+el deseo de instigar revueltas a sol de estrellas.
+Miro y me blando en el aciago cristiano,
+que no cubre su caballo de nobles acitaras,
+miro sus ojos arrugados de hambre,
+y brinco en mi montura las luces de mi honor.
+Porque mucho habré de llorar desde mi herencia,
+llorar como hermosa mujer,
+suspirar como hombre rendido,
+y largo será el día,
+por las templadas acequias de mi memoria,
+hasta el confín de todos los futuros… venideros.`
+      }
+    ]
   }
 ];
 

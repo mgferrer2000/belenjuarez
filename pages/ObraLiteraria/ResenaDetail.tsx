@@ -18,7 +18,7 @@ const ResenaDetail: React.FC = () => {
             animate={{ opacity: 1 }}
             className="pt-24 pb-32 bg-paper min-h-screen"
         >
-            <div className="max-w-5xl mx-auto px-6">
+            <div className="max-w-4xl mx-auto px-6">
                 {/* Back Button */}
                 <Link
                     to="/obra-literaria/resenas-libros"
@@ -31,7 +31,7 @@ const ResenaDetail: React.FC = () => {
                 <header className="mb-16 text-center space-y-6">
                     <div className="space-y-4">
                         <h4 className="text-gold-accent font-sans text-xs uppercase tracking-[0.4em] font-bold">Crítica Literaria</h4>
-                        <h1 className="text-5xl md:text-6xl font-serif text-ink italic leading-tight max-w-4xl mx-auto">
+                        <h1 className="text-5xl md:text-6xl font-serif text-ink italic leading-tight max-w-3xl mx-auto">
                             {review.title}
                         </h1>
                         <div className="w-24 h-px bg-gold-accent/30 mx-auto" />
@@ -46,7 +46,7 @@ const ResenaDetail: React.FC = () => {
                     </div>
                 </header>
 
-                {/* Newspaper Layout Content */}
+                {/* Content Section */}
                 <div className="bg-white/40 border border-gray-100 p-8 md:p-16 shadow-sm relative">
                     {/* Decorative Elements */}
                     <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-gold-accent/40" />
@@ -54,15 +54,13 @@ const ResenaDetail: React.FC = () => {
                     <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-gold-accent/40" />
                     <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gold-accent/40" />
 
-                    <div className="md:columns-2 gap-12 text-ink/80 font-serif leading-loose text-lg text-justify space-y-6">
+                    <div className="max-w-3xl mx-auto text-ink/80 font-serif leading-loose text-lg text-justify space-y-6">
                         {/* Drop cap first paragraph */}
-                        <div className="contents">
-                            {review.fullContent.split('\n\n').map((paragraph, idx) => (
-                                <p key={idx} className={`${idx === 0 ? 'first-letter:text-6xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-gold-accent first-letter:leading-[0.8]' : ''} mb-6`}>
-                                    {paragraph}
-                                </p>
-                            ))}
-                        </div>
+                        {review.fullContent.split('\n\n').map((paragraph, idx) => (
+                            <p key={idx} className={`${idx === 0 ? 'first-letter:text-6xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-gold-accent first-letter:leading-[0.8]' : ''} mb-6`}>
+                                {paragraph}
+                            </p>
+                        ))}
                     </div>
                 </div>
 

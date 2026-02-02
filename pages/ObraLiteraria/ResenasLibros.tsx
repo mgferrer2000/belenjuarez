@@ -34,7 +34,7 @@ const ResenasLibros: React.FC = () => {
                                 "{review.title}"
                             </h2>
                             <p className="text-sm font-sans text-ink/60 uppercase tracking-widest">
-                                {review.publication} — {review.date}
+                                {review.author}
                             </p>
                         </div>
 

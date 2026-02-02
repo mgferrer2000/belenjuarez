@@ -76,6 +76,25 @@ export interface BookReview {
   fullContent: string;
 }
 
+export interface PlaquetteSection {
+  number: number;
+  title: string;
+  content: string;
+}
+
+export interface Plaquette {
+  id: string;
+  title: string;
+  event?: string;
+  date?: string;
+  location?: string;
+  publication?: string;
+  credits?: string;
+  coverUrl: string;
+  illustrationUrl?: string;
+  sections: PlaquetteSection[];
+}
+
 export interface SocialLink {
   platform: string;
   url: string;
