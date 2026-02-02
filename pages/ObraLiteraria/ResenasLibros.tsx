@@ -41,7 +41,13 @@ const ResenasLibros: React.FC = () => {
                         <div className="relative pl-10 pr-6">
                             <Quote className="absolute top-0 left-0 text-gold-accent/40 w-8 h-8 -translate-x-2 -translate-y-2" />
                             <p className="text-xl md:text-2xl font-serif text-ink/80 leading-relaxed italic">
-                                {review.condensedQuote}
+                                {review.condensedQuote.split(/(\*[^*]+\*)/).map((part, i) =>
+                                    part.startsWith('*') && part.endsWith('*') ? (
+                                        <em key={i} className="not-italic font-serif text-ink">{part.slice(1, -1)}</em>
+                                    ) : (
+                                        part
+                                    )
+                                )}
                             </p>
                         </div>
 

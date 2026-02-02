@@ -100,3 +100,21 @@ export interface SocialLink {
   url: string;
   iconName: string;
 }
+
+export interface StorySection {
+  title?: string;
+  content: string;
+  illustrationUrl?: string;
+}
+
+export interface ShortStory {
+  id: string;
+  title: string;
+  subtitle?: string;
+  year: string;
+  publicationInfo: string;
+  synopsis: string;
+  coverUrl: string;
+  sections: StorySection[];
+  pdfUrl?: string;
+}

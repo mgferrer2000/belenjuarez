@@ -10,6 +10,7 @@ import Antologias from './pages/ObraLiteraria/Antologias';
 import CollaborationDetail from './pages/ObraLiteraria/CollaborationDetail';
 import Plaquettes from './pages/ObraLiteraria/Plaquettes';
 import Relatos from './pages/ObraLiteraria/Relatos';
+import RelatoDetail from './pages/ObraLiteraria/RelatoDetail';
 import CriticaLiteraria from './pages/ObraLiteraria/Critica';
 import Traduccion from './pages/ObraLiteraria/Traduccion';
 import ResenasLibros from './pages/ObraLiteraria/ResenasLibros';
@@ -46,6 +47,7 @@ function App() {
               <Route path="antologias/:id" element={<CollaborationDetail />} />
               <Route path="plaquettes" element={<Plaquettes />} />
               <Route path="relatos" element={<Relatos />} />
+              <Route path="relatos/:id" element={<RelatoDetail />} />
               <Route path="critica" element={<CriticaLiteraria />} />
               <Route path="critica-andalusi" element={<CriticaAndalusi />} />
               <Route path="prologos" element={<Prologos />} />

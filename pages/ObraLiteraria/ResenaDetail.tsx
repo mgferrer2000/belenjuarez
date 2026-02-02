@@ -55,12 +55,23 @@ const ResenaDetail: React.FC = () => {
                     <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gold-accent/40" />
 
                     <div className="max-w-3xl mx-auto text-ink/80 font-serif leading-loose text-lg text-justify space-y-6">
-                        {/* Drop cap first paragraph */}
-                        {review.fullContent.split('\n\n').map((paragraph, idx) => (
-                            <p key={idx} className={`${idx === 0 ? 'first-letter:text-6xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-gold-accent first-letter:leading-[0.8]' : ''} mb-6`}>
-                                {paragraph}
-                            </p>
-                        ))}
+                        {(() => {
+                            const formatText = (text: string) => {
+                                const parts = text.split(/(\*[^*]+\*)/);
+                                return parts.map((part, index) => {
+                                    if (part.startsWith('*') && part.endsWith('*')) {
+                                        return <em key={index} className="italic text-ink font-serif">{part.slice(1, -1)}</em>;
+                                    }
+                                    return part;
+                                });
+                            };
+
+                            return review.fullContent.split('\n\n').map((paragraph, idx) => (
+                                <p key={idx} className={`${idx === 0 ? 'first-letter:text-6xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-gold-accent first-letter:leading-[0.8]' : ''} mb-6`}>
+                                    {formatText(paragraph)}
+                                </p>
+                            ));
+                        })()}
                     </div>
                 </div>
 
