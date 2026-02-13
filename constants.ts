@@ -1,4 +1,4 @@
-import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview, Plaquette, ShortStory } from './types';
+import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview, Plaquette, ShortStory, LiteraryCriticism } from './types';
 
 export const BOOKS: Book[] = [
   {
@@ -787,6 +787,114 @@ desde la experiencia.`,
   }
 ];
 
+
+export const LITERARY_CRITICISMS: LiteraryCriticism[] = [
+  {
+    id: '4',
+    publication: 'Revista Ficciones',
+    title: 'Número 3',
+    year: '1998',
+    coverUrl: '/images/Critica_literaria/Ficciones3/ficciones_3.jpeg',
+    slug: 'ficciones-3',
+    excerpt: 'En el número 3 de FICCIONES, se reseña: EL HOMBRE DE LUXEMBURGO (Tusquets, 1997) de Arnaldo Calveyra. PARÉNTESIS DE TIEMPO, SILENCIO Y CURVATURAS (Devenir, 1998) de Juan Pastor. RECÓNDITO TRASLUZ (Junta de Extremadura, 1997) de Serafín Portillo. RECUERDO EN LA NOCHE (Devenir, 1997) de Carmen Serna. PERTENECÍ (Colección Sureste Narrativa, 1997) de Andrés Neuman.',
+    reviews: [
+      {
+        id: 'hombre-luxemburgo',
+        title: 'EL HOMBRE DEL LUXEMBURGO',
+        author: 'ARNALDO CALVEYRA',
+        publicationInfo: 'Tusquets, 1997',
+        imageUrl: '/images/Critica_literaria/Ficciones3/Portada_luxemburgo.jpg',
+        text: `Poemas de Arnaldo Calveyra, entresacados de los recuerdos que sobrevienen a su memoria, de un lugar del pasado, en escena, un presente aparentemente inmóvil. Autor nacido en 1929 en tierras de Argentina y que por paradojas de la vida se traslada a vivir a París, desde entonces, sus trabajos publicados: poemas, teatro, novela y cuentos. Es evidente la sensación de similitud que provoca en él los momentos de un singular paseo por un jardín cualquiera. No estamos hablando de un libro adentrado en la añoranza o la delicadeza de una realidad blanda, este trabajo muestra de una doble perspectiva, casi vivencias de un mismo presente en dos lugares diferentes y en dos tiempos diferentes, una fuente, que aparece repetitivamente a lo largo de los versos como centro o punto de mira hacia esa doble perspectiva, una descripción de escena, jardín inmóvil, personajes sin voz, de los que se advierte su presencia:
+
+Manantial fabricado, instante 
+en círculo, asciende su forma, asciende y recae en eso 
+el agua, borrador, derrama, manera tan suya de 
+mencionar los jardines del sur incansablemente bellos.
+
+Envión aquietado del chorro, 
+averigua por la rama que habrá de inclinarse en la alta 
+noche —su instante narrativo—, palabras sin sílabas de 
+la hora, gramo de sentido que empezará a faltarle el aire.
+
+Las personas que conversaban 
+se ponen de pie, se dicen "au revoir"...
+
+Libro destacado por el dominio del lenguaje y donde se denota claramente la constante de una infancia y adolescencia argentinas transportada a los fríos paisajes de la ciudad del Sena, se trata sin duda de un trabajo interesante de versos largos y descriptivos.`
+      },
+      {
+        id: 'parentesis-tiempo',
+        title: 'PARÉNTESIS DE TIEMPO, SILENCIO Y CURVATURAS',
+        author: 'JUAN PASTOR',
+        publicationInfo: 'Devenir, 1998',
+        imageUrl: '/images/Critica_literaria/Ficciones3/parentesis.png',
+        text: `En este libro Juan Pastor hace una recopilación de poemas desde el año 1975 hasta 1983. De su primer trabajo, poemas de estructura y contenido sencillo de verso libre donde más que agresividad se advierte un tono suave, melódico, no romántico pero que denota la sensibilidad del autor.
+De la misma época, un año posterior, trabajos de igual tendencia, posiblemente influenciado por la época en cuestión donde se adentra entre otras, por vías del sentimiento.
+En su última parte, presenta una prosa poética de gran madurez, historia bien trabajada acerca de las cuestiones absolutas de la mente.
+Llama la atención a lo largo de todo el libro (aun siendo versos de años diferentes), el tono obsesivo del autor en la repetición de términos como dedos, no cuestionable, pero donde tal vez el autor quiera dejar constancia de forma clara y evidente todas las sensaciones palpables que lo inundan.
+El autor incita al lector a balancearse por todos los lugares habitados en un tiempo, dignos de ser mencionados y recordados siempre desde un silencio escrito que provoca el devenir lógico de la existencia.`
+      },
+      {
+        id: 'recondito-trasluz',
+        title: 'RECÓNDITO TRASLUZ',
+        author: 'SERAFÍN PORTILLO',
+        publicationInfo: 'Edita la Junta de Extremadura. 1997. Consejería de Cultura y Patrimonio. Colección Poesía-24',
+        imageUrl: '/images/Critica_literaria/Ficciones3/recondito.png',
+        text: `Libro que descansa en el abismo de luces y tiempo, es el autor buen conocedor de las formas de escritura, pero de un clasicismo pospuesto a nuestros días, donde la experiencia personal del autor no tiene cabida, pero sí posiblemente todas las experiencias de hombres y mujeres. Se trata por tanto de un libro donde nada y todo tiene entrada, es decir, donde la sobria nostalgia de todo lo indescriptible, luz, tiempo, soledad, o silencio son presos de los versos a través del trabajo.
+El libro se define y enmarca en dos enfoques que vienen a mezclarse en el punto de encuentro del sentimiento humano: Clásico en su forma y contexto, actual al advertirse toques en el tiempo del hombre moderno: "Paisajes desde terrazas" frente a "Paisaje desde el mar", ¿el punto de encuentro?, el vacío que queda al sostenerse indefenso ante los sentimientos más ancestrales que pueblan el destino del Hombre.
+Bien redactado, es una poesía, la de este autor, que se mece entre luces y penumbras, y este trabajo en concreto, es una historia sin títulos, entre versos que dejan entrever un único título: Recóndito trasluz.`
+      },
+      {
+        id: 'recuerdo-noche',
+        title: 'RECUERDO EN LA NOCHE',
+        author: 'CARMEN SERNA',
+        publicationInfo: 'Colección de Poesía: Devenir. Madrid. 1.ª Ed. Mayo, 1997',
+        imageUrl: '/images/Critica_literaria/Ficciones3/recuerdos en la noche.png',
+        text: `Poesía de Carmen Serna, fácil de comprender, a la vez toca el alma como la resiente, por la pasión y dulzura que conlleva. La Poesía en sí alcanza caminos insospechados, a veces existe una pretensión de buscar la ambigüedad de palabras, llegar a la duda del lector, sin embargo, no existen secretos en la forma de escribir de esta autora que confluye en verdades y corazas todo un mundo de sentimientos.
+Separa su obra en diferentes títulos en torno a "Recuerdos de una noche", posiblemente la única noche que habita en la poesía de Carmen Serna.`
+      },
+      {
+        id: 'perteneci',
+        title: 'PERTENECÍ',
+        author: 'ANDRÉS NEUMAN',
+        publicationInfo: 'Colección Sureste Narrativa. 1997',
+        imageUrl: '/images/Critica_literaria/Ficciones3/pertenecí.png',
+        text: `Aparece este primer trabajo del escritor Andrés Neuman con un simbólico alcance al intentar rozar una realidad dentro del mundo surreal. Escribir relatos a los que se pertenece mientras se dominan y dejar de pertenecer a ellos como la huida hacia otros destinos, es sin duda la idea que deja entrever el autor. Se embebe, efectivamente, en sus propias historias y alcanza el placer en ellas, hasta justo el momento de la consistencia de una forma. Diferentes historias bidimensionales como los relatos de Héctor Álvarez y el mismo Mallea que derivan en la inconsciencia.
+Todos los relatos tienen un denominador común, el resultado de la propia conclusión que sus protagonistas en cada cuento, los cuales deciden por sí mismos la ironía de su destino y que a la vez se dejan balancear por el devenir de sus propias vidas. Vienen a menos los motivos de las historias, no serán lo fundamental, pero sí la consecuencia que dará término a cada relato.
+Nace el autor en Sudamérica, posiblemente influenciado por toques de ocultamiento de datos y situaciones, como se puede apreciar en Juan Carlos Onetti e incluso con toques de mayor fantasía (en similitud con Jorge Onetti), existe en su estilo una mezcla entre las vanguardias originales y las más avanzadas de los últimos años.
+Uno de los relatos, no el primero, que no da título pero sí forma a este libro, parece centrar la historia de los hombres alrededor de una vida nocturna en desembocadura hacia la vida diaria. ¿No es este libro realmente un avance entre noches para alcanzar las claridades de otros posibles trabajos?
+PERTENECÍ, primer y sugerente título que con total seguridad dará comienzo a futuros y más ambiciosos libros, por supuesto dentro de la lógica evolución del intento de superación.`
+      }
+    ]
+  },
+  {
+    id: '3',
+    publication: 'Revista Ficciones',
+    title: 'Número 4',
+    year: '1998',
+    coverUrl: '/images/Critica_literaria/Ficciones_4.jpeg',
+    slug: 'ficciones-4',
+    excerpt: 'En el Nº4 de FICCIONES: reseña de CUANTAS LLAVES (Icaria, 1998) de Concha García. EL LIBRO DE LOS SALMOS (Devenir, 1998) de Jesús Urceloy. TODOS LOS NOMBRES (Alfaguara, 1998) de José Saramago. SIN PUERTAS (Pre-textos, 1996) y EL SILLÓN MALVA (Planeta, 1995) de Ramón Mayrata'
+  },
+  {
+    id: '1',
+    publication: 'Revista Alhucema',
+    title: 'Número 8',
+    year: '2002',
+    coverUrl: '/images/Critica_literaria/Alhucema_8.jpeg',
+    slug: 'alhucema',
+    excerpt: 'RAFAEL RODRÍGUEZ ALMODÓVAR Y EL VERSO DE LOS AÑOS. Reseña del libro: MEMORIA DE UN TIEMPO CUMPLIDO. Colección literaria CAROAL. 2001. Versos que muestran el recorrido de un tiempo que se esfumó entre las manos de este poeta, dejando una estela de aceptación, tristeza y asombrosa clarividencia. El autor comprime su tiempo en este poemario con elegancia y maestría. Libro prologado por la también desaparecida Mari Luz Escribano con quien el autor mantuvo una estrecha y armónica relación literaria en la revista Extramuros, y que fue referencia de las Letras Españolas de aquellos años. Quedó -sin lugar a dudas- la esencia de aquellos años bañados por el esplendor de magníficos poetas y poesía plural. En esta ocasión, versos limpios y profundos de un poeta ya desaparecido. Desde sus primeras páginas se advierte la apacible tristeza de un tiempo cumplido.'
+  },
+  {
+    id: '2',
+    publication: 'Revista Extramuros',
+    title: 'Número 29-30',
+    year: '2003',
+    coverUrl: '/images/Critica_literaria/Extramuros_29-30.jpeg',
+    slug: 'extramuros',
+    excerpt: 'LO MIRÉ A LOS OJOS. Reseña del libro: DE(S)APARICIONES - PEDRO J. DE LA PEÑA. Ediciones Libertarias, Poesía.1994. Extramuros. Revista de Letras, Nº 29-30. Belen Juárez. 2003. Quisiera aclarar el inicio de la reseña de este libro: “Una cálida madrugada en el aterrador desierto del aeropuerto de Valencia, entre risas y emociones, charlaba con un viejo amigo, mientras yo, poco ingenua y más antártica que nunca, olfateaba entre anónimos, emprendiendo mi viaje y aventura por tierras orientales de dátiles y suspiros.” Conocí a Pedro J. Peña hace más de 20 años, en el aeropuerto de Valencia camino del Instituto Cervantes de Beirut. Junto a Ricardo Bellveser y Antonio Porpetta fuimos invitados a llevar nuestros versos a las orillas más orientales del Mediterráneo. Hoy ninguno de los tres está ya con nosotros, y me sigue abrumando su partida y emocionando sus versos. El libro reseñado de Pedro J de la Peña escrito en 1994 derrochaba pasión, ironía y majestuosos silencios escritos con versos. El poeta debe hacer sentir, dijo una vez. Hoy nos queda su alma, su sonrisa y aquella crecida chistera de versos.'
+  }
+];
+
 export const ALBUM_TRACKS: Track[] = [
   { id: '1', title: 'CATEDRALES DE ROCA', duration: '5:42', poemSource: 'Horizonte de Sucesos', spotifyId: '4gU6i1hRQ2heDzPtCKZfou', youtubeId: 'Vbmx71E9Mfo' },
   { id: '2', title: 'LOBA', duration: '3:15', poemSource: 'Horizonte de Sucesos', spotifyId: '6UT14ihuRCoD6szkFQ2QJZ', youtubeId: 'FPx9I_bpPWA' },
@@ -1194,7 +1302,7 @@ forestas invocadas al buen dios,
 restando a los verdes goces, esta leyenda.
 Porque soy Boabdil,
 de mis amigos o enemigos,
-el rey desventurado.... Ab? Abd All?h.`
+el rey desventurado.... Abū Abd Allāh.`
       },
       {
         number: 3,
@@ -1360,62 +1468,53 @@ export const SHORT_STORIES: ShortStory[] = [
     publicationInfo: 'El tam-Tam de las nubes. Pag 107-123.',
     synopsis: 'Un trasvase emocional y geográfico desde el París de los años 60 hasta las raíces andaluzas. La memoria de una niña de siete años y el mítico Citroën DS-21 "Tiburón" se entrelazan en una épica del destierro y el reencuentro.',
     coverUrl: '/images/relatos/Al_otro_lado_del_mundo/PORTADA EL TAM TAM.jpeg',
+    coverPosition: '90% 100%',
     pdfUrl: '/downloads/relatos/al-otro-lado-del-mundo.pdf',
     sections: [
       {
         title: 'I',
-        illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/1TIBURON.png',
-        content: `ERAN LAS CUATRO de la madrugada cuando abandonó su país. El gran tiburón blanco DS-21 aparcado frente a la casa esperaba apaciblemente el que sería su último gran viaje. Sabía que se dirigiría hacia una muerte tan cierta como real, su condición de automóvil de gasolina y la inminente revolución del petróleo de los últimos meses lo condenaban sin más. Su lomo blanco curvado reflejaba el brillo de las luces de la calle, y sus grandes ojos de cristal-plomo desprendían un calor que condensaba las heladas gotas de lluvia de la noche sobre sus retinas. Eran las ilusiones y vivencias compartidas las que le mantuvo fiel a la familia, tal vez como un miembro más, de metal, sin alma, ni testigo de vida, y sin embargo presentía —de algún modo— que sería su último viaje. Así lo supo ella cuarenta años después. Por aquellos años, aquel gran tiburón se transformaba en sus sueños en un ser animado, compañero de miles de aventuras; ambos eran caminantes de barro por las viejas calles de *París*, como exploradores de una ciudad Lilie descubría el mundo a través de sus ventanillas, mientras él corría como la luz sobre sus anchas ruedas de níquel que ella imaginaba como cuatro veloces caballos, capaces de adentrarse por las múltiples calles del viejo *París*. Eran paseantes del *Barrio Latino*, de la *plaza de La Concordia*, del *Puente de los Artistas*, del *Arco del Triunfo*, por los *Campos Elíseos*, ella bullendo sus fantasías, hablando con él, su pelo suelto, sus abrigos de punto trenzado, sus ojos tan negros y tan curiosos, despertando al mundo.`
+        illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/1tiburon.png',
+        content: `ERAN LAS CUATRO de la madrugada cuando abandonó su país. El gran tiburón blanco DS-21 aparcado frente a la casa esperaba apaciblemente el que sería su último gran viaje. Sabía que se dirigiría hacia una muerte tan cierta como real, su condición de automóvil de gasolina y la inminente revolución del petróleo de los últimos meses lo condenaban sin más. Su lomo blanco curvado reflejaba el brillo de las luces de la calle, y sus grandes ojos de cristal-plomo desprendían un calor que condensaba las heladas gotas de lluvia de la noche sobre sus retinas. Eran las ilusiones y vivencias compartidas las que le mantuvo fiel a la familia, tal vez como un miembro más, de metal, sin alma, ni testigo de vida, y sin embargo presentía —de algún modo— que sería su último viaje. Así lo supo ella cuarenta años después. Por aquellos años, aquel gran tiburón se transformaba en sus sueños en un ser animado, compañero de miles de aventuras; ambos eran caminantes de barro por las viejas calles de *París*, como exploradores de una ciudad infinita que ofrecía el encanto del anonimato. Ambos eran, la niña y el soldado cartilaginoso enfundado de invencible acero y elegantes cueros.  La pequeña Lilie descubría el mundo a través de sus ventanillas, mientras él corría como la luz sobre sus anchas ruedas de níquel que ella imaginaba como cuatro veloces caballos, capaces de adentrarse por las múltiples calles del viejo *París*. Eran paseantes del *Barrio Latino*, de la *plaza de La Concordia*, del *Puente de los Artistas*, del *Arco del Triunfo*, por los *Campos Elíseos*, ella bullendo sus fantasías, hablando con él, su pelo suelto, sus abrigos de punto trenzado, sus ojos tan negros y tan curiosos, despertando al mundo.`
       },
       {
-        illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/5 TIBURON.png',
+        illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/5 tiburon.png',
         content: `Sintió rugir su motor, como la respiración de un gigante mientras unos brazos la envolvían en una manta protegiéndola del frío de la noche; la fiebre le hacía sudar intensamente, acusaba una tremenda gripe desde hacía varios días que le cerraba los puños y los ojos, como un intento desesperado de su subconsciente, demorando la partida, agarrándose al aire, a sus aventuras y a la casa que dejaba atrás en el 23 de la *rue Championnet*. Aquella niña de siete años no podía imaginar que en los años venideros lloraría una y mil veces por todo lo que abandonaba. Levantó la mirada por última vez hacia la ventana de su amiga judía a quien no volvería a ver nunca más, mientras se acomodaba en el regazo de su protector que la llevaría muy lejos, presagiando un futuro incierto. Aquella invernal madrugada fue como la primera frase escrita de su memoria. Se sintió consciente de saberse habitante de un mundo extrañamente amable que le invitaba a la ruptura brutal con su pasado francés, un mundo disfrazado de azar civilizado.
-
-El fiel escudo blanco apagó sus luces interiores, empezó a avanzar por el corredor de los dos mil kilómetros, como última misión que cumpliría por su niña; la llevaría al otro lado de la frontera, a cruzar el mar de la civilización, la devolvería a sus orígenes, cumpliendo fielmente su última hazaña vital. Ella miró hacia atrás y vio difuminarse las aceras de su calle, los muros grises de piedra, la gran farola de luz tenue, la que fue tantas veces mástil de su castillo tras la ventana de su habitación. Vio perderse en el horizonte negro la tienda de ultramarinos, la barbería, el colegio y las altas cancelas inmóviles de todos sus amigos. Iba en su gran tiburón albino a atravesar el mundo, no sintió miedo, pero sí una gran desesperanza por el sufrimiento de las horas que avanzaban hacia la despedida al final del viaje. Él moriría para siempre, y ella nacería nuevamente en otro lugar desconocido.`
+     El fiel escualo blanco apagó sus luces interiores, empezó a avanzar por el corredor de los dos mil kilómetros, como última misión que cumpliría por su niña; la llevaría al otro lado de la frontera, a cruzar el mar de la civilización, la devolvería a sus orígenes, cumpliendo fielmente su última hazaña vital. Ella miró hacia atrás y vio difuminarse las aceras de su calle, los muros grises de piedra, la gran farola de luz tenue, la que fue tantas veces mástil de su castillo tras la ventana de su habitación. Vio perderse en el horizonte negro la tienda de ultramarinos, la barbería, el colegio y las altas cancelas inmóviles de todos sus amigos. Iba en su gran tiburón albino a atravesar el mundo, no sintió miedo, pero sí una gran desesperanza por el sufrimiento de las horas que avanzaban hacia la despedida al final del viaje. Él moriría para siempre, y ella nacería nuevamente en otro lugar desconocido.`
       },
       {
         title: 'II',
         illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/AVION 2.png',
-        content: `Muchos años atrás su padre se compró un reloj en Sevilla. Fueron meses ahorrando con su escaso salario de soldado lo que le permitió conseguir aquel reloj, y más tarde el que le hizo comprender que las horas eran una trampa mortal, que el tiempo era el traje donde se diseña el destino de las personas, que las horas avanzaban sin más para todos. Cada vez que miraba su fantástico reloj sentía que estrenaba un segundo de su vida, un tiempo que escapaba de sus manos sin que él pudiera detenerlo. Se sentía incómodo y atrapado dentro de aquella mezcla de miseria y tiempo. Su juventud se gastaba y la vida con él. ¿Qué podía hacer? De cara al desarrollo social, las ofertas en aquel tiempo eran escasas, apenas un sector de la población de aquel país podía permitirse el lujo de comer caliente todos los días; corrían los tiempos de la postguerra y las hambrunas de tantas y tantas personas eran tan habituales como los amaneceres. Por eso, en un principio, asintió continuar con la tradición familiar militar. Buscarse un Tiempo, sin que nadie pueda denunciarlo ni pararlo. Aquel reloj, marcaría el destino venidero de los siguientes veinte años, despertó en él el valor de tomar la más importante decisión en su vida: abandonar su recién estrenado salario de oficial, sus compañeros, su familia, y su hogar andaluz.
+        content: `Muchos años atrás su padre se compró un reloj en Sevilla. Fueron meses ahorrando con su escaso salario de soldado lo que le permitió conseguir aquel reloj, y más tarde el que le hizo comprender que las horas eran una trampa mortal, que el tiempo era el traje donde se diseña el destino de las personas, que las horas avanzaban sin más para todos. Cada vez que miraba su fantástico reloj sentía que estrenaba un segundo de su vida, un tiempo que escapaba de sus manos sin que él pudiera detenerlo. Se sentía incómodo y atrapado dentro de aquella mezcla de miseria y tiempo. Su juventud se gastaba y la vida con él. ¿Qué podía hacer? De cara al desarrollo social, las ofertas en aquel tiempo eran escasas, apenas un sector de la población de aquel país podía permitirse el lujo de comer caliente todos los días; corrían los tiempos de la postguerra y las hambrunas de tantas y tantas personas eran tan habituales como los amaneceres. Por eso, en un principio, asintió continuar con la tradición familiar militar. Buscarse un medio de vida, fuese cual fuese, era una prioridad. Sin embargo aquel reloj que tantas veces lució orgulloso en su muñeca los fines de semana con sus compañeros de academia, el que le hizo sentirse importante con las muchachas, y que pocos meses después le robarían de su taquilla, fue tal vez el que dio un giro de 180 grados asu vida; pensaba que el tiempo es robado por el mismísimo Tiempo, sin que nadie pueda denunciarlo ni pararlo. Aquel reloj, marcaría el destino venidero de los siguientes veinte años, despertó en él el valor de tomar la más importante decisión en su vida: abandonar su recién estrenado salario de oficial, sus compañeros, su familia, y su hogar andaluz.
 
-—Padre, quiero marcharme.
-—¿Quieres marcharte? ¿dónde?
-—A Francia. Un par de amigos y yo hemos decidido irnos, aquí se gana una miseria de sueldo, y nos han hablado de que en Francia las cosas son diferentes, quiero comprobar esa verdad que dicen de la República.
-—Hijo, tú no irás a ninguna parte! Aquí tienes tu puesto de trabajo, tu familia, ¿acaso no has conseguido lo que deseabas? ¿Acaso destripar aviones de combate no era lo que querías? Has logrado poder vivir de eso, y ahora ¿dices que te vas? ¿Abandonas todo? ¡Tú no irás a ninguna parte! Lo digo yo, que soy tu padre y no se hable más!
-—Padre, me marcho. Aquí me ahogo entre tanta miseria, a la gente no se le permite pensar, conocer, quiero saber qué hay más allá de esta pura verdad tan falsa. Y juro que volveré, un día volveré, no sé si lejano, y podrá usted sentirse orgulloso de su hijo. Juro que lo haré.`
+     —Padre, quiero marcharme.
+     —¿Quieres marcharte? ¿dónde?
+     —A Francia. Un par de amigos y yo hemos decidido irnos, aquí se gana una miseria de sueldo, y nos han hablado de que en Francia las cosas son diferentes, quiero comprobar esa verdad que dicen de la República.
+     —Hijo, tú no irás a ninguna parte! Aquí tienes tu puesto de trabajo, tu familia, ¿acaso no has conseguido lo que deseabas? ¿Acaso destripar aviones de combate no era lo que querías? Has logrado poder vivir de eso, y ahora ¿dices que te vas? ¿Abandonas todo? ¡Tú no irás a ninguna parte! Lo digo yo, que soy tu padre y no se hable más!
+     —Padre, me marcho. Aquí me ahogo entre tanta miseria, a la gente no se le permite pensar, conocer, quiero saber qué hay más allá de esta pura verdad tan falsa. Y juro que volveré, un día volveré, no sé si lejano, y podrá usted sentirse orgulloso de su hijo. Juro que lo haré.`
       },
       {
         illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/joven 1.jpg',
         content: `Aquella conversación fue tortuosa para él. Nunca había desobedecido a su progenitor, nunca antes se había atrevido a tomar una decisión tan vital sin el consentimiento de su padre, un hombre de mediana estatura, rasgos duros y marcados por los fríos de tantos amaneceres. Para su padre, todo giraba alrededor de la familia. ¿Acaso había algo más por lo que luchar? Sus siete hijos y una dócil esposa eran todo su mundo. No podía aceptar que el benjamín de su casa rompiera con la tradiciones, ¿qué sería de él?
-
-La amargura se levantó con él aquella mañana. El viento sacudía las hojas de tabaco colgadas en el secadero, cerca de su casa. Pudo percibir un aroma dulce de incertidumbre de aquellas hojas de tabaco negro agitando el silencio de las primeras luces del día, anunciando que su hijo menor se marchaba. Entre sus pensamientos bullía la idea punzante, hiriente, de que tal vez su hijo tenía razón, pero él no podía admitirlo, su enfado era inminente. Sintió rugir un motor imposible de arrancar a pocos metros de su ventana, un hombre sin identidad intentaba desesperadamente arrancar el furgón con el que iba todos los días al mercado a vender sus hortalizas. Aquel motor de garganta oxidada parecía mostrarle todas las razones por las que su hijo quería marcharse. Aquí no hay nada, más que súplicas al azar para poder arrancar el motor de la supervivencia día tras día. La autoridad de ser el cabeza de familia era la única arma que poseía para defenderse de aquel mundo de afiladas aristas, tan gris como las mil rayas de su traje de los domingos. Sobrevivir y mantener unida a la familia era su ley, la razón para la que nació, y sin embargo ahora su hijo se marchaba. A conocer mundo, decía... ¿Qué mundo existe fuera de esta selva de motores inservibles? Su semblante serio mostraba repulsa a aquella aventura que pretendía su hijo, sin embargo pensaba en su fuero más interno que tal vez él habría hecho lo mismo con cuarenta años menos.`
+     La amargura se levantó con él aquella mañana. El viento sacudía las hojas de tabaco colgadas en el secadero, cerca de su casa. Pudo percibir un aroma dulce de incertidumbre de aquellas hojas de tabaco negro agitando el silencio de las primeras luces del día, anunciando que su hijo menor se marchaba. Entre sus pensamientos bullía la idea punzante, hiriente, de que tal vez su hijo tenía razón, pero él no podía admitirlo, su enfado era inminente. Sintió rugir un motor imposible de arrancar a pocos metros de su ventana, un hombre sin identidad intentaba desesperadamente arrancar el furgón con el que iba todos los días al mercado a vender sus hortalizas. Aquel motor de garganta oxidada parecía mostrarle todas las razones por las que su hijo quería marcharse. Aquí no hay nada, más que súplicas al azar para poder arrancar el motor de la supervivencia día tras día. La autoridad de ser el cabeza de familia era la única arma que poseía para defenderse de aquel mundo de afiladas aristas, tan gris como las mil rayas de su traje de los domingos. Sobrevivir y mantener unida a la familia era su ley, la razón para la que nació, y sin embargo ahora su hijo se marchaba. A conocer mundo, decía... ¿Qué mundo existe fuera de esta selva de motores inservibles? Su semblante serio mostraba repulsa a aquella aventura que pretendía su hijo, sin embargo pensaba en su fuero más interno que tal vez él habría hecho lo mismo con cuarenta años menos.`
       },
       {
         title: 'III',
         illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/joven 7.jpg',
-        content: `Dos amigos, una maleta, la disciplina que aprendió en la academia y un diccionario. Ese fue todo el equipaje que le robó a su país. Atrás quedaban las noches alrededor de la lumbre, las charlas y las risas con sus hermanos mayores, la bondad de los calcañales de pan y el aroma de la leche de cabra que hervía su madre por las mañanas. Atrás quedaron las muchachas que sonreían y suspiraban por el azul de sus ojos, el sonido del agua de las fuentes de *Granada*, y la música de los motores de tantos aviones a los que les había visto las entrañas. Atrás y hacia delante. Sus pensamientos se movían como un pesado péndulo bajo el vértigo de la conciencia, and sin embargo jamás sintió miedo, jamás pensó en desistir. Su vida empezaba ahora, y lucharía por conseguir todo a lo que aspiraba. Lucharía por la única mujer que verdaderamente amaba desde niño, la que dejaba atrás a la suerte del destino, la única mujer por la que hacía todo esto. Por ella volvería un día conduciendo un flamante coche para llevarla a ese mundo que
-
-No quiso perderse ni un solo detalle de todas aquellas ciudades por las que el tren viajaba. Se sentía caliente como la sangre por las venas de un nuevo país, veloz e insignificante en aquel cuerpo extraño por el que se adentraba. A veces el sueño le vencía, y dormía algunas horas sentado en el asiento de segunda que le rompía los huesos, pero ningún cansancio acusaba; cuando volvía a abrir los ojos, sus amigos dormían, mudo atrapaba en sus retinas a las gentes, las casas tan diferentes, los letreros luminosos. Estrenó su diccionario nada más atravesar la frontera, necesitaba saber y saber, comer y beberse aquel país... por todo ello no dejaba de mirar anuncios y traducirlos, uno tras otro. Cualquier cosa era importante.
-
-— S'il vous plaît, les billets...!
-a lo que él respondió: 
-— les voilà, monsieur.
-
-Esas fueron sus primeras palabras en francés! Para el recaudador era una rutina más, y seguramente ni reparó en la expectación de los ojos de aquel muchacho que lo miraba con tanto ánimo y curiosidad. Guardó aquellos billetes y aquel ceñido rostro en su memoria durante largos años, y a pesar de que nunca hablaría de sus primeras sensaciones, aquellas palabras las recordaría siempre como la primera frase escrita del segundo capítulo de su vida.`
+        content: `Dos amigos, una maleta, la disciplina que aprendió en la academia y un diccionario. Ese fue todo el equipaje que le robó a su país. Atrás quedaban las noches alrededor de la lumbre, las charlas y las risas con sus hermanos mayores, la bondad de los calcañales de pan y el aroma de la leche de cabra que hervía su madre por las mañanas. Atrás quedaron las muchachas que sonreían y suspiraban por el azul de sus ojos, el sonido del agua de las fuentes de *Granada*, y la música de los motores de tantos aviones a los que les había visto las entrañas. Atrás y hacia delante. Sus pensamientos se movían como un pesado péndulo bajo el vértigo de la conciencia, y sin embargo jamás sintió miedo, jamás pensó en desistir. Su vida empezaba ahora, y lucharía por conseguir todo a lo que aspiraba. Lucharía por la única mujer que verdaderamente amaba desde niño, la que dejaba atrás a la suerte del destino, la única mujer por la que hacía todo esto. Por ella volvería un día conduciendo un flamante coche para llevarla a ese mundo que él trataba de descubrir para ella.
+     No quiso perderse ni un solo detalle de todas aquellas ciudades por las que el tren viajaba. Se sentía caliente como la sangre por las venas de un nuevo país, veloz e insignificante en aquel cuerpo extraño por el que se adentraba. A veces el sueño le vencía, y dormía algunas horas sentado en el asiento de segunda que le rompía los huesos, pero ningún cansancio acusaba; cuando volvía a abrir los ojos, sus amigos dormían, mudo atrapaba en sus retinas a las gentes, las casas tan diferentes, los letreros luminosos. Estrenó su diccionario nada más atravesar la frontera, necesitaba saber y saber, comer y beberse aquel país... por todo ello no dejaba de mirar anuncios y traducirlos, uno tras otro. Cualquier cosa era importante.
+     — S'il vous plaît, les billets...! a lo que él respondió: —les voilà, monsieur.
+     Esas fueron sus primeras palabras en francés! Para el recaudador era una rutina más, y seguramente ni reparó en la expectación de los ojos de aquel muchacho que lo miraba con tanto ánimo y curiosidad. Guardó aquellos billetes y aquel ceñido rostro en su memoria durante largos años, y a pesar de que nunca hablaría de sus primeras sensaciones, aquellas palabras las recordaría siempre como la primera frase escrita del segundo capítulo de su vida.`
       },
       {
         title: 'IV',
         content: `París lo devoró aquella noche. Un trozo de queso graso, pan y charcutería adornaban humildemente la mesa de aquella familia gallega como exquisitos manjares del nuevo país. Pedro, un refugiado de la Guerra Civil y amigo de un tal Luis que vivía en Granada ya estaba bajo aviso de que tres chavales algo mayores de veinte años llegarían aquella noche a París. Los otros dos tenían conocidos directos pero el que venía de la Academia de Aviación iba a la aventura. Le pidió con gran fervor que lo acogiera cuando llegara, que era un buen muchacho, como de la familia. El tal Luis había conocido a Pedro, un primo segundo de su mujer, algunos años atrás en Galicia, y por esos azares de la vida cultivaron una gran amistad que duraría muchos años después. Por todo ello, Pedro acogió aquella noche en su casa al muchacho de Granada. Si venía de parte de Luis, era de confianza.
-
-—¿Cómo está mi buen amigo Luis?
-—Allí sigue. Le dije que se aventurara con nosotros, pero no ha podido ser. Ya sabe usted, las cosas de la familia y con dos chiquillos en el mundo...
-—Claro, y mi prima Paquita que no hay quien la mueva, ¿verdad?
-—Hombre, yo qué sé..., que quiere que le diga, de puertas adentro yo ni pregunto...
-—Mira, muchacho, si no le tienes miedo al trabajo, aquí te irá bien. Los gabachos son muy suyos, pero si te haces con sus costumbres y te acomodas en sus modales, no tendrás problemas y en muchas cosas terminarás pensando como ellos. La "Légalité" y la "Fraternité" son ideas impresas en todo corazón de un buen francés.
-
-Pedro vivía en París desde hacía una década, había huido de las balas nacionales casi por casualidad. La guerra le sorprendió —como a muchos españoles— en la tasca de su pueblo gallego, donde cada noche se reunían los cuatro amigos a desahogarse y a hablar del malestar social y del trasfondo político que avanzaba a marchas forzadas. Se presagiaban los últimos coletazos del Bienio Negro que ahogarían para siempre a la República y mancharía de sangre las infinitas calles de España.
-
-Miguel escuchaba con gran pesadumbre y trastorno las razones por las que aquel hombre había abandonado Galicia. En su caso, las cosas eran diferentes, él no huía del grito de ningún disparo, sin embargo la muerte de metal que describía su recién estrenado amigo le sangró las entrañas, sintió la tristeza de aquella familia y la de otras muchas familias anónimas desplegadas por toda Europa: estaba conociendo España desde la trastienda.`
+     —¿Como está mi buen amigo Luis?
+     —Allí sigue. Le dije que se aventurara con nosotros, pero no ha podido ser. Ya sabe usted, las cosas de la familia y con dos chiquillos en el mundo...
+     —Claro, y mi prima Paquita que no hay quien la mueva, ¿verdad?
+     —Hombre, yo qué sé..., que quiere que le diga, de puertas adentro yo ni pregunto...
+     —Mira, muchacho, si no le tienes miedo al trabajo, aquí te irá bien. Los gabachos son muy suyos, pero si te haces con sus costumbres y te acomodas en sus modales, no tendrás problemas y en muchas cosas terminarás pensando como ellos. La "Légalité" y la "Fraternité" son ideas impresas en todo corazón de un buen francés.
+     Pedro vivía en París desde hacía una década, había huido de las balas nacionales casi por casualidad. La guerra le sorprendió —como a muchos españoles— en la tasca de su pueblo gallego, donde cada noche se reunían los cuatro amigos a desahogarse y a hablar del malestar social y del trasfondo político que avanzaba a marchas forzadas. Se presagiaban los últimos coletazos del Bienio Negro que ahogarían para siempre a la República y mancharía de sangre las infinitas calles de España.
+     Miguel escuchaba con gran pesadumbre y trastorno las razones por las que aquel hombre había abandonado Galicia. En su caso, las cosas eran diferentes, él no huía del grito de ningún disparo, sin embargo la muerte de metal que describía su recién estrenado amigo le sangró las entrañas, sintió la tristeza de aquella familia y la de otras muchas familias anónimas desplegadas por toda Europa: estaba conociendo España desde la trastienda.`
       },
       {
         illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/joven 8.jpg',
@@ -1424,59 +1523,47 @@ Miguel escuchaba con gran pesadumbre y trastorno las razones por las que aquel h
       {
         title: 'V',
         content: `Siete años, dos patrones y posteriormente un floreciente negocio propio. Michel, que así se llamaba ahora, vivía al norte de París en su propia casa, hablaba correctamente francés, vestía gabanes y sombreros de ala corta, conocía cada rincón, cada tertulia del viejo París nocturno y pensaba como ellos, tal como le había dicho su amigo Pedro que le sucedería. Atrás quedaron las incertidumbres de los primeros años, la inocencia de aquel muchacho aventurero y revoltoso. Se sentía triunante. Todo el esfuerzo y las dificultades que tuvo que superar años atrás le hicieron amar el tiempo, cada minuto de aquellos siete años se habían multiplicado por diez, el vértigo de las sensaciones, las emociones y todo lo que había descubierto día a día le hacían gozar de su condición de emigrante afrancesado. Sin embargo, algo hervía en su cerebro. Entre sus pensamientos y a destiempo, se dibujaba la silueta de aquella hermosa muchacha de ojos color miel y pelo dorado que años atrás había dejado en tierras granadinas. ¿Qué habría sido de ella? Seguramente se habría casado —pensaba—, pero algo le decía que debía intentar volver a verla. Pronto volvería a Granada, como hacía en vacaciones todos los años y esta vez trataría de averiguarlo. Ella alcanzaba ahora los veintiún años, desde hacía casi diez no la había visto, la recordaba como una niña de largas trenzas y vestidos bordados de pequeñas flores.
-
-— Madre, recuerda usted a María, la hija de Don Ramón y Doña Concha?
-— Claro, hijo mío...
-— ¿Por dónde anda? Me gustaría saludarla y recordar viejos tiempos y preguntarle por su hermano Ramón que era buen amigo mío, sabe usted?
-— Claro, claro.. su hermano, buen chaval, ahora es sacerdote en Guadix. Qué gran muchacho, sí...
-
-La madre sonrió levemente con disimulo, al tiempo que mantenía su talante sobrio y correcto de buena señora, sin embargo conocía bien a su hijo y percibía el interés que sentía por aquella muchacha. De una manera sutil le estaba pidiendo consejo para acercarse a aquella joven por la que veía los vientos. Ella sabía que Miguel, ahora convertido en un apuesto hombre amaba a aquella mujer, la mujer de sus sueños, y no veía con malos ojos la posibilidad de que esa unión se llevara a cabo.
-
-La buscó en su pueblo. Subió a las *Alpujarras* a visitar a una hermana de su padre, más que nada, como quien no quiere la cosa, a saludar a la familia... Enfundado en su traje color canela, y conduciendo un Citroën ID-19 rojo aparcó en la plaza del pueblo. No quiso preguntar por ella nada más llegar, no era correcto abordar la sin más, —pensaba—, debe parecer "natural", como un encuentro casual.... Nervioso, intuía que ella tenía ya conocimiento de su llegada. ¿Qué casa habitaría ahora? Se sintió todavía más nervioso al averiguar que aún vivía en casa de sus padres, este hecho le invitaba a la ocasión perfecta para su propósito: Iría también a saludar a su antiguo maestro de escuela, el padre de María.
-
-— María, ¿recuerdas a Miguel? Tráele unos rosquillos y una copa de aguardiente a este muchacho, ¡Ah..! ¡Qué tiempos aquellos! Miguel, cuando no te entraban las matemáticas y te las metía en la cabeza a base de leña, ¿verdad hijo???
-—¡Claro, claro.. Don Ramón y bien que se lo agradezco..! gracias a su empeño y su constancia aprendí "matemáticas"...`
+     — Madre, recuerda usted a María, la hija de Don Ramón y Doña Concha?— Claro, hijo mío...
+     — ¿Por dónde anda? Me gustaría saludarla y recordar viejos tiempos y preguntarle por su hermano Ramón que era buen amigo mío, sabe usted...
+     — Claro, claro.. su hermano, buen chaval, ahora es sacerdote en Guadix. Qué gran muchacho, sí...
+     La madre sonrió levemente con disimulo, al tiempo que mantenía su talante sobrio y correcto de buena señora, sin embargo conocía bien a su hijo y percibía el interés que sentía por aquella muchacha. De una manera sutil le estaba pidiendo consejo para acercarse a aquella joven por la que veía los vientos. Ella sabía que Miguel, ahora convertido en un apuesto hombre amaba a aquella mujer, la mujer de sus sueños, y no veía con malos ojos la posibilidad de que esa unión se llevara a cabo.
+     La buscó en su pueblo. Subió a las *Alpujarras* a visitar a una hermana de su padre, más que nada, como quien no quiere la cosa, a saludar a la familia...
+     Enfundado en su traje color canela, y conduciendo un Citroën ID-19 rojo aparcó en la plaza del pueblo. No quiso preguntar por ella nada más llegar, no era correcto abordarla sin más, —pensaba—, debe parecer "natural", como un encuentro casual.... Nervioso, intuía que ella tenía ya conocimiento de su llegada. ¿Qué casa habitaría ahora? Se sintió todavía más nervioso al averiguar que aún vivía en casa de sus padres, este hecho le invitaba a la ocasión perfecta para su propósito: Iría también a saludar a su antiguo maestro de escuela, el padre de María.
+     — María, ¿recuerdas a Miguel? Tráele unos rosquillos y una copa de aguardiente a este muchacho, ¡Ah..! ¡Qué tiempos aquellos! Miguel, cuando no te entraban las matemáticas y te las metía en la cabeza a base de leña, ¿verdad hijo???
+     —¡Claro, claro.. Don Ramón y bien que se lo agradezco..! gracias a su empeño y su constancia aprendí "matemáticas"...`
       },
       {
         illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/novia 2.jpg',
-        content: `El pobre Miguel sudaba al recordar la regla que tantas veces midió aquel hombre sobre sus manos, el licor de anís le quemaba la garganta a la vez que su corazón saltaba, latiendo desesperadamente cada vez que María le regalaba su bellísima sonrisa. Se había convertido en una hermosa mujer de largos cabellos dorados, y piel de nácar. Su esbelto cuerpo rozando la perfección le cegaba los ojos y la mente. Un suave temblor en su mano delató su amor. Ella seguía sonriendo, sentada alrededor de la mesa, al lado de Doña María, la mujer de semblante igualmente bellísimo, y que años atrás un maestro de pueblo recién llegado de Córdoba logró robar el corazón de las Alpujarras. Don Ramón alargó la visita. 
-
-— Quédate a cenar Miguel y nos cuentas tu vida en París, ¿a qué te dedicas allí?
-
-Miguel sudaba más aún, la mano que tantas veces le castigó cuando era niño, ahora le brindaba quedarse a cenar. Asintió y agradeció la invitación. Aquel sería uno de los días más significativos de su vida. Al pronto todos los "regletazos" sobre las palmas de sus manos se convirtieron en rojos corales, un tesoro que nunca más abandonaría. María era su pasión, y ahora aquel hombre sonreía por primera vez frente a él.`
+        content: `El pobre Miguel sudaba al recordar la regla que tantas veces midió aquel hombre sobre sus manos, el licor de anís le quemaba la garganta a la vez que su corazón saltaba, latiendo desesperadamente cada vez que María le regalaba su bellísima sonrisa. Se había convertido en una hermosa mujer de largos cabellos dorados, y piel de nácar. Su esbelto cuerpo rozando la perfección le cegaba los ojos y la mente. Un suave temblor en su mano delató su amor. Ella seguía sonriendo, sentada alrededor de la mesa, al lado de Doña María, la mujer de semblante igualmente bellísimo, y que años atrás un maestro de pueblo recién llegado de Córdoba logró robar al corazón de las Alpujarras.
+     Don Ramón alargó la visita. — Quédate a cenar Miguel y nos cuentas tu vida en París, ¿a qué te dedicas allí?—
+     Miguel sudaba más aún, la mano que tantas veces le castigó cuando era niño, ahora le brindaba quedarse a cenar. Asintió y agradeció la invitación. Aquel sería uno de los días más significativos de su vida. Al pronto todos los "regletazos" sobre las palmas de sus manos se convirtieron en rojos corales, un tesoro que nunca más abandonaría. María era su pasión, y ahora aquel hombre sonreía por primera vez frente a él.`
       },
       {
         title: 'VI',
         content: `Lilie nació con un aspecto feísimo. Eran las tres de la tarde de un invernal día parisino. La pequeña tenía unos ojos negros enormes, la piel arrugada y un pelo azabache más tieso que el esparto cubriéndole casi toda la cara. Tanto que la compañera de habitación de hospital de María la miraba de reojo susurrando a su marido: —¿cómo es posible que la niña sea tan fea? *et pourtant la femme est belle!!!* Fea y llorona. Así era la pequeña Lilie, como un pato negro recién salido de un cascarón blanco en tierras francesas.
-
-Sus primeras luces fueron grises, amaba el colegio, y vivía mil aventuras con sus amigos. Cosa de los genes, las matemáticas no le entraban. Por más empeño que su madre ponía, la tabla de multiplicar no había manera de metérsela en la cabeza. Sin embargo adoraba los cuentos. Le apasionaban las canciones de *Joe Dassin*, de *Sheila* y *George Moustaky*. Eran sus ídolos. A través de sus vinilos imaginaba vivir aquellas historias a la vez que inventaba nuevas situaciones. *"El extranjero"*   de Moustaky, *"mon village du bout du monde"* de Joe Dassin, *"le Tam Tam du vent"* de Sheila..... y adoraba, además, los cuentos infantiles. Cada mañana de domingo, su padre la sorprendía con un cuento entre las sábanas y frente a su ventana, la que dejaba pasar la luz de la farola de su castillo inventado.
-
-Uno de aquellos cuentos la llevó a darle vida al gran tiburón blanco que siempre estaba aparcado frente a su casa. 
-
-— ¿Cómo es eso? ¿La cenicienta iba en una calabaza tirada por cuatro corceles? ¡Eso no es verdad..! _—seguía diciéndose para sí—._ Lo que realmente sucedió fue que Cenicienta, que era una niña francesa, un día se fue con su hermana mayor a pasear por el *Sena* en un *bateau-mouche*. Allí conoció a *Pierre Antoine* que luego se casaría con su hermana y allí vio un gran pez con escamas plateadas que levantó la cabeza y miró a la cenicienta. (que por cierto no se llamaba cenicienta sino... mmm... Claudine!). El pez le suplicó que le ayudara a salir del *Sena*, a encontrar la salida al mar y ella le dijo que continuara la dirección de la corriente. Al poco tiempo, el pez agradecido pactó con la luna que cedería parte de su vida si lo convertía en un ser veloz terrestre, que deseaba encontrar a la niña que le había salvado la vida, and la luna lo convirtió en un coche blanco majestuoso. Al poco tiempo el coche, tras buscar por las calles de todo *París*, aparcó frente a la casa de la niña que le había salvado la vida. Y ella lo reconoció mirando sus grandes ojos de luz-metal. Y colorín colorado... así es la historia de la verdadera cenicienta!
-
-Todo eso pensaba la pequeña Lilie, recreándose en sus cuentos, tan feliz de saber que aquel tiburón blanco era su amigo. El gran pez albino que rescató del Sena.`
+     Sus primeras luces fueron grises, amaba el colegio, y vivía mil aventuras con sus amigos. Cosa de los genes, las matemáticas no le entraban. Por más empeño que su madre ponía, la tabla de multiplicar no había manera de metérsela en la cabeza. Sin embargo adoraba los cuentos. Le apasionaban las canciones de *Joe Dassin*, de *Sheila* y *George Moustaky*. Eran sus ídolos. A través de sus vinilos imaginaba vivir aquellas historias a la vez que inventaba nuevas situaciones. *"El extranjero"* de Moustaky, *"mon village du bout du monde"* de Joe Dassin, *"le Tam Tam du vent"* de Sheila..... y adoraba, además, los cuentos infantiles. Cada mañana de domingo, su padre la sorprendía con un cuento entre las sábanas y frente a su ventana, la que dejaba pasar la luz de la farola de su castillo inventado.
+     Uno de aquellos cuentos la llevó a darle vida al gran tiburón blanco que siempre estaba aparcado frente a su casa. —
+     ¿Cómo es eso? ¿La cenicienta iba en una calabaza tirada por cuatro corceles? ¡Eso no es verdad..! —seguía diciéndose para sí—. Lo que realmente sucedió fue que Cenicienta, que era una niña francesa, un día se fue con su hermana mayor a pasear por el *Sena* en un *bateau-mouche*. Allí conoció a *Pierre Antoine* que luego se casaría con su hermana y allí vio un gran pez con escamas plateadas que levantó la cabeza y miró a la cenicienta. (que por cierto no se llamaba cenicienta sino... mmm... Claudine!). El pez le suplicó que le ayudara a salir del *Sena*, a encontrar la salida al mar y ella le dijo que continuara la dirección de la corriente. Al poco tiempo, el pez agradecido pactó con la luna que cedería parte de su vida si lo convertía en un ser veloz terrestre, que deseaba encontrar a la niña que le había salvado la vida, y la luna lo convirtió en un coche blanco majestuoso. Al poco tiempo el coche, tras buscar por las calles de todo *París*, aparcó frente a la casa de la niña que le había salvado la vida. Y ella lo reconoció mirando sus grandes ojos de luz-metal. Y colorín colorado... así es la historia de la verdadera cenicienta!
+     Todo eso pensaba la pequeña Lilie, recreándose en sus cuentos, tan feliz de saber que aquel tiburón blanco era su amigo. El gran pez albino que rescató del Sena.`
       },
       {
         title: 'VII',
         illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/mujer tiburon.png',
         content: `Llovía intensamente sobre un asfalto que desprendía un intenso olor a combustible. Caminaba bajo las luces de las farolas parisinas salpicando los recuerdos de una infancia feliz devorada por el tiempo y la memoria. La sombra de su cuerpo sobre aquellas aceras marcaba cuarenta años de distancia y sin embargo, todos aquellos recuerdos y vivencias seguían intactos bajo sus sienes. ¿Qué habría sido de su amiga judía con las que tantas aventuras vivió? Al pronto un coche a gran velocidad la puso empapada. Enfadada levantó la mirada sobre la *avenida Kléber* por la que caminaba, *¿qué salvaje conducía así, sin ningún respeto a los transeúntes que pasean por las aceras?* Su rostro se tornó frío, la sorpresa invadió su cara mojada por las salpicaduras de aquel enorme charco lanzado brutalmente sobre ella con la fuerza de la aleta trasera de un enorme pez oceánico sobre las avenidas. No era él, pero sí uno que le recordaba a alguien. Aquel Tiburón DS-25 de tono metálico conducido posiblemente por algún millonario caprichoso corría a gran velocidad haciendo honor a su vejez tan perfecta, a un motor que rugía con la elegancia de un dios, con aquellos ojos luminosos y metálicos girando a voluntad, con aquella suspensión hidráulica que le hacía elevarse por encima del viento como un cóndor negro. No era él, pero su imagen estalló como un enorme grito en su cara mojada.
-
-A la mañana siguiente se levantó temprano, salió del *Hotel Etoile Trocadero* de la *calle Saint Didier* con la sensación de no saber qué esperaba ni qué encontraría. Se dirigió a la *boca de metro Boissière* siguiendo su camino hasta la *estación Hoche*. Una vez fuera, sobre la acera sintió como si un imán atrajera sus pasos hasta el 25 de la calle *Honoré d'Estienne d'Orves de Pantin*. Continuó caminando hasta por fin sentir que había llegado a un destino tan incierto como sorprendente. Entró en aquel recinto tras pagar una entrada de diez euros y donde se localizaba el *Centro Internacional del Automóvil*. Avanzó por un largo pasillo con la lentitud de sus cuarenta años de espera. Se detuvo frente a la puerta de una enorme sala de moqueta gris y paredes metalizadas. Unos inmensos faros, rasgados como el maquillaje de una mujer de los setenta se iluminaron, mirándola con estupor y alma grafítica. Allí estaba él, decorando la vida de un museo de antigüedades y reliquias, la cárcel en que había sido recluida por su condición de animal de raza. Allí estaba él frente a Lilie convertida en mujer. Ella avanzó, acarició suavemente el lomo níveo de aquel gran tiburón pacífico de articulaciones estancadas por su quietud de los años. Abrió la puerta trasera, deslizándose en su interior con una clara sonrisa dibujada en su rostro, la puerta se cerró suavemente, silenciosamente desplegó el telón de su infancia. En el asiento delantero estaba su padre coronado por una gorra de lana y pompón verde. A su lado, una bellísima mujer de pelo dorado y suave como la seda que volvió la mirada hacia ella sonriendo. Miró por la ventanilla, allí estaba el *manège de chevaux de bois*, aquel que tantas veces había columpiado su vértigo. Miró al frente y vio por el retrovisor un rostro de niña: Lilie estaba allí, la miraba con la inocencia de sus cortos años, con sus negros ojos tan limpios. Lilie estaba allí, tan triste, tan muda, derramando la lágrima que impregnaría el asiento trasero del coche, la lágrima del destierro, la lágrima de los años no vividos en el regazo francés de su gran tiburón blanco. Al pronto una canción de *Joe Dassin* empezó a sonar por la radio:
-
-*Mon village est loin,
-à l'autre bout du monde
-et ma maison n'est plus qu'une canción
-comme la neige,
-mes rêves fondent
-buvons, mes frères, les vagabonds.....*
-
-Su gran amigo le rasgó el corazón, le estaba cantando que su casa no había sido más que una canción, una débil canción sonando durante los últimos casi cuarenta años, atrapado en aquella inmortalidad de museo, añorando a su niña, y a veces deseando morir bajo el metal ferroso de alguna grúa o la decisión de algún magnate coleccionista de chapas...
-
-Sin dudarlo, al día siguiente compró aquel coche. Enfundada en un astracán y sombrero negro de terciopelo, se disfrazó de poder y ambición frente a aquellos vendedores sin escrúpulos que aplaudían la ganancia. Otro escualo ocuparía su lugar...`
+     A la mañana siguiente se levantó temprano, salió del *Hotel Etoile Trocadero* de la *calle Saint Didier* con la sensación de no saber qué esperaba ni qué encontraría. Se dirigió a la *boca de metro Boissière* siguiendo su camino hasta la *estación Hoche*. Una vez fuera, sobre la acera sintió como si un imán atrajera sus pasos hasta el 25 de la calle *Honoré d'Estienne d'Orves de Pantin*. Continuó caminando hasta por fin sentir que había llegado a un destino tan incierto como sorprendente. Entró en aquel recinto tras pagar una entrada de diez euros y donde se localizaba el *Centro Internacional del Automóvil*. Avanzó por un largo pasillo con la lentitud de sus cuarenta años de espera. Se detuvo frente a la puerta de una enorme sala de moqueta gris y paredes metalizadas. Unos inmensos faros, rasgados como el maquillaje de una mujer de los setenta se iluminaron, mirándola con estupor y alma grafítica. Allí estaba él, decorando la vida de un museo de antigüedades y reliquias, la cárcel en que había sido reclinado por su condición de animal de raza. Allí estaba él frente a Lilie convertida en mujer. Ella avanzó, acarició suavemente el lomo níveo de aquel gran tiburón pacífico de articulaciones estancadas por su quietud de los años. Abrió la puerta trasera, deslizándose en su interior con una clara sonrisa dibujada en su rostro, la puerta se cerró suavemente, silenciosamente desplegándose el telón de su infancia. En el asiento delantero estaba su padre coronado por una gorra de lana y pompón verde. A su lado, una bellísima mujer de pelo dorado y suave como la seda que volvió la mirada hacia ella sonriendo. Miró por la ventanilla, allí estaba el *manège de chevaux de bois*, aquel que tantas veces había columpiado su vértigo. Miró al frente y vio por el retrovisor un rostro de niña: Lilie estaba allí, la miraba con la inocencia de sus cortos años, con sus negros ojos tan limpios. Lilie estaba allí, tan triste, tan muda, derramando la lágrima que impregnaría el asiento trasero del coche, la lágrima del destierro, la lágrima de los años no vividos en el regazo francés de su gran tiburón blanco. Al pronto una canción de *Joe Dassin* empezó a sonar por la radio:
+     
+     *Mon village est loin,
+     à l'autre bout du monde
+     et ma maison n'est plus qu'une canción
+     comme la neige,
+     mes rêves fondent
+     buvons, mes frères, les vagabonds.....*
+     
+     Su gran amigo le rasgó el corazón, le estaba cantando que su casa no había sido más que una canción, una débil canción sonando durante los últimos casi cuarenta años, atrapado en aquella inmortalidad de museo, añorando a su niña, y a veces deseando morir bajo el metal ferroso de alguna grúa o la decisión de algún magnate coleccionista de chapas...
+     Sin dudarlo, al día siguiente compró aquel coche. Enfundada en un astracán y sombrero negro de terciopelo, se disfrazó de poder y ambición frente a aquellos vendedores sin escrúpulos que aplaudían la ganancia. Otro escualo ocuparía su lugar...`
       },
       {
-        illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/mujer 3 se usa.jpg',
+        illustrationUrl: '/images/relatos/Al_otro_lado_del_mundo/mujer 3 se usa.png',
         content: `Volvieron a ser vagabundos por las viejas calles de París. *Su casa ahora ya no era una canción.* Su padre le estaba devolviendo el Tiempo que tantas veces marcó las horas sevillanas de su juventud, un tiempo que ahora se medía bajo el capó que escondía el corazón rugiente del más soberano de los automóviles diseñados en el siglo XX.
 
 *Nunca más se deshizo de su escualo. Nunca más el destierro volvería a romper sus sueños...*`
@@ -1486,22 +1573,60 @@ Sin dudarlo, al día siguiente compró aquel coche. Enfundada en un astracán y 
   {
     id: 'helena-de-esparta',
     title: 'HELENA DE ESPARTA',
-    subtitle: 'Relato bajo construcción',
-    year: '2008',
-    publicationInfo: 'Próximamente',
-    synopsis: 'Una relectura del mito clásico desde una perspectiva íntima y personal.',
+    subtitle: 'Y EN EL CENTRO, LA P E R S O N A / Diálogo de la fotografía',
+    year: '2009',
+    publicationInfo: 'Belén Juárez',
+    synopsis: 'Una relectura del mito clásico desde una perspectiva íntima y personal donde Helena confronta su destino el día de su boda.',
     coverUrl: '/images/relatos/Helena_de_Esparta/Helena_PORTADA.jpg',
-    sections: []
+    sections: [
+      {
+        content: `Oscilan las horas de Menelao, como un tiempo de coordenadas elásticas atrapado entre los alborotados días de las tres coronas bien ganadas por el *príncipe de Troya*. Oscilan sus horas y los minutos como péndulos universales, por el tejido de la desdicha de un tiempo incapaz de definirse como *Presente*, *Pasado* o *Futuro*. Es el momento de los desposorios del rey de Esparta, donde el *Presente* –despiadado- improvisa la inocencia femenina, por ser *Ella* la más bella e inconsciente criatura del reino espartano. A su lado, *Himero* lo impregna sutilmente el vestido de deseo y pasión, decorándola de inmaculada belleza. Corona su mano derecha un ramo de encendidas pasiones, las que brotaron de la *manzana de oro* lanzada desde el Olimpo, rodando por el suelo hasta llegar gratuitamente a los pies de París. Ella, pues, será la *Dama de la inflexión de la Historia*, la llamaban *Helena de Troya*, sin embargo, ella nunca sospechó la sentencia de su destino incierto, el día de su boda.
+     
+     Y dijo a su esposo: —*El tiempo me venció con puños de plata. Sin vejez sobre mis años, —comprendí—, que el tiempo no derrota nuestros cuerpos, no declina hacia la muerte nuestras pasiones, mucho más nos castiga su presencia cuando nos revela la verdad de nuestro yerro. Y nuestra guerra, la que fue carne de la carne, ahora se extiende hacia el abismo al que invocas como extraña luciérnaga de mi pasado, con intensos ojos de lágrimas vencidas. Y eres 'el hombre del viento' al que amé desde mis vientres, al que amo desde mis palmas vegetales, eres la casa abierta donde fui hembra de ansiedad, feliz en la inocencia de los cortos días, como leño oloroso tras el fuego chispeante, eres mi leyenda la que nadie nunca pudo comprender. Me puede la templanza de la ley, me puede el rugir de tu ventura, me puede la puerta chirriante que siempre me abres al alba bajo el secreto de tu pan de nueces. Me pueden las aguas de mi libertad. La puerta, como el mar de mis espacios, diluida en este tiempo de extraños deseos...*
+     
+     Así pues, un día cualquiera sucedió que *Helena* desposó a *Menelao*, partiendo desde la casa blanca de sus antepasados, a favor de los deseos del Olimpo que todo lo improvisa y todo lo puede sobre los mortales.
+     
+     *«Oscilan las horas de Menelao como un tiempo de coordenadas elásticas, oscilan las horas blancas de todos los mortales hacia la incertidumbre de un tiempo para el amor llamado Dios...».*`
+      },
+      {
+        illustrationUrl: '/images/relatos/Helena_de_Esparta/Imagen5.jpg',
+        content: ''
+      }
+    ]
   },
   {
     id: 'sandrine',
     title: 'SANDRINE',
-    subtitle: 'Relato bajo construcción',
+    subtitle: 'Relatos de París',
     year: '2008',
-    publicationInfo: 'Próximamente',
-    synopsis: 'Un relato breve sobre la identidad y el paso del tiempo.',
+    publicationInfo: 'Belén Juárez',
+    synopsis: 'Un relato breve sobre la bohemia parisina de los años 60, la música de trompeta y los encuentros inesperados a orillas del Sena.',
     coverUrl: '/images/relatos/Sandrine/sandrine_PORTADA.jpeg',
-    sections: []
+    sections: [
+      {
+        content: `La violencia de aquella noche me caló hasta los huesos; la ironía de lo imposible, a través de la fragancia del humo de cigarrillos dulces se filtró en mi presente, dejándome sobrecogido.
+     
+     Miraba, miraba y sólo veía la cadencia que aquel agujero desprendía: mesitas redondas salpicadas de sombreros, miradas tipo Chanel que iban y venían galopando sobre notas musicales danzarinas; gabardinas silenciosas sobre perchas de tres pies que desprendían el vaho de sus dueños adormilados, mientras éstos, sujetos a copas de champán francés iban más allá del escenario.`
+      },
+      {
+        illustrationUrl: '/images/relatos/Sandrine/trompetista2.jpg',
+        illustrationSize: 'sm',
+        content: `Y allí estaba yo, tocando la trompeta, intentando aclarar las mentes de niñas de cuarenta y tantos años que, jugando a ser adultas, se reían con la historia absurda de sus acompañantes: monjas con sabor a canela, eso es, inocentes monjas con zapatos de tacón de aguja con la sola aspiración de llegar a inhalar elegantemente el humo de sus cigarrillos.`
+      },
+      {
+        content: `Y allí estaba yo, fiel servidor de aquella fauna incoherente y bohemia, romántica y artista como era la vida nocturna del París de los años 60.
+     
+     Aquella noche, como todas las noches al finalizar mi actuación, me tomé la última copa en la barra del bar, guardé mi trompeta en la habitación trasera, y tras coger mi sombrero y mi gabán, me dirigí a pie a casa por las calles melódicas que encierra la ciudad del Sena.
+     
+     No supe llegar a casa, imágenes de otra infancia y el viejo sonido a acordeón desafinado me mostraron el camino del recuerdo: sí, unos recuerdos desatinados que trocaron unos momentos tan ordinarios como simples en mi vida. Mi sombrero voló, casi con desprecio hacia mi calva, yendo a depositarse sobre el dorso húmedo de una barca pintada de verde y granate que con suavidad se rozaba sobre uno de los duros y gélidos muros del Sena. Me arrastré por los mojados adoquines hasta intentar alcanzar mi ridículo sombrero cuando aquel dorso húmedo palpitó y sentí como todo mi cuerpo se cubría de vello erizado. Aquella barca se movía, no alegremente al son del cálido oleaje del Sena, sino con un cuerpo de mujer, serenamente y con paciencia. Mi cigarrillo rodó, obligándome a seguirlo con la mirada hasta justo detenerse sobre la inscripción ya casi ilegible en la proa de la barca. Doblemente me sobrecogí cuando pude leer el nombre de Sandrine, y recordé los meses felices que pasé junto a ella en el número 23 de la Rue Lapin Pierot. Pude alcanzar mi sombrero, totalmente calado, desteñido, y corrí lo más rápido que pude, mientras ella me repetía desde su tumba que todo era una absurda casualidad.
+     
+     No llegué a casa aquella noche, rendido a los brazos de la lluvia, caí recostado al pie de una farola de luz tenue y sin más me precipité hacia un sueño aliviador.`
+      },
+      {
+        title: 'II',
+        content: `Al día siguiente, tras olvidar lo sucedido, volví al ambiente decadente de mi lugar de trabajo, abrazado a mi trompeta me mezclé entre las miradas de las niñas grandes torturadas por los años y zapatos de tacón sin reparar en que una mujer, cálida y bella, se sentaba frente a mí con un cigarrillo rubio aplastado y mojado entre los dedos.`
+      }
+    ]
   }
 ];
 

@@ -34,6 +34,7 @@ const Relatos: React.FC = () => {
                                     src={story.coverUrl}
                                     alt={story.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    style={{ objectPosition: story.coverPosition || '90% center' }}
                                 />
                                 <div className="absolute inset-0 bg-ink/20 group-hover:bg-ink/0 transition-colors duration-500"></div>
                                 {story.sections.length === 0 && (

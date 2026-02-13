@@ -150,7 +150,11 @@ const RelatoDetail: React.FC = () => {
                                 )}
 
                                 {section.illustrationUrl && (
-                                    <div className="relative group">
+                                    <div className={`relative group mx-auto ${section.illustrationSize === 'sm' ? 'max-w-sm' :
+                                            section.illustrationSize === 'md' ? 'max-w-md' :
+                                                section.illustrationSize === 'lg' ? 'max-w-3xl' :
+                                                    'w-full'
+                                        }`}>
                                         <div className="absolute -inset-4 bg-gold/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
                                         <img
                                             src={section.illustrationUrl}

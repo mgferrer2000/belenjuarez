@@ -12,6 +12,7 @@ import Plaquettes from './pages/ObraLiteraria/Plaquettes';
 import Relatos from './pages/ObraLiteraria/Relatos';
 import RelatoDetail from './pages/ObraLiteraria/RelatoDetail';
 import CriticaLiteraria from './pages/ObraLiteraria/Critica';
+import CriticaDetail from './pages/ObraLiteraria/CriticaDetail';
 import Traduccion from './pages/ObraLiteraria/Traduccion';
 import ResenasLibros from './pages/ObraLiteraria/ResenasLibros';
 import ResenaDetail from './pages/ObraLiteraria/ResenaDetail';
@@ -49,6 +50,7 @@ function App() {
               <Route path="relatos" element={<Relatos />} />
               <Route path="relatos/:id" element={<RelatoDetail />} />
               <Route path="critica" element={<CriticaLiteraria />} />
+              <Route path="critica/:slug" element={<CriticaDetail />} />
               <Route path="critica-andalusi" element={<CriticaAndalusi />} />
               <Route path="prologos" element={<Prologos />} />
               <Route path="traduccion" element={<Traduccion />} />

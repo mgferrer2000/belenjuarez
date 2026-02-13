@@ -105,6 +105,7 @@ export interface StorySection {
   title?: string;
   content: string;
   illustrationUrl?: string;
+  illustrationSize?: 'sm' | 'md' | 'lg' | 'full';
 }
 
 export interface ShortStory {
@@ -115,6 +116,27 @@ export interface ShortStory {
   publicationInfo: string;
   synopsis: string;
   coverUrl: string;
+  coverPosition?: string;
   sections: StorySection[];
   pdfUrl?: string;
+}
+
+export interface ReviewItem {
+  id: string;
+  title: string;
+  author?: string;
+  publicationInfo?: string;
+  text: string;
+  imageUrl?: string;
+}
+
+export interface LiteraryCriticism {
+  id: string;
+  publication: string;
+  title?: string;
+  year: string;
+  coverUrl: string;
+  slug: string; // For routing
+  excerpt?: string;
+  reviews?: ReviewItem[];
 }

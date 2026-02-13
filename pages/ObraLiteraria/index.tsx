@@ -26,7 +26,7 @@ const ObraLiteraria: React.FC = () => {
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`text-sm uppercase tracking-widest hover:text-deep-red transition-colors whitespace-nowrap ${location.pathname === link.path ? 'text-deep-red font-bold border-b-2 border-deep-red' : 'text-ink/60'
+                                className={`text-sm uppercase tracking-widest hover:text-deep-red transition-colors whitespace-nowrap ${location.pathname === link.path || location.pathname.startsWith(link.path + '/') ? 'text-deep-red font-bold border-b-2 border-deep-red' : 'text-ink/60'
                                     }`}
                             >
                                 {link.name}
