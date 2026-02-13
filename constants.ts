@@ -873,7 +873,130 @@ PERTENECÍ, primer y sugerente título que con total seguridad dará comienzo a 
     year: '1998',
     coverUrl: '/images/Critica_literaria/Ficciones_4.jpeg',
     slug: 'ficciones-4',
-    excerpt: 'En el Nº4 de FICCIONES: reseña de CUANTAS LLAVES (Icaria, 1998) de Concha García. EL LIBRO DE LOS SALMOS (Devenir, 1998) de Jesús Urceloy. TODOS LOS NOMBRES (Alfaguara, 1998) de José Saramago. SIN PUERTAS (Pre-textos, 1996) y EL SILLÓN MALVA (Planeta, 1995) de Ramón Mayrata'
+    excerpt: 'En el Nº4 de FICCIONES: reseña de CUANTAS LLAVES (Icaria, 1998) de Concha García. EL LIBRO DE LOS SALMOS (Devenir, 1998) de Jesús Urceloy. TODOS LOS NOMBRES (Alfaguara, 1998) de José Saramago. SIN PUERTAS (Pre-textos, 1996) y EL SILLÓN MALVA (Planeta, 1995) de Ramón Mayrata',
+    reviews: [
+      {
+        id: 'cuantas-llaves',
+        title: 'CUÁNTAS LLAVES',
+        author: 'CONCHA GARCÍA',
+        publicationInfo: 'Editorial Icaria. Poesía. Barcelona. 1998. Prólogo M. Vázquez Montalván',
+        imageUrl: '/images/Critica_literaria/Ficciones_4/llaves.png',
+        text: `Sentarse a descubrir un ritual hermético, silenciado, coherente con la propia existencia que deja al descubierto todos los extremos del desorden de lo que se es y lo que se vive. CUÁNTAS LLAVES, cuántas llaves abrirían el espacio cúbico de un libro que deplora ya desde el principio todo el mundo que cualquier personaje protagonista de su presente es incapaz de ver. Sin embargo, es la autora real en su sentido de visión, dueña de todas las llaves que desde lo cotidiano nos deja pasar a las sensaciones no perceptibles y tan evidentes a la vez, de todo hombre o mujer. Situándonos desde esta realidad, todo lo que cabe en un bolsillo o entre los ojos es elocuente. Pero alcanzar esa posición inicial, desde una soledad incierta, desde la situación de valentía, a veces puede escapar de las manos y es la poeta quien nos dirige esas manos cerradas y las llena de llaves, de cosas tangibles, de costumbres. Existe en este libro el balanceo y dominio de las palabras, palabras que a veces desde la sorpresa no es posible descubrir sino a través de la tinta de la escritora, recuerdos de un futuro mal calculado, negación de un presente inmóvil en beneficio del intento de alargar ese presente, o la incertidumbre del pasado que no lo es desde el lenguaje. Se vive dentro de este libro, se empieza su lectura con un sabor de boca no preguntado, y a su paso, el futuro se irá adueñando de nuestro tiempo entre los (momentos) cotidianos.
+Efectivamente, un futuro a fragmentos mal calculado por parte del lector que se siente obligado desde su propia experiencia a poseer todas y cada una de las líneas aquí escritas.
+El silencio se despliega desde una música interior, y nos obliga a la reflexión desde la poesía, desde las palabras, desde la armonía de las letras perfectamente equilibradas:
+
+_En la vida de cualquiera_
+_no hay nada más perverso_
+_que un amor imposible. Sirve oler_
+_cualquier ángulo de la sábana_
+_para tener certezas de segundo orden._
+
+Y desde esa sábana, a propósito de cotidiano, se mira el techo o la ventana, y no será lo importante, pues los elementos del vivir serán solamente instrumentos al servicio del tiempo de la mujer interior que vive al otro lado de Concha. Empieza esa singular trayectoria desde una situación que es la de cualquiera:
+
+_Hubo suerte al dejar el coche_
+_situándolo junto al hotel. Mi rostro_
+_había cambiado en esas horas._
+_Te distraje en el aparcamiento_
+_y vi a dios un rato, desconecté_
+_la radio y me puse la ropa_
+_de los días helados. Te amaba_
+_mientras perdía las llaves . ..._
+
+Revela así mismo un presente (¿o pasado?) antes mencionado como alargado:
+
+_... Bendije mi pasado_
+_por haberme ocultado tanto_
+_quebranto del alma, sospeché_
+_que tu silencio provenía de un amor_
+_lejano, y me acerqué a tu lado. ..._
+
+Y termina llevándonos, al final del poema, a ese futuro (¿o presente?) que nos obliga desde los días:
+
+_...Yo y mi cuerpo. Este cuerpo_
+_que debe sentarse reclinado_
+_para que los delirios sean reales._
+...
+_Me crecen facultades extrañas_
+_como si fuesen antiguas, las reconozco_
+_en mi manera de estar_
+_de concederle a la noche días aparte._
+
+Antonio Ortega en LA PRUEBA DEL NUEVE (antología) nos dice: "Cuando el lector entra en cualquiera de los libros de Concha percibe casi de inmediato dos cosas: la soberanía del sujeto lírico (mi personaje literario es una mujer y el lenguaje que transmite es el lenguaje de otra mujer), y la peculiaridad, por su personal construcción del habla que lo sustenta".
+Como diría Oscar Wilde: _La vida moral del hombre forma parte del tema del artista, pero la moralidad del arte consiste en el perfecto uso de un medio imperfecto_. A él acudo, y de momento sólo a él que nos dice desde las páginas amarillas de un libro ya casi olvidado que —_Los que encuentran bellas intenciones en las cosas bellas son los cultos. A ellos les queda la esperanza_—
+A Concha le queda la esperanza, pero no únicamente lo bello, hace moral el uso del lenguaje y de ello se deriva la perfección de su uso. De este libro, ¿cuántas llaves seremos capaces de averiguar? ¿hasta dónde la capacidad de llegar?
+
+_... Debo regresar a las sábanas_
+_pagaremos mañana. Ven._
+_....Iremos._`
+      },
+      {
+        id: 'libro-salmos',
+        title: 'EL LIBRO DE LOS SALMOS',
+        author: 'JESÚS URCELOY',
+        publicationInfo: 'Devenir, 1998',
+        imageUrl: '/images/Critica_literaria/Ficciones_4/salmos.png',
+        text: `_…Concibo la poesía como el mayor acto de libertad…_
+[R] J. Urceloy
+
+Primer libro publicado de este joven autor, que merece -desde su comienzo- que se le preste la suficiente atención. Dividido en tres libros a su vez detallado por años, poemas desde 1985 hasta 1998. Llama al ojo de la crítica por la originalidad de su tono: un salmo de vivencias que se escapan de las manos y que llegan al oído en un intento de acometer la inexistencia de lo cotidiano. Inicia sus textos con una forma sorprendente y con increíble fuerza inquietante:
+
+_Yo, ego, pecador_
+_de una nueva forma de blasfemia..._
+
+Y a lo largo de sus textos intenta y consigue llegar a tocar lo evidente y en lo que no se repara habitualmente, tres salmos menores por las líneas de un bolero que concluyen su primer espacio para continuar en su segundo tiempo con el tono de lo vivido.
+
+_...Lo peor es tu amor por esa chica que hoy comparte mi cama,_
+_y la frialdad con que escribe tu nombre_
+_en su libreta azul de los festivos._
+
+Describe finalmente una línea totalmente cóncava en el ritmo, de caídas y subidas llegando incluso a provocar el vértigo de las ideas. Se entrelaza en recuerdos breves, tal vez en miedos a hacerse adelante, pero desde luego con la total lucidez de un extraordinario poeta por descubrir.
+
+_...alzo esta capa y brindo por vosotros,_
+_y doy gracias al cielo la virtud_
+_de haberos conocido y la desgracia_
+_de no ser peor poeta o mercader._
+
+Es por tanto la condición de la fuerza poética lo que más sobresale de sus líneas. Tal vez nuestra próxima generación de ritmos novedosos que ya se adentra en el nuevo milenio. Como él mismo dice: Me importa muy poco cómo se ha escrito un poema si éste me dice. Si habla. Si comunica. Si es honesto, en suma. Pero no admito la ignorancia, la ausencia de rigor, la decadencia —como decía Twain— en el arte de mentir. Y eso se nota. Siempre. La poesía es.`
+      },
+      {
+        id: 'todos-nombres',
+        title: 'TODOS LOS NOMBRES',
+        author: 'JOSÉ SARAMAGO',
+        publicationInfo: 'Alfaguara, 1998. Traducción Pilar del Rio',
+        imageUrl: '/images/Critica_literaria/Ficciones_4/nombres.png',
+        text: `El escritor escribe un libro, pero ese libro no está terminado hasta que el lector no lo ha entendido perfectamente.
+Pilar del Río.
+
+Nuevamente nos sorprende el autor tras más de diez libros publicados en su brillante trayectoria iniciada públicamente con EL AÑO DE LA MUERTE DE RICARDO REIS, y digo nos sorprende pues no se trata de una simple novela de rutinario entretenimiento, por otro lado, cosa fácil de hacer en nuestros días y de atrevida vulgaridad, a veces, en muchos autores que no quiero ni nombrar.
+Existen intenciones de dejar evidencia de la importancia del lenguaje, de la esencialidad de la palabra como origen del recurso más básico del hombre. Y no sólo en su uso correcto me entretengo, pues su tendencia a la denuncia de la violación social, hecho casi paralelo a la propia condición humana, se palpa de forma singular en este libro. Un señor, Don José, que narra su historia de búsqueda ansiosa de la mujer desconocida no es más que la incógnita y el vehículo de narración de la explotación piramidal de la estructura social en la que estamos inmersos. Y eso es lo importante en este libro: la condición del autor comprometida con las clases sociales más explotadas, que no menos cultas. Un simple escribiente de intachable y eficiente conducta en su quehacer diario no es más que eso, un valor añadido a la sociedad que produce y consume. ¿Y no hay nada más?, incluso la benevolencia al no castigo del mandamás de la Conservaduría es un insulto. De todo nos habla el autor, de todas estas cosas y por supuesto no necesariamente con palabras escritas.`
+      },
+      {
+        id: 'ramon-mayrata',
+        title: 'RAMÓN MAYRATA, UN ESCRITOR VIBRANTE',
+        author: 'RAMÓN MAYRATA',
+        publicationInfo: 'SIN PUERTAS (Pre-textos, 1996) / EL SILLÓN MALVA (Planeta, 1995)',
+        imageUrl: '/images/Critica_literaria/Ficciones_4/sillon.png',
+        text: `Poesía:
+Sus primeros poemas aparecen en la Antología ESPEJO DEL AMOR Y DE LA MUERTE (1971) junto a otros autores como Javier Lostalé, Eduardo Calvo, Luis Alberto de Cuenca y Luis Antonio de Villena. Selección y prólogo de Antonio Prieto. Prologada de Vicente Aleixandre.
+Más tarde publica ESTÉTICA DE LA SERPIENTE, 1972, UNA DUDA DE ALICIA, 1990. SIN PUERTAS, 1996.
+
+Ensayo:
+POR ARTE DE MAGIA, 1982. EL OJO DE LA ARBITRARIEDAD, 1986. LA SANGRE DEL TURCO, 1990.
+
+Teatro:
+LA VÍA LÁCTEA, estrenada en 1993.
+
+Narrativa:
+Relatos: SI ME ESCUCHAS ESTA NOCHE, 1991. Novela: EL IMPERIO DESIERTO, 1992. EL SILLÓN MALVA, 1994. ALI BEY, EL ABASSI, 1995.
+
+Si abriésemos en algún mágico momento las puertas de la realidad del lenguaje, del mundo imaginario de las sensaciones, o la denuncia de un autor comprometido con otras culturas, tal vez nos encontraríamos con Ramón Mayrata. Y no hay que olvidar que un autor que demuestra un claro dominio de géneros tan diversos como son poesía, narrativa, ensayo o teatro, no se debe únicamente a una exactitud y correcto equilibrio de la técnica. Debe haber algo más; y ese «algo más» corre en beneficio de un mundo interior lleno de vivencias, sensaciones y sensibilidad extraordinaria.
+Con su último libro de poesía SIN PUERTAS, tal vez no sea necesario insistir en las tres partes que lo delimitan, tal vez es condición necesaria fijarse en el ritmo palpitante y enlazado de sus versos. Porque el autor no nos habla sólo de un lugar o espacio dirigido (en su primera parte) buscando la consecución de los personajes (en su tercera parte) que habitan ese lugar. Existe un fondo en sus versos llenos de elocuencia, de imágenes, tal vez irreales, que muestran la insistencia del autor por la vibración interna, suya propia.
+De su narrativa, nunca olvidar su situación comprometida con culturas africanas, tan cercanas a él por la propia experiencia que lo llevó de viaje al otro lado del Estrecho. Nunca olvidar que junto a su tono literario fluido vive el hombre del desierto.
+Fijándonos en EL SILLÓN MALVA, el autor nos relata la vivencia de un guionista perseguido por la parodia de su propia vida, seres de un solo instante al amparo de un hombre "casi sin rostro", y desde luego no deja este libro de mirar hacia al Sur donde encuentra en la huida del protagonista también su instante en África.
+Otros libros igualmente sugerentes son ALI BEY, EL ABASSI, o EL IMPERIO DESIERTO volviendo a notar la insistencia del autor por el tema saharaui.
+Y de toda esta diversidad, se debe insistir siempre en lo evidente: no sirve de nada saber escribir con diferentes plumas si no se consigue la atención máxima del lector. Lo difícil es encontrar poesía vibrante en un novelista, prosa devorante en un poeta, el pensamiento irónico en un dramaturgo (no se le escapa ni Unamuno y sus pajaritas de papel), o la consecución de la originalidad de las escenas en un narrador de relatos. Y este autor lo consigue. Lo consigue sobradamente desde su intuición y su estilo.`
+      }
+    ]
   },
   {
     id: '1',

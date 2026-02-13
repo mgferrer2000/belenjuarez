@@ -63,8 +63,28 @@ const CriticaDetail: React.FC = () => {
                                     </div>
                                 </div>
 
-                                <div className="text-ink/80 font-light leading-relaxed text-justify whitespace-pre-wrap">
-                                    {review.text}
+                                <div className="text-ink/80 font-light leading-relaxed">
+                                    {review.text.split('\n').map((line, i) => {
+                                        const isRight = line.trim().startsWith('[R]');
+                                        const cleanLine = isRight ? line.trim().slice(3).trim() : line;
+
+                                        if (cleanLine.trim() === '') {
+                                            return <div key={i} className="h-4" />;
+                                        }
+
+                                        return (
+                                            <div key={i} className={isRight ? 'text-right' : 'text-justify'}>
+                                                {cleanLine.split(/(\*\*[^*]+\*\*|_[^_]+_)/g).map((part, index) => {
+                                                    if (part.startsWith('**') && part.endsWith('**')) {
+                                                        return <strong key={index} className="font-bold text-ink">{part.slice(2, -2)}</strong>;
+                                                    } else if (part.startsWith('_') && part.endsWith('_')) {
+                                                        return <em key={index} className="italic text-ink font-light">{part.slice(1, -1)}</em>;
+                                                    }
+                                                    return <span key={index}>{part}</span>;
+                                                })}
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>
