@@ -871,7 +871,7 @@ PERTENECÍ, primer y sugerente título que con total seguridad dará comienzo a 
     publication: 'Revista Ficciones',
     title: 'Número 4',
     year: '1998',
-    coverUrl: '/images/Critica_literaria/Ficciones_4.jpeg',
+    coverUrl: '/images/Critica_literaria/Ficciones_4/Ficciones_4.jpeg',
     slug: 'ficciones-4',
     excerpt: 'En el Nº4 de FICCIONES: reseña de CUANTAS LLAVES (Icaria, 1998) de Concha García. EL LIBRO DE LOS SALMOS (Devenir, 1998) de Jesús Urceloy. TODOS LOS NOMBRES (Alfaguara, 1998) de José Saramago. SIN PUERTAS (Pre-textos, 1996) y EL SILLÓN MALVA (Planeta, 1995) de Ramón Mayrata',
     reviews: [
