@@ -1085,7 +1085,7 @@ Quisiera aclarar el inicio de la reseña de este libro: “Una cálida madrugada
         title: 'DE(S)APARICIONES',
         author: 'PEDRO J. DE LA PEÑA',
         publicationInfo: 'Ediciones Libertarias, Poesía.1994',
-        imageUrl: '/images/Critica_literaria/extramuros/Extramuros_29-30.jpeg',
+        imageUrl: '/images/Critica_literaria/extramuros/desapariciones.jpeg',
         text: `Lo miré a los ojos. Una cálida madrugada en el aterrador desierto del aeropuerto de Valencia, entre risas y emociones, charlaba con un viejo amigo, mientras yo, poco ingenua y más antártica que nunca, olfateaba entre anónimos, emprendiendo mi viaje y aventura por tierras orientales de dátiles y suspiros.
 
 De(S)aparecido del mundo, y Aparecido en medio del verso más increíble, encontré al poeta en el año 1994 cubierto de una chistera negra a modo de enorme tejado protegiendo los azules que estremecían la fachada de su rostro. Encontré a Pedro J. de la Peña, en la "Onomatopeya" atrevida y sinfónica, en la "Abolición" del verso más cautivador, en la "Hibernación" de su propia tarde de miedos autistas, en la "Fosforescencia" del doloroso cuerpo del poeta bajo la hierba.
