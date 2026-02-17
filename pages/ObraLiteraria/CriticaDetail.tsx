@@ -68,6 +68,37 @@ const CriticaDetail: React.FC = () => {
                                         const isRight = line.trim().startsWith('[R]');
                                         const cleanLine = isRight ? line.trim().slice(3).trim() : line;
 
+                                        // Check for image marker [[IMG:index]]
+                                        const imgMatch = cleanLine.match(/^\[\[IMG:(?:([RL]):)?(\d+)\]\]$/);
+                                        if (imgMatch && review.images) {
+                                            const align = imgMatch[1];
+                                            const imgIndex = parseInt(imgMatch[2]);
+
+                                            if (review.images[imgIndex]) {
+                                                if (align === 'R') {
+                                                    return (
+                                                        <div key={i} className="float-right ml-6 mb-4 max-w-[150px] md:max-w-[200px] clear-left">
+                                                            <img
+                                                                src={review.images[imgIndex]}
+                                                                alt={`Imagen ilustrativa ${imgIndex + 1}`}
+                                                                className="w-full h-auto object-contain rounded-sm shadow-sm"
+                                                            />
+                                                        </div>
+                                                    );
+                                                }
+
+                                                return (
+                                                    <div key={i} className="my-8 flex justify-center">
+                                                        <img
+                                                            src={review.images[imgIndex]}
+                                                            alt={`Imagen ilustrativa ${imgIndex + 1}`}
+                                                            className="max-w-full h-auto max-h-[500px] object-contain rounded-sm shadow-sm"
+                                                        />
+                                                    </div>
+                                                );
+                                            }
+                                        }
+
                                         if (cleanLine.trim() === '') {
                                             return <div key={i} className="h-4" />;
                                         }
@@ -92,7 +123,7 @@ const CriticaDetail: React.FC = () => {
                 </div>
             ) : (
                 <div className="bg-white/50 p-8 rounded-lg text-center">
-                    <p className="text-ink/60 italic">
+                    <p className="text-ink/60 italic whitespace-pre-line">
                         {criticism.excerpt || "Contenido no disponible."}
                     </p>
                 </div>

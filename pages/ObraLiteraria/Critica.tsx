@@ -47,7 +47,7 @@ const Critica: React.FC = () => {
                                 </div>
 
                                 {criticism.excerpt ? (
-                                    <p className="text-ink/80 font-light leading-relaxed mb-4 text-justify">
+                                    <p className="text-ink/80 font-light leading-relaxed mb-4 text-justify whitespace-pre-line">
                                         {criticism.excerpt}
                                     </p>
                                 ) : (

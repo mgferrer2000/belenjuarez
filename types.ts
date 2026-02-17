@@ -128,6 +128,7 @@ export interface ReviewItem {
   publicationInfo?: string;
   text: string;
   imageUrl?: string;
+  images?: string[];
 }
 
 export interface LiteraryCriticism {

@@ -1003,18 +1003,107 @@ Y de toda esta diversidad, se debe insistir siempre en lo evidente: no sirve de 
     publication: 'Revista Alhucema',
     title: 'Número 8',
     year: '2002',
-    coverUrl: '/images/Critica_literaria/Alhucema_8.jpeg',
+    coverUrl: '/images/Critica_literaria/Alhucema_8/Alhucema_8.jpeg',
     slug: 'alhucema',
-    excerpt: 'RAFAEL RODRÍGUEZ ALMODÓVAR Y EL VERSO DE LOS AÑOS. Reseña del libro: MEMORIA DE UN TIEMPO CUMPLIDO. Colección literaria CAROAL. 2001. Versos que muestran el recorrido de un tiempo que se esfumó entre las manos de este poeta, dejando una estela de aceptación, tristeza y asombrosa clarividencia. El autor comprime su tiempo en este poemario con elegancia y maestría. Libro prologado por la también desaparecida Mari Luz Escribano con quien el autor mantuvo una estrecha y armónica relación literaria en la revista Extramuros, y que fue referencia de las Letras Españolas de aquellos años. Quedó -sin lugar a dudas- la esencia de aquellos años bañados por el esplendor de magníficos poetas y poesía plural. En esta ocasión, versos limpios y profundos de un poeta ya desaparecido. Desde sus primeras páginas se advierte la apacible tristeza de un tiempo cumplido.'
+    excerpt: `RAFAEL RODRÍGUEZ ALMODÓVAR Y EL VERSO DE LOS AÑOS
+Reseña del libro: MEMORIA DE UN TIEMPO CUMPLIDO. Colección literaria CAROAL. 2001
+
+Versos que muestran el recorrido de un tiempo que se esfumó entre las manos de este poeta, dejando una estela de aceptación, tristeza y asombrosa clarividencia. El autor comprime su tiempo en este poemario con elegancia y maestría. Libro prologado por la también desaparecida Mari Luz Escribano con quien el autor mantuvo una estrecha y armónica relación literaria en la revista Extramuros, y que fue referencia de las Letras Españolas de aquellos años. Quedó -sin lugar a dudas- la esencia de aquellos años bañados por el esplendor de magníficos poetas y poesía plural. En esta ocasión, versos limpios y profundos de un poeta ya desaparecido. Desde sus primeras páginas se advierte la apacible tristeza de un tiempo cumplido.`,
+    reviews: [
+      {
+        id: 'memoria-tiempo-cumplido',
+        title: 'RAFAEL RODRÍGUEZ ALMODÓVAR Y EL VERSO DE LOS AÑOS',
+        author: 'RAFAEL RODRÍGUEZ ALMODÓVAR',
+        publicationInfo: 'Colección literaria CAROAL. 2001',
+        imageUrl: '/images/Critica_literaria/Alhucema_8/tiempocumplido.jpg',
+        text: `Reseña del libro: MEMORIA DE UN TIEMPO CUMPLIDO
+
+Belén Juárez. Enero. 2002
+
+Yo conozco a Rafael Rodríguez Almodóvar, persona de tremendos silencios y leves sonrisas. Poeta de los que encuentran en las calles de su Granada, en cada recorrido, el mismísimo verso infinito del tiempo. Conozco a Rafael, es de esas personas con las que nunca he tenido conversaciones largas, pero aun sin necesitarlas he podido ver y comprender en sus ojos, acertar en pensar que es una persona brillante por el sentido tan exacto que tiene de la Vida. Él es una de esas personas que no le piden a la Vida la prisa de la Evolución, —paso a paso, —tiempo al tiempo, por favor...—, —Amabilidad...—, la Modernidad no consiste en apresurarse a descubrir los inventos del Lenguaje, pues éste llega en su propio caminar a nuestras mentes sin necesidad de obligarlo con símbolos artificiales.
+Rafael, es lo que denominamos en el mundo de los escritores, un poeta elegante. A quien no le estorban los jóvenes, pero que tampoco olvida a sus poetas mayores.
+Nos sorprende en esta ocasión con un nuevo libro "Memoria de un tiempo cumplido", de la Colección literaria CAROAL, prologado por la también escritora M. Luz Escribano e ilustrado por Dolores Montijano. Libro donde una vez más nos deja ver su madurez literaria con asombrosa clarividencia. Podemos recorrer este poemario y sentir el verso limpio y profundo de un poeta consolidado; Ya desde su primera página en su poema "En sombras" advertimos una tristeza de años de la que no huye y donde delata la presencia de un tiempo que él considera ya cumplido.
+
+
+_—Si esto ocurriera, que rechazo_
+_por ética del hombre,_
+_cuando el deseo me puede,_
+_me conmueve y me inclina_
+_a perderme en la nada,_
+_me afirmo en la miseria_
+_de saberme agotado_
+_y mi tiempo cumplido...—_
+
+
+
+Versos de una tremenda fuerza que van creando el cuerpo de este libro ahogado en su propia fiebre de años. Libro que se balancea solo, que llega del pasado, mira hacia delante con incertidumbre, y vuelve nuevamente la mirada al pasado. Ir y venir de luces, abierto el tiempo entre sus propias manos, he aquí algunos de los versos más hermosos de este texto:
+
+
+_—...Las dos manos que tengo no_
+_tiemblan todavía:_
+_en una se sostiene el peso de mis años._
+_El tiempo breve que me queda_
+_mi derecha soporta_
+_sin que claudique nunca,_
+_y soy sólo el que soy,_
+_un hombre que camina_
+_con ética profunda...—_
+
+Acierta M. Luz Escribano en advertir una tendencia machadiana en este libro, la soledad como cúmulo de muertes, sus paseos por noviembre y sus fuertes. Bien este autor consagrado, sincero y maduro nos muestra su imagen más dolida, inquieta y justa, donde podemos averiguar el diálogo del propio poeta con los años ya vividos.
+Es por tanto, Rafael, el poeta de la Amistad y como ya dije antes uno de nuestros poetas más elegantes de Granada. En este libro, así lo podremos descubrir, en cada uno de sus versos, en cada una de las eternas sensaciones de su tiempo.
+
+
+Bibliografía: Jerez de la Frontera, 1921. Estudió Filosofía y Letras en Sevilla y Madrid, tras lo cual pasó a trabajar en la Banca. Director del Banco Exterior de España en Ceuta, Zaragoza, Granada y Cádiz.
+
+Colaborador en revistas y periódicos: "Cauce" (años 40); "Ayer" "La voz del Sur" (Jerez); "Diario de África" (Tetuán, Marruecos); "El Faro de Ceuta".
+Cofundador de la revista "Extramuros" con José Espada, 1995.
+Fundador de la revista "Primavera" y "Solera jerezana" (1944-49).
+Libros publicados: "En ningún tiempo". 1990. "Ámbar de mi vino". 1992. "De nieblas y silencios". 1998.`
+      }
+    ]
   },
   {
     id: '2',
     publication: 'Revista Extramuros',
     title: 'Número 29-30',
     year: '2003',
-    coverUrl: '/images/Critica_literaria/Extramuros_29-30.jpeg',
+    coverUrl: '/images/Critica_literaria/extramuros/Extramuros_29-30.jpeg',
     slug: 'extramuros',
-    excerpt: 'LO MIRÉ A LOS OJOS. Reseña del libro: DE(S)APARICIONES - PEDRO J. DE LA PEÑA. Ediciones Libertarias, Poesía.1994. Extramuros. Revista de Letras, Nº 29-30. Belen Juárez. 2003. Quisiera aclarar el inicio de la reseña de este libro: “Una cálida madrugada en el aterrador desierto del aeropuerto de Valencia, entre risas y emociones, charlaba con un viejo amigo, mientras yo, poco ingenua y más antártica que nunca, olfateaba entre anónimos, emprendiendo mi viaje y aventura por tierras orientales de dátiles y suspiros.” Conocí a Pedro J. Peña hace más de 20 años, en el aeropuerto de Valencia camino del Instituto Cervantes de Beirut. Junto a Ricardo Bellveser y Antonio Porpetta fuimos invitados a llevar nuestros versos a las orillas más orientales del Mediterráneo. Hoy ninguno de los tres está ya con nosotros, y me sigue abrumando su partida y emocionando sus versos. El libro reseñado de Pedro J de la Peña escrito en 1994 derrochaba pasión, ironía y majestuosos silencios escritos con versos. El poeta debe hacer sentir, dijo una vez. Hoy nos queda su alma, su sonrisa y aquella crecida chistera de versos.'
+    excerpt: `LO MIRÉ A LOS OJOS
+
+Reseña del libro: DE(S)APARICIONES
+PEDRO J. DE LA PEÑA
+
+Ediciones Libertarias, Poesía.1994
+Extramuros. Revista de Letras, Nº 29-30
+Belen Juárez. 2003
+
+Quisiera aclarar el inicio de la reseña de este libro: “Una cálida madrugada en el aterrador desierto del aeropuerto de Valencia, entre risas y emociones, charlaba con un viejo amigo, mientras yo, poco ingenua y más antártica que nunca, olfateaba entre anónimos, emprendiendo mi viaje y aventura por tierras orientales de dátiles y suspiros.” Conocí a Pedro J. Peña hace más de 20 años, en el aeropuerto de Valencia camino del Instituto Cervantes de Beirut. Junto a Ricardo Bellveser y Antonio Porpetta fuimos invitados a llevar nuestros versos a las orillas más orientales del Mediterráneo. Hoy ninguno de los tres está ya con nosotros, y me sigue abrumando su partida y emocionando sus versos. El libro reseñado de Pedro J de la Peña escrito en 1994 derrochaba pasión, ironía y majestuosos silencios escritos con versos. El poeta debe hacer sentir, dijo una vez. Hoy nos queda su alma, su sonrisa y aquella crecida chistera de versos.`,
+    reviews: [
+      {
+        id: 'desapariciones-pedro-pena',
+        title: 'DE(S)APARICIONES',
+        author: 'PEDRO J. DE LA PEÑA',
+        publicationInfo: 'Ediciones Libertarias, Poesía.1994',
+        imageUrl: '/images/Critica_literaria/extramuros/Extramuros_29-30.jpeg',
+        text: `Lo miré a los ojos. Una cálida madrugada en el aterrador desierto del aeropuerto de Valencia, entre risas y emociones, charlaba con un viejo amigo, mientras yo, poco ingenua y más antártica que nunca, olfateaba entre anónimos, emprendiendo mi viaje y aventura por tierras orientales de dátiles y suspiros.
+
+De(S)aparecido del mundo, y Aparecido en medio del verso más increíble, encontré al poeta en el año 1994 cubierto de una chistera negra a modo de enorme tejado protegiendo los azules que estremecían la fachada de su rostro. Encontré a Pedro J. de la Peña, en la "Onomatopeya" atrevida y sinfónica, en la "Abolición" del verso más cautivador, en la "Hibernación" de su propia tarde de miedos autistas, en la "Fosforescencia" del doloroso cuerpo del poeta bajo la hierba.
+"Sostengo la hipótesis de que nunca he nacido", me dijo nada más abrir sus páginas, a modo de conversación inicial con su propia existencia, sin embargo sostenía entre sus dedos un dorado bastón, sólido y presidencial, como si me advirtiera de un terrible viaje... Comenzó su vida y su escena prima recordándome la muerte, los paraísos del infierno ante el deshonor, la ausencia de la memoria del Lenguaje, los trabajos hostiles, ¿y para cuándo?, sus mismísimos zapatos a motor y carcajadas, los deprimentes compañeros de pluma que venden su mercancía a menor precio que una mujer sin concha, y a modo de inconfundible arena construyó entre mis dedos su propio laberinto, —susurrándome— (para no atenernos a engaños), que una tumba de versos no es más profunda que la que olvidamos al nacer.
+[[IMG:R:0]]
+Sin embargo, su mejor escena estaba aún por llegar, al seguir avanzando por los silencios de sus páginas, encontré que la mayor de las verdades radicaba en la negación de la Luz. "Luz que ciega y maltrata"... donde las estrellas, al igual que las profundidades del poeta que se descubre durante las soledades de su inexistencia. Te miro, —querido poeta— y habría dado la plata de mis muñecas por ser cómplice del robo de tu gata. Tal vez una presa eterna para tus halcones piratas. Más aún, al final del escenario seguían corriendo los trenes de cien pasos a la par de un mismo sueño, porque sueño es la palabra del poeta a quien miro a los ojos en estos momentos. Enjuiciado, y le cantas al traidor, ¿a quién sino? En tu lluvia en Haití donde encontraste entre collares de corales y el hambre acuñada de belleza el recuerdo de tu infancia. 
+Hielo. Hielo ante una vida que pasa a mejor vida en inmortal cuerpo helado. En tu tercera escena, hasta el frío protege las páginas de un verso de vidrio y aire en eterna conversa- ción con tus Mayores. Y mientras sigues en tu cúpula de extraños, los dedos de tus inviernos en rozamiento perpetuo de un seno aparecen por las esquinas de tu propia vida. Tal vez... ni acierte en recordar el nombre de aquel hotel en Oriente..., pero sigues, nombrándome las bondades del invierno del Príncipe de la Noche, a modo de revés o bofetada sobre los cuellos de todos los lectores casi diez años después... Y más me castiga El Padre y su Casa en total desacuerdo con los hermosos pájaros correteando por las esquinas de mi alma y de tu sangre, cuando supe que aquel sagrado laberinto herido con olor a hierbabuena y sudor de palomas igualmente se acercaban a mí, hablándome de las cerradas primaveras de castaños, frambuesas y cerezas serranas... Me pierdo, en este frío de páginas templarias a modo de yegua que se lleva en la boca un poco de pradera, el misterio y la vida. Pierdo la Noche y se la cedo al ganador de luces, al gladiador romano que nos batió en sueños en el templo de Júpiter. Hielo, sigue siendo hielo, la advertencia de los años dormidos...
+Cuarta escena, y de(s)apareces de los años noventa conservando tu chistera y sus secretos, aquel áureo bastón que le ganaste a la Vida a pesar de sus terribles fugas. Y conservo la imagen del traje negro iluminado de rojos en tu cuello de versos, sin embargo, insistes y me impones la sentencia de la búsqueda inútil atentando contra el viento y las palabras... "No intentes aplacarla (la Vida, se entiende), y menos con imágenes inútiles..."—así me dices— que Nadie nos sigue siempre a pesar de todas nuestras certezas. Fabricamos la esperanza en nuestros delirios, —insistes—, en los cuerpos en lucha contra el tiempo, pero suma y sigue hacia la muerte como río de paneles cayendo sobre el juego (—a modo de dominó—). Versos y más versos de tu boca, escupiendo la lenta transformación, sumiso diálogo del uno contra la otra, la manzana contra Cezzánne. Y a pesar de tus esfuerzos, —créeme— siempre sabré quién eres, a pesar de tus lombrices y tus cerrados ojos azules enmascarados de olvido. Más deseabas tener las manos llenas de disculpas ante tu asesino, que la propia muerte que te ofrecía el verdugo de versos, más abrazabas el deseo de aparecer por sus árboles frondosos, que morir sin alma a modo de piedra sin honor ni huella. No moriría nunca, era(mos) un mastín sin dueño al que la muerte ignora. Y sobre todos aquellos versos de contemplación, el miedo seguía existiendo sobre tus papeles, miedo de morir sin noche, el anhelo de un silencio que no termina de llegar rodando por las páginas, el silencio que nació conmigo, el mismo día y la misma noche, y que hoy decide perpetuarse en la página más abierta del tiempo y se adhiere al galope de tus versos de poeta. Familia fue y hermano sigue siendo, en la inmortal verdad de tus entrañas Hermano mío, tú que no existes... Pues me cierras, con herrumbre y dificultad, esta puerta de los años, así, calmo, quedando por siempre todo bajo tu chistera y tus infinitos ojos, como un trozo de cielo robado a los años, perpetuado en tu mirada.
+
+Así mis ojos te miraron mi señor de(S)aparecido del mundo, tras la puerta cerrada de tus años que impidieron salir de la Casa del Padre todas tus muertes... El nombre de la rosa tatuada en el madero de aquel hotel, sigue sin venir a mi memoria, pero de esta muerte aún conservo su recuerdo entre mis versos. Meses después comprendí la fortuna de aquel viaje, la casual suerte de invadir la Casa de Júpiter, todas las felices carcajadas en los zapatos, lo comprendí al tener entre mis manos el libro perdido de un dios "de(S)aparecido" por siempre de las tertulias de poetas de "moda".
+
+[[IMG:1]]`,
+        images: [
+          '/images/Critica_literaria/extramuros/bio.jpeg',
+          '/images/Critica_literaria/extramuros/Dedicatoria.jpeg'
+        ]
+      }
+    ]
   }
 ];
 
