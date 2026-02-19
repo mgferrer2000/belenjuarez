@@ -36,7 +36,7 @@ const CriticaDetail: React.FC = () => {
                         <div key={review.id} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-start`}>
                             {/* Image Column */}
                             <div className="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
-                                <div className="aspect-[3/4] relative shadow-lg bg-white p-2 transform rotate-1">
+                                <div className="aspect-[3/4] relative shadow-lg bg-white p-2 transform">
                                     {review.imageUrl ? (
                                         <img
                                             src={review.imageUrl}

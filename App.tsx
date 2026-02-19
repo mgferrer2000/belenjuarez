@@ -20,6 +20,7 @@ import ResenaDetail from './pages/ObraLiteraria/ResenaDetail';
 import CriticaAndalusi from './pages/ObraLiteraria/CriticaAndalusi';
 import Prologos from './pages/ObraLiteraria/Prologos';
 import Entrevistas from './pages/ObraLiteraria/Entrevistas';
+import EntrevistaDetail from './pages/ObraLiteraria/EntrevistaDetail';
 // import Articulos from './pages/ObraLiteraria/Articulos'; // Keeping if needed or deleting
 import PoesiaVisual from './pages/PoesiaVisual';
 import Arte from './pages/arte';
@@ -56,6 +57,7 @@ function App() {
               <Route path="prologos" element={<Prologos />} />
               <Route path="traduccion" element={<Traduccion />} />
               <Route path="entrevistas" element={<Entrevistas />} />
+              <Route path="entrevistas/:slug" element={<EntrevistaDetail />} />
             </Route>
 
             <Route path="/poesia-visual" element={<PoesiaVisual />} />

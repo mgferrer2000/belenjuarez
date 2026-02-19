@@ -1,4 +1,4 @@
-import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview, Plaquette, ShortStory, LiteraryCriticism } from './types';
+import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview, Plaquette, ShortStory, LiteraryCriticism, Interview } from './types';
 
 export const BOOKS: Book[] = [
   {
@@ -1846,4 +1846,135 @@ export const SOCIALS: SocialLink[] = [
   { platform: 'Instagram', url: '#', iconName: 'Instagram' },
   { platform: 'Twitter', url: '#', iconName: 'Twitter' },
   { platform: 'Email', url: 'mailto:belen@example.com', iconName: 'Mail' },
+];
+
+export const INTERVIEWS: Interview[] = [
+  {
+    id: '1',
+    title: 'ENTREVISTA A ANTONIO CARVAJAL',
+    slug: 'entrevista-antonio-carvajal',
+    publication: 'Ficciones, Revista de Letras. 2ª Época. Nº1. Primavera 1997. Pág 4-11',
+    year: '1997',
+    date: '13 de Marzo de 1997',
+    intro: 'Nos situamos en la Facultad de Traductores de la Universidad de Granada, donde Antonio Carvajal tiene su lugar de residencia profesional, profesor de Teoría de la Literatura en dicha Facultad, hoy, 13 de Marzo de 1997, nos recibe amablemente y ajusta su apretada agenda para dedicarnos unos momentos de su tiempo.',
+    content: `
+Ficciones. En sus inicios encontramos un libro: Tigres en el Jardín, del año 1968, dedicado a Vicente Aleixandre, ¿qué influencia recibe de sus textos? 
+A. Carvajal: De Vicente Aleixandre, como poeta, poca, como persona, ya hay muchísima, porque está ya afortunadamente de por medio la amistad. Yo conocí a V. Aleixandre en el año 1965, y para mí, conocerle, fue un hecho absolutamente fundamental en mi vida, pero cuando conozco a V. Aleixandre yo tenía mi voz poética ya casi formada, no muy decidida del todo, pero ya casi formada. En Tigres en el jardín, la influencia es mínima, lo había leído, pero no con la intensidad que había leído a otros poetas y la obra de Aleixandre es mucho más rastreable en otras obras mías posteriores. 
+F.: ¿Y qué escritores han influido a partir de entonces en su obra? 
+[IMG:1:L]
+A. C.: En Tigres en el Jardín está clarísimo, y no sé por qué los críticos no lo han señalado, la huella de Rubén Darío; se han preocupado mucho de citar a Góngora, el Barroco, pero no se dan cuenta de que el barroquismo posible que pueda haber en Tigres en el jardín tiene un tinte modernista muy claro y también una enorme presencia del francés Paul Valéry, y en cuanto al transfondo ideológico ya se observa mi preferencia por los filósofos epicúreos, debido a la lectura de los pocos fragmentos que se conservan de Epicuro y bien de las huellas de Epicuro en otros filósofos, p.e. Lucrecio, del que he hecho auténtico pasto de lecturas y he utilizado como fuente de poesía, pero esas cosas son del intramundo de los libros. 
+[IMG:0:R]
+F.: En el libro Ciudades de Provincia cita que se sintió en un momento peligroso de escritura por miedo a que se le encasillara en unas formas determinadas... 
+A. C.: No era miedo, es que la crítica inmediatamente que uno pone una «estampilla», lo confina a los estrechísimos límites de esa definición; un libro de poesía está abierto a muchos frentes, aunque en el libro se procure que haya una línea coherente tanto de expresión como de temas, la realidad es que de un mismo libro pueden salir múltiples derivaciones, múltiples líneas, y así en Tigres en el Jardín la presencia del dolor es escasísima.
+[IMG:2:L]
+F.: Se cita el tema de los arcángeles... 
+F.: Sí, si, pero el tema del dolor es muy escaso e incluso está tratado con un cierto desdén porque afortunadamente el poeta en ese momento se siente feliz, sin embargo la situación cambia mucho cuando llega Serenata y Navaja (su segundo libro), cambia mucho, porque la vida, queramos o no, influye; los procesos vitales siempre influyen en los desarrollos poéticos y mi vida sufrió una serie de alteraciones en los años que mediaban entre Tigres en el Jardín y Serenata y Navaja; no hablo de la publicación, sino de la relación de los libros: una serie de acontecimientos familiares y de otro tipo alteró lo que era el status provisional, relativamente feliz, que yo vivía cuando escribí Tigres en el Jardín y que se deshizo cuando escribí Serenata y Navaja. El miedo al encasillamiento es lo que yo noté en las reseñas de Tigres en el Jardín, que se quedara únicamente en los elementos formales, cosa que la crítica ha ido repitiendo y que a mí me llama la atención, el que siempre se hable de los elementos formales. 
+F.: ¿Investigar nuevas formas? 
+A. C.: No, lo mío no es tanto investigar nuevas formas como destruir y recomponer las pasadas, es decir, combinaciones estróficas que yo haya inventado o «reutilizado», sin embargo, lo que sí he hecho ha sido destruir las antiguas e intentar darles un aire nuevo, que yo creo que en Serenata y Navaja ya sí consigo. A mí no se me puede encasillar entre los novísimos, porque en mí sigue la preocupación política y social, a mí no se me puede incluir entre los novísimos porque mi sentido de la ética es otro, y a mí no se me puede incluir entre los novísimos porque yo siempre he repetido una frase, creo de Ravelli que dice «Ciencia sin conciencia es ruina del alma», y eso lo he tenido siempre presente como lema y desde mi primer libro hasta el último esa frase me ha estado condicionando y obligando a hacer un tipo determinado de literatura, es decir, yo sí creo en el compromiso del escritor y ésto sería el dato fundamental que me separaría de los novísimos. 
+F.: Habla en su libro Servidumbre de Paso de Pedro Soto de Rojas... 
+A. C.: Cuando hablo de Pedro Soto de Rojas me refiero al poeta, autor de Desengaño de amor en rimas, El paraíso cerrado para muchos, un jardín abierto para pocos, estoy hablando de un poeta al que otros poetas como Lorca o Gerardo Diego, incluso el mismo Neruda, prestaron muchísima atención y que si hay algún referente en poesía clásica que se pueda citar como ejemplo de lo granadino sería precisamente él, que es el primero que elabora la Tópica y que construye esa frase como título de su libro Paraíso cerrado para muchos, jardines abiertos para pocos y que a partir de Lorca se va a convertir en un cliché para designar a Granada. 
+F.: Incluso en un principio pensé en la relación con Pedro Soto, teólogo y filósofo español de aproximadamente el año 1500, y que habló sobre la Doctrina del Sacramento de la Eucaristía… 
+A. C.: (Entre risas), tampoco habría que extrañarse mucho porque en Serenata y Navaja hay un poema que se titula Sobre el ardor de la lucha postrera que es la traducción de un epígrafe de Santo Tomás de Aquino de una de sus partes de su Suma Teológica, y yo algo de Teología he leído también, sobre todo de Teología moral, uno de los libros que más he consultado, precisamente para no cometer errores amorosos en mi poesía ha sido la Teología Moral del Padre Cullera. 
+[IMG:3:R]
+F.: En Ciudades de Provincia se hace un recorrido por pueblos como Úbeda, Baeza y se utilizan los símbolos de la Naturaleza para describir la belleza, se decide una frase La Arquitectura como arte bella colectiva…, aparte del cambio de formas, ¿es éste el propósito de este libro, la descripción de la belleza de la arquitectura de las ciudades de Jaén? 
+A. C.: Concretamente en el poema Piedra viva (Amanecer en Úbeda), que es el primer poema de tema jienense y que se encuentra precisamente en Serenata y Navaja, cuando yo me planteé este libro, Serenata y Navaja, procuré hacer una serie de poemas de los grandes arquetipos artísticos; como arquetipo de la Música tomé a Mozart, para la Escultura me basé en Bernardo Olmedo, para la Pintura un cuadro de Francisco Pedraja Vista de Badajoz al atardecer y para la Arquitectura me basé en Úbeda, en concreto en el espacio urbano presidido por la Capilla de El Salvador, esa fachada con fondo maravilloso, lorquiano, olivares, es fundamentalmente todo el ámbito de la plaza lo que entra dentro de la visión del poema y si se mira bien el poema Piedra Viva (Amanecer en Úbeda) hay incluso un elogio al trabajo colectivo manual, se necesitan muchos picapedreros, albañiles y canteros; precisamente eso está rompiendo con la estética dominante del momento en que esos temas no se podían tocar porque eran realmente ordinarios; pongamos por caso, cuando la gente se queda deslumbrada ante el resplandor de Venecia no piensan en quienes han levantado Venecia, ven el resultado, pero no ven que ese resultado lo es de un proceso y en ese proceso ha habido un trabajo colectivo que es lo que ha posibilitado esa maravilla estética; Venecia es un lugar maravilloso, pero también lo es Úbeda. 
+F.: ¿Existe alguna conexión en este libro con amigos queridos? 
+A. C.: Sí, normalmente mi poesía está muy motivada: hay una parte de mi poesía en que lo que se cuenta no es una anécdota, una experiencia vivida por mí, sino fundamentalmente algo contemplado, suelo tomar bastante distancia con los temas que trato en mi poesía, entre otras cosas porque la emoción intensa no me permite más que sentirla, y si no tengo distancia no puedo escribir el poema, lo tengo dicho en el libro De un Capricho a Celeste, en concreto en Confidencias de un hijo de este tiempo a Rafael León, hablo de que necesito estar reposado y consciente para la tarea de escribir el poema e incluso próximo a la felicidad, no totalmente feliz porque si soy feliz entonces no escribo. 
+F.: ¿Sería como un espectador? 
+A. C.: No, es que las vidas ajenas no son solamente fuente de inspiración para el novelista; el poeta puede hallar arquetipos en lo que otros viven, en lo que otros hacen y en lo que otros padecen y desde luego, para mí es mucho más fácil entender desde el punto de vista poético lo que les ocurre a otros que describir las miserias cotidianas que pasan por mi interior y yo tengo la suerte de poder presumir de amigos de altísima calidad humana y esa altísima calidad humana es posiblemente la mayor fuente de mi poesía. 
+F.: ¿De alguna manera Antonio Carvajal es un paraíso cerrado? 
+A. C.: No, las relaciones amistosas y amorosas son normalmente al menos de dos y yo todos los amigos los tengo compartidos, no son exclusivos, únicos y cerrados, es un mundo muy abierto. No hay cierre, una cosa es la intimidad y otra cosa es el mundo cerrado; yo siempre hago un test a la gente que conozco nueva cuando me empieza a interesar para saber si puedo ser amigo suyo y es que les pregunto qué prefieren si una Torre o un Puente. 
+F.: No dejas dudosos y pensativos…
+A. C.: Todos los temas me afectan y han aflorado en mi poesía. El libro Siesta en el Mirador (cuarto libro), que toma por título el mismo de un poema del primer libro Tigres en el Jardín, hay alguna interpretación del mito de Narciso, diferente a la interpretación convencional; muchas veces he dicho que el narcisismo no es algo nuevo, es una enfermedad, está clarísimamente descrito por los psicólogos. Existe un componente extraño: cuando Narciso nace, su madre lo lleva al adivino Tilesias, y cuando la madre le pregunta: - ¿Será feliz? -, el adivino dice: - sí, si no se conoce -; claro, marcar un destino de esa manera cuando precisamente el Oráculo de Delfos dice todo lo contrario, - Conócete a ti mismo -, nos tiene que poner en sospecha de que algo raro hay en el mito y efectivamente Narciso muere cuando se conoce, porque el narciso del mito no se enamora de sí mismo, se enamora de una criatura hermosísima que ve y cuando descubre que esa criatura es él mismo, es el momento de su muerte; por eso la interpretación es muy curiosa y yo coloco aquí precisamente el poema Siesta en el Mirador (y sabemos que el mirador es un balcón cerrado). Narciso no amó su voz, amaba el eco de su voz, no se amaba a sí mismo, amaba la imagen que él ignoraba que era sí mismo.
+F.: Eres un observador muy sensible de todo lo que te rodea; sería como un balcón abierto, donde ves que entran todos los que están a tu alrededor. Precisamente se siente esa emoción al leer el poema Noviembre, dedicado a tu padre, así como el poema décimo quinto de la Antología de Treinta años de Poesía Española, cuando parece que hablas de tu hijo, «...Alguna vez mis labios, hijo mío,/ han buscado tu rostro...». 
+A. C.: No es una experiencia mía, porque yo afortunadamente soy soltero y no soy padre soltero. Se trata de la pérdida del padre y la negación del hijo, pero esa experiencia, repito, no está vivida por mí; me basé en la reacción de un amigo mío ante la negación de su hijo. Es algo en que insisto, p.e. el libro Raso, Milena y Perla, en el poema dedicado a Guillermo González, unas veces Antonio Callejas, otras veces yo mismo, el poema se va componiendo de todo aquello que yo voy asimilando de esa conversación. 
+F.: He podido observar que existe en este libro Raso, Milena y Perla una descripción poética de amigos, de personas, ¿qué nos puedes decir de esto? 
+A. C.: Este libro es un libro motivado íntegramente desde fuera. Este libro se va haciendo al mismo tiempo que los poemas finales de Testimonio de Invierno, los poemas de Miradas sobre el agua y los poemas del último libro que he terminado y que tengo entregado al editor. Es un libro que es un proceso de años y con las respuestas a pintores, a escultores, a músicos que me piden colaboración bien para catálogos, bien para obras y claro, no he recogido todo lo que he escrito para los distintos artistas, trata de ser un libro coherente. Incluso, en esos concretos, p.e., Fábula pagana y Fábula bíblica tiene como soporte de mi escritura autógrafa, dibujos de M. Teresa Martín Vivaldi, dedicado a las dos personas a las que después se les ha hecho el regalo del cuadro. Frente a libros de poesía como son el resto de mi obra, este libro, Raso, Milena y Perla está totalmente motivado por la amistad.
+F.: Entonces, el mensaje que da el libro, ¿podría ser en sí la amistad? 
+A. C.: Fundamentalmente; creo que hay una reflexión sobre nuestro estar en el Mundo y una reflexión sobre el Arte, concebido el Arte en sus aspectos más generales y más concretos; en el libro yo afirmo que más durará el cuadro y el poema que quienes lo pintamos o lo escribimos y hay un gozo de saber que la obra perdura por encima de nuestra propia pervivencia vital; hay muchas más cosas p.e. una pregunta sobre la Felicidad, en concreto en el poema dedicado a Asunción Jódar que creo que es una de las claves de toda mi poesía: «¿Por qué los dioses fueron incapaces/ de hacer felices a sus hijos, todos;/ los padres deben ser crueles y mudos?», insisto en la mudez del padre que luego se le va a oír con la paráfrasis de las siete palabras de Cristo en la Cruz y toda esa serie de cosas; hablamos del silencio de Dios. 
+F.: Y de los Poemas de Granada... 
+A. C.: La paráfrasis se rubricó primero en los Poemas de Granada, pero en realidad, su sitio, el sitio natural de este conjunto de poemas es en Miradas sobre el agua. 
+F.: ¿Busca la Nostalgia a Antonio por las esquinas? 
+A. C.: a mí no.
+F.: ¿Cómo te definirías? 
+A. C.: Las palabras como «Neuralgia», «Nostalgia», me suenan a enfermedades que se suelen quitar con una aspirina o cosas de esas. Si me dan ataques de melancolía, pero nostalgia no, es algo que está unido a mi modo de vivir, no sé siquiera si habré utilizado alguna vez esa palabra en verso, no la recuerdo, sin embargo la palabra Melancolía sí. 
+F.: ¿Tienes una fuente oculta de mala vida? 
+A. C.: (Entre risas) ¡Naturalmente! 
+F.: Como todo buen artista... 
+A. C.: ¡Como todo buen artista no, como todo ser humano que quiera vivir!, ¡buenos estaríamos si tuviéramos que enseñar nuestra intimidad como si fuera un escaparate de mercancías que se compra y se vende! 
+F.: ¿Satisfecho con tu poesía?
+A. C.: Todavía no, de algunos poemas sí. 
+F.: Pero nunca se llega a alcanzar la satisfacción plena de escritor. 
+A. C.: Depende de con quien me compare; si me comparo con la mayoría de los vivos, casi me dan ataques de vanidad y casi me creo que soy bueno; si me comparo con algunos vivos y muchos de los muertos desde luego la humildad se impone y hay que reconocer que de acuerdo con lo que a mí me gusta y con lo que admito, falta todavía mucho para llegar a ese escalón. 
+F.: ¿Hablamos de Antologías? 
+A. C.: Yo siempre digo lo mismo de las antologías: hay que preguntarle a los antólogos y a los lectores. ¡Yo cómo voy a responder por un antólogo!, ni de sus criterios ni de sus gustos. A mí no me interesa la antología que he tenido y porque me consta que han sido lectores y sé qué poemas míos han llegado a un núcleo determinado de lectores. Me interesa saber la reacción de mis lectores y por lo menos los antólogos me ofrecen la garantía de que me han leído y a veces coincidimos en las preferencias. Desde el momento en que me eligen, ya me están valorando, luego, los rótulos que me pongan, es responsabilidad de ellos. Yo me limito a dar las gracias. 
+F.: ¿Duermes bien o los sueños te despiertan a menudo? 
+A. C.: A mí no me han despertado nunca los sueños, los sueños… sueños son. 
+F.: ¿Te siguen inspirando las mismas cosas que hacen veinte años? 
+A. C.: ¡Muchas más!, afortunadamente con la edad el mundo se ensancha mucho, también se reduce porque se pierde interés por cosas que a los diecisiete años parecen fundamentales y después uno comprueba que eso son fantasías de ayer y yo estoy totalmente de acuerdo con unas declaraciones de Carlos Fuentes que decía que él a los veinte años era un perfecto idiota; yo coloqué mi grado de idiotez perfecta entre los quince y veintidós años y a medida que la vida lo va escarmentando a uno y lo va poniendo en su sitio se da cuenta que los caprichos de niño, ni son fecundos, ni conducen a nada. Yo recuerdo ese miedo a no saber qué hacer con la vida, esa sensación de vértigo que el tiempo da, la recuerdo como la mejor época física y la peor época espiritual. No hay cosa más idiota que un adolescente y yo fui un adolescente muy completo y por tanto completamente idiota. 
+F.: Es muy fácil ver la vida desde la experiencia de haberla vivido… 
+A. C.: Es que nos llaman la belleza de fantasmas, y lo mismo que un niño de nueve años elige marcas de camisas, cuando llegamos a los diecisiete años estamos eligiendo marcas de vida sin darnos cuenta de que la Vida hay que hacerla en común con los demás, con la máxima generosidad posible y el mínimo egoísmo. Hay que darse cuenta de que hay formas de vida mucho más auténticas que pueden prescindir de todas esas cosas que nos atosigan, desde esas divinidades absolutamente hostiles hasta ese comercio urgente que está haciendo de nosotros las propias víctimas, el Consumismo. 
+F.: Un modo de vida que no conduzca a esas cosas. 
+A. C.: Por ejemplo, aceptarse uno como es. A mí no se me ocurre envidiar al señor que pasa por la calle con un Jaguar (que por otra parte es un coche que me gusta mucho), sería mucho más bonito pasearse a lomos de un jaguar de verdad domesticado y andar a lomos de ese bellísimo animal por encima de la Tierra. Los momentos de máxima felicidad, a veces, han sido compartiendo un vino sin ninguna marca. 
+F.: ¿Eso se traduce en la poesía que escribes? 
+A. C.: Espero que sí, aunque luego uno espiritualmente tenga sus insatisfacciones. ¡Qué más quisiera yo que ser feliz y no escribir poemas!, si fuera absolutamente feliz no escribiría, me dedicaría a ser feliz que es lo más egoísta y lo más hermoso. 
+F.: Eso no lo entiendo, la Felicidad puede estar en escribir... 
+A. C.: Lo dudo, decía Machado: Se canta lo que se pierde...
+F.: O también lo que se gana…
+A.C..: Difícilmente, lo que ocurre es que uno quisiera apresar ese momento, y se escribe sobre ese momento de felicidad para que perdure, para que vuelva a instalarse en el alma y no desaparezca del todo. El poema tiene sentido como disfrute estético y como consuelo siempre me ha entusiasmado la función alcahueta de la poesía. Un poeta auténticamente alcahuete es de los instrumentos más necesarios para el desarrollo de la vida humana. No hay cosa más maravillosa que sorprender a los adolescentes cruzándose versos bien de Bécquer, bien de Salinas, que a un día llegan un amigo y se dé las gracias porque ha cogido dos versos tuyos y ha ligado con ellos, y eso a mí me llena de satisfacción porque entiendo que de esa manera ha facilitado la vida de los demás, lo mismo que a mí me gusta cuando no sé definir lo que tengo dentro, encontrarme con el verso ajeno pongamos por caso de Miguel Hernández y poder concretar mi situación anímica. Yo puedo definir mi adolescencia con unos versos de Lorca que dicen: «...Hoy tengo en el corazón un vago temblor de estrellas, y tengo las cosas son tan blancas como mi pena...» y también puedo en un momento de desgracia auténtica acordarme del aquel verso de Miguel Hernández «Cuánto penar para morirse uno», y tirar para adelante..., y a mí me gustan los poetas que me acompañan. Hay una frase de San Agustín que dice: «...Belleza tan antigua y sin embargo nueva (se me viene a la cabeza la palabra «afín», por aquello de que hacemos a los dioses a nuestra imagen y semejanza); esa frase de San Agustín la hace mirar a uno alrededor y ver cuánta belleza se le escapa, porque la Belleza siempre es vieja y siempre es nueva, siempre es antigua y siempre es presente. 
+F.: Cualquier pequeño detalle puede guardar más belleza que todo un mundo... 
+A. C.: No son magnitudes mensurables. 
+F.: ¿Crees que se puede distinguir un poeta auténtico de otro que no lo es? 
+A. C.: Hay algo que casi nunca suele fallar: el poeta auténtico aun en lo más aparentemente vacío, aun en lo más aparentemente esteticista, tiene siempre un latido afectivo que se contagia, y eso es fácilmente detectable; una vez que un espíritu humano se pone en contacto con ese producto de otro espíritu humano, ese fenómeno se detecta, esa especie de pequeña conmoción que nos avisa de que allí está la poesía auténtica; si está la poesía auténtica, aquel poema bueno. Luego hay poetas muy artificiosos, muy deslumbrantes, que no transmiten esa emoción y el poema termina pasando por el espíritu de uno sin romperlo ni mancharlo, como si no hubiera existido, y si se nota, los poetas verdaderos se notan siempre. 
+F.: ¿Y para cuando el Nacional, Antonio? 
+A. C.: Eso es un problema de los jurados. Le digo a los premios igual que a las antologías, no es el antologado ni el premiado el que tiene que ser preguntado, sino que son los antólogos y los jurados los que tienen que responder de sus actos. 
+F.: Pero Antonio Carvajal no lo necesita... 
+A. C.: (Entre risas), ¡pues la verdad que cinco millones de pesetas no me vendrían mal!... 
+F.: No me refería precisamente a la cuestión económica..., Antonio Carvajal no necesita ya ese premio. 
+A. C.: Los reconocimientos ajenos nunca están de más y por mucho que se diga que uno es autosuficiente, si viene ¡bendito sea!, lo que yo no puedo hacer es rebajarme a mendigarlo, si no me lo dan sus razones tendrán ¡a mí que no me pregunten! (entre risas), no sufro porque no me lo den, ni tampoco me voy a alegrar demasiado porque me lo den. 
+F.: A eso me refería precisamente... 
+A. C.: Tampoco me acuerdo de quien fue el premio de hace cinco años o seis o siete, los premios son una cosa absolutamente efímera, en cambio si me preguntáis por el Premio de las Letras Españolas, sí me acuerdo porque el Ministerio de Cultura hace unas publicaciones maravillosas y después cuando uno las hojea, uno se da cuenta de que aquello sí es un premio consistente, no sólo en dinero sino la publicación de una serie de obras que sí justifican un premio de esa categoría.
+
+Antonio Carvajal. Desde aquí, y en nombre de todos los lectores queremos agradecerte tu colaboración y sus momentos de reflexión y diálogo compartidos. Como dijo Rubén Darío:
+[POEM]Ama tu ritmo y rima tus acciones 
+[POEM]bajo su ley, así como tus versos, 
+[POEM]eres un universo de universos, 
+[POEM]y tu alma una fuente de canciones.
+[POEM]
+[POEM]                           (De Prosas Profanas: 2. «Las ánforas de Epicuro» poema: «Ama tu ritmo»)
+
+[TITLE-CENTER-BOLD]DOS POEMAS DE ANTONIO CARVAJAL DE SU LIBRO RASO MILENA Y PERLA
+[SUBTITLE-CENTER-ITALIC]A Mari Paz Muros y Juan Carlos Lazúen
+[SUBTITLE-CENTER]Dejó un cuadro, un puñal y un soneto
+[SUBTITLE-CENTER-ITALIC]Manuel Machado
+
+[POEM]Si mañana no vivo, si mañana 
+[POEM]queda inmóvil la luz en mi ventana 
+[POEM]sin mi apresuramiento y mi figura, 
+[POEM]sabed que algún soneto os he dejado 
+[POEM]y que, cruzando del olvido el vado, 
+[POEM]salvé de tantos cuadros la hermosura.
+[POEM]
+[POEM]El puñal me lo llevo entre los dientes 
+[POEM]porque morder las frases más mordientes 
+[POEM]es caridad, si no cautela humana. 
+[POEM]¿Qué os dejo? Mi palabra agradecida 
+[POEM]y nada más. Si acaso, una manzana.
+[POEM]
+[POEM]que en vuestras bocas suene a fresco fruto. 
+[POEM]Iré a otra luz. La luz no guarda luto 
+[POEM]por quien la amó en el arte y en la vida.
+[DOUBLE-IMG:4:5]`,
+    coverUrl: '/images/Entrevistas/Carvajal/PORTADA FICCIONES.jpeg',
+    interviewer: 'Belén Juárez',
+    location: 'Granada',
+    images: [
+      '/images/Entrevistas/Carvajal/retrato.jpg',
+      '/images/Entrevistas/Carvajal/tigres.png',
+      '/images/Entrevistas/Carvajal/serenata-y-navaja.jpg',
+      '/images/Entrevistas/Carvajal/ciudades.jpeg',
+      '/images/Entrevistas/Carvajal/raso.jpeg',
+      '/images/Entrevistas/Carvajal/dedicatoria.jpg'
+    ]
+  }
 ];

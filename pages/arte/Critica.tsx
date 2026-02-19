@@ -74,7 +74,7 @@ const Critica: React.FC = () => {
                             {article.images?.map((img, idx) => (
                                 <motion.div
                                     key={idx}
-                                    whileHover={{ scale: 1.02, rotate: idx % 2 === 0 ? 1 : -1 }}
+                                    whileHover={{ scale: 1.02 }}
                                     className="relative group cursor-zoom-in"
                                     onClick={() => setSelectedImage(img)}
                                 >

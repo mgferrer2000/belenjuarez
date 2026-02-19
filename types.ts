@@ -141,3 +141,18 @@ export interface LiteraryCriticism {
   excerpt?: string;
   reviews?: ReviewItem[];
 }
+
+export interface Interview {
+  id: string;
+  title: string;
+  publication: string;
+  year: string;
+  date: string;
+  intro: string;
+  content: string;
+  coverUrl: string;
+  slug: string;
+  interviewer?: string;
+  location?: string;
+  images?: string[];
+}

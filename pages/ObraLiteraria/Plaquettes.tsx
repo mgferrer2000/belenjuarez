@@ -27,7 +27,7 @@ const Plaquettes: React.FC = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="w-48 md:w-64 flex-shrink-0 shadow-2xl rounded-sm overflow-hidden border-4 border-white bg-white transform -rotate-2 hover:rotate-0 transition-transform duration-500"
+                        className="w-48 md:w-64 flex-shrink-0 shadow-2xl rounded-sm overflow-hidden border-4 border-white bg-white transform transition-transform duration-500"
                     >
                         <img
                             src={plaquette.coverUrl}
