@@ -46,7 +46,7 @@ const EntrevistaDetail: React.FC = () => {
                 </div>
 
                 {/* Cover Image in Detail Page - Optional, but good for context */}
-                <div className="mb-10 float-left mr-8 mb-4 max-w-[200px] not-prose hidden md:block">
+                <div className="mb-16 float-left mr-8 max-w-[280px] not-prose hidden md:block">
                     <div className="aspect-[3/4] relative shadow-lg bg-white p-2 transform">
                         <img
                             src={interview.coverUrl}
@@ -57,7 +57,7 @@ const EntrevistaDetail: React.FC = () => {
                 </div>
 
                 {/* Mobile Image */}
-                <div className="mb-10 mx-auto max-w-[200px] not-prose md:hidden">
+                <div className="mb-16 mx-auto max-w-[200px] not-prose md:hidden">
                     <div className="aspect-[3/4] relative shadow-lg bg-white p-2 transform">
                         <img
                             src={interview.coverUrl}
@@ -70,7 +70,7 @@ const EntrevistaDetail: React.FC = () => {
 
                 <div className="text-ink/80 font-light leading-relaxed text-justify">
                     {/* Intro */}
-                    {interview.intro && (
+                    {!interview.hideIntroInDetail && interview.intro && (
                         <div className="mb-8 font-serif text-lg italic text-ink/70 border-l-4 border-deep-red pl-4">
                             {interview.intro}
                         </div>
@@ -175,7 +175,7 @@ const EntrevistaDetail: React.FC = () => {
                                         );
                                     } else {
                                         return (
-                                            <div key={i} className="my-8 flex justify-center not-prose w-full clear-both">
+                                            <div key={i} className="mt-8 mb-2 flex justify-center not-prose w-full clear-both">
                                                 <div className="relative shadow-lg bg-white p-2 max-w-[300px] md:max-w-[400px]">
                                                     <img
                                                         src={imgUrl}
@@ -190,45 +190,103 @@ const EntrevistaDetail: React.FC = () => {
                             }
                         }
 
+                        if (cleanLine.startsWith('[BOOK]')) {
+                            const bookContent = cleanLine.substring(6).split('|');
+                            const title = bookContent[0];
+                            const details = bookContent.slice(1).join('|');
+
+                            // Calculate if it's the last book in the list (rough heuristic: next line is not a book)
+                            const nextLine = interview.content.split('\n')[i + 1]?.trim() || '';
+                            const isLastBook = !nextLine.startsWith('[BOOK]') && nextLine !== '';
+
+                            return (
+                                <React.Fragment key={i}>
+                                    <div className="flow-root mb-4">
+                                        <div className="font-serif text-lg font-bold text-ink leading-snug">{title.trim()}</div>
+                                        <div className="font-serif text-lg text-ink/80 leading-snug">{details.trim()}</div>
+                                    </div>
+                                    {isLastBook && <div className="clear-both h-16 w-full"></div>}
+                                </React.Fragment>
+                            );
+                        }
+
+
+                        if (cleanLine === '[BR]') {
+                            return <div key={i} className="clear-both h-8 w-full"></div>;
+                        }
+
                         const isPoem = cleanLine.startsWith('[POEM]');
                         // Trim to ensure proper centering without leading spaces
                         const lineContent = isPoem ? cleanLine.substring(6).trim() : cleanLine;
 
-                        return (
-                            <div key={i} className={`mb-4 ${isPoem ? 'italic leading-tight text-ink/90 flex justify-center text-center w-full mx-auto' : ''}`} style={isPoem ? { marginBottom: '0.25rem' } : {}}>
-                                {(() => {
-                                    // Check for interlocutor prefixes (only if not a poem)
-                                    if (!isPoem) {
-                                        const interlocutorMatch = lineContent.match(/^(Ficciones\.|F\.:|A\. Carvajal:|A\. C\.:|A\.C\.:|A\.C\.\.:)(\s*)(.*)/);
 
-                                        if (interlocutorMatch) {
-                                            const [_, prefix, space, rest] = interlocutorMatch;
-                                            return (
-                                                <>
-                                                    <span className="font-bold text-deep-red mr-4">{prefix}</span>
-                                                    {rest.split(/(\*\*[^*]+\*\*|_[^_]+_)/g).map((part, index) => {
-                                                        if (part.startsWith('**') && part.endsWith('**')) {
-                                                            return <strong key={index} className="font-bold text-ink">{part.slice(2, -2)}</strong>;
-                                                        } else if (part.startsWith('_') && part.endsWith('_')) {
-                                                            return <em key={index} className="italic text-ink font-light">{part.slice(1, -1)}</em>;
-                                                        }
-                                                        return <span key={index}>{part}</span>;
-                                                    })}
-                                                </>
-                                            );
-                                        }
+                        // Check for Q&A formatting
+                        let contentToRender: React.ReactNode = lineContent;
+                        let paragraphClass = `
+                            text-ink/80 font-serif text-lg
+                            ${isPoem ? 'mb-0 leading-snug italic text-center font-medium mx-8 md:mx-16 lg:mx-24' : 'mb-4 leading-relaxed text-justify'}
+                        `;
+
+                        if (cleanLine.match(/^(F\.|F:|Ficciones\.)/)) {
+                            // Question - Bold entire line
+                            paragraphClass = "mb-4 text-ink leading-relaxed font-serif text-lg text-justify font-bold";
+                        } else if (cleanLine.startsWith('—')) {
+                            // Answer with dash
+                            paragraphClass = "mb-4 text-ink/80 leading-relaxed font-serif text-lg text-justify";
+                            contentToRender = (
+                                <>
+                                    <span className="font-bold mr-1">—</span>
+                                    {
+                                        lineContent.substring(1).trim().split(/(\*\*[^*]+\*\*|_[^_]+_)/g).map((part, index) => {
+                                            if (typeof part === 'string' && part.startsWith('**') && part.endsWith('**')) {
+                                                return <strong key={index} className="font-bold text-ink">{part.slice(2, -2)}</strong>;
+                                            } else if (typeof part === 'string' && part.startsWith('_') && part.endsWith('_')) {
+                                                return <em key={index} className="italic text-ink font-light">{part.slice(1, -1)}</em>;
+                                            }
+                                            return <span key={index}>{part}</span>;
+                                        })
                                     }
-
-                                    return lineContent.split(/(\*\*[^*]+\*\*|_[^_]+_)/g).map((part, index) => {
-                                        if (part.startsWith('**') && part.endsWith('**')) {
-                                            return <strong key={index} className="font-bold text-ink">{part.slice(2, -2)}</strong>;
-                                        } else if (part.startsWith('_') && part.endsWith('_')) {
-                                            return <em key={index} className="italic text-ink font-light">{part.slice(1, -1)}</em>;
+                                </>
+                            );
+                        } else {
+                            const match = cleanLine.match(/^(A\. C\.|A\. Carvajal):/);
+                            if (match) {
+                                // Answer with name
+                                const prefix = match[0];
+                                const rest = cleanLine.substring(prefix.length).trim();
+                                paragraphClass = "mb-4 text-ink/80 leading-relaxed font-serif text-lg text-justify";
+                                contentToRender = (
+                                    <>
+                                        <span className="font-bold mr-1">{prefix}</span>
+                                        {
+                                            rest.split(/(\*\*[^*]+\*\*|_[^_]+_)/g).map((part, index) => {
+                                                if (typeof part === 'string' && part.startsWith('**') && part.endsWith('**')) {
+                                                    return <strong key={index} className="font-bold text-ink">{part.slice(2, -2)}</strong>;
+                                                } else if (typeof part === 'string' && part.startsWith('_') && part.endsWith('_')) {
+                                                    return <em key={index} className="italic text-ink font-light">{part.slice(1, -1)}</em>;
+                                                }
+                                                return <span key={index}>{part}</span>;
+                                            })
                                         }
-                                        return <span key={index}>{part}</span>;
-                                    });
-                                })()}
-                            </div>
+                                    </>
+                                );
+                            } else if (typeof contentToRender === 'string') {
+                                // Default rendering with markdown support
+                                contentToRender = contentToRender.split(/(\*\*[^*]+\*\*|_[^_]+_)/g).map((part, index) => {
+                                    if (typeof part === 'string' && part.startsWith('**') && part.endsWith('**')) {
+                                        return <strong key={index} className="font-bold text-ink">{part.slice(2, -2)}</strong>;
+                                    } else if (typeof part === 'string' && part.startsWith('_') && part.endsWith('_')) {
+                                        return <em key={index} className="italic text-ink font-light">{part.slice(1, -1)}</em>;
+                                    }
+                                    return <span key={index}>{part}</span>;
+                                });
+                            }
+                        }
+
+                        return (
+                            <p key={i} className={paragraphClass}>
+                                {contentToRender}
+                            </p>
                         );
                     })}
                 </div>

@@ -1976,5 +1976,179 @@ Antonio Carvajal. Desde aquí, y en nombre de todos los lectores queremos agrade
       '/images/Entrevistas/Carvajal/raso.jpeg',
       '/images/Entrevistas/Carvajal/dedicatoria.jpg'
     ]
+  },
+  {
+    id: '2',
+    title: 'ENTREVISTA A JUAN CARLOS SUÑÉN',
+    slug: 'entrevista-juan-carlos-sunen',
+    publication: 'Ficciones, Revista de Letras. 2ª Época. Nº2. Verano/Otoño 1997. Pág 58-63',
+    year: '1997',
+    date: 'Verano/Otoño 1997',
+    intro: 'Once de la mañana, nos situamos en el Círculo de Bellas Artes de Madrid y es Juan Carlos Suñén, autor de numerosos libros y ganador de otros tantos premios nacionales, quien nos recibe.',
+    hideIntroInDetail: true,
+    content: `[BOOK]EL HOMBRO IZQUIERDO|1997, XVIII Premio Ciudad de Melilla, Colección Visor de Poesía.
+[BOOK]UN HOMBRE NO DEBE SER RECORDADO|1992, IX Premio Rey Juan Carlos de Poesía, Colección Visor de Poesía.
+[BOOK]POR FORTUNAS PEORES|1991, Poesía/Cátedra.
+[BOOK]LA PRISA|1994, Poesía/Cátedra.
+[BOOK]PARA NUNCA SER VISTOS|1988, Ediciones Libertarias.
+[BOOK]UN ÁNGEL MENOS|1989, Ediciones Libertarias.
+
+[BR]
+[BR]
+
+Once de la mañana, nos situamos en el Círculo de Bellas Artes de Madrid y es Juan Carlos Suñén, autor de numerosos libros y ganador de otros tantos premios nacionales, quien nos recibe.
+
+[IMG:6:L]
+F.: Tú publicas tu primer libro PARA NUNCA SER VISTOS, en 1988. ¿Cuál es el mensaje de esta primera publicación?
+—Yo llevaba escribiendo mucho tiempo y PARA NUNCA SER VISTOS es el primer libro que siento que se puede publicar. En aquel momento me importaba mucho no hacer lo que se estaba haciendo en el país, no me gustaba el venecianismo ni me gustaba tampoco la poesía realista que empezaba a despuntar con la Poesía de la Experiencia. Buscaba algo diferente, lo buscaba en mis clásicos, desde San Juan de la Cruz hasta Paul Celan; PARA NUNCA SER VISTOS es un libro más esencialista que los anteriores donde yo seguramente soy un escritor inseguro y donde tengo una sensación más intelectual que ahora.
+F: Antes escribías otras cosas...
+—Sí, escribía todas esas cosas que escribimos cuando somos más jóvenes pero que no acababan de convencerme. Cuando uno es joven tiende más a tener obsesiones de tipo intelectual, después éstas se vuelven obsesiones de tipo real que es de lo que hablaría ya en los últimos libros, donde hablo del tiempo, de mi concepción sobre la poesía, de mis deseos sobre la Vida en algún momento; ideas y percepciones que me preocupan más intelectualmente que experimentalmente.
+[IMG:7:R]
+F: En el siguiente libro UN ÁNGEL MENOS se reúnen más las condiciones de la vida, el Ser de la Vida; existen conceptos bíblicos. ¿Por qué esa transición de la Vida a través de tonos proféticos?
+—Me interesaba el lenguaje profético porque me iba a obligar a encontrar cosas diferentes, pero sobre todo porque, aunque creo que no era consciente todavía, ya empezaba a escribir con lo que sería mi escritura en sí, que en el fondo es mi propia vida. En aquel momento, creo que ya tenía al menos una dirección y una serie de ideas claras sobre la Vida, esos silencios que se enumeran en el libro donde se reúnen aquello para lo que la Vida no tiene respuestas, aquello que uno tiene que responderse solo. Es un libro muy de arranque, de iniciación a la vida por decirlo de un modo poco feliz pero exacto.
+F: ¿Te basas en algún escritor anterior para estos silencios?
+—No, no hay conexión con la Poesía del Silencio. No es un silencio adoptado desde influencias literarias, es el silencio del lenguaje, un silencio que se produce porque el lenguaje mismo no es capaz de definir determinadas cosas, y ahí es donde surge la Poesía precisamente, cuando las palabras tienen que ir revelando esos silencios, tienen que ir señalándole al lector el lugar de esos silencios.
+F: En 1991 aparece el libro POR FORTUNAS PEORES. ¿Describe el autor en este libro una propia experiencia junto con los dos anteriores que forman la trilogía?
+—Sí, en este libro está mi vida también. Hay quizás más realidad, en el sentido de que hay más pasado que en los otros libros, hay un pasado más asimilado, más fatalista, aunque sigue siendo un libro optimista en cualquier caso. Es un libro donde empiezo a pedirle cuentas al mundo; no sólo le digo lo mío, sino que le pregunto por lo suyo también. Es un libro donde empiezo a pensar más en el lector como aquel que completa o termina el poema. Me inicio más en el interés de la mezcla de géneros literarios o mejor dicho en la posibilidad de no ceñirme a ningún género literario; es un libro donde se entra y se sale de la prosa, se entra y se sale de la poesía, y creo que, sin demasiadas dificultades, sin advertir que ese cambio se está produciendo. Desde el punto de vista formal, eso me interesaba y me sigue interesando en estos momentos.
+[IMG:8:C]
+[SUBTITLE-CENTER]Juan Carlos Suñen, Madrid 1997
+
+F: Me dices que el lector es quien termina el poema, ¿quizás es un rasgo de la Poesía de la Experiencia?, ¿existe conexión contigo?
+—Tengo que discrepar que en la Poesía de la Experiencia el lector no termina nada, el lector recibe un paquete de sentido unidireccional donde lo único que le puede quedar al lector después de leer el poema es un pequeño resumen del poema, precisamente por la definición que la Poesía de la Experiencia ha hecho de sí misma como prosa que ha hecho gimnasia, es decir, porque parece no aceptar una esencia propia, sino que la poesía, según sus poetas, sería una veladura o hermoseamiento de la prosa; creo que elimina la dosis de ambigüedad que la poesía debe tener, el hecho de que la palabra se esté utilizando con muchos más valores que el simple valor conceptual y el lenguaje en muchos más sentidos que un simple sentido sintáctico habitual. Aquí es donde empieza la poesía, creo yo, pero aquí es donde termina desde el punto de vista de la Poesía de la Experiencia. Cuando estás dejando el poema abierto, es cuando la intervención del lector se vuelve más importante.
+F: Hablando de LA PRISA, libro que aparece en Cátedra en el año 1994, se ha dicho que constituye una de las experiencias más ricas de la última poesía española, donde se reúnen los pasos de la lectura, la indagación del lenguaje y el análisis de la realidad. ¿Cómo analiza J.C. Suñén la Realidad en este libro?, ¿aparece como una ruptura con los anteriores?
+—Aparece como una síntesis de las diferentes direcciones en las que yo había buscado, con la misma obsesión de dar cuenta de la Vida. Lo que ocurre en este libro es que me propongo hablar de mi generación, o mejor aún hablar de la frustración de mi generación que tuvo el horizonte al alcance de la mano y que le fue arrebatado; estoy hablando del sentido político. En cualquier caso, en el mismo momento de empezar, arrebatar un poema ya de una manera consciente, en el fondo, es la experiencia de cualquier ser humano en cualquier momento de la vida con independencia de la época que le haya tocado en suerte. Es un libro donde la Realidad entra en forma de lenguaje cotidiano, y donde detrás de las escenas cotidianas surge el sentido transcendente que es lo que quiero que reciba el lector; esa sensación de solidaridad o de consuelo que uno experimenta leyendo algunos autores.
+
+[IMG:0:C]
+[SUBTITLE-CENTER]Juan Carlos Suñén y Belén Juárez en el
+[SUBTITLE-CENTER]Círculo de Bellas Artes de Madrid. 1997
+[IMG:1:R]
+
+F: ¿Existe un juego con el Tiempo?
+—Siempre existe un juego con el Tiempo, porque somos el pasado; cuando pensamos en nuestra propia vida, estamos pensando en el pasado, la Vida transcurre en el pasado, pero no siempre la vemos igual, dependiendo de nuestra propia evolución el pasado lo vamos organizando de modos diferentes; es el corazón quien organiza nuestro pasado, no la memoria.
+F: ¿Existe una historia del lenguaje en este libro?
+—Menos que en el anterior, hay una historia del lenguaje sobre todo en algunas escenas del primer libro PARA NUNCA SER VISTOS donde se llega a eludir lo que eran los ejercicios del lenguaje, de una manera muy velada, pero está ahí; y en POR FORTUNAS PEORES existe un cruce constante entre la figura femenina y el lenguaje, por momentos no se sabe de qué está hablando exactamente. En cualquier caso, siempre he tenido la sensación de que todo lo que nos ocurre, no nos pasa si no pasa en el lenguaje. El lenguaje es la medida de lo Real.
+
+[POEM]¿Va la fuente a la sed, la tumba al muerto?, No,
+[POEM]pero yo (me consuelo) he de llevar la casa al [visitante.
+[POEM]Y he de sacar la puerta de sus goznes,
+[POEM]depositarla alerta al pie de su deseo.
+[POEM]Yo he de llevar la lengua a la palabra.
+[SUBTITLE-CENTER-ITALIC]Del libro: POR FORTUNAS PEORES
+
+[IMG:4:R]
+F: ¿Echa J.C. Suñén la mirada atrás en el tiempo con su libro EL HOMBRO IZQUIERDO?
+—Sí, la echa al menos el protagonista del libro que podría ser el mismo personaje que en LA PRISA concluye la última página cerrando la puerta de su casa y metiéndose en ella; y podría ser este mismo personaje el que analiza las mismas cosas, a sí mismo también, pero desde otra perspectiva. Me había resultado difícil sacarme del oído el tema de LA PRISA, pretendía escribir un libro que no fuese LA PRISA-II, y yo era muy consciente de que lo que necesitaba era un lugar desde donde mirar lo mismo, y ese lugar apareció en la Naturaleza. Es un libro donde la Naturaleza está muy presente, donde el discurso está muy pegado al suelo, pero la Naturaleza que aparece no tiene un mensaje especial que darle al hombre, es una sensación de un
+personaje que se perdió en algún momento y que se encuentra a sí mismo en la Naturaleza.
+
+[POEM]Allí los corazones
+[POEM]claman sin descubrirse. El sufrimiento dicta
+[POEM]sin vergüenza su precio. Le susurra
+[POEM]su confidencia el hombre
+[POEM]al lobo. La costumbre
+[POEM]se ciñe a ese rencor. La casa firme,
+[POEM]dura más que el presente, se remonta
+[POEM]a una fragancia pequeña.
+[POEM]Cuando había un sombrero
+[POEM]en la repisa de los sombreros.
+[SUBTITLE-CENTER-ITALIC]Del libro EL HOMBRO IZQUIERDO
+
+F: Sería como buscar el “Presente Eterno”...
+—Nombro el Presente Eterno en el primer libro, es una idea de conceptos, donde el Ser y el Estar coinciden, son los momentos que se persiguen en EL HOMBRO IZQUIERDO y que van organizando la sucesión del libro.
+F: ¿Existe el silencio en tus versos?
+—Sí, unas veces más y otras veces menos; es como la música, uno puede hacer una pausa y llegar a través de ese silencio al oyente o al próximo tramo; sin embargo, también se puede dejar sonando algunos instrumentos rítmicamente para luego, mediante una mínima variación, introducir el siguiente episodio. Procuro que mis poemas mantengan una estructura musical, y en ese sentido el silencio es imprescindible.
+F: ¿Puede el lector introducir su vida dentro de estos libros?
+—La pretensión es esa. La experiencia que mueve al poeta a escribir es al mismo tiempo la que entrega al lector, pero no se la puede entregar diciéndoselo, que es lo que harían los poetas de la Experiencia mediante un personaje interpuesto u otro, o mediante un correlato objetivo, creo yo. Pienso que no se le puede decir, lo que sí se puede hacer es poner el lector en situación de vivirla; quizás en él no es exactamente igual, pero esto no es algo importante; lo que sí es importante es que será una experiencia en la misma dirección o intuición que la que tuvo el poeta al escribir. En cualquier caso, lo importante es que el poema se vuelva experiencia.
+F: “Un único placer: la Inteligencia” (Guillermo Carnero). ¿Es para J.C. Suñén un placer la inteligencia?
+—Lo es si no duele. Si duele es vanidad. La frase la citaba Clara Janés en una crítica a mi primer libro y es acertada porque la poesía debe ser eso, inteligencia, en cuanto que es imaginación al servicio de la verdad; pero también placer, en cuanto que es una incitación a caminar fuera del camino, o sea: seducción. No se trata como ves de ser culto, que sí, sino de saber dudar, de ser crítico.
+F: En 1991 como crítico literario de “El País”, ¿encuentras algún tipo de dificultad siendo poeta y crítico a la vez, es decir, crear y criticar la obra ya creada?
+—No. Es decir, no fuera de la habitual mezquindad del medio. Decía Eliot que el poeta que ejerce la crítica corre el riesgo de distraerse ante problemas que no perturban a sus colegas menos inquietos. Cito de memoria, pero recuerdo cierta ironía... Y supongo desde luego que hablamos de la crítica escrita, porque un poeta no crítico es algo que no se concibe, me parece. En cualquier caso, uno puede dejar al crítico en posición de tachadura mientras escribe su poema y esperar que aparezca una vez escrito, para que lea sin pasión y decida si lo hecho vale o si hay que seguir, y hasta dónde debe dejar que el poeta se le adelante. Por otra parte, los críticos de poesía suelen ser, a su vez, poetas. Es una cuestión de lenguaje: ¿cómo hablar de algún verdadero poema sin poseer un lenguaje capaz de medirse con él? y, si se posee ese lenguaje, ¿cómo resistirse? Por eso los críticos tienden a primar el poema fácil, que es ese del que pueden hablar.
+[IMG:5:L]
+F: UN HOMBRE NO DEBE SER RECORDADO, surge como cambio rotundo a los tres primeros libros. ¿Por qué la poesía como conciencia indoblegable?
+—Es eso o no es nada. No puedo escribir poemas pensando en lo que se lee en la universidad (un negocio que está detrás de una “poética”, por cierto). Pero ese libro es en realidad un libreto (como un libreto de ópera), posee una voluntad narrativa y una progresión dramática pensadas para su escenificación. Al escribirlo, era el discurso quien seguía al plan, no al revés. Por eso es un libro solitario entre mis libros. No reniego de él, no es eso, pero es otra cosa. En cualquier caso, sí, saltaba allí a primer término mi desprecio hacia ciertas actitudes del poder, y del no-poder...
+[SUBTITLE-CENTER]ELLA (y VI) Mors omnia solvit
+
+[POEM]Sintió en el pecho el esmerado filo
+[POEM]seco y hondo. Miró la empuñadura:
+[POEM]elogió vagamente
+[POEM]la sobria habilidad del artesano...
+[POEM]Luego cerró los ojos
+[POEM]presintiendo
+[POEM]a una última mujer.
+[POEM]Y, para siempre,
+[POEM]soñó que se caía de un caballo.
+[SUBTITLE-CENTER-ITALIC]Del libro UN HOMBRE NO DEBE SER RECORDADO
+
+F: En PARA NUNCA SER VISTOS, describes el tiempo de una edad, tiempo de un amor comprado, reconstrucción de un tiempo pasado y conclusión del tiempo vivido. ¿Despecho por vivir en un “presente eterno”?
+—¿Despecho? Desazón, quizás, pero una desazón alegre. Nuestra vida transcurre en el pasado y nuestros sueños en el futuro, pero la conciencia es del presente, es presente, y el presente es el único espacio de libertad que conozco.
+F: ¿La Muerte en sí como punto final de un tiempo ronda el libro PARA NUNCA SER VISTOS?
+—Ronda todos mis libros, pero no como punto final, sino como un elemento más de ese presente. Es la joven muerte, la muerte moderna, que ya no es un punto final, un lugar del futuro al que anclar la construcción de una vida, sino una presencia actual que corremos el riesgo de desvalorizar si no nos ocupamos de tener una ética del presente. Ese cambio de situación de la muerte es el que vuelve viejos todos los argumentos tradicionales, deja a la vida sin argumento. Ya no vivimos para la muerte, sino con la muerte, pero no me parece mal, no siento nostalgia de lo otro. Vivir así exige otra responsabilidad y otra libertad, eso es todo; y no está mal recordar cómo era el mundo cuando tenía argumento, porque ese argumento estaba siempre al servicio de una causa interesada.
+
+[SUBTITLE-CENTER]V
+[POEM]Pues el orden del viaje es descendente
+[POEM](como en el texto de Orígenes)
+[POEM]no alargues la intención:
+[POEM]En el diestro costado
+[POEM]dispuesto, no lo olvides,
+[POEM]muestra a los aduaneros del aire tu viático.
+[POEM]Acepta el desafío de un undécimo mandamiento
+[POEM]¡Sobrevolad las fiestas!
+[POEM]...............................................
+[POEM]Recibido el bautismo de la luz encamina
+[POEM]tu discurso al prodigio de la profundidad.
+[SUBTITLE-CENTER-ITALIC]del Libro PARA NUNCA SER VISTOS
+
+F: ¿Te guía algún ángel cuando profetizas con el verso?
+—Llamo “ángel” a todo lo que supera nuestra capacidad de comprensión, pero que no deja de estar en las cosas. Mis ángeles son materiales. En cuanto a mis profecías, se hacen desde la fatalidad y atañen a una primera persona, no se hacen desde ninguna fe, de modo que si me guía un ángel ha de ser el ángel del embrollo.
+F: Últimos trabajos...
+—Me estoy fijando en los niños; no sé, no tengo nada claro todavía. Desde luego no deseo escribir “para” los niños, pero quizás sí sobre ellos, aunque aún no tengo nada a lo que agarrarme... Me gustaría, eso sí, terminar un libro de ensayos con el que ando peleando hace unos años. Ya veremos.
+
+[TITLE-CENTER-BOLD]Poemas del libro La Prisa, Cátedra, 1994
+[POEM]Teníamos la prisa de las navajas
+[POEM]Doblábamos la manta en que dormían
+[POEM]nuestros muertos y alzábamos el vaso
+[POEM]en honor de algún sol moderno y limpio.
+[POEM]Teníamos el orgullo,
+[POEM]la salud y el regalo de la pobreza,
+[POEM]las señales y el tiempo de las señales,
+[POEM]la ignorancia y el brazo de la ignorancia,
+[POEM]el pan,
+[POEM]y la buena suerte.
+[POEM]Teníamos la prisa de las navajas. Eso,
+[POEM]y una escasa experiencia de lo fría
+
+[TITLE-CENTER-BOLD]Entre la sucesión y la revuelta
+[POEM]Así podría
+[POEM]descansar todo aquí, ser que no guarde
+[POEM]memoria de esta noche (sin embargo, sumada
+[POEM]a la futura cuenta
+[POEM]de su futuro muerto, recibida
+[POEM]en el miembro amputado
+[POEM]la moneda del yo) sino esa débil
+[POEM]mala conciencia con que cierra, como
+[POEM]el que cierra prudente su navaja,
+[POEM]el hombre que nos queda,
+[POEM]la puerta tras de sí,
+[POEM]sin desengaño.
+
+[IMG:2:C]
+[SUBTITLE-CENTER]Ilustración para la entrevista
+
+[IMG:3:C]
+[SUBTITLE-CENTER]Dedicatorias de libros de J.C. Suñén a B. Juárez.`,
+    coverUrl: '/images/Entrevistas/Suñen/portada.jpeg',
+    interviewer: 'Belén Juárez',
+    location: 'Madrid',
+    images: [
+      '/images/Entrevistas/Suñen/retrato.jpeg',
+      '/images/Entrevistas/Suñen/img20260218_20330407.jpg',
+      '/images/Entrevistas/Suñen/dibujo.png',
+      '/images/Entrevistas/Suñen/dedicatorias.png',
+      '/images/Entrevistas/Suñen/hombro.jpg',
+      '/images/Entrevistas/Suñen/hombre.jpg',
+      '/images/Entrevistas/Suñen/nunca.jpg',
+      '/images/Entrevistas/Suñen/angel.jpg',
+      '/images/Entrevistas/Suñen/retrato2.jpg'
+    ]
   }
+
 ];

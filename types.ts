@@ -155,4 +155,5 @@ export interface Interview {
   interviewer?: string;
   location?: string;
   images?: string[];
+  hideIntroInDetail?: boolean;
 }
