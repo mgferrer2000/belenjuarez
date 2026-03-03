@@ -215,6 +215,14 @@ const EntrevistaDetail: React.FC = () => {
                             return <div key={i} className="clear-both h-8 w-full"></div>;
                         }
 
+                        if (cleanLine.startsWith('[QUOTE]')) {
+                            return (
+                                <blockquote key={i} className="border-l-4 border-deep-red pl-4 py-2 my-6 font-serif text-lg italic text-ink/80 bg-stone-50/50">
+                                    {cleanLine.substring(7).trim()}
+                                </blockquote>
+                            );
+                        }
+
                         const isPoem = cleanLine.startsWith('[POEM]');
                         // Trim to ensure proper centering without leading spaces
                         const lineContent = isPoem ? cleanLine.substring(6).trim() : cleanLine;

@@ -4,7 +4,7 @@ import { Music as MusicIcon, Disc, Info, ChevronRight, X, ListMusic, Youtube } f
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Horizonte: React.FC = () => {
-    const youtubePlaylistId = 'OLAK5uy_mOk2olToM1Q6G6ywf0tR-CDER2al7fa1U';
+    const youtubePlaylistId = 'OLAK5uy_nDUfLuFMPYEaeLx1Lyqcj_pBlOxhEE_pE';
     const [currentVideoId, setCurrentVideoId] = useState<string>(ALBUM_TRACKS[0].youtubeId || '');
     const [activeTrackId, setActiveTrackId] = useState<string | null>(ALBUM_TRACKS[0].id);
     const [showHint, setShowHint] = useState(false);
@@ -38,7 +38,7 @@ const Horizonte: React.FC = () => {
                         <h2 className="text-4xl md:text-5xl font-serif text-white italic">Horizonte de Sucesos</h2>
                     </div>
                     <p className="text-gray-400 font-light max-w-xl leading-relaxed">
-                        El nuevo álbum de Belén Juárez (2025). Una travesía sonora de 22 piezas que exploran los límites entre la realidad y el subconsciente.
+                        El nuevo álbum de Belén Juárez (2025). Una travesía sonora de 21 piezas que exploran los límites entre la realidad y el subconsciente.
                         <br />
                         <span className="text-[#d4af37]/80 text-sm mt-2 block font-medium">Pulsa en un tema para seleccionarlo en el reproductor.</span>
                     </p>
@@ -86,7 +86,7 @@ const Horizonte: React.FC = () => {
                         <Youtube size={16} /> Abrir en YouTube Music
                     </a>
                     <a
-                        href="https://open.spotify.com/intl-es/album/3xQDEU1oeQoWyI6IKsRiWO"
+                        href="https://open.spotify.com/intl-es/album/32YXuhIAqGlZm9qnewcgRl"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 bg-[#1DB954]/10 text-[#1DB954] border border-[#1DB954]/30 font-sans uppercase text-[10px] font-bold tracking-[0.2em] rounded-full hover:bg-[#1DB954]/20 transition-all flex items-center gap-3"
@@ -94,7 +94,7 @@ const Horizonte: React.FC = () => {
                         <MusicIcon size={16} /> Ver en Spotify
                     </a>
                     <a
-                        href="https://music.apple.com/es/album/horizonte-de-sucesos/1843135219"
+                        href="https://music.apple.com/es/album/horizonte-de-sucesos/1879665293"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 bg-[#FA243C]/10 text-[#FA243C] border border-[#FA243C]/30 font-sans uppercase text-[10px] font-bold tracking-[0.2em] rounded-full hover:bg-[#FA243C]/20 transition-all flex items-center gap-3"

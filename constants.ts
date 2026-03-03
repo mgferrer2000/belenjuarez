@@ -1123,13 +1123,12 @@ export const ALBUM_TRACKS: Track[] = [
   { id: '13', title: 'REDES DE ACERO', duration: '4:00', poemSource: 'Horizonte de Sucesos', spotifyId: '06PoOZiCdUy3NjH2uWImSW', youtubeId: 'of5HS4zjmvY' },
   { id: '14', title: 'PURO AZAFRÁN', duration: '3:35', poemSource: 'Horizonte de Sucesos', spotifyId: '3tZS9WF4Q01TN1ZXOlrIGU', youtubeId: 'gAr-1cMfeY4' },
   { id: '15', title: 'GRAN DUQUE', duration: '4:40', poemSource: 'Horizonte de Sucesos', spotifyId: '4t2opuTrSsOEi3m49qkbbh', youtubeId: 'FomuB3WN5DQ' },
-  { id: '16', title: 'ARBOL DEL SUEÑO INTERMINABLE', duration: '5:20', poemSource: 'Horizonte de Sucesos', spotifyId: '7EebH3UL5xBFvvUAbWMG2L', youtubeId: 'uoLH-FeRqyI' },
-  { id: '17', title: 'LOBO', duration: '3:25', poemSource: 'Horizonte de Sucesos', spotifyId: '3TYJEIOMUL0nObaxL8iVRr', youtubeId: '9nMJ54g1a8Y' },
-  { id: '18', title: 'COMPRA MI FRÁGIL VIDA', duration: '4:10', poemSource: 'Horizonte de Sucesos', spotifyId: '3SWh3FyfF3qD4ZlltEs2kW', youtubeId: 'GQ25SITUOzE' },
-  { id: '19', title: 'TOQUE DE CAMPANAS', duration: '4:55', poemSource: 'Horizonte de Sucesos', spotifyId: '17lHmpRq9N6f9WRrAV8MOE', youtubeId: '36FcnqltkAY' },
-  { id: '20', title: 'KEIKO', duration: '3:40', poemSource: 'Horizonte de Sucesos', spotifyId: '2JWP6NXtce81y8aidndypo', youtubeId: 'XyhFye4ZCbE' },
-  { id: '21', title: 'A 6500 AÑOS LUZ', duration: '4:30', poemSource: 'Horizonte de Sucesos', spotifyId: '5DMYd16NZrS2e9bwr9HzUS', youtubeId: 'ze8Pm0MvHJU' },
-  { id: '22', title: 'HORIZONTE DE SUCESOS', duration: '6:15', poemSource: 'Horizonte de Sucesos', spotifyId: '2ffT8mrj1PKn8yZCKqL6qk', youtubeId: 'gsMr2C_jFGk' },
+  { id: '16', title: 'LOBO', duration: '3:25', poemSource: 'Horizonte de Sucesos', spotifyId: '3TYJEIOMUL0nObaxL8iVRr', youtubeId: '9nMJ54g1a8Y' },
+  { id: '17', title: 'COMPRA MI FRÁGIL VIDA', duration: '4:10', poemSource: 'Horizonte de Sucesos', spotifyId: '3SWh3FyfF3qD4ZlltEs2kW', youtubeId: 'GQ25SITUOzE' },
+  { id: '18', title: 'TOQUE DE CAMPANAS', duration: '4:55', poemSource: 'Horizonte de Sucesos', spotifyId: '17lHmpRq9N6f9WRrAV8MOE', youtubeId: '36FcnqltkAY' },
+  { id: '19', title: 'KEIKO', duration: '3:40', poemSource: 'Horizonte de Sucesos', spotifyId: '2JWP6NXtce81y8aidndypo', youtubeId: 'XyhFye4ZCbE' },
+  { id: '20', title: 'A 6500 AÑOS LUZ', duration: '4:30', poemSource: 'Horizonte de Sucesos', spotifyId: '5DMYd16NZrS2e9bwr9HzUS', youtubeId: 'ze8Pm0MvHJU' },
+  { id: '21', title: 'HORIZONTE DE SUCESOS', duration: '6:15', poemSource: 'Horizonte de Sucesos', spotifyId: '2ffT8mrj1PKn8yZCKqL6qk', youtubeId: 'gsMr2C_jFGk' },
 ];
 
 export const ART_PIECES: ArtPiece[] = [
@@ -1347,6 +1346,15 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'Lápiz',
     year: '1998',
     imageUrl: '/images/cuadros/Lapiz/MUJER 3 1998.png',
+    aspectRatio: 'portrait',
+    category: 'bocetos'
+  },
+  {
+    id: '26',
+    title: 'Autorretrato',
+    medium: 'Lápiz',
+    year: '1998',
+    imageUrl: '/images/cuadros/Lapiz/autorretrato-belen.jpg',
     aspectRatio: 'portrait',
     category: 'bocetos'
   }
@@ -1843,9 +1851,8 @@ export const SHORT_STORIES: ShortStory[] = [
 ];
 
 export const SOCIALS: SocialLink[] = [
-  { platform: 'Instagram', url: '#', iconName: 'Instagram' },
-  { platform: 'Twitter', url: '#', iconName: 'Twitter' },
-  { platform: 'Email', url: 'mailto:belen@example.com', iconName: 'Mail' },
+  { platform: 'Instagram', url: 'https://www.instagram.com/belenjj.bjj', iconName: 'Instagram' },
+  { platform: 'Facebook', url: 'https://www.facebook.com/belenjj.bjj', iconName: 'Facebook' },
 ];
 
 export const INTERVIEWS: Interview[] = [
@@ -2149,6 +2156,170 @@ F: Últimos trabajos...
       '/images/Entrevistas/Suñen/angel.jpg',
       '/images/Entrevistas/Suñen/retrato2.jpg'
     ]
-  }
+  },
+  {
+    id: '3',
+    title: 'ENTREVISTA A JUAN CARLOS RODRIGUEZ, UN FILÓSOFO ACTUAL',
+    slug: 'entrevista-juan-carlos-rodriguez',
+    publication: 'Ficciones, Revista de Letras. 2ª Época. Nº4. Otoño/Invierno 1998. Pág 37-44',
+    year: '1998',
+    date: 'Otoño/Invierno 1998',
+    intro: 'Juan Carlos Rodríguez fue catedrático de Literatura de la Facultad de Filosofía y Letras de la Universidad de Granada. Se dedicó exclusivamente a la docencia y la investigación teórica y crítica. Publicó los siguientes libros: Teoría e Historia de la Producción Ideológica (Madrid, Akal, 1975. 2ª Ed. 1990); Melodrama y Populismo en la cultura latinoamericana (incluido en Granada Tango, 1981); La Norma Literaria (Granada, Diputación Provincial, 1984. 2ª Ed. 1994); Moratín o el arte nuevo de hacer teatro (Granada, La General, 1991); Introducción al estudio de la Literatura Hispanoamericana (Akal, 1987, en colaboración con Álvaro Salvador. 2ª Ed. 1994). La Poesía, la Música y el Silencio (de Mallarmé a Wittgenstein) (Renacimiento, Sevilla, 1994); Lorca y el Sentido (Un Inconsciente para una Historia) (Madrid, Akal, 1994). La Literatura del Pobre (Granada, Comares 1994).\n\nSu libro Teoría e Historia de la Producción Ideológica fue traducido por la Universidad de Nueva York donde realizó en la primavera de 1998 un curso titulado "La renovación del pensamiento marxista: Louis Althusser y Juan Carlos Rodríguez". En la primavera de 1999 realizó otro curso (también en la Universidad de Nueva York) titulado: "Neomarxismo y Postmodernismo: Juan Carlos Rodríguez y Anthony Cascardi".\n\nOtros de sus libros hasta el momento de la entrevista fueron: Brecht y el poder de la Literatura (Comares, Colección De guante blanco) y El escritor que compró su propio libro (Comares, Colección De guante blanco).',
+    content: `
+—Antes de publicar tu primer libro, llenabas las aulas de gente que acudía a tus clases. ¿Te consideras maestro de muchos?
+—Por una parte, creo que soy un buen maestro, es decir, mi primera pasión es desde luego la lectura, la segunda pasión para mí es enseñar, enseñar lo que he leído, o mejor, que a la gente le guste leer, aprenda a interpretar la vida, porque eso es la lectura, y la tercera pasión es escribir, por ese orden. Juan Ramón Jiménez decía que él no era un maestro de escuela, pero no tenía nada en contra de los maestros de escuela, se refería a maestro de ninguna escuela poética. Yo no creo que jamás haya sido un maestro de nadie, lo que sí sé es que hay muchas personas influenciadas por un pensamiento mío, por ejemplo, dentro de unos días presido la mesa de Congresos de Psicoanálisis de la Sociedad Andaluza de Psicoanálisis. Bueno, pues el director de la S.A.P. es un médico de Málaga que siempre dice que se hizo psicoanalista gracias a mis clases. Esas son cosas que se agradecen.
+—Las cosas que has dicho han influido mucho y casi crean escuela...
+—Sí, eso por supuesto es cierto, pero yo creo que más bien porque inevitablemente depende de la pasión que tuve a la hora de enseñar, a la hora de conversar, a la hora de hablar de la Literatura, que normalmente no es un tema que se toma en serio. Yo planteé que la Literatura no es sólo una cuestión de estética ni de belleza, pienso que la Literatura nos indica una serie de contradicciones básicas del subconsciente humano y por eso tiene la fuerza que tiene.
+[IMG:1:R]
+—¿Y de cuántos has sido discípulo?
+—¿De quién me considero discípulo?, evidentemente de Althusser, pero eso no quiere decir que yo sea althusseriano. Althusser para mí fue fantástico, pero piensa, a principios de los años 70 fue fundamental, luego cuando me fui a trabajar con él a París, él me enseñó a leer, lo cual no quiere decir que yo sea una persona que siga estrictamente el planteamiento de Althusser.
+—¿Cómo se puede escribir con veintipocos años un libro como Teoría e Historia de la Producción Ideológica?
+—Pues mira, empecé a escribirlo cuando estaba haciendo la mili en Tarifa, en el año 68. Empecé a escribir primero mi Tesis y nos buscábamos libros prohibidos, que no se conocían. Empecé haciendo un planteamiento del pensamiento moderno (entonces en España no se conocía), y después de trabajar durante tanto tiempo en torno a la Teoría, llegué a la conclusión de que era evidente que aquello no lo iba a entender ni dios si yo lo publicaba. Lo presenté como Tesis, y ahora veinte años después posiblemente esa Tesis salga a la calle, pero porque todo el mundo conoce en estos momentos más o menos de lo que va el tema. Para que se me entienda de lo que voy a hablar: en la España del franquismo final, se hablaba mucho del s. XVI, XVII, porque era la España imperial, entonces pensé, voy a escribir sobre el s. XVII y voy a escribir otra historia de lo que es el s. XVII. Me volví a encerrar otro par de años, contando ya con la formación teórica que yo había adquirido al escribir mi Tesis. Y más tarde lo publiqué.
+—¿Existía una inquietud antes de escribir el libro?
+—Sí, yo tenía una idea clarísima: casi todo lo que nos habían explicado tantas y tantas veces sobre el s. XVI y XVII español, era mentira. Y lo que me planteaba muy seriamente era que allí había valores, cuestiones muy importantes que elucidar, cuestiones fundamentales. No es que yo tuviera nada en contra del s. XVI y XVII, se verifica en "La Literatura del Pobre" (y voy a publicar otro libro sobre Góngora), lo que ocurre es que no me gustaba como se planteaban. Por ejemplo, Orozco que era un magnífico profesor, sí que lo estudiaba de otra manera, pero tenía otro planteamiento, el de otra época. El valor de ese libro es quizás la cita que inicia el texto (de uno de mis autores favoritos, Lewis Carroll), luego ya viene todo el trabajo a partir de la primera frase: "...La Literatura no ha existido siempre..." formó un lío increíble.
+[IMG:4:L]
+—¿Cómo se puede decir que la Literatura no ha existido siempre?
+—Creo que cualquier sistema histórico lógicamente tiene sus planteamientos, sus discursos, etc, tiene una economía, una política y una ideología. Yo me planteé que la idea del sujeto libre, esa expresión que se llama Literatura, no había existido nunca, es el sujeto el que lo siente, lo otro es una invención de la libertad del mercado burgués, como la política de Maquiavelo, es el resultado de las relaciones del poder capitalista, del mercado capitalista que aparece a principios del s. XIV y siguiendo en el XVI. En la época de los griegos, en la época del esclavismo, o del feudalismo, no existe la idea del sujeto libre, existe la idea del dueño del esclavo, y el que es dueño del esclavo es el que es libre.
+—Pero sí existe la libertad del sujeto...
+—No, lo que no existe es la idea del sujeto, el sujeto es una relación, no es una entidad. El sujeto es una relación hacia algo, igual que el capital que siembra una relación con algo, si no existiera el capitalismo y el explotado no existiría el Capital. Sin esa relación señor-siervo no habría existido el feudalismo. Por eso todos los textos son anónimos, no hay autores de texto, los autores de texto son gente que firma pero que lo único que hacen es glosar el texto del señor, o de los caballeros, o de la Iglesia. El capitalismo tiene la habilidad de explotarnos diciéndonos que somos sujetos libres, de ahí nace el amor, la amistad y todas esas cosas. Me di cuenta que por eso era posible que existiera Garcilaso; Imaginaba que hasta ese momento todo estaba escrito por la palabra de Dios, en cambio Garcilaso le dice a la dama "...Escrito está en mi alma...". Es la dama quien escribe el gesto y el alma es la del poeta, eso es asombroso.
+[IMG:0:C]
+[SUBTITLE-CENTER]Juan Carlos Rodríguez el día de la entrevista. 1998.
+[BR]
+—Un descubrimiento...
+—Claro, el descubrimiento del Amor.
+—Si no ha existido siempre la Literatura, ¿cuándo empieza a existir?
+—Cuando existe el mercado, la ciudad y la producción del sujeto libre, las ciudades italianas del s. XIV y XVI.
+—¿Ahí empieza a existir la Literatura?
+—Sí, lo que entendemos hoy por Literatura. Lo que no quiero decir es que no existiera Política o Mercado en Atenas, lo que quiero decir es que no es lo que entendemos hoy por política o mercado, es como decir que existía Wall Street en Atenas; es curioso, cuando uno plantea esto a nivel político o económico no hay ningún problema. Si a alguien le preguntas si existía la Bolsa de Tokio o la de Wall Street en Atenas, nadie lo pone en duda, pues no, la bolsa de Tokio o de Wall Street no existía en Atenas, existía otro tipo de economía y era otro tipo de política, y otro tipo de Estado, por eso lo tienen que teorizar... Pero cuando se habla de la Filosofía o la Literatura todo cambia, parece como si quisieras cambiarles el espíritu, ahí radica el problema.
+[IMG:3:R]
+—Puede que fueran diferentes tipos de Literatura...
+—En abstracto en cualquier modo de producción hay una economía, una política y un inconsciente ideológico, ahora bien, nos consideramos eternos por una cosa muy sencilla: como todo tipo de producción, está basado en la explotación, todos tienen que legitimarse, y consideramos eternas cosas como las leyes, la moral, la literatura, etc... Y eso es falso, eso es absolutamente histórico. Si quieres llamarle a lo que hacían los griegos, o a lo que hacían los feudales (que no hacían más que glosar la Biblia para entendernos), si quieres llamarla a eso Literatura, pues llámale Literatura. Desde que se inventó el sujeto libre o el amor (que es falso, porque es la libertad jamás existe, libertad determinada por el sistema capitalista), pues si aquello es Literatura, llámale a esto X. El problema que se plantea es la eternidad de la naturaleza humana, la linealidad evolutiva de al Naturaleza humana. Aquí lo que existe un poco es la Evolución de Darwin, es decir el hombre ha nacido como un origen pequeño, como una semilla y se va desarrollando (ese espíritu humano) hasta hoy. Nosotros preguntamos: ...La Literatura de la Edad Media, y podemos decir —de la edad media entre qué—; Hablamos del Renacimiento, y nos preguntamos —qué es lo que renace— Edad Media y Renacimiento son términos que están escritos por la burguesía, quiero decir que primero fue el supuesto origen pleno del espíritu humano que habría nacido en Grecia, luego vendrían los curas a establecer la superstición y a eso se le llama Edad Media u Oscuridad de mil años, y en el siglo XVI cuando triunfa la burguesía, cuando empieza a triunfar el sistema burgués o capitalista sería el Renacimiento, porque tiene que buscarse un origen, eso es completamente falso. Desde mi planteamiento, lo que no cabría es la idea de la Naturaleza Humana. Yo no creo en nada de todo esto, yo creo que la "individuación humana" es completamente distinta en el sentido social, es decir se puede hablar del inconsciente en un doble aspecto: en el sentido del paso de la vida a la muerte o de la muerte a la vida, que es en el sentido por ejemplo en el que habla Freud del inconsciente (que posiblemente también sea histórico pero su base es transhistórica), o en el sentido de la radical historicidad de la contingencia humana, incluida por tanto la Literatura. En este sentido yo hablo del Inconsciente Ideológico: "Yo soy o yo escribo" partiendo de la base de que en Grecia no se escribía, se hablaba. Platón decía que escribía... De una cosa estamos seguros y es que en Grecia existieron las Matemáticas, pero el origen de la Ciencia es distinto. Ten en cuenta que las Matemáticas griegas no conocían el cero, es decir, por ejemplo, la Astrología griega creía igual que la Medieval que la Tierra estaba quieta y el Sol se movía. ¿Puedes decir que esa misma Física es la que existe hoy? En el libro de Foucault (1994) dice que los griegos y los latinos forman parte de nuestra literatura, no de la suya, por la magnífica razón de que la Literatura griega no existe, como tampoco la latina (Lenguaje y Literatura, pág. 64). Si eso lo dice Foucault, va a misa, pero que lo dijera J.C. Rodríguez en 1974 formó el follón que formó. De todas maneras, yo estoy fascinado por la escritura latina, lo que ocurre es que es una escritura completamente distinta a la nuestra, y quizás eso me fascina.
+[IMG:2:R]
+—Evidentemente hay una evolución del pensamiento...
+—No, hay una ruptura, una evolución es imposible.
+—Para llegar a los conceptos actuales es necesaria una evolución...
+—Para llegar a los conceptos actuales, tu jamás evolucionarás desde que la Tierra está quieta hasta que se mueve, no sería evolución, tienes que cambiar el planteamiento teórico. Por mucho que tú evoluciones tu pensamiento a partir del pensamiento central de que la Tierra está quieta, jamás llegarás a la idea de que la Tierra se mueve evolucionando. Para llegar a la idea de que es el Sol el que está quieto tienes que cambiar completamente tus conceptos teóricos, sino… no llegas.
+—Cambiarlos, pero conocer los anteriores...
+—Claro, pero tienes que romperlos.
+—Entre el primer libro que publicas y el siguiente, pasan diez años o más y a partir de 1991 se publican por lo menos cinco, el ritmo de publicación parece irregular, ¿a qué se debe?
+—Se debe a que, por una parte, durante esos años yo estaba preparando una nueva versión de la Tesis doctoral, tanto es así que me costó dos enfados con la Editorial, yo seguía en el empeño de sacar la legitimación teórica de lo que había dicho en Teoría e Historia de la Literatura y lo retiré dos veces. Por otra parte, lo que ocurre es que el mundo editorial es muy caprichoso, les entregas los libros y se acumulan en años. Pero no estoy dispuesto a enfadarme.
+—¿Tu producción seguía?
+—Sí, durante esa época publiqué alrededor de cincuenta artículos, además seguía en el empeño de sacar ese libro teórico. Espero que esta vez sea la vencida, como se suele decir.
+—¿El año 1998 es el año Lorca? ¿Disfrutas del año Lorca?
+—Me gustan más los números impares, me encantaría celebrar el 73º aniversario de algo, o el 13º...
+—¿No es el año Lorca?
+—Es una manipulación. Yo comprendo que todo el mundo tenga que hacerlo. No me parece ni bien ni mal. El libro que escribí sobre Lorca, lo escribí para quitarme el lorquismo de encima, aunque también escribí ese libro porque le debía algo a Lorca. Estuve en el Comité de los 33 del primer homenaje a Lorca en Fuente Vaqueros, y cosas por el estilo, pero estaba un poco cansado y pensaba que había que escribir un libro sobre el sentido de Lorca. Es un libro un poco difícil, sobre todo las treinta primeras páginas porque también son muy teóricas. Pero por una parte, es un rechazo al lorquismo establecido, y por otra parte es un pago de una deuda porque yo también a Lorca le debo mucho, Granada le debe mucho.
+—Se asocia demasiado Lorca con Granada, Granada con Lorca...
+—Sí, la cuestión es el problema de la muerte, de la mala conciencia de la muerte. No es que se abuse, es que hay una mala conciencia de la muerte. Esta ciudad sabe de sobra que como Lorca decía, es la peor burguesía de España, y esta ciudad mató a Lorca, fue una situación política y una cultura política. Por una parte, Lorca era una figura genial, la gracia, el duende y el genio de la ciudad, y por otra parte existía la mala conciencia de haber matado a un inocente. Hay un problema básico, lo que todo el mundo se ha planteado siempre, y ya no me refiero a Granada sino incluso la gente de fuera de España, y es por qué mataron a Lorca, claro por un lado el levantamiento de los fascistas, y por otro lado el que hubiera miles de muertos inocentes. Pero al ser Lorca tan importante la gente se pregunta por qué lo mataron, es un poco el símbolo de nuestra guerra civil, es decir el por qué ocurrió esta guerra. Fue la primera lucha del Fascismo contra la Democracia y lo malo es que las democracias dejaron sola a la República, y las democracias se basan en la libertad de expresión, es decir en la idea de que el lenguaje no delinque, y a Lorca lo mataron por sus ideas o su lenguaje. Yo creo que la mala conciencia no la tiene sólo la burguesía granadina, sino todas las democracias europeas.
+—¿Literariamente Granada es Lorca?
+—No, Granada tiene muchas más cosas, tiene más literatura comparativamente que ninguna otra ciudad de España, teniendo en cuenta el número de habitantes.
+—Siempre se asocia no a Lorca con Granada, sino a Granada con Lorca...
+—Sí, desde fuera, pero hay mucho más. El Lorca que ahora escribo es para mí el Lorca de la conciencia trágica. Es tan trágico como Nietzsche o Schopenhauer.
+—Pero no se conoce...
+—Te voy a sorprender un poco, a mí quizás lo que más me gusta sea El Romancero Gitano. En plena época vanguardista no se escribían romances, lo cual no quiere decir que Poeta en Nueva York no sea una genialidad, y si ves mi libro, está dedicado básicamente a todas estas cosas. Sin embargo, lo que ahora he trabajado son Las Suites y El Diván del Tamarit, me parece una obra genial y la negatividad es ahí sorprendente. Y así volvemos al problema básico de la conciencia trágica de todos nosotros, o sea de la imposibilidad de enganchar el nombre propio al lenguaje. Quizás por eso el verso que más me ha impresionado siempre de Lorca es precisamente... "que raro que me llame Federico"...
+—El Público también...
+—El Público es el teatro imposible. Yo me planteé qué era imposible en Lorca, porque Lorca había dicho que iba a escribir algo imposible. Y bueno, El Público, o La Comedia sin título, o el Drama sin título, yo considero que son las obras maestras de Lorca, pero no creas que desprecio el topismo de Lorca, en absoluto. Él se enfadaba porque tenía más de treinta años, que en aquella época era una edad muy avanzada y seguía teniendo que vivir con sus padres, ¿no?, mientras que Dalí se hacía rico pintando chorradas y haciendo negocios (...entre risas...). Dalí nunca fue un genio, lo que ocurre es que Lorca estaba enamorado de Dalí.
+—¿Dalí nunca fue un genio?
+—Nunca.
+—¿Ni lo es?
+—No, ¡que va!, genios fueron Lorca y Picasso, Dalí no fue un genio, fue un buen talento, un buen imitador, un tipo que sabía analizar la coyuntura como nadie, y en cada coyuntura pintaba lo que estaba de moda, lo que era necesario. De todas maneras, a lo mejor me estoy equivocando, porque Freud en su correspondencia (acabo de terminar un libro sobre la correspondencia de Freud), cuando recibe a los surrealistas, dice "me han parecido todos idiotas menos el español que tiene los ojos más inteligentes que he visto en mi vida", eso dice Freud de Dalí.
+—Dalí dijo: "soy mejor escritor que pintor, sin duda" en su libro Rostros Ocultos. ¿Es cierto?
+—No lo sé, no puedo hablar de Dalí escritor porque lo conozco poco, supongo que intentarían imitar a los surrealistas.
+—¿A quién se le cae el muro de Berlín encima?
+—Supongo que a toda la gente que vivió el muro de Berlín. Primero, el muro de Berlín es mentira que lo edificaran los alemanes del Este, los Estados Unidos obligaron a edificar ese muro, y en segundo lugar si lo que quieres preguntar es si yo tengo algo que ver con el Marxismo de los países del Este, verás, existió en URSS a partir de los años treinta el Capitalismo de Estado y quizás un marxismo larvado. El marxismo fue importante en países como Cuba o Vietnam y mucho menos en URSS. Había escritores magníficos, por ejemplo, Bertolt Brecht que nunca fue del partido comunista pero que era marxista, decía que Stalin era el gran problema que tenía planteado el marxismo. El problema es que la gente más explotada no creía que estaba explotada.
+—Existe el muro de Berlín en muchos países...
+—El muro de Berlín es el que existe en nuestras cabezas porque está establecido por los pensamientos del capitalismo. En cada subjetividad nuestra, en cada "yo soy", empieza el problema. Nuestro nombre es prestado, nos lo presta la familia, y la familia ¿qué es?, una institución completamente burguesa, capitalista. Los aristócratas, los feudales, tienen sangre azul, tienen linaje, son los burgueses los que crean todo esto, tanto es así que la Iglesia tuvo que adaptarse a esta sociedad burguesa.
+—Entonces ha existido desde siempre...
+—No, sólo desde que existe el sujeto. En el carnet de identidad aparece el nombre del padre y de la madre, ¿no te preguntas por qué el Estado quiere saber el nombre de tu padre o de tu madre?, para garantizar tu lenguaje, tu familia, para garantizar que tienes una individualidad.
+—Quizás más un número...
+—Bueno, pero es que entonces somos números. ¿Cómo podemos decir "yo soy" si todo es prestado?, la familia nos presta el nombre propio, y el Estado nos lo garantiza.
+—Pero esa es la parte material...
+—No, es el inconsciente nuestro.
+—Hay alguien que dice que la vida sigue siendo Stalingrado, que la vida es resistencia...
+—Si no se hubiera ganado la batalla de Stalingrado no estaríamos aquí, el mundo sería de otra manera. Por un parte fue fantástico, fue una victoria contra el nazismo. En Stalingrado ganamos los marxistas, pero el triunfo de Stalingrado no me lo toques... Los americanos invadieron Normandía, porque pensaron, ¡estos se nos meten en Churriana!, luego significó tal robustecimiento de Stalin que acabó con el marxismo. No me gustaría hablar tanto del marxismo, pero bueno, realmente el marxismo es mi vida ciertamente. Hay que tener en cuenta que una revolución no se hace en cuatro días, ni siquiera en veinte años como lo intentó Lenin, o como se intentó en Cuba. Una revolución significa otra cosa, por ejemplo, el Capitalismo tardó cuatro o cinco siglos en establecerse. Las contradicciones son evidentes, Stalingrado fue el triunfo del marxismo, pero también fue el triunfo de Stalin, fortaleció a Stalin con un sistema burocrático soviético que fue mortal para todos nosotros.
+—¿Se siente la misma angustia ante la página en blanco cuando se hace poesía que cuando se hace un texto teórico o crítico?
+—Yo no he escrito nunca poesía, pero cualquier escritor tiene pánico ante la página en blanco, quien diga que escribir es un placer está mintiendo. No creo que escribir sea un placer, es un placer cuando sale bien. Escribir es un trabajo, y como dice Pavese en su mejor libro de poemas ...Lavorare stanca..., es decir trabajar cansa.
+—Es volar una idea sobre un papel en espera...
+—Sí, pero el papel es tremendo, es tu enemigo, en el sentido de que es "el otro" y además un "otro" desconocido. ¿Estás esperando qué? Porque se supone que tú tienes la idea hecha y basta con volcarla en el papel, ¡pues no!
+—Una vez dijiste que la poesía se leía por detrás del papel...
+—Yo no sé si dije que la poesía se leía al trasluz o por detrás, pero sí quise decir leerla, en ese sentido para mí leer siempre es un placer sobre todo cuando es bueno, y mucho más cuando el texto es malo.
+—¿Ahí sí?
+—¡Sí!, porque entonces me divierto más, hay algunos poemas, versos malísimos que me divierten muchísimo. Pero una cosa es leer y otra es escribir. Escribir es un sufrimiento. Tú tienes la idea de que escribir es una expresión, se lleva dentro la idea y luego se expresa, pues yo pienso que eso es falso, escribir es una cuestión absolutamente material. Se dice siempre que quien lleva el toro toreado desde el hotel nunca lo torea, es decir los personajes después de escribir un texto andan por su cuenta.
+—¿Se le escapa a uno el texto de las manos?
+—Completamente.
+—¿Toman vida los personajes?
+—Toman vida, lo he dicho: "La Literatura es una forma de vida".
+—¿Son peligrosos?
+—Sí, son peligrosos porque te puede volver loco.
+—¿Hasta qué punto? ¿Hasta la locura?
+—Completamente, no quiero decir que todos los escritores estén locos, pero muy próximo.
+—¿Y el Conde Drácula existe?
+—El Conde Drácula existe en dos sentidos, primero en el sentido de que existe el mal en la Humanidad. El diablo es el símbolo del mal. No soporto un drácula enamorado, como el de Coppola, no lo soporto. Segundo, en el sentido religioso, Drácula es la imagen inversa de Cristo. Ten en cuenta que el autor de Drácula, Stoker, es un teósofo típico del siglo XIX, por una parte, es un cientificista y por otra parte es alguien que cree en estas cuestiones. Escribió este libro que es un libro sobre el diablo, un libro sobre el mal. El Mal existe, pero como maldad total que fue lo que intentó Passolini en Los 120 días de Salò. Pero la imagen de Drácula es una imagen básicamente cristiana, es la imagen del diablo. Ahora bien, existe un drácula romántico por una cuestión muy sencilla, porque la burguesía (según el planteamiento de Descartes "pienso luego existo") engendra o tiene que legitimar inevitablemente el lado oscuro del hombre y ese lado oscuro del pensamiento es lo que los occidentales plasman en Drácula.
+—¿Existe un drácula en cada persona?
+—Sí.
+—¿Existe vampirismo en la Literatura?
+—Sí, a mí me han plagiado de una manera descarada.
+—¿En cada uno de los escritores?
+—En todos. Además, yo pienso que el escritor que plagia es tonto. Pero hay dos maneras de plagiar, una que yo considero honesta, Gil de Biedma decía que un escritor cuando empieza a escribir es tan tonto que ni siquiera plagia. Como digo, hay una manera honesta de plagiar que es el guiño, y otra deshonesta que es la violación, por ejemplo, cuando una conferencia que no está publicada la plagian directamente o la tergiversan. A mí me han utilizado de mala manera.
+—Quizás eso no sea demasiado importante para un maestro...
+—No, y siguiendo un poco la broma, eso es casi obligado. Cuando a uno lo plagian con veinticinco años (yo empecé a dar clases con veintidós años), pues... Pero después de haber publicado tantos artículos y libros, es casi obligado, ¡sobre todo cuando se tienen ideas tan buenas como las mías...! (...Entre risas...).
+—Entonces no es necesario Drácula...
+—No es necesario, pero sí existe, y además es encantador que exista, porque la Literatura se habla siempre a sí misma. El problema es que la Literatura surge como un invento del sujeto, como un invento real de la sociedad burguesa, y el capitalismo que nos construye como sujetos explotados quisiera que fuéramos todos cartesianos y eso es imposible. Es como pretender que no existan las contradicciones, como pretender que todos fuéramos nudistas. Brecht dice en un libro que me fascina Diálogos de fugitivos, que los nudistas son tan castos que resultan insoportablemente orgullosos al pagar su cuota de castidad, yo prefiero la gente más sencilla y normal, yo prefiero como Brecht un país donde no existan héroes y donde pueda existir la impudicia, seríamos más humanos. En realidad, todos somos unos fracasados, porque sino, no tendríamos lo que tenemos.
+—Y si no existiera el capitalismo, ¿qué existiría?
+—Un tipo de relaciones sociales donde no existiría la explotación, un sistema que no sé lo que es...
+—¿Existiría?
+—Sí.
+—¿Existiendo el hombre?
+—Y la mujer también... (Entre risas).
+—¿Es posible?
+—Sí, una vida no basada en la explotación, otro tipo de relaciones.
+—Sería quizás un paraíso...
+—No, no, sería otra forma de vida. Lo que cuesta trabajo concebir es que ha habido otras formas distintas de pensar y otra forma distinta de vivir, y otra forma distinta de escribir. Lo típico del capitalismo burgués no es lo típico del esclavismo. Por ejemplo, Calígula nombró cónsul a su caballo, el escándalo no fue en absoluto el nombramiento, pues el caballo era un esclavo de Calígula, ¿sabes por qué el senado protesta? Porque no ha seguido los tres años de cursos de honorum que tenían que seguir los senadores para ser cónsules, no porque sea un caballo. Lo declaró libre, lo convierte en persona. Conozco muchas personas que son caballos en política. El concepto de Persona en aquella época era de Persona jurídica, tiene un sentido diferente al sentido de persona actual. Pero, en resumidas cuentas, el Capitalismo nos ha hecho creer que nuestra vida es la Vida.
+—Quince años después has vuelto a teorizar sobre la vida de García Montero, Javier Egea y Álvaro Salvador. ¿Existe en estos momentos "La Otra Sentimentalidad"?
+—Existió. En aquella época éramos una serie de amigos donde yo quizás era el teórico y los otros eran magníficos poetas. Nos planteamos una cuestión básica, ganó la izquierda, pero aquí nadie tiene mentalidad de izquierdas. Había que pensar la vida de otra manera, y nos parecía un poco abstracto la división entre pensamiento y sensibilidad y así surgió "La Otra Sentimentalidad". Como es lógico aquello duró tres años como cualquier otro movimiento poético, posteriormente cada uno siguió su camino y hemos escrito cosas diferentes. Quince años después hay una diferencia relativa entre la presentación que yo hice entonces y la que hago ahora. Lo que sí se nota es que el lenguaje poético pasa mucho más por una subjetividad. Ahora mismo sale un libro mío sobre esto, que me lo ha pedido mi amigo y poeta el profesor Francisco Díaz de Castro de Palma de Mallorca.
+—Puede que sea una tercera o cuarta sentimentalidad...
+—Posiblemente. Lo que sí es importante es que en mi caso no he variado mi pensamiento, en otros casos no lo sé. Mi mentalidad de que hay que acabar con la explotación no cambia.
+—¿La mentalidad del poeta evoluciona más que la del filósofo?
+—Yo cambio la forma de pensar, lo que no cambio es el sustrato. En ese sentido pienso que al poeta le ocurre igual.
+—¿Evoluciona?
+—Lógicamente buscan caminos nuevos. El poeta más cercano que tengo es mi mujer, y va cambiando continuamente de registros y a mí me pasa un poco lo mismo, pero no cambio jamás de sustrato.
+—¿Si se deja de escribir se sigue evolucionando?
+—No, y además lo malo no es dejar de escribir, lo malo es cuando a uno le entra "La Seca" como dicen los sudamericanos, cuando te entra la Sequía.
+—Se pueden escribir cosas diferentes a las que se escribía hace cinco años...
+—Sí claro, pero no diferentes en el sustrato. Yo odio la palabra Evolución.
+—¿Cuál sería la mejor palabra? —Diría "Diferencia", "Matizaciones".
+—¿Un silencio literario es enemigo del escritor?
+—Es lo peor que existe. Cualquier escritor tiene terror ante eso.
+—¿De dónde parte la producción literaria, de la Razón o del Corazón?
+—Yo no diferenciaría, la literatura sale siempre de la misma fuente.
+—Como dices, .... La Literatura existe porque existen las contradicciones internas, si estuviéramos contentos con nuestras vidas no existiría la Literatura...
+—No existirían muchas cosas. Efectivamente la Literatura existe porque existe la contradicción, porque no sabemos cómo llegar al nombre propio del lenguaje.
+—¿Es necesaria la palabra en todo hombre?
+—Es fundamental.
+—No, en base a la cuestión material...
+—Es fundamental porque es el préstamo básico. Además, me gusta la palabra porque está manchada, porque está usada, es decir, usada por el mercado. Me gustan las palabras usadas, incluso como diría Brecht, las mujeres usadas... (entre risas). Me encantan las palabras manchadas por el mercado, por la explotación, por la miseria o riqueza de cada persona. Nietzsche decía que las palabras son como bolsillos: vas metiendo cosas y cosas dentro de las palabras como dentro de un bolsillo, y luego cuando sacas lo que hay en el bolsillo ¿qué te encuentras? ...Las palabras son fantásticas, pero uno nunca puede fiarse de ellas.
+—¿Existen palabras de segunda mano?
+—Todas son palabras de segunda mano.
+—¿Todas?
+—Todas.
 
+[QUOTE]La Literatura no ha existido siempre. Los discursos a los que hoy aplicamos el nombre de "literarios" constituyen una realidad histórica que sólo ha podido surgir a partir de una serie de condiciones —asimismo históricas— muy estrictas: las condiciones derivadas del nivel ideológico característico de las formaciones sociales "modernas" o "burguesas" en sentido general.
+J.C. Rodríguez Teoría e Historia de la Producción Ideológica, 1975
+
+[BR]
+[IMG:5:C]
+[SUBTITLE-CENTER]Dedicatoria de J.C. Rodríguez a Belén Juárez
+`,
+    coverUrl: '/images/Entrevistas/Rodriguez/PORTADA.jpeg',
+    interviewer: 'Belén Juárez',
+    location: 'Granada',
+    images: [
+      '/images/Entrevistas/Rodriguez/retrato.jpg',
+      '/images/Entrevistas/Rodriguez/teoria-libro.jpg',
+      '/images/Entrevistas/Rodriguez/la-norma-literaria-libro.jpg',
+      '/images/Entrevistas/Rodriguez/la-poesia-la-musica-y-el-silencio.jpg',
+      '/images/Entrevistas/Rodriguez/literatura-pobre-libro.jpg',
+      '/images/Entrevistas/Rodriguez/dedicatoria.png'
+    ]
+  }
 ];
