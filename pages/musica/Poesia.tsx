@@ -50,10 +50,9 @@ const Poesia: React.FC = () => {
                         <MapPin className="text-[#d4af37]" size={20} />
                         <h3 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">Exhibición en Directo</h3>
                     </div>
-                    <div className="space-y-4 text-white/60 font-serif text-base leading-relaxed">
+                    <div className="space-y-4 text-white/80 font-serif text-base leading-relaxed">
                         <p>
-                            {/* TODO: Añadir información sobre dónde y cuándo fue exhibida la pieza en directo */}
-                            <span className="text-white/30 italic">Información sobre el evento, lugar y fecha de la exhibición en directo próximamente...</span>
+                            VIII Encuentro de mujeres poetas. En memoria de Ernestina de Champourcin. “Diversidad de voces y formas”. Vitoria 2005. Organizado por la poeta y amiga Ángela Serna.
                         </p>
                     </div>
                 </motion.div>
@@ -67,35 +66,21 @@ const Poesia: React.FC = () => {
                 >
                     <div className="flex items-center gap-3 mb-6">
                         <Info className="text-[#d4af37]" size={20} />
-                        <h3 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">Sobre la Pieza Audiovisual</h3>
+                        <h3 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">El Vals de lo Invisible</h3>
                     </div>
-                    <div className="space-y-4 text-white/60 font-serif text-base leading-relaxed">
+                    <div className="space-y-4 text-white/80 font-serif text-base leading-relaxed">
                         <p>
-                            {/* TODO: Añadir descripción detallada de la pieza audiovisual */}
-                            <span className="text-white/30 italic">Descripción sobre la pieza audiovisual, su proceso creativo y detalles técnicos próximamente...</span>
+                            La música y la palabra no son artes distintas; son hilos de un mismo tapiz universal donde el sentir cobra forma. Allí, donde el silencio se rinde, emergen las notas de Rachmaninov: pulsos de una realidad ultrajada que él supo diseñar con la maestría de quien acaricia el infinito.
+                        </p>
+                        <p>
+                            Yo me sumo a ese eco. Acompaño la elocuente mudez del maestro ruso con la huella de mis trazos y la arquitectura de mis versos. Como un diálogo de sombras y luces, un baile donde las blancas, negras y corcheas se atreven a ser cuerpos: bailarinas etéreas que danzan en el filo del tiempo, suspendidas entre los acordes del Concierto Número 2.
+                        </p>
+                        <p>
+                            En este espacio, el piano respira, se mueve sobre la vida, habitando los sueños que aún no nos atrevemos a soñar. Los versos que acompañan al maestro proceden del libro "El universo de las luces" aún sin publicar, versos que duermen en el lecho del silencio desde hace ya tanto tiempo.
                         </p>
                     </div>
                 </motion.div>
             </div>
-
-            {/* Additional Credits / Technical Details */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="p-8 bg-white/5 border border-white/10 rounded-sm"
-            >
-                <div className="flex items-center gap-3 mb-6">
-                    <Music className="text-[#d4af37]" size={20} />
-                    <h3 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">Créditos y Ficha Técnica</h3>
-                </div>
-                <div className="space-y-4 text-white/60 font-serif text-base leading-relaxed">
-                    <p>
-                        {/* TODO: Añadir créditos y ficha técnica de la pieza */}
-                        <span className="text-white/30 italic">Créditos, colaboradores y ficha técnica de la producción próximamente...</span>
-                    </p>
-                </div>
-            </motion.div>
         </div>
     );
 };
