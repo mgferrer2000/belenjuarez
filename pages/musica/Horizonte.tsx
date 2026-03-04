@@ -1,32 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { ALBUM_TRACKS } from '../../constants';
-import { Music as MusicIcon, Disc, Info, ChevronRight, X, ListMusic, Youtube } from 'lucide-react';
+import { Music as MusicIcon, Disc, ChevronRight, X, ListMusic, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Horizonte: React.FC = () => {
     const youtubePlaylistId = 'OLAK5uy_nDUfLuFMPYEaeLx1Lyqcj_pBlOxhEE_pE';
     const [currentVideoId, setCurrentVideoId] = useState<string>(ALBUM_TRACKS[0].youtubeId || '');
     const [activeTrackId, setActiveTrackId] = useState<string | null>(ALBUM_TRACKS[0].id);
-    const [showHint, setShowHint] = useState(false);
     const [hasInteracted, setHasInteracted] = useState(false);
-    const hintTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const handleTrackSelect = (track: any) => {
         setActiveTrackId(track.id);
         setCurrentVideoId(track.youtubeId ?? '');
         setHasInteracted(true); // Mark interaction to allow autoplay
-
-        // Show hint to tell user to interact with the player
-        setShowHint(true);
-        if (hintTimeoutRef.current) clearTimeout(hintTimeoutRef.current);
-        hintTimeoutRef.current = setTimeout(() => setShowHint(false), 8000);
     };
-
-    useEffect(() => {
-        return () => {
-            if (hintTimeoutRef.current) clearTimeout(hintTimeoutRef.current);
-        };
-    }, []);
 
     return (
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 pb-20 relative">
@@ -118,7 +105,7 @@ const Horizonte: React.FC = () => {
                                 className="relative rounded-sm overflow-hidden shadow-2xl bg-black border border-white/10 aspect-square w-full"
                             >
                                 <iframe
-                                    src={`https://www.youtube.com/embed/${currentVideoId}?list=${youtubePlaylistId}&autoplay=${hasInteracted ? 1 : 0}`}
+                                    src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=${hasInteracted ? 1 : 0}&rel=0`}
                                     width="100%"
                                     height="100%"
                                     frameBorder="0"
@@ -129,25 +116,7 @@ const Horizonte: React.FC = () => {
                             </motion.div>
                         </AnimatePresence>
 
-                        {/* Interaction Hint Toast */}
-                        <AnimatePresence>
-                            {showHint && (
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    exit={{ y: 20, opacity: 0 }}
-                                    className="absolute -top-16 left-0 right-0 z-[110] flex justify-center pointer-events-none px-4"
-                                >
-                                    <div className="bg-[#d4af37] text-[#2d2a2e] p-3 rounded shadow-[0_15px_40px_rgba(0,0,0,0.8)] flex items-center gap-3 border border-white/30">
-                                        <div className="bg-[#2d2a2e] text-[#d4af37] p-1.5 rounded-full">
-                                            <Info size={16} />
-                                        </div>
-                                        <span className="text-[11px] font-bold uppercase tracking-widest">Inicia la canción en el reproductor</span>
-                                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rotate-45 border-r border-b border-white/20"></div>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+
                     </div>
 
                     <div className="p-8 bg-white/5 border border-white/10 rounded-sm">
