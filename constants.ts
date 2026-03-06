@@ -1,3 +1,11 @@
+export interface VisualPoetry {
+  id: string;
+  title: string;
+  description?: string;
+  images: string[];
+  poemText?: string;
+}
+
 import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtArticle, BookReview, Plaquette, ShortStory, LiteraryCriticism, Interview } from './types';
 
 export const BOOKS: Book[] = [
@@ -2320,6 +2328,67 @@ J.C. Rodríguez Teoría e Historia de la Producción Ideológica, 1975
       '/images/Entrevistas/Rodriguez/la-poesia-la-musica-y-el-silencio.jpg',
       '/images/Entrevistas/Rodriguez/literatura-pobre-libro.jpg',
       '/images/Entrevistas/Rodriguez/dedicatoria.png'
+    ]
+  }
+];
+
+export const VISUAL_POETRY: VisualPoetry[] = [
+  {
+    id: 'aldea-poetica',
+    title: 'Aldea Poética 2000',
+    description: 'Poesía visual y grafismos',
+    images: [
+      '/images/PoesiaVisual/AldeaPoetica2000/portada_aldea_poetica.jpeg',
+      '/images/PoesiaVisual/AldeaPoetica2000/IMG_2640.jpeg'
+    ]
+  },
+  {
+    id: 'anfora-nova-49',
+    title: 'Ánfora Nova (Nº 49-50)',
+    description: 'Publicaciones de Poesía Visual',
+    images: [
+      '/images/PoesiaVisual/AnforaNova49-50/PORTADA_anfora_nova.jpeg',
+      '/images/PoesiaVisual/AnforaNova49-50/IMG_1272.jpeg',
+      '/images/PoesiaVisual/AnforaNova49-50/IMG_1274.jpeg'
+    ],
+    poemText: `En la estirpe del Árbol Padre,
+Este tiempo permite la eternidad.
+
+De cada instante,
+queda la pausa y el delirio de imposibles,
+que por reproche,
+se hace almendro en nuestra encina
+las sombras de todos nuestros hijos.
+
+Pronto la señal de asegurarse la tirada,
+tiene el sueño de los años prometidos,
+sin embargo,
+de esta Madre Tierra que sustenta la promesa,
+la Noche sigue siendo templado aire de nuestras experiencias.
+
+La Encina encierra la casa partida,
+desciende a sus raíces la palabra oculta,
+comenta a la gata su cuerpo infinito,
+y sentencia una obediencia centenaria
+para siempre...`
+  },
+  {
+    id: 'texturas-12',
+    title: 'Texturas 12 (2003)',
+    description: 'Aguilas sobre nuestras cabezas',
+    images: [
+      '/images/PoesiaVisual/Texturas12/portada_texturas.jpeg',
+      '/images/PoesiaVisual/Texturas12/AGUILAS SOBRE NUESTRAS CABEZAS 2002 Ilustración Revista Texturas 2003.jpeg'
+    ]
+  },
+  {
+    id: 'poesia-andaluza',
+    title: 'Poesía Visual Andaluza',
+    description: 'Antología y catálogos',
+    images: [
+      '/images/PoesiaVisual/PoesiaVisualAndaluza/Portada_pva.jpeg',
+      '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen1 poesia visual andaluza.png',
+      '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen2 poesia visual andaluza.png'
     ]
   }
 ];
