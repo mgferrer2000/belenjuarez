@@ -103,23 +103,24 @@ const Contact: React.FC = () => {
                     target={social.url.startsWith('mailto:') ? undefined : '_blank'}
                     rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                     className="flex items-center gap-4 text-ink/70 transition-colors group"
-                    style={{ '--brand-color': colors.text.replace('text-[', '').replace(']', '') } as React.CSSProperties}
+                    onMouseEnter={(e) => {
+                      const iconContainer = e.currentTarget.querySelector('.social-icon-bg') as HTMLElement;
+                      if (iconContainer) {
+                        const bgColor = colors.bg.replace('bg-[', '').replace(']', '');
+                        iconContainer.style.backgroundColor = bgColor;
+                        iconContainer.style.color = 'white';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      const iconContainer = e.currentTarget.querySelector('.social-icon-bg') as HTMLElement;
+                      if (iconContainer) {
+                        iconContainer.style.backgroundColor = '';
+                        iconContainer.style.color = '';
+                      }
+                    }}
                   >
                     <div
-                      className={`w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white group-hover:scale-110 group-hover:shadow-lg ${colors.bg.startsWith('bg-[')
-                        ? ''
-                        : `group-hover:${colors.bg}`
-                        }`}
-                      style={{
-                        // Use inline style for hover via CSS variable
-                      }}
-                      onMouseEnter={(e) => {
-                        const bgColor = colors.bg.replace('bg-[', '').replace(']', '');
-                        (e.currentTarget as HTMLElement).style.backgroundColor = bgColor;
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.backgroundColor = '';
-                      }}
+                      className={`social-icon-bg w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}
                     >
                       {getIcon(social.iconName)}
                     </div>
