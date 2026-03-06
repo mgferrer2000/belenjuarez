@@ -30,6 +30,7 @@ import Ilustracion from './pages/arte/Ilustracion';
 import Musica from './pages/musica';
 import Poesia from './pages/musica/Poesia';
 import Horizonte from './pages/musica/Horizonte';
+import Videos from './pages/musica/Videos';
 
 import BlogList from './src/pages/Blog/BlogList';
 import BlogPostView from './src/pages/Blog/BlogPost';
@@ -76,6 +77,7 @@ function App() {
               <Route index element={<Navigate to="poesia" replace />} />
               <Route path="poesia" element={<Poesia />} />
               <Route path="horizonte" element={<Horizonte />} />
+              <Route path="videos" element={<Videos />} />
             </Route>
 
             <Route path="/blog" element={<BlogList />} />

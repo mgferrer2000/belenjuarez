@@ -57,6 +57,7 @@ const Navbar: React.FC = () => {
       submenu: [
         { name: 'Música y Poesía', path: '/musica/poesia' },
         { name: 'Horizonte de Sucesos', path: '/musica/horizonte' },
+        { name: 'Vídeos', path: '/musica/videos' },
       ]
     },
     { name: 'Diario Abierto', path: '/blog' },
