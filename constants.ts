@@ -1480,7 +1480,7 @@ export const PLAQUETTES: Plaquette[] = [
     date: '21 de marzo de 2025',
     location: 'Recital en Librería sostiene Pereira, Granada',
     publication: 'Revista Alhucema, Colección libros',
-    credits: 'Texto e ilustración: Belén Juárez',
+    credits: 'Textos y poemas',
     coverUrl: '/images/Plaquettes/Plaquette_portada.jpeg',
     illustrationUrl: '/images/Plaquettes/Plaquette_ilustracion.png',
     sections: [
