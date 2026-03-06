@@ -83,7 +83,7 @@ const Plaquettes: React.FC = () => {
                             />
                             <div className="p-4 bg-white border-t border-gray-50 text-center">
                                 <p className="text-[10px] font-sans text-ink/40 uppercase tracking-[0.2em]">
-                                    Ilustración por Belén Juárez
+                                    Ilustración Belén Juárez
                                 </p>
                             </div>
                         </motion.div>

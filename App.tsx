@@ -31,6 +31,9 @@ import Musica from './pages/musica';
 import Poesia from './pages/musica/Poesia';
 import Horizonte from './pages/musica/Horizonte';
 
+import BlogList from './src/pages/Blog/BlogList';
+import BlogPostView from './src/pages/Blog/BlogPost';
+
 function App() {
   return (
     <Router>
@@ -74,6 +77,9 @@ function App() {
               <Route path="poesia" element={<Poesia />} />
               <Route path="horizonte" element={<Horizonte />} />
             </Route>
+
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:id" element={<BlogPostView />} />
 
             <Route path="/contacto" element={<Contacto />} />
           </Routes>

@@ -59,6 +59,7 @@ const Navbar: React.FC = () => {
         { name: 'Horizonte de Sucesos', path: '/musica/horizonte' },
       ]
     },
+    { name: 'Diario Abierto', path: '/blog' },
     { name: 'Contacto', path: '/contacto' },
   ];
 
@@ -81,18 +82,18 @@ const Navbar: React.FC = () => {
       className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-paper/95 backdrop-blur-sm shadow-sm py-4' : 'bg-transparent py-6'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className={`text-2xl font-serif font-bold tracking-wider z-50 transition-colors ${textColorClass}`}>
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 flex justify-between items-center">
+        <Link to="/" className={`text-xl lg:text-2xl font-serif font-bold tracking-wider z-50 transition-colors ${textColorClass}`}>
           BELÉN JUÁREZ
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex space-x-8 items-center">
+        <div className="hidden lg:flex space-x-3 xl:space-x-6 items-center">
           {navLinks.map((link) => (
             <div key={link.name} className="relative group">
               {link.submenu ? (
                 <button
-                  className={`flex items-center gap-1 text-sm uppercase tracking-widest transition-colors ${location.pathname.startsWith(link.path) ? activeColorClass : `${textColorClass}/80`
+                  className={`flex items-center gap-1 text-[12px] xl:text-sm uppercase tracking-widest transition-colors ${location.pathname.startsWith(link.path) ? activeColorClass : `${textColorClass}/80`
                     } ${hoverColorClass}`}
                 >
                   {link.name} <ChevronDown size={14} />
@@ -100,7 +101,7 @@ const Navbar: React.FC = () => {
               ) : (
                 <Link
                   to={link.path}
-                  className={`text-sm uppercase tracking-widest transition-colors ${location.pathname === link.path ? activeColorClass : `${textColorClass}/80`
+                  className={`text-[12px] xl:text-sm uppercase tracking-widest transition-colors ${location.pathname === link.path ? activeColorClass : `${textColorClass}/80`
                     } ${hoverColorClass}`}
                 >
                   {link.name}
