@@ -2,8 +2,8 @@
 
 header('Content-Type: application/json');
 
-function loadDotEnv(string $filePath): void {
-    if (!is_readable($filePath)) {
+function loadDotEnv($filePath) {
+    if (!$filePath || !is_readable($filePath)) {
         return;
     }
 
@@ -14,11 +14,11 @@ function loadDotEnv(string $filePath): void {
 
     foreach ($lines as $line) {
         $trimmed = trim($line);
-        if ($trimmed === '' || str_starts_with($trimmed, '#') || strpos($trimmed, '=') === false) {
+        if ($trimmed === '' || substr($trimmed, 0, 1) === '#' || strpos($trimmed, '=') === false) {
             continue;
         }
 
-        [$key, $value] = explode('=', $trimmed, 2);
+        list($key, $value) = explode('=', $trimmed, 2);
         $key = trim($key);
         $value = trim($value, " \t\n\r\0\x0B\"'");
 
@@ -30,18 +30,39 @@ function loadDotEnv(string $filePath): void {
     }
 }
 
-function readConfigValue(array $keys) {
+function loadProjectEnv() {
+    $candidates = array(
+        __DIR__ . '/.env',
+        dirname(__DIR__) . '/.env',
+    );
+
+    if (function_exists('getcwd')) {
+        $cwd = getcwd();
+        if ($cwd) {
+            $candidates[] = $cwd . '/.env';
+        }
+    }
+
+    foreach ($candidates as $candidate) {
+        if (is_readable($candidate)) {
+            loadDotEnv($candidate);
+            return;
+        }
+    }
+}
+
+function readConfigValue($keys) {
     foreach ($keys as $key) {
         $value = getenv($key);
         if ($value !== false && $value !== '') {
             return $value;
         }
 
-        if (!empty($_ENV[$key])) {
+        if (isset($_ENV[$key]) && $_ENV[$key] !== '') {
             return $_ENV[$key];
         }
 
-        if (!empty($_SERVER[$key])) {
+        if (isset($_SERVER[$key]) && $_SERVER[$key] !== '') {
             return $_SERVER[$key];
         }
     }
@@ -49,13 +70,13 @@ function readConfigValue(array $keys) {
     return null;
 }
 
-function allowSameOriginCors(): void {
+function allowSameOriginCors() {
     if (empty($_SERVER['HTTP_ORIGIN']) || empty($_SERVER['HTTP_HOST'])) {
         return;
     }
 
     $originHost = parse_url($_SERVER['HTTP_ORIGIN'], PHP_URL_HOST);
-    $requestHost = preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST']);
+    $requestHost = preg_replace('/:\\d+$/', '', $_SERVER['HTTP_HOST']);
 
     if ($originHost === $requestHost) {
         header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
@@ -65,35 +86,18 @@ function allowSameOriginCors(): void {
     }
 }
 
-function respondJson(int $statusCode, array $payload): void {
-    http_response_code($statusCode);
+function respondJson($statusCode, $payload) {
+    http_response_code((int) $statusCode);
     echo json_encode($payload, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-loadDotEnv(__DIR__ . '/../.env');
-allowSameOriginCors();
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(204);
-    exit;
-}
-
-$NOTION_API_KEY = readConfigValue(['NOTION_API_KEY', 'VITE_NOTION_API_KEY']);
-$DATABASE_ID = readConfigValue(['NOTION_DATABASE_ID', 'VITE_NOTION_DATABASE_ID']) ?: '31a0435d6d4d801996acf976f5b7918f';
-$NOTION_VERSION = readConfigValue(['NOTION_VERSION']) ?: '2022-06-28';
-$action = $_GET['action'] ?? '';
-
-if (!$NOTION_API_KEY) {
-    respondJson(500, ['error' => 'Missing NOTION_API_KEY server configuration']);
-}
-
-function executeNotionRequest(string $url, string $apiKey, string $notionVersion, string $method = 'GET', ?string $body = null): array {
-    $headers = [
+function executeNotionRequest($url, $apiKey, $notionVersion, $method, $body) {
+    $headers = array(
         'Authorization: Bearer ' . $apiKey,
         'Notion-Version: ' . $notionVersion,
         'Content-Type: application/json',
-    ];
+    );
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -114,43 +118,68 @@ function executeNotionRequest(string $url, string $apiKey, string $notionVersion
     if ($response === false) {
         $error = curl_error($ch);
         curl_close($ch);
-        return [
+        return array(
             'ok' => false,
             'status' => 502,
-            'body' => ['error' => 'Failed to reach Notion', 'details' => $error],
-        ];
+            'body' => array('error' => 'Failed to reach Notion', 'details' => $error),
+        );
     }
 
     curl_close($ch);
     $decoded = json_decode($response, true);
 
-    return [
+    return array(
         'ok' => $httpCode >= 200 && $httpCode < 300,
         'status' => $httpCode,
-        'body' => $decoded ?? ['raw' => $response],
-    ];
+        'body' => $decoded !== null ? $decoded : array('raw' => $response),
+    );
 }
 
-function publishedPostsQueryBody(): string {
-    return json_encode([
-        'filter' => [
+function publishedPostsQueryBody() {
+    return json_encode(array(
+        'filter' => array(
             'property' => 'Publicado',
-            'checkbox' => ['equals' => true],
-        ],
-        'sorts' => [
-            ['property' => 'Fecha', 'direction' => 'descending'],
-        ],
+            'checkbox' => array('equals' => true),
+        ),
+        'sorts' => array(
+            array('property' => 'Fecha', 'direction' => 'descending'),
+        ),
         'page_size' => 100,
-    ], JSON_UNESCAPED_UNICODE);
+    ), JSON_UNESCAPED_UNICODE);
 }
 
-function fetchPublishedPosts(string $databaseId, string $apiKey, string $notionVersion): array {
+function fetchPublishedPosts($databaseId, $apiKey, $notionVersion) {
     $url = 'https://api.notion.com/v1/databases/' . rawurlencode($databaseId) . '/query';
     return executeNotionRequest($url, $apiKey, $notionVersion, 'POST', publishedPostsQueryBody());
 }
 
-function isValidNotionId(string $value): bool {
+function isValidNotionId($value) {
     return preg_match('/^[a-f0-9-]{32,36}$/i', $value) === 1;
+}
+
+loadProjectEnv();
+allowSameOriginCors();
+
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
+$NOTION_API_KEY = readConfigValue(array('NOTION_API_KEY', 'VITE_NOTION_API_KEY'));
+$DATABASE_ID = readConfigValue(array('NOTION_DATABASE_ID', 'VITE_NOTION_DATABASE_ID'));
+$NOTION_VERSION = readConfigValue(array('NOTION_VERSION'));
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+
+if (!$DATABASE_ID) {
+    $DATABASE_ID = '31a0435d6d4d801996acf976f5b7918f';
+}
+
+if (!$NOTION_VERSION) {
+    $NOTION_VERSION = '2022-06-28';
+}
+
+if (!$NOTION_API_KEY) {
+    respondJson(500, array('error' => 'Missing NOTION_API_KEY server configuration'));
 }
 
 if ($action === 'getPosts') {
@@ -159,10 +188,10 @@ if ($action === 'getPosts') {
 }
 
 if ($action === 'getBlocks') {
-    $blockId = $_GET['blockId'] ?? '';
+    $blockId = isset($_GET['blockId']) ? $_GET['blockId'] : '';
 
     if (!$blockId || !isValidNotionId($blockId)) {
-        respondJson(400, ['error' => 'Invalid blockId']);
+        respondJson(400, array('error' => 'Invalid blockId'));
     }
 
     $postsResult = fetchPublishedPosts($DATABASE_ID, $NOTION_API_KEY, $NOTION_VERSION);
@@ -170,20 +199,22 @@ if ($action === 'getBlocks') {
         respondJson($postsResult['status'], $postsResult['body']);
     }
 
-    $publishedIds = array_map(
-        static function ($page) {
-            return $page['id'] ?? null;
-        },
-        $postsResult['body']['results'] ?? []
-    );
+    $publishedIds = array();
+    if (isset($postsResult['body']['results']) && is_array($postsResult['body']['results'])) {
+        foreach ($postsResult['body']['results'] as $page) {
+            if (isset($page['id'])) {
+                $publishedIds[] = $page['id'];
+            }
+        }
+    }
 
-    if (!in_array($blockId, array_filter($publishedIds), true)) {
-        respondJson(403, ['error' => 'Block is not available']);
+    if (!in_array($blockId, $publishedIds, true)) {
+        respondJson(403, array('error' => 'Block is not available'));
     }
 
     $url = 'https://api.notion.com/v1/blocks/' . rawurlencode($blockId) . '/children?page_size=100';
-    $result = executeNotionRequest($url, $NOTION_API_KEY, $NOTION_VERSION);
+    $result = executeNotionRequest($url, $NOTION_API_KEY, $NOTION_VERSION, 'GET', null);
     respondJson($result['status'], $result['body']);
 }
 
-respondJson(404, ['error' => 'Acción no válida o no especificada']);
+respondJson(404, array('error' => 'Acción no válida o no especificada'));
