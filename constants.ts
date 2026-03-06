@@ -2,7 +2,8 @@ export interface VisualPoetry {
   id: string;
   title: string;
   description?: string;
-  images: string[];
+  coverImage: string;
+  artworkImages: string[];
   poemText?: string;
 }
 
@@ -2337,8 +2338,8 @@ export const VISUAL_POETRY: VisualPoetry[] = [
     id: 'aldea-poetica',
     title: 'Aldea Poética 2000',
     description: 'Poesía visual y grafismos',
-    images: [
-      '/images/PoesiaVisual/AldeaPoetica2000/portada_aldea_poetica.jpeg',
+    coverImage: '/images/PoesiaVisual/AldeaPoetica2000/portada_aldea_poetica.jpeg',
+    artworkImages: [
       '/images/PoesiaVisual/AldeaPoetica2000/IMG_2640.jpeg'
     ]
   },
@@ -2346,8 +2347,8 @@ export const VISUAL_POETRY: VisualPoetry[] = [
     id: 'anfora-nova-49',
     title: 'Ánfora Nova (Nº 49-50)',
     description: 'Publicaciones de Poesía Visual',
-    images: [
-      '/images/PoesiaVisual/AnforaNova49-50/PORTADA_anfora_nova.jpeg',
+    coverImage: '/images/PoesiaVisual/AnforaNova49-50/PORTADA_anfora_nova.jpeg',
+    artworkImages: [
       '/images/PoesiaVisual/AnforaNova49-50/IMG_1272.jpeg',
       '/images/PoesiaVisual/AnforaNova49-50/IMG_1274.jpeg'
     ],
@@ -2375,9 +2376,9 @@ para siempre...`
   {
     id: 'texturas-12',
     title: 'Texturas 12 (2003)',
-    description: 'Aguilas sobre nuestras cabezas',
-    images: [
-      '/images/PoesiaVisual/Texturas12/portada_texturas.jpeg',
+    description: 'Águilas sobre nuestras cabezas',
+    coverImage: '/images/PoesiaVisual/Texturas12/portada_texturas.jpeg',
+    artworkImages: [
       '/images/PoesiaVisual/Texturas12/AGUILAS SOBRE NUESTRAS CABEZAS 2002 Ilustración Revista Texturas 2003.jpeg'
     ]
   },
@@ -2385,10 +2386,19 @@ para siempre...`
     id: 'poesia-andaluza',
     title: 'Poesía Visual Andaluza',
     description: 'Antología y catálogos',
-    images: [
-      '/images/PoesiaVisual/PoesiaVisualAndaluza/Portada_pva.jpeg',
+    coverImage: '/images/PoesiaVisual/PoesiaVisualAndaluza/Portada_pva.jpeg',
+    artworkImages: [
       '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen1 poesia visual andaluza.png',
       '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen2 poesia visual andaluza.png'
+    ]
+  },
+  {
+    id: 'obras-ineditas',
+    title: 'Obras Inéditas',
+    description: 'Colección de poesía visual no publicada',
+    coverImage: '/images/PoesiaVisual/NoPublicadas/cover_no_publicadas.png',
+    artworkImages: [
+      '/images/PoesiaVisual/NoPublicadas/OTRA OBRA POESIA VISUAL NO PUBLICADA.jpeg'
     ]
   }
 ];

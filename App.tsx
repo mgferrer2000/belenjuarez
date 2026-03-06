@@ -23,6 +23,7 @@ import Entrevistas from './pages/ObraLiteraria/Entrevistas';
 import EntrevistaDetail from './pages/ObraLiteraria/EntrevistaDetail';
 // import Articulos from './pages/ObraLiteraria/Articulos'; // Keeping if needed or deleting
 import PoesiaVisual from './pages/PoesiaVisual';
+import PoesiaVisualDetail from './pages/PoesiaVisualDetail';
 import Arte from './pages/arte';
 import Cuadros from './pages/arte/Cuadros';
 import CriticaArtistica from './pages/arte/Critica';
@@ -65,6 +66,7 @@ function App() {
             </Route>
 
             <Route path="/poesia-visual" element={<PoesiaVisual />} />
+            <Route path="/poesia-visual/:id" element={<PoesiaVisualDetail />} />
 
             <Route path="/arte" element={<Arte />}>
               <Route index element={<Navigate to="cuadros" replace />} />
