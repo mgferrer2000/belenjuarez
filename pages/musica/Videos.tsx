@@ -8,8 +8,8 @@ const Videos: React.FC = () => {
         {
             id: 'lobo',
             title: 'Lobo',
-            youtubeId: 'ikNHPi9g5AI',
-            description: 'Poema visual y musical basado en "Horizonte de Sucesos".'
+            youtubeId: 'XmFNmDidzgI',
+            description: 'Videoclip oficial del poema publicado en "Lobo".'
         }
     ];
 
