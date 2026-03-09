@@ -1143,189 +1143,176 @@ export const ALBUM_TRACKS: Track[] = [
 export const ART_PIECES: ArtPiece[] = [
   {
     id: '1',
-    title: '40 Guitarras de Plata',
-    medium: 'Óleo sobre lienzo',
-    year: '2005',
+    title: '40 guitarras de plata 2005',
+    medium: 'TINTA CHINA PINCEL CHINO',
     imageUrl: '/images/cuadros/40 GUITARRAS DE PLATA 2005.JPEG',
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
   {
     id: '2',
-    title: 'Abencerrajes',
-    medium: 'Técnica mixta',
-    year: '1997',
+    title: 'Abencerrajes 1991',
+    medium: 'MIXTA OLEO SOBRE PAPEL, TINTA CHINA',
     imageUrl: '/images/cuadros/ABENCERRAJES 1997.png',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '3',
-    title: 'Barco',
-    medium: 'Óleo',
-    year: '1999',
+    title: 'Barco 2000',
+    medium: 'ACUARELA',
     imageUrl: '/images/cuadros/BARCO 1999.JPEG',
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
   {
     id: '4',
-    title: 'Composición I',
-    medium: 'Tinta china',
+    title: 'Composición II 1999',
+    medium: 'TINTA CHINA, ACUARELA',
     imageUrl: '/images/cuadros/COMPOSICION 1.jpeg',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '5',
-    title: 'Composición II',
-    medium: 'Tinta china',
+    title: 'Composición I 1998',
+    medium: 'TINTA CHINA, PINCEL CHINO',
     imageUrl: '/images/cuadros/COMPOSICION 2.jpeg',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '6',
-    title: 'Torres Vedras',
-    medium: 'Óleo',
-    year: '1998',
+    title: 'La Vinoteca 1998',
+    medium: 'TINTA CHINA, PINCEL CHINO. Exposición Internacional de Torres Vedras 1998 (Portugal)',
     imageUrl: '/images/cuadros/CUADRO 2 Torres Exposición colectiva Torres Vedras, Portugal, 1998.JPEG',
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
   {
     id: '7',
-    title: 'El baile de la flor',
-    medium: 'Técnica mixta',
-    year: '1999',
+    title: 'El baile de la flor 2000',
+    medium: 'TINTA CHINA, PINCEL CHINO. Diálogo silente con Pedro Garciarias: P.G. "Mientras una tarde de abril se elevaba en rosa..." B.J. "Y siempre desde el trazo existe el verso"',
     imageUrl: '/images/cuadros/EL BAILE DE LA FLOR. PEDRO GARCIARIAS y BELEN JUAREZ.JPEG',
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
   {
     id: '8',
-    title: 'Flor Tinta China',
-    medium: 'Tinta china',
+    title: 'Flor I 1999',
+    medium: 'TINTA CHINA, PINCEL CHINO',
     imageUrl: '/images/cuadros/FLOR TINTA CHINA.JPEG',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '9',
-    title: 'Flor',
-    medium: 'Tinta china',
-    year: '1999',
+    title: 'Flor II 2000',
+    medium: 'ACUARELA',
     imageUrl: '/images/cuadros/FLOR. 1999.JPEG',
     aspectRatio: 'square',
     category: 'cuadros'
   },
   {
     id: '10',
-    title: 'Hombre Elefante',
-    medium: 'Carboncillo',
-    year: '1990',
+    title: 'Hombre elefante 1990',
+    medium: 'SANGUINA, CARBONCILLO',
     imageUrl: '/images/cuadros/HOMBRE ELEFANTE 1990.png',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '11',
-    title: 'Hotel Castelar Buenos Aires',
-    medium: 'Técnica mixta',
-    year: '1998',
+    title: 'Hotel Castelar de Buenos aires 1998',
+    medium: 'DIBUJO ENTINTADO, TINTA CHINA',
     imageUrl: '/images/cuadros/HOTEL CASTELAR BUENOS AIRES 1998.png',
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
   {
     id: '12',
-    title: 'Ilustración Ficciones I',
-    medium: 'Tinta',
-    year: '1999',
+    title: 'Casa colgante 1999',
+    medium: 'TINTA CHINA, PINCEL CHINO',
     imageUrl: '/images/cuadros/ILUSTRACION FICCIONES Especial primavera_verano 1999_1.JPEG',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '13',
-    title: 'Ilustración Ficciones II',
-    medium: 'Tinta',
-    year: '1999',
+    title: 'Torre de Babel (Ficciones, especial China) 1999',
+    medium: 'TINTA CHINA, PINCEL CHINO',
     imageUrl: '/images/cuadros/ILUSTRACION FICCIONES Especial primavera_verano 1999_2.jpeg',
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
   {
     id: '14',
-    title: 'Sin título (Guitarra)',
-    medium: 'Técnica mixta',
+    title: 'Composición III 2001',
+    medium: 'TINTA CHINA, ACUARELA',
     imageUrl: '/images/cuadros/IMG_1881.jpeg',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '15',
-    title: 'La Dama de la Capucha',
-    medium: 'Técnica mixta',
-    year: '1995',
+    title: 'La Dama de la Capucha 1990',
+    medium: 'TINTA CHINA ROJA Y NEGRA',
     imageUrl: '/images/cuadros/LA DAMA DE LA CAPUCHA 1995.png',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '16',
-    title: 'Reflejo en el espejo',
-    medium: 'Óleo',
-    year: '1999',
+    title: 'Reflejo en el espejo 1999',
+    medium: 'TINTA CHINA Y ACUARELA',
     imageUrl: '/images/cuadros/REFLEJO EN EL ESPEJO 1999.JPEG',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '17',
-    title: 'Rostro I',
-    medium: 'Carboncillo',
+    title: 'Rostro y sangre 2005',
+    medium: 'TINTA CHINA, DIBUJO ENTINTADO',
     imageUrl: '/images/cuadros/ROSTRO 1.JPEG',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '18',
-    title: 'Rostro II',
-    medium: 'Carboncillo',
-    year: '1995',
+    title: 'Rostro de perfil 1989',
+    medium: 'CARBONCILLO, PASTEL',
     imageUrl: '/images/cuadros/ROSTRO 21995.JPEG',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '19',
-    title: 'Tinta I',
-    medium: 'Tinta',
+    title: 'Nota Musical I 1999',
+    medium: 'TINTA CHINA, PINCEL CHINO',
     imageUrl: '/images/cuadros/TINTA 1.jpeg',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '20',
-    title: 'Tinta II',
-    medium: 'Tinta',
+    title: 'El yo del subconsciente 1999',
+    medium: 'DIBUJO ENTINTADO, TINTA CHINA',
     imageUrl: '/images/cuadros/TINTA 2.jpeg',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
   {
     id: '21',
-    title: 'Tinta III',
-    medium: 'Tinta',
+    title: 'Nota musical II 1999',
+    medium: 'TINTA CHINA, PINCEL CHINO',
     imageUrl: '/images/cuadros/TINTA 3.jpeg',
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
   {
     id: '22',
-    title: 'Tinta IV',
-    medium: 'Tinta',
+    title: 'La Tristeza 1998',
+    medium: 'TINTA CHINA, PINCEL CHINO',
     imageUrl: '/images/cuadros/TINTA 4.jpeg',
     aspectRatio: 'landscape',
     category: 'cuadros'
@@ -1333,36 +1320,32 @@ export const ART_PIECES: ArtPiece[] = [
   // BOCETOS A LÁPIZ
   {
     id: '23',
-    title: 'Mujer I (Boceto)',
-    medium: 'Lápiz',
-    year: '1998',
+    title: 'Mujer I 1998',
+    medium: 'LÁPIZ',
     imageUrl: '/images/cuadros/Lapiz/MUJER 1 1998.png',
     aspectRatio: 'portrait',
     category: 'bocetos'
   },
   {
     id: '24',
-    title: 'Mujer II (Boceto)',
-    medium: 'Lápiz',
-    year: '1998',
+    title: 'Mujer II 1998',
+    medium: 'LÁPIZ',
     imageUrl: '/images/cuadros/Lapiz/MUJER 2 1998.png',
     aspectRatio: 'portrait',
     category: 'bocetos'
   },
   {
     id: '25',
-    title: 'Mujer III (Boceto)',
-    medium: 'Lápiz',
-    year: '1998',
+    title: 'Mujer III 1998',
+    medium: 'LÁPIZ',
     imageUrl: '/images/cuadros/Lapiz/MUJER 3 1998.png',
     aspectRatio: 'portrait',
     category: 'bocetos'
   },
   {
     id: '26',
-    title: 'Autorretrato',
-    medium: 'Lápiz',
-    year: '1998',
+    title: 'Autorretrato 1997',
+    medium: 'LÁPIZ',
     imageUrl: '/images/cuadros/Lapiz/autorretrato-belen.jpg',
     aspectRatio: 'portrait',
     category: 'bocetos'
