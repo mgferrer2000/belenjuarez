@@ -1440,7 +1440,7 @@ export const ART_CRITIQUES: ArtArticle[] = [
     images: [
       { url: '/images/Critica-artistica/revista_campus_grande.jpg' },
       { url: '/images/Critica-artistica/rostro_de_perro.jpg', caption: 'Cráneo de perro 1990. Marmol/Oleo' },
-      { url: '/images/Critica-artistica/rostros.jpg', caption: 'algunos cuadros de la serie “Rostro de los siete colores” 1987. Cera/Tinta sobre papel.' }
+      { url: '/images/Critica-artistica/rostros.jpg', caption: 'Algunos cuadros de la serie “Rostro de los siete colores” 1987. Cera/Tinta sobre papel.' }
     ],
     content: `En la Facultad de Ciencias expuso Belén Juárez sus "Rostros" hasta el 10 de Mayo. En torno a esta temática obsesiva, la joven artista ha desarrollado una interesante serie de trabajos que sienta claramente las bases de lo que en un futuro puede ser un más amplio desarrollo de las esotéricas ideas que dan forma y vigencia a esos recuerdos, premoniciones y sensaciones que impregnan totalmente su afán creador.
 
