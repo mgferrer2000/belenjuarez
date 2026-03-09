@@ -186,16 +186,16 @@ const Ilustracion: React.FC = () => {
                             <motion.div
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                className="text-white md:w-80 space-y-4 text-center md:text-left"
+                                className="bg-ink text-white p-8 md:p-10 shadow-2xl md:w-96 space-y-6 text-center md:text-left border border-white/10"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <div className="space-y-1">
-                                    <p className="font-sans text-xs uppercase tracking-[0.3em] text-gold/60">{selectedPiece.medium}</p>
-                                    <h2 className="font-serif text-3xl md:text-4xl italic">{selectedPiece.title}</h2>
+                                <div className="space-y-2">
+                                    <p className="font-sans text-xs uppercase tracking-[0.3em] text-gold-accent font-bold">{selectedPiece.medium}</p>
+                                    <h2 className="font-serif text-3xl md:text-4xl italic text-paper">{selectedPiece.title}</h2>
                                 </div>
-                                <div className="h-[1px] w-12 bg-gold/30 mx-auto md:mx-0"></div>
+                                <div className="h-[1px] w-16 bg-gold-accent/50 mx-auto md:mx-0"></div>
                                 {selectedPiece.description && (
-                                    <p className="text-white/70 font-sans text-sm leading-relaxed">
+                                    <p className="text-white/80 font-sans text-sm leading-relaxed">
                                         {selectedPiece.description}
                                     </p>
                                 )}
