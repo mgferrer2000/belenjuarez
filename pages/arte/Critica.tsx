@@ -71,23 +71,29 @@ const Critica: React.FC = () => {
                                 <p className="text-ink/40 font-sans text-[10px] uppercase tracking-widest">Haz clic para ampliar</p>
                             </div>
 
-                            {article.images?.map((img, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    whileHover={{ scale: 1.02 }}
-                                    className="relative group cursor-zoom-in"
-                                    onClick={() => setSelectedImage(img)}
-                                >
-                                    <div className="p-2 bg-white shadow-md border border-ink/5">
-                                        <img
-                                            src={img}
-                                            alt={`Ilustración ${idx + 1}`}
-                                            className="w-full h-auto filter sepia-[0.2] group-hover:sepia-0 transition-all duration-700"
-                                        />
-                                    </div>
-                                    <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/5 transition-all duration-500"></div>
-                                    <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/10 transition-all duration-500 m-4"></div>
-                                </motion.div>
+                            {article.images?.map((imgObj, idx) => (
+                                <div key={idx} className="space-y-3">
+                                    <motion.div
+                                        whileHover={{ scale: 1.02 }}
+                                        className="relative group cursor-zoom-in"
+                                        onClick={() => setSelectedImage(imgObj.url)}
+                                    >
+                                        <div className="p-2 bg-white shadow-md border border-ink/5">
+                                            <img
+                                                src={imgObj.url}
+                                                alt={`Ilustración ${idx + 1}`}
+                                                className="w-full h-auto filter sepia-[0.2] group-hover:sepia-0 transition-all duration-700"
+                                            />
+                                        </div>
+                                        <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/5 transition-all duration-500"></div>
+                                        <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/10 transition-all duration-500 m-4"></div>
+                                    </motion.div>
+                                    {imgObj.caption && (
+                                        <p className="text-ink/60 font-sans text-[11px] leading-relaxed italic border-l-2 border-gold/30 pl-3">
+                                            {imgObj.caption}
+                                        </p>
+                                    )}
+                                </div>
                             ))}
 
                             <div className="bg-paper p-6 border-l-2 border-gold/40">
@@ -121,13 +127,19 @@ const Critica: React.FC = () => {
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
-                            className="relative max-w-7xl w-full h-full flex items-center justify-center"
+                            className="relative max-w-7xl w-full h-full flex flex-col items-center justify-center gap-6"
                         >
                             <img
                                 src={selectedImage}
                                 alt="Ampliación de crítica"
-                                className="max-w-full max-h-full object-contain shadow-2xl border border-white/10"
+                                className="max-w-full max-h-[85vh] object-contain shadow-2xl border border-white/10"
                             />
+                            {/* Option to show caption in Lightbox as well if matched */}
+                            {article.images?.find(img => img.url === selectedImage)?.caption && (
+                                <p className="text-white/80 font-sans text-sm italic tracking-wide text-center max-w-2xl hidden md:block">
+                                    {article.images.find(img => img.url === selectedImage)?.caption}
+                                </p>
+                            )}
                         </motion.div>
                     </motion.div>
                 )}

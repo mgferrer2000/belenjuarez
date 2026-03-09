@@ -52,7 +52,7 @@ const Poesia: React.FC = () => {
                     </div>
                     <div className="space-y-4 text-white/80 font-serif text-base leading-relaxed">
                         <p>
-                            VIII Encuentro de mujeres poetas. En memoria de Ernestina de Champourcin. “Diversidad de voces y formas”. Museo Artium de Vitoria, 2005. Organizado por la poeta y amiga Ángela Serna.
+                            VIII Encuentro de mujeres poetas. En memoria de Ernestina de Champourcin. “Diversidad de voces y formas”. Museo Artium de Vitoria, 2005. Organizado por Ángela Serna.
                         </p>
                     </div>
                 </motion.div>
@@ -81,7 +81,7 @@ const Poesia: React.FC = () => {
                     </div>
                 </motion.div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -16,7 +16,7 @@ const Horizonte: React.FC = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 pb-20 relative">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 pb-20 relative px-4 md:px-0">
             {/* Playlist Section */}
             <div className="flex-1 space-y-6">
                 <div className="mb-10">
@@ -24,14 +24,14 @@ const Horizonte: React.FC = () => {
                         <ListMusic className="text-[#d4af37]" size={28} />
                         <h2 className="text-4xl md:text-5xl font-serif text-white italic">Horizonte de Sucesos</h2>
                     </div>
-                    <p className="text-gray-400 font-light max-w-xl leading-relaxed">
-                        El nuevo álbum de Belén Juárez (2025). Una travesía sonora de 21 piezas que exploran los límites entre la realidad y el subconsciente.
+                    <p className="text-gray-400 font-light max-w-2xl leading-relaxed">
+                        El nuevo álbum de Belén Juárez (2026). Una travesía sonora de 21 piezas que exploran los límites entre la realidad y el subconsciente.
                         <br />
                         <span className="text-[#d4af37]/80 text-sm mt-2 block font-medium">Pulsa en un tema para seleccionarlo en el reproductor.</span>
                     </p>
                 </div>
 
-                <div className="h-[650px] overflow-y-auto pr-4 custom-scrollbar space-y-2">
+                <div className="h-[900px] overflow-y-auto pr-4 custom-scrollbar space-y-2">
                     {ALBUM_TRACKS.map((track, idx) => (
                         <div
                             key={track.id}
@@ -92,7 +92,7 @@ const Horizonte: React.FC = () => {
             </div>
 
             {/* Player Section */}
-            <div className="lg:w-[400px] relative">
+            <div className="lg:w-[500px] relative">
                 <div className="sticky top-32 space-y-6">
                     {/* YouTube Music Embed Player - Large and Centralized */}
                     <div className="relative z-[100] group">
@@ -124,9 +124,20 @@ const Horizonte: React.FC = () => {
                             <Disc className="text-[#d4af37] animate-spin-slow" size={24} />
                             <h5 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">Nota de la Autora</h5>
                         </div>
-                        <p className="text-white/50 font-serif text-base leading-relaxed italic">
-                            "Este álbum representa la culminación de un proceso de investigación sonora donde el verso deja de ser palabra para convertirse en atmósfera. Cada frecuencia ha sido elegida para resonar con el Horizonte de Sucesos de nuestra propia conciencia."
-                        </p>
+                        <div className="space-y-4 text-white/80 font-serif text-base leading-relaxed">
+                            <p>
+                                Este álbum representa la culminación de un proceso de investigación sonora donde el verso se proyecta desde la palabra para convertirse en acordes de un atlas de emociones. Las letras proceden de poemas del libro Horizonte de Sucesos (Huerga & Fierro, 2026).
+                            </p>
+                            <p>
+                                El libro se compone de diez capítulos que siguen la secuencia de Fibonacci y con temas que giran alrededor de una única idea: el Amor en nuestro planeta, y más allá. Versos que se convierten en secuencias, música trenzada con la Poesía. Las voces de este álbum no son de nadie, no se identifican con ninguna persona, pertenecen a la Poesía como ecos de versos que cabalgan en la mente del poeta.
+                            </p>
+                            <p>
+                                Las canciones se caracterizan por tener un número total de compases de 2105 (1 hora, 10 minutos), canciones que van desde 68 a 130 compases. El arco de este álbum se compone de géneros musicales variados, blues, baladas, a capella, con variedad de ritmos y tempos, y diferentes matices dentro de cada género.
+                            </p>
+                            <p className="italic text-white/60">
+                                En este álbum, el verso abandona el libro para elevarse a la condición de horizonte infinito donde cada estrofa respira al son de la música y la voz.
+                            </p>
+                        </div>
                         <div className="mt-8 pt-6 border-t border-white/10">
                             <p className="text-white/20 text-[10px] uppercase tracking-widest text-right italic font-sans">— Belén Juárez</p>
                         </div>

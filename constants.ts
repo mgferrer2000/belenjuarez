@@ -36,7 +36,7 @@ export const BOOKS: Book[] = [
   {
     id: '3',
     title: 'Horizonte de Sucesos',
-    year: '2026  (pendiente de publicar por Huerga & Fierro)',
+    year: '2026',
     description: `Tras una larga pausa para centrarse en su carrera profesional, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
     coverUrl: '/images/libros/horizonte_de_sucesos.png',
     purchaseUrl: '#'
@@ -1317,6 +1317,33 @@ export const ART_PIECES: ArtPiece[] = [
     aspectRatio: 'landscape',
     category: 'cuadros'
   },
+  {
+    id: '27',
+    title: 'La Puerta del subconsciente',
+    medium: 'Oleo sobre lienzo',
+    year: '2006',
+    imageUrl: '/images/cuadros/La_Puerta_del_subconsciente. 2006 Oleo sobre lienzo.JPG',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '28',
+    title: 'Modelo',
+    medium: 'Tinta china pincel chino',
+    year: '1998',
+    imageUrl: '/images/cuadros/Modelo.1998 tinta china pincel chino.jpg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '29',
+    title: 'París',
+    medium: 'Tinta china pincel chino',
+    year: '1998',
+    imageUrl: '/images/cuadros/París. Tinta china pincel chino.jpg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
   // BOCETOS A LÁPIZ
   {
     id: '23',
@@ -1356,7 +1383,7 @@ export const ILLUSTRATED_BOOKS: IllustratedBook[] = [
   {
     id: 'noches-azules',
     title: 'Noches Azules del Alma',
-    year: '1999',
+    year: '2001',
     description: 'Ilustraciones interiores para el poemario Noches Azules del Alma.',
     coverUrl: '/images/ilustraciones/Nochesazulesdelalma/PORTADA.jpeg',
     illustrations: [
@@ -1375,6 +1402,7 @@ export const ILLUSTRATED_BOOKS: IllustratedBook[] = [
   {
     id: 'plaquette-ficciones',
     title: 'Plaquette Ficciones 4',
+    year: '1998',
     description: 'Colección de ilustraciones para la Plaquette Ficciones 4.',
     coverUrl: '/images/ilustraciones/Plaquette_ficciones4/PORTADA.jpeg',
     illustrations: [
@@ -1399,17 +1427,17 @@ export const ILLUSTRATED_BOOKS: IllustratedBook[] = [
 
 export const ART_CRITIQUES: ArtArticle[] = [
   {
-    id: 'critica-campus-1999',
+    id: 'critica-campus-1991',
     title: 'Rostros',
     author: 'Eva María Vicente Galán',
     publication: 'Revista Campus',
-    date: 'Junio de 1999',
+    date: 'Junio de 1991',
     extraInfo: 'Número 54, editada por la Universidad de Granada',
-    coverUrl: '/images/Critica-artistica/Portada_CAmpus_numero_54_Junio_1999.jpeg',
+    coverUrl: '/images/Critica-artistica/revista_campus_grande.jpg',
     images: [
-      '/images/Critica-artistica/revista_campus.jpg',
-      '/images/Critica-artistica/rostro_de_perro.jpg',
-      '/images/Critica-artistica/rostros.jpg'
+      { url: '/images/Critica-artistica/revista_campus_grande.jpg' },
+      { url: '/images/Critica-artistica/rostro_de_perro.jpg', caption: 'Cráneo de perro 1990. Marmol/Oleo' },
+      { url: '/images/Critica-artistica/rostros.jpg', caption: 'algunos cuadros de la serie “Rostro de los siete colores” 1987. Cera/Tinta sobre papel.' }
     ],
     content: `En la Facultad de Ciencias expuso Belén Juárez sus "Rostros" hasta el 10 de Mayo. En torno a esta temática obsesiva, la joven artista ha desarrollado una interesante serie de trabajos que sienta claramente las bases de lo que en un futuro puede ser un más amplio desarrollo de las esotéricas ideas que dan forma y vigencia a esos recuerdos, premoniciones y sensaciones que impregnan totalmente su afán creador.
 

@@ -49,10 +49,10 @@ export interface ArtArticle {
   author: string;
   publication: string;
   date: string;
+  extraInfo?: string;
   content: string;
   coverUrl: string;
-  images?: string[];
-  extraInfo?: string;
+  images?: { url: string; caption?: string }[];
 }
 
 export interface Track {

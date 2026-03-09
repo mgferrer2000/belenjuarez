@@ -17,16 +17,16 @@ const PoesiaVisual: React.FC = () => {
                         <div className="prose prose-lg prose-slate text-ink/80 leading-relaxed font-light space-y-6">
                             <h2 className="text-2xl font-serif text-deep-red italic mb-8">La Poesía visual no es grafismo</h2>
                             <p>
-                                No es posible definir la Poesía visual sin carga de magia y asombro, sin conducir la razón humana hacia el mundo de las emociones. Pensemos en Poesía visual como un instrumento capaz de atraer a la Poesía hacia este lado de la realidad igual que utilizamos un piano, un violín o una guitarra para hacer música. Lo importante será la música, el medio será el instrumento que utilicemos. Igual sucede en Poesía.
+                                No es posible definir a la Poesía Visual sin una carga de magia y asombro, sin conducir la razón humana hacia el mundo de las emociones. Pensemos en la Poesía Visual como un instrumento más capaz de atrapar al verso, igual que utilizamos un piano, un violín o una guitarra para crear Música. Lo importante será la Música, el medio será el instrumento que utilicemos. Igual sucede con la Poesía.
                             </p>
                             <p>
-                                La Poesía es la meta donde anida la pureza emocional. La imagen, el sonido o la palabra son los instrumentos. En torno a esta idea, personalmente siempre aposté por el arte de la pintura como instrumento de expresión de la Poesía, utilicé el pincel para expresar todo ese conjunto de ideas, pensamientos y vértices que llegaban a mi entendimiento. Los pinceles me han acompañado siempre en la creación de la imagen de la Poesía.
+                                La Poesía es la meta donde anida la pureza emocional. La imagen, el sonido o la palabra son los instrumentos. En torno a esta idea, personalmente siempre aposté por el arte de la pintura como instrumento de expresión, utilicé el pincel para expresar todo ese conjunto de ideas, pensamientos y vértices que llegaban a mi entendimiento. Los pinceles me han acompañado siempre en la creación de la imagen de la Poesía.
                             </p>
                             <p>
-                                La Poesía visual no es grafismo. Captura la metamorfosis de la Poesía como un pincel clásico que al rozar el lienzo se transforma en cuerdas de luz, en versos vibrantes, en sinfonía de tintas, en palabra sobre el trazo.
+                                La Poesía Visual no es grafismo. Captura la metamorfosis del verso como un pincel clásico que al rozar el lienzo se transforma en cuerdas de luz, en poemas vibrantes, en sinfonía de tintas, en palabra sobre el trazo.
                             </p>
                             <p>
-                                Desde el pincel me brotan sombras, acrílicos, neones, geometrías, negaciones, letras grandes y pequeñas, rostros, notas musicales flotantes, movimiento, emoción.
+                                Desde el pincel me brotan sombras, acrílicos, tintas, neones, geometrías, negaciones, letras grandes y pequeñas, rostros, notas musicales flotantes, movimiento, emoción.
                             </p>
                             <p className="font-serif italic text-xl pt-4 text-ink">
                                 La Poesía visual no es grafismo, es un manantial de donde nace la palabra venida desde la retina, como río de lava volcada sobre el papel.
