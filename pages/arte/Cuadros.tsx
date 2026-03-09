@@ -100,8 +100,10 @@ const Cuadros: React.FC = () => {
                                     >
                                         <div className="flex items-center gap-2 mb-2">
                                             <span className="h-[1px] w-8 bg-gold/50"></span>
-                                            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-gold/80">
-                                                {piece.medium} {piece.year ? `• ${piece.year}` : ''}
+                                            <p className="font-sans text-[10px] tracking-[0.2em] text-gold/80">
+                                                <span className="uppercase">{piece.medium}</span>
+                                                {piece.mediumDetail && <span className="lowercase italic ml-1">{piece.mediumDetail}</span>}
+                                                {piece.year ? ` • ${piece.year}` : ''}
                                             </p>
                                         </div>
                                         <h3 className="font-serif text-2xl text-white italic leading-tight">{piece.title}</h3>
@@ -176,7 +178,14 @@ const Cuadros: React.FC = () => {
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <div className="space-y-2">
-                                    <p className="font-sans text-xs uppercase tracking-[0.3em] text-gold-accent font-bold">{selectedPiece.medium}</p>
+                                    <p className="font-sans text-xs tracking-[0.3em] text-gold-accent font-bold">
+                                        <span className="uppercase">{selectedPiece.medium}</span>
+                                    </p>
+                                    {selectedPiece.mediumDetail && (
+                                        <p className="font-sans text-xs tracking-widest text-gold-accent font-medium italic lowercase">
+                                            {selectedPiece.mediumDetail}
+                                        </p>
+                                    )}
                                     <h2 className="font-serif text-3xl md:text-4xl italic text-paper">{selectedPiece.title}</h2>
                                     {selectedPiece.year && (
                                         <p className="text-white/60 font-sans text-sm tracking-widest">{selectedPiece.year}</p>

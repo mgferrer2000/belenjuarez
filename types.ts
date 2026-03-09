@@ -29,6 +29,7 @@ export interface ArtPiece {
   id: string;
   title: string;
   medium: string;
+  mediumDetail?: string;
   imageUrl: string;
   aspectRatio: 'portrait' | 'landscape' | 'square';
   year?: string;
