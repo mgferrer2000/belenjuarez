@@ -84,7 +84,7 @@ const Bio: React.FC = () => {
             <div className="absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-all duration-500"></div>
           </div>
           <div className="md:col-span-2 h-[300px] rounded-sm overflow-hidden shadow-lg">
-            <img src="/images/sobrebelen/2B3.jpg" className="w-full h-full object-cover" alt="Estudio" />
+            <img src="/images/sobrebelen/9B4.jpg" className="w-full h-full object-cover" alt="Estudio" />
           </div>
           <div className="md:col-span-1 h-[300px] rounded-sm overflow-hidden border border-gold/10">
             <img src="/images/sobrebelen/5B2.jpg" className="w-full h-full object-cover opacity-80" alt="Detalle artístico" />
@@ -136,17 +136,20 @@ const Bio: React.FC = () => {
           <div className="text-center mb-16 relative">
             <span className="text-gold text-4xl font-serif block mb-8">“</span>
             <h3 className="text-3xl md:text-4xl font-serif text-ink italic leading-snug mb-8 px-8">
-              La Poesía no hay que entenderla, hay que vivirla. No conozco ningún poeta «auténtico» que no tenga corazón.
+              La Poesía no hay que entenderla, hay que vivirla. No conozco ningún poeta «auténtico» que no tenga corazón
             </h3>
             <span className="text-gold text-4xl font-serif block rotate-180">“</span>
 
-            {/* Decorative images for quote section */}
-            <div className="absolute top-0 right-0 -translate-y-1/2 opacity-10 hidden lg:block">
-              <img src="/images/sobrebelen/mano.jpg" alt="Mano decorativa" className="w-32 rotate-12" />
-            </div>
-            <div className="absolute bottom-0 left-0 translate-y-1/2 opacity-10 hidden lg:block">
-              <img src="/images/sobrebelen/9B4.jpg" alt="Detalle" className="w-24 -rotate-12" />
-            </div>
+          </div>
+
+          {/* Featured Images: Mano and 2B3 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <img src="/images/sobrebelen/mano.jpg" alt="Detalle de las manos" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl" />
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+              <img src="/images/sobrebelen/2B3.jpg" alt="Detalle artístico" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl" />
+            </motion.div>
           </div>
 
           <div className="text-center mb-8">
