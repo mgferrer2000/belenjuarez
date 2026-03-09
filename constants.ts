@@ -1195,7 +1195,7 @@ export const ART_PIECES: ArtPiece[] = [
     id: '7',
     title: 'El baile de la flor 2000',
     medium: 'TINTA CHINA, PINCEL CHINO',
-    mediumDetail: 'diálogo silente con Pedro Garciarias: P.G. "Mientras una tarde de abril se elevaba en rosa..." B.J. "Y siempre desde el trazo existe el verso"',
+    mediumDetail: 'Diálogo silente con Pedro Garciarias: P.G. "Mientras una tarde de abril se elevaba en rosa..." B.J. "Y siempre desde el trazo existe el verso"',
     imageUrl: '/images/cuadros/EL BAILE DE LA FLOR. PEDRO GARCIARIAS y BELEN JUAREZ.JPEG',
     aspectRatio: 'landscape',
     category: 'cuadros'

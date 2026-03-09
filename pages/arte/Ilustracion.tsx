@@ -119,7 +119,7 @@ const Ilustracion: React.FC = () => {
                                                 <span className="h-[1px] w-8 bg-gold/50"></span>
                                                 <p className="font-sans text-[10px] tracking-[0.2em] text-gold/80">
                                                     <span className="uppercase">{piece.medium}</span>
-                                                    {piece.mediumDetail && <span className="lowercase italic ml-1">{piece.mediumDetail}</span>}
+                                                    {piece.mediumDetail && <span className="italic ml-1">{piece.mediumDetail}</span>}
                                                 </p>
                                             </div>
                                             <h3 className="font-serif text-2xl text-white italic leading-tight">{piece.title}</h3>
@@ -195,7 +195,7 @@ const Ilustracion: React.FC = () => {
                                         <span className="uppercase">{selectedPiece.medium}</span>
                                     </p>
                                     {selectedPiece.mediumDetail && (
-                                        <p className="font-sans text-xs tracking-widest text-gold-accent font-medium italic lowercase">
+                                        <p className="font-sans text-xs tracking-widest text-gold-accent font-medium italic">
                                             {selectedPiece.mediumDetail}
                                         </p>
                                     )}
