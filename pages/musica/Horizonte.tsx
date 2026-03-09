@@ -63,30 +63,30 @@ const Horizonte: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-white/5 flex flex-wrap gap-4">
+                <div className="mt-8 pt-8 border-t border-white/5 flex flex-row flex-nowrap gap-3 overflow-x-auto pb-4 lg:pb-0 hide-scrollbar">
                     <a
                         href={`https://music.youtube.com/playlist?list=${youtubePlaylistId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-[#f00] text-white font-sans uppercase text-[10px] font-bold tracking-[0.2em] rounded-full hover:scale-105 transition-all flex items-center gap-3"
+                        className="px-4 py-3 bg-[#f00] text-white font-sans uppercase text-[9px] font-bold tracking-[0.15em] rounded-full hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap"
                     >
-                        <Youtube size={16} /> Abrir en YouTube Music
+                        <Youtube size={14} /> YouTube Music
                     </a>
                     <a
                         href="https://open.spotify.com/intl-es/album/32YXuhIAqGlZm9qnewcgRl"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-[#1DB954]/10 text-[#1DB954] border border-[#1DB954]/30 font-sans uppercase text-[10px] font-bold tracking-[0.2em] rounded-full hover:bg-[#1DB954]/20 transition-all flex items-center gap-3"
+                        className="px-4 py-3 bg-[#1DB954]/10 text-[#1DB954] border border-[#1DB954]/30 font-sans uppercase text-[9px] font-bold tracking-[0.15em] rounded-full hover:bg-[#1DB954]/20 transition-all flex items-center gap-2 whitespace-nowrap"
                     >
-                        <MusicIcon size={16} /> Ver en Spotify
+                        <MusicIcon size={14} /> Spotify
                     </a>
                     <a
                         href="https://music.apple.com/es/album/horizonte-de-sucesos/1879665293"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-[#FA243C]/10 text-[#FA243C] border border-[#FA243C]/30 font-sans uppercase text-[10px] font-bold tracking-[0.2em] rounded-full hover:bg-[#FA243C]/20 transition-all flex items-center gap-3"
+                        className="px-4 py-3 bg-[#FA243C]/10 text-[#FA243C] border border-[#FA243C]/30 font-sans uppercase text-[10px] sm:text-[9px] font-bold tracking-[0.15em] rounded-full hover:bg-[#FA243C]/20 transition-all flex items-center gap-2 whitespace-nowrap"
                     >
-                        <MusicIcon size={16} /> Ver en Apple Music
+                        <MusicIcon size={14} /> Apple Music
                     </a>
                 </div>
             </div>
