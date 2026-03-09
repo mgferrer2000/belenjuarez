@@ -39,7 +39,7 @@ export const BOOKS: Book[] = [
     year: '2026',
     description: `Tras una larga pausa para centrarse en su carrera profesional, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
     coverUrl: '/images/libros/Horizonte _de_Sucesos.JPG',
-    coverPosition: 'object-center',
+    coverPosition: 'object-cover object-[center_30%]',
     purchaseUrl: '#'
   }
 ];
