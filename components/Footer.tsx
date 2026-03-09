@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
                     href="mailto:mgferrer2000@gmail.com"
                     className="hover:text-gold transition-colors duration-300"
                 >
-                    Miguel A. González
+                    Miguel A. González Ferrer
                 </a>{' '}
                 &copy; {new Date().getFullYear()}
             </p>
