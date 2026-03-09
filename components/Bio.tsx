@@ -14,7 +14,7 @@ const Bio: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="w-full lg:w-4/12 relative mx-auto max-w-[280px] lg:max-w-[320px]"
+            className="w-full lg:w-4/12 relative mx-auto max-w-[200px] lg:max-w-[240px]"
           >
             <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl relative z-10">
               <img
@@ -163,7 +163,7 @@ const Bio: React.FC = () => {
         </div>
 
         {/* Stats Footer */}
-        <div className="mt-20 pt-16 border-t border-gold/10 flex flex-wrap justify-center gap-16">
+        <div className="mt-20 pt-16 border-t border-gold/10 flex flex-wrap justify-center gap-16 mb-24">
           <div className="text-center group">
             <span className="block text-5xl font-serif text-deep-red group-hover:scale-110 transition-transform cursor-default">2</span>
             <span className="text-xs uppercase tracking-[0.3em] text-ink/40 mt-2 block">Libros Publicados</span>
