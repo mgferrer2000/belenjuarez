@@ -211,10 +211,6 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
-      <footer className="text-center mt-20 text-ink/40 font-sans text-xs">
-        <p>&copy; {new Date().getFullYear()} Belén Juarez. Todos los derechos reservados.</p>
-        <p className="mt-2">Diseñado con <span className="text-deep-red">♥</span> y versos.</p>
-      </footer>
     </section>
   );
 };
