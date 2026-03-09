@@ -9,7 +9,7 @@ export const BookThumbnailRow: React.FC = () => (
                     <img
                         src={book.coverUrl}
                         alt={`${book.title} cover`}
-                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        className={`w-full h-full object-cover ${book.coverPosition || 'object-top'} transition-transform duration-500 group-hover:scale-105`}
                     />
 
                     {(book.downloads || (book.purchaseUrl && book.purchaseUrl !== '#')) && (

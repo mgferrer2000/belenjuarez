@@ -4,6 +4,7 @@ export interface Book {
   year: string;
   description: string;
   coverUrl: string;
+  coverPosition?: string;
   purchaseUrl?: string;
   downloads?: { label: string; url: string }[];
 }
