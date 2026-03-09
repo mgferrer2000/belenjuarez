@@ -82,8 +82,8 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="bg-stone-100 pt-24 pb-12 px-6">
-      <div className="max-w-4xl mx-auto bg-white shadow-xl p-8 md:p-12 -mt-12 relative z-10">
+    <section id="contact" className="bg-stone-100 pt-24 pb-12 px-6 flex-grow flex flex-col">
+      <div className="max-w-4xl mx-auto w-full bg-white shadow-xl p-8 md:p-12 -mt-12 relative z-10 flex-grow">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-serif text-ink mb-2">Contacto</h2>
           <p className="text-ink/60 font-sans text-sm">Para lecturas, colaboraciones o prensa.</p>

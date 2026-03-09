@@ -40,9 +40,9 @@ import BlogPostView from './src/pages/Blog/BlogPost';
 function App() {
   return (
     <Router>
-      <div className="bg-paper min-h-screen">
+      <div className="bg-paper min-h-screen flex flex-col">
         <Navbar />
-        <main>
+        <main className="flex-grow flex flex-col">
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/sobre-belen" element={<SobreBelen />} />

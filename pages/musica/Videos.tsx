@@ -58,9 +58,6 @@ const Videos: React.FC = () => {
                                     {video.title}
                                 </h3>
                             </div>
-                            <p className="text-white/70 font-serif text-sm italic">
-                                {video.description}
-                            </p>
                         </div>
                     </motion.div>
                 ))}
