@@ -5,11 +5,11 @@ export const BookThumbnailRow: React.FC = () => (
     <div className="grid md:grid-cols-2 gap-12 mb-12">
         {BOOKS.map((book) => (
             <div key={book.id} className="flex flex-col group">
-                <div className="relative w-full mb-6 rounded-sm shadow-lg overflow-hidden aspect-video">
+                <div className={`relative w-full mb-6 rounded-sm shadow-lg overflow-hidden ${book.aspectRatio || 'aspect-video'}`}>
                     <img
                         src={book.coverUrl}
                         alt={`${book.title} cover`}
-                        className={`w-full h-full object-cover ${book.coverPosition || 'object-top'} transition-transform duration-500 group-hover:scale-105`}
+                        className={`w-full h-full ${book.coverPosition || 'object-cover object-top'} transition-transform duration-500 group-hover:scale-105`}
                     />
 
                     {(book.downloads || (book.purchaseUrl && book.purchaseUrl !== '#')) && (
