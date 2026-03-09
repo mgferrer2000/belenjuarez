@@ -72,24 +72,40 @@ const Bio: React.FC = () => {
           </div>
         </div>
 
-        {/* Section 3: Mid-page Grid (6B, 2B3, 5B2) */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-32"
-        >
-          <div className="md:col-span-2 h-[300px] rounded-sm overflow-hidden relative group">
-            <img src="/images/sobrebelen/6B.jpeg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Detalle" />
-            <div className="absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-all duration-500"></div>
+        {/* Section 3: Mid-page Gallery (5B2, 6B, 9B4) */}
+        <div className="flex flex-col gap-8 mb-32">
+          {/* Featured Landscape Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-full rounded-sm overflow-hidden shadow-lg border border-gold/5"
+          >
+            <img src="/images/sobrebelen/5B2.jpg" className="w-full h-auto object-cover opacity-90" alt="Detalle artístico apaisado" />
+          </motion.div>
+
+          {/* Sibling Images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="h-[400px] rounded-sm overflow-hidden relative group shadow-md"
+            >
+              <img src="/images/sobrebelen/6B.jpeg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Detalle" />
+              <div className="absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-all duration-500"></div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="h-[400px] rounded-sm overflow-hidden shadow-md"
+            >
+              <img src="/images/sobrebelen/9B4.jpg" className="w-full h-full object-cover" alt="Estudio" />
+            </motion.div>
           </div>
-          <div className="md:col-span-2 h-[300px] rounded-sm overflow-hidden shadow-lg">
-            <img src="/images/sobrebelen/9B4.jpg" className="w-full h-full object-cover" alt="Estudio" />
-          </div>
-          <div className="md:col-span-1 h-[300px] rounded-sm overflow-hidden border border-gold/10">
-            <img src="/images/sobrebelen/5B2.jpg" className="w-full h-full object-cover opacity-80" alt="Detalle artístico" />
-          </div>
-        </motion.div>
+        </div>
 
         {/* Section 4: Publicaciones (belen2.jpg) */}
         <div className="flex flex-col lg:flex-row gap-16 items-start mb-32">
