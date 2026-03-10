@@ -1,4 +1,4 @@
-export interface VisualPoetry {
+﻿export interface VisualPoetry {
   id: string;
   title: string;
   description?: string;
@@ -13,8 +13,19 @@ export const BOOKS: Book[] = [
   {
     id: '3',
     title: 'Horizonte de Sucesos',
-    year: '2025',
-    description: `Tras una larga pausa para centrarse en su carrera profesional, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
+    year: '2026',
+    description: `Tras un largo silencio lírico de casi veinte años, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
+    extendedDescription: `Este libro es un profundo diálogo entre la poesía y el poeta. Se ha estructurado con poemas que siguen la secuencia de Fibonacci, poemas de 34-21-13-8-5-3-2-1-1 versos que se repiten en cada capítulo. Esta secuencia es la que ordena todas las proporciones del mundo real que conocemos, de ahí mi elección. Hablar de poesía no es hablar de versos, vivir la poesía transciende más allá del propio entendimiento, más allá de nuestros deseos o motivos. Poeta es aquel que se entrega incondicionalmente a la escritura sin saber, en numerosas ocasiones, por qué ha escrito un texto que se ha desviado de sus intenciones. Hablamos del inconsciente como posible razón, pero tal vez sea algo más que no percibimos.`,
+    backCoverVerses: [
+      "Memoria de tantos genes,",
+      "como impar susurro de un temido presagio,",
+      "con el hostil encuentro vigilante,",
+      "son sus aullidos de rimas y albas tristezas,",
+      "las únicas flechas contra el viento en aquel plenilunio,",
+      "contra la eterna batida de cepos y asechanzas,",
+      "grito en la noche de odas,",
+      "como único testigo de aquellas espléndidas colinas."
+    ],
     coverUrl: '/images/libros/Horizonte _de_Sucesos.JPG',
     featured: true,
     purchaseUrl: '#'
@@ -806,7 +817,7 @@ export const LITERARY_CRITICISMS: LiteraryCriticism[] = [
     year: '1998',
     coverUrl: '/images/Critica_literaria/Ficciones3/ficciones_3.jpeg',
     slug: 'ficciones-3',
-    excerpt: 'En el número 3 de FICCIONES, se reseña: EL HOMBRE DE LUXEMBURGO (Tusquets, 1997) de Arnaldo Calveyra. PARÉNTESIS DE TIEMPO, SILENCIO Y CURVATURAS (Devenir, 1998) de Juan Pastor. RECÓNDITO TRASLUZ (Junta de Extremadura, 1997) de Serafín Portillo. RECUERDO EN LA NOCHE (Devenir, 1997) de Carmen Serna. PERTENECÍ (Colección Sureste Narrativa, 1997) de Andrés Neuman.',
+    excerpt: `EL HOMBRE DE LUXEMBURGO (Tusquets, 1997) de Arnaldo Calveyra. PARÉNTESIS DE TIEMPO, SILENCIO Y CURVATURAS (Devenir, 1998) de Juan Pastor. RECÓNDITO TRASLUZ (Junta de Extremadura, 1997) de Serafín Portillo. RECUERDO EN LA NOCHE (Devenir, 1997) de Carmen Serna. PERTENECÍ (Colección Sureste Narrativa, 1997) de Andrés Neuman.`,
     reviews: [
       {
         id: 'hombre-luxemburgo',
@@ -883,7 +894,7 @@ PERTENECÍ, primer y sugerente título que con total seguridad dará comienzo a 
     year: '1998',
     coverUrl: '/images/Critica_literaria/Ficciones_4/Ficciones_4.jpeg',
     slug: 'ficciones-4',
-    excerpt: 'En el Nº4 de FICCIONES: reseña de CUANTAS LLAVES (Icaria, 1998) de Concha García. EL LIBRO DE LOS SALMOS (Devenir, 1998) de Jesús Urceloy. TODOS LOS NOMBRES (Alfaguara, 1998) de José Saramago. SIN PUERTAS (Pre-textos, 1996) y EL SILLÓN MALVA (Planeta, 1995) de Ramón Mayrata',
+    excerpt: 'CUANTAS LLAVES (Icaria, 1998) de Concha García. EL LIBRO DE LOS SALMOS (Devenir, 1998) de Jesús Urceloy. TODOS LOS NOMBRES (Alfaguara, 1998) de José Saramago. SIN PUERTAS (Pre-textos, 1996) y EL SILLÓN MALVA (Planeta, 1995) de Ramón Mayrata',
     reviews: [
       {
         id: 'cuantas-llaves',
@@ -1015,8 +1026,7 @@ Y de toda esta diversidad, se debe insistir siempre en lo evidente: no sirve de 
     year: '2002',
     coverUrl: '/images/Critica_literaria/Alhucema_8/Alhucema_8.jpeg',
     slug: 'alhucema',
-    excerpt: `RAFAEL RODRÍGUEZ ALMODÓVAR Y EL VERSO DE LOS AÑOS
-Reseña del libro: MEMORIA DE UN TIEMPO CUMPLIDO. Colección literaria CAROAL. 2001
+    excerpt: `RAFAEL RODRÍGUEZ ALMODÓVAR Y EL VERSO DE LOS AÑOS Reseña del libro: MEMORIA DE UN TIEMPO CUMPLIDO. Colección literaria CAROAL. 2001
 
 Versos que muestran el recorrido de un tiempo que se esfumó entre las manos de este poeta, dejando una estela de aceptación, tristeza y asombrosa clarividencia. El autor comprime su tiempo en este poemario con elegancia y maestría. Libro prologado por la también desaparecida Mari Luz Escribano con quien el autor mantuvo una estrecha y armónica relación literaria en la revista Extramuros, y que fue referencia de las Letras Españolas de aquellos años. Quedó -sin lugar a dudas- la esencia de aquellos años bañados por el esplendor de magníficos poetas y poesía plural. En esta ocasión, versos limpios y profundos de un poeta ya desaparecido. Desde sus primeras páginas se advierte la apacible tristeza de un tiempo cumplido.`,
     reviews: [
@@ -1085,8 +1095,8 @@ Reseña del libro: DE(S)APARICIONES
 PEDRO J. DE LA PEÑA
 
 Ediciones Libertarias, Poesía.1994
-Extramuros. Revista de Letras, Nº 29-30
-Belen Juárez. 2003
+
+
 
 Quisiera aclarar el inicio de la reseña de este libro: “Una cálida madrugada en el aterrador desierto del aeropuerto de Valencia, entre risas y emociones, charlaba con un viejo amigo, mientras yo, poco ingenua y más antártica que nunca, olfateaba entre anónimos, emprendiendo mi viaje y aventura por tierras orientales de dátiles y suspiros.” Conocí a Pedro J. Peña hace más de 20 años, en el aeropuerto de Valencia camino del Instituto Cervantes de Beirut. Junto a Ricardo Bellveser y Antonio Porpetta fuimos invitados a llevar nuestros versos a las orillas más orientales del Mediterráneo. Hoy ninguno de los tres está ya con nosotros, y me sigue abrumando su partida y emocionando sus versos. El libro reseñado de Pedro J de la Peña escrito en 1994 derrochaba pasión, ironía y majestuosos silencios escritos con versos. El poeta debe hacer sentir, dijo una vez. Hoy nos queda su alma, su sonrisa y aquella crecida chistera de versos.`,
     reviews: [
@@ -1184,8 +1194,9 @@ export const ART_PIECES: ArtPiece[] = [
   },
   {
     id: '6',
-    title: 'La Vinoteca 1998',
-    medium: 'TINTA CHINA, PINCEL CHINO. Exposición Internacional de Torres Vedras 1998 (Portugal)',
+
+    title: 'La Vinoteca',
+    medium: 'TINTA CHINA, PINCEL CHINO. Exposición Internacional de Torres Vedras (Portugal) 1998 ',
     imageUrl: '/images/cuadros/CUADRO 2 Torres Exposición colectiva Torres Vedras, Portugal, 1998.JPEG',
     aspectRatio: 'landscape',
     category: 'cuadros'
@@ -1194,7 +1205,7 @@ export const ART_PIECES: ArtPiece[] = [
     id: '7',
     title: 'El baile de la flor 2000',
     medium: 'TINTA CHINA, PINCEL CHINO',
-    mediumDetail: 'Diálogo silente con Pedro Garciarias: P.G. "Mientras una tarde de abril se elevaba en rosa..." B.J. "Y siempre desde el trazo existe el verso"',
+    mediumDetail: 'Diálogo silente con Pedro Garciarias: P.G. "Mientras la tarde de abril se elevaba en rosa y eran las 7:45, la mano en flor y la mirada quieta firmaron este papel en Granada y Abril". B.J. Y siempre desde el trazo existe el verso"',
     imageUrl: '/images/cuadros/EL BAILE DE LA FLOR. PEDRO GARCIARIAS y BELEN JUAREZ.JPEG',
     aspectRatio: 'landscape',
     category: 'cuadros'
@@ -1331,7 +1342,7 @@ export const ART_PIECES: ArtPiece[] = [
   {
     id: '28',
     title: 'Modelo',
-    medium: 'Tinta china pincel chino',
+    medium: 'Tinta china pincel chino. Exposición Internacional de Torres Vedras (Portugal) 1998 ',
     year: '1998',
     imageUrl: '/images/cuadros/Modelo.1998 tinta china pincel chino.jpg',
     aspectRatio: 'portrait',
@@ -1340,7 +1351,7 @@ export const ART_PIECES: ArtPiece[] = [
   {
     id: '29',
     title: 'París',
-    medium: 'Tinta china pincel chino',
+    medium: 'Tinta china pincel chino. Exposición Internacional de Torres Vedras (Portugal) 1998 ',
     year: '1998',
     imageUrl: '/images/cuadros/París. Tinta china pincel chino.jpg',
     aspectRatio: 'portrait',
@@ -1708,7 +1719,7 @@ export const SHORT_STORIES: ShortStory[] = [
     subtitle: 'Relatos de inmigración',
     year: '2008',
     publicationInfo: 'El tam-Tam de las nubes. Pag 107-123.',
-    synopsis: 'Un trasvase emocional y geográfico desde el París de los años 60 hasta las raíces andaluzas. La memoria de una niña de siete años y el mítico Citroën DS-21 "Tiburón" se entrelazan en una épica del destierro y el reencuentro.',
+    synopsis: 'Un trasvase emocional y geográfico desde el París de los años 60 hasta las raíces andaluzas. La memoria de una niña de siete años y el mítico Citroën DS-21 "Tiburón" se entrelazan en una épica que describe el destierro y el reencuentro.',
     coverUrl: '/images/relatos/Al_otro_lado_del_mundo/PORTADA EL TAM TAM.jpeg',
     coverPosition: '90% 100%',
     pdfUrl: '/downloads/relatos/al-otro-lado-del-mundo.pdf',
@@ -2013,7 +2024,7 @@ Antonio Carvajal. Desde aquí, y en nombre de todos los lectores queremos agrade
     publication: 'Ficciones, Revista de Letras. 2ª Época. Nº2. Verano/Otoño 1997. Pág 58-63',
     year: '1997',
     date: 'Verano/Otoño 1997',
-    intro: 'Once de la mañana, nos situamos en el Círculo de Bellas Artes de Madrid y es Juan Carlos Suñén, autor de numerosos libros y ganador de otros tantos premios nacionales, quien nos recibe.',
+    intro: 'Once de la mañana, nos situamos en el Círculo de Bellas Artes de Madrid y es Juan Carlos Suñén, autor de numerosos libros y ganador de otros tantos premios nacionales, quien me recibe.',
     hideIntroInDetail: true,
     content: `[BOOK]EL HOMBRO IZQUIERDO|1997, XVIII Premio Ciudad de Melilla, Colección Visor de Poesía.
 [BOOK]UN HOMBRE NO DEBE SER RECORDADO|1992, IX Premio Rey Juan Carlos de Poesía, Colección Visor de Poesía.
@@ -2025,7 +2036,7 @@ Antonio Carvajal. Desde aquí, y en nombre de todos los lectores queremos agrade
 [BR]
 [BR]
 
-Once de la mañana, nos situamos en el Círculo de Bellas Artes de Madrid y es Juan Carlos Suñén, autor de numerosos libros y ganador de otros tantos premios nacionales, quien nos recibe.
+Once de la mañana, nos situamos en el Círculo de Bellas Artes de Madrid y es Juan Carlos Suñén, autor de numerosos libros y ganador de otros tantos premios nacionales, quien me recibe.
 
 [IMG:6:L]
 F.: Tú publicas tu primer libro PARA NUNCA SER VISTOS, en 1988. ¿Cuál es el mensaje de esta primera publicación?

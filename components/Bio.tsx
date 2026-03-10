@@ -23,8 +23,6 @@ const Bio: React.FC = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -top-6 -left-6 w-full h-full border border-gold/20 -z-0"></div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gold/5 -z-0"></div>
           </motion.div>
 
           <motion.div
@@ -67,7 +65,7 @@ const Bio: React.FC = () => {
               Ha realizado dos exposiciones de pintura: “Rostros” (UGR, 1991) y una Exposición colectiva Internacional de Pintura (Torres Vedras, Portugal, 1998). Ha colaborado en diversas exposiciones de Poesía Visual: “Poesía para ver” (Madrid, 1999; Barcelona 2000; Pineda del Mar, 2000; Palencia 2001, Valladolid, 2002).
             </p>
             <p>
-              Ilustradora y traductora al francés de poemas del libro “Las Noches Azules del Alma” (Fundación de Estudios Euroárabes, 2001). Llevó sus versos al Instituto Cervantes de Beirut (Poetas del Mediterráneo, Encuentro de poetas libaneses y españoles, 2002). Ha participado en diversas antologías de Poesía, y ha publicado artículos en revistas literarias nacionales e internacionales y diarios.
+              Ilustradora y traductora al francés de poemas del libro “Las Noches Azules del Alma” (Fundación de Estudios Euroárabes, 2001). Llevó sus versos al Instituto Cervantes de Beirut (Poetas del Mediterráneo, Encuentro de poetas libaneses y españoles, 2002). Ha participado en diversas antologías de Poesía, y ha publicado artículos en revistas literarias nacionales e internacionales.
             </p>
           </div>
         </div>
@@ -126,10 +124,10 @@ const Bio: React.FC = () => {
 
           <div className="w-full lg:w-8/12 font-sans font-light text-ink/70 text-lg leading-relaxed space-y-8 text-justify">
             <p>
-              Participó en el Encuentro de Mujeres Poetas (Victoria-Gasteiz, 2005) con la presentación audiovisual “Música y Poesía”. Además es autora del relato “Á l’autre bout du monde” publicado en “El Tam Tam de las nubes”. Recientemente (en 2025) ha participado en el proyecto antológico “Encuentro de Letras Celestes” (Puebla de los Infantes, Sevilla).
+              Participó en el Encuentro de Mujeres Poetas (Victoria-Gasteiz, 2005) con la presentación audiovisual “Música y Poesía”. Además, es autora del relato “Á l’autre bout du monde” publicado en “El Tam Tam de las nubes.” Recientemente (en 2025) ha participado en el proyecto antológico “Encuentro de Letras Celestes” (Puebla de los Infantes, Sevilla).
             </p>
             <p>
-              A pesar de tener una extensa obra inédita, únicamente ha publicado dos libros de poesía “Destierro en cuatro ángulos” (Ed. Devenir 1999) y “La Noche de Ayer” (Alhulia, 2002). Recientemente ha publicado un álbum de música “Horizonte de Sucesos” (United Master, 2025), donde las letras de las canciones proceden de poemas del libro de similar título de próxima publicación. Con este gesto Belén pretende abrir una nueva puerta a la Poesía a través de la música. Tanto las voces como las composiciones musicales fueron diseñadas con herramientas de inteligencia artificial. Las voces no son de nadie, pertenecen a la Poesía.
+              A pesar de tener una extensa obra inédita, únicamente ha publicado dos libros de poesía “Destierro en cuatro ángulos” (Ed. Devenir 1999) y “La Noche de Ayer” (Alhulia, 2002). Recientemente ha publicado un álbum de música “Horizonte de Sucesos” (United Master, 2025), donde las letras de las canciones proceden de poemas del libro de similar título “Horizonte de Sucesos” (ed. Huerga & Fierro, col. Rayo Azul, 2026). Con este gesto Belén pretende abrir una nueva puerta a la Poesía a través de la música. Tanto las voces como las composiciones musicales fueron diseñadas con herramientas de inteligencia artificial. Las voces no son de nadie, pertenecen a la Poesía.
             </p>
           </div>
         </div>
@@ -140,7 +138,7 @@ const Bio: React.FC = () => {
             <img src="/images/sobrebelen/7B2.jpeg" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md" alt="Espacio" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="md:-mt-12">
-            <img src="/images/sobrebelen/IMG_0314.JPEG" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl border-4 border-white/50" alt="Retrato Belén" />
+            <img src="/images/sobrebelen/IMG_0314.JPEG" className="w-full h-auto rounded-sm shadow-xl border-4 border-white/50" alt="Retrato Belén" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
             <img src="/images/sobrebelen/IMG_7807.JPEG" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md" alt="Detalle poético" />
@@ -176,7 +174,7 @@ const Bio: React.FC = () => {
               Escribo desde muy temprana edad. Nunca he mostrado aquellos primeros poemas. Pertenecen al silencio. Defiendo los derechos de humanos, animales y vegetales. Creo que la vida se sostiene sobre la coherencia de nuestras acciones y que no somos dueños ni de la vida ni del planeta donde habitamos. Soy una romántica antigua, apasionada del lenguaje como arma de defensa contra la ignorancia.
             </p>
             <p>
-              Me debo a la Poesía, los versos que escribo no me pertenecen. Cuando un poema salta del papel al lector adquiere libertad, identidad, y en algunas ocasiones inmortalidad. A veces, la Poesía traspasa el entendimiento, se infiltra en otros planos de la realidad donde las emociones y el lenguaje tejen ese espacio amable donde descansar la cordura y la razón. La Poesía no hay que entenderla, hay que vivirla. No conozco ningún poeta «auténtico» que no tenga corazón.
+              Me debo a la Poesía, los versos que escribo no me pertenecen. Cuando un poema salta del papel al lector adquiere libertad, identidad, y en algunas ocasiones inmortalidad. A veces, la Poesía traspasa el entendimiento, se infiltra en otros planos de la realidad donde las emociones y el lenguaje tejen ese espacio amable donde descansa la cordura y la razón. La Poesía no hay que entenderla, hay que vivirla. No conozco ningún poeta «auténtico» que no tenga corazón.
             </p>
           </div>
         </div>

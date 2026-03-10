@@ -7,6 +7,8 @@ export interface Book {
   coverPosition?: string;
   aspectRatio?: string;
   featured?: boolean;
+  extendedDescription?: string;
+  backCoverVerses?: string[];
   purchaseUrl?: string;
   downloads?: { label: string; url: string }[];
 }

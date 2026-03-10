@@ -46,9 +46,32 @@ export const BookThumbnailRow: React.FC = () => (
                             <div className="text-gold font-sans text-xs uppercase tracking-[0.3em] mb-4 font-bold">Última Publicación</div>
                             <h3 className="text-3xl md:text-5xl font-serif text-ink mb-3 leading-tight italic">{book.title}</h3>
                             {book.year && <p className="text-deep-red text-sm font-sans mb-8">{book.year}</p>}
-                            <p className="text-ink/70 font-light leading-relaxed text-lg text-justify">
-                                {book.description}
-                            </p>
+
+                            <div className="space-y-6">
+                                <p className="text-ink/90 font-sans font-medium leading-relaxed text-lg text-justify">
+                                    {book.description}
+                                </p>
+
+                                {book.extendedDescription && (
+                                    <p className="text-ink/70 font-light leading-relaxed text-base text-justify">
+                                        {book.extendedDescription}
+                                    </p>
+                                )}
+
+                                {book.backCoverVerses && (
+                                    <div className="py-8 my-8 border-y border-gold/10 relative">
+                                        <div className="absolute top-4 left-0 text-gold/20 text-4xl font-serif italic">“</div>
+                                        <div className="pl-8 space-y-1">
+                                            {book.backCoverVerses.map((verse, vIdx) => (
+                                                <p key={vIdx} className="text-ink/60 font-serif italic text-sm leading-relaxed tracking-wide">
+                                                    {verse}
+                                                </p>
+                                            ))}
+                                        </div>
+                                        <p className="text-[10px] text-ink/30 uppercase tracking-[0.2em] font-sans mt-4 ml-8 italic">— Contraportada</p>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 );

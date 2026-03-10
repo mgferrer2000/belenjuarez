@@ -43,7 +43,7 @@ const Critica: React.FC = () => {
                                 <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink/60 mb-4 font-sans uppercase tracking-wide">
                                     {criticism.title && <span>{criticism.title}</span>}
                                     <span>•</span>
-                                    <span>{criticism.year}</span>
+                                    <span>Belén Juárez - {criticism.year}</span>
                                 </div>
 
                                 {criticism.excerpt ? (
