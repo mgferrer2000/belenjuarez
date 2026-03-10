@@ -25,7 +25,7 @@ const Horizonte: React.FC = () => {
                         <h2 className="text-4xl md:text-5xl font-serif text-white italic">Horizonte de Sucesos</h2>
                     </div>
                     <p className="text-gray-400 font-light max-w-2xl leading-relaxed">
-                        El nuevo álbum de Belén Juárez (2026). Una travesía sonora de 21 piezas que exploran los límites entre la realidad y el subconsciente.
+                        El nuevo álbum de Belén Juárez (2025). Una travesía sonora de 21 piezas que exploran los límites entre la realidad y el subconsciente.
                         <br />
                         <span className="text-[#d4af37]/80 text-sm mt-2 block font-medium">Pulsa en un tema para seleccionarlo en el reproductor.</span>
                     </p>
@@ -126,7 +126,7 @@ const Horizonte: React.FC = () => {
                         </div>
                         <div className="space-y-4 text-white/80 font-serif text-base leading-relaxed">
                             <p>
-                                Este álbum representa la culminación de un proceso de investigación sonora donde el verso se proyecta desde la palabra para convertirse en acordes de un atlas de emociones. Las letras proceden de poemas del libro Horizonte de Sucesos (Huerga & Fierro, 2026).
+                                Este álbum representa la culminación de un proceso de investigación sonora donde el verso se proyecta desde la palabra para convertirse en acordes de un atlas de emociones. Las letras proceden de poemas del libro Horizonte de Sucesos (Huerga & Fierro, 2025).
                             </p>
                             <p>
                                 El libro se compone de diez capítulos que siguen la secuencia de Fibonacci y con temas que giran alrededor de una única idea: el Amor en nuestro planeta, y más allá. Versos que se convierten en secuencias, música trenzada con la Poesía. Las voces de este álbum no son de nadie, no se identifican con ninguna persona, pertenecen a la Poesía como ecos de versos que cabalgan en la mente del poeta.
