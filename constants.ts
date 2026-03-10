@@ -11,6 +11,15 @@ import { Book, Collaboration, ArtPiece, Track, SocialLink, IllustratedBook, ArtA
 
 export const BOOKS: Book[] = [
   {
+    id: '3',
+    title: 'Horizonte de Sucesos',
+    year: '2025',
+    description: `Tras una larga pausa para centrarse en su carrera profesional, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
+    coverUrl: '/images/libros/Horizonte _de_Sucesos.JPG',
+    featured: true,
+    purchaseUrl: '#'
+  },
+  {
     id: '1',
     title: 'Destierro en cuatro ángulos',
     year: '1999',
@@ -32,15 +41,6 @@ export const BOOKS: Book[] = [
       { label: 'Prólogo', url: '/downloads/Prologo_de_Antonio_Enrique-La_noche_de _ayer.pdf' },
       { label: 'Selección de poemas', url: '/downloads/Seleccion_poemas-la_noche_de_ayer.pdf' }
     ]
-  },
-  {
-    id: '3',
-    title: 'Horizonte de Sucesos',
-    year: '2026',
-    description: `Tras una larga pausa para centrarse en su carrera profesional, Belén ha retomado la poesía con su nuevo libro "Horizonte de Sucesos".`,
-    coverUrl: '/images/libros/Horizonte _de_Sucesos.JPG',
-    featured: true,
-    purchaseUrl: '#'
   }
 ];
 
