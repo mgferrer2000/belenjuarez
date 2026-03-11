@@ -24,7 +24,14 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Inicio', path: '/' },
-    { name: 'Sobre Belén', path: '/sobre-belen' },
+    {
+      name: 'Sobre Belén',
+      path: '/sobre-belen',
+      submenu: [
+        { name: 'Biografía', path: '/sobre-belen' },
+        { name: 'Currículum científico', path: '/sobre-belen/curriculum-cientifico' },
+      ]
+    },
     {
       name: 'Obra Literaria',
       path: '/obra-literaria',
@@ -188,3 +195,5 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
+

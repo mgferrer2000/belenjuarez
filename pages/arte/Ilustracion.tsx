@@ -4,6 +4,18 @@ import { IllustratedBook } from '../../types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2, ArrowLeft } from 'lucide-react';
 
+const NOCHES_AZULES_REVIEW = {
+    pretitle: 'Sobre el trazo de Belén Juárez',
+    title: 'Pintando poesía',
+    author: 'Juan Carlos Lazúen. Profesor de Arte y Pintor. 2001',
+    paragraphs: [
+        'Observando la obra de Belén Juárez, es fácilmente constatable la afirmación de que “la poesía puede ser pintada”.',
+        'Con una formación estrictamente autodidacta, esta infatigable y valiosa creyente de todo tipo de manifestaciones culturales y sobre todo en todo lo referido a literatura y poesía, materializa sentimientos, sensaciones y sueños con asombrosa facilidad y acierto. Son obras absolutas, originadas a partir de la lectura sosegada y atenta de los poemas que componen este libro, valiosos complementos a la poesía de autores consagrados y espléndidas obras de arte en sí mismas que relatan con peculiar y personalísimo lenguaje un mundo interior rico en vivencias en el que prepondera la necesidad de comunicar de forma sosegada y elegante su paraíso interior.',
+        'El rotundo grafismo, de influencias lejanas, casi orientales y un vaporoso y etéreo fondo de poliédricas sugerencias y sutil cromatismo dibujan rostros y personajes que una atenta mirada de quien los contempla, al tiempo que lee los poemas, acaba enriquecido.',
+        'Artistas como Belén Juárez, son merecedores de toda admiración y respeto.'
+    ]
+};
+
 const Ilustracion: React.FC = () => {
     const [selectedBook, setSelectedBook] = useState<IllustratedBook | null>(null);
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -34,9 +46,32 @@ const Ilustracion: React.FC = () => {
                 >
                     {selectedBook
                         ? (selectedBook.description || `Ilustraciones para ${selectedBook.title}`)
-                        : "Acompañando la palabra. El trazo que da vida a la voz escrita."
+                        : 'Acompañando la palabra. El trazo que da vida a la voz escrita.'
                     }
                 </motion.p>
+
+                {selectedBook?.id === 'noches-azules' && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="max-w-4xl mx-auto mb-10 border border-gold/10 bg-white/70 px-8 py-10 md:px-12 md:py-12 shadow-sm text-left"
+                    >
+                        <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold mb-4">
+                            {NOCHES_AZULES_REVIEW.pretitle}
+                        </p>
+                        <h2 className="font-serif text-3xl md:text-4xl italic text-ink mb-3">
+                            {NOCHES_AZULES_REVIEW.title}
+                        </h2>
+                        <p className="text-ink/45 font-sans text-xs uppercase tracking-[0.22em] mb-8">
+                            {NOCHES_AZULES_REVIEW.author}
+                        </p>
+                        <div className="space-y-5 text-ink/75 font-light leading-relaxed text-base md:text-lg text-justify">
+                            {NOCHES_AZULES_REVIEW.paragraphs.map((paragraph, index) => (
+                                <p key={index}>{paragraph}</p>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
 
                 {selectedBook && (
                     <motion.button
@@ -136,7 +171,6 @@ const Ilustracion: React.FC = () => {
                 )}
             </AnimatePresence>
 
-            {/* Lightbox Modal */}
             <AnimatePresence>
                 {selectedPiece && (
                     <motion.div
@@ -173,7 +207,7 @@ const Ilustracion: React.FC = () => {
                                 initial={{ scale: 0.9, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 exit={{ scale: 0.9, opacity: 0 }}
-                                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
                                 className="relative flex-1 flex items-center justify-center w-full h-full"
                                 onClick={(e) => e.stopPropagation()}
                             >

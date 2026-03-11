@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Inicio from './pages/Inicio';
 import SobreBelen from './pages/SobreBelen';
 import Contacto from './pages/Contacto';
+import CvaCientifico from './pages/CvaCientifico';
 import ObraLiteraria from './pages/ObraLiteraria';
 import Libros from './pages/ObraLiteraria/Libros';
 import Antologias from './pages/ObraLiteraria/Antologias';
@@ -16,10 +17,12 @@ import RelatoDetail from './pages/ObraLiteraria/RelatoDetail';
 import CriticaLiteraria from './pages/ObraLiteraria/Critica';
 import CriticaDetail from './pages/ObraLiteraria/CriticaDetail';
 import Traduccion from './pages/ObraLiteraria/Traduccion';
+import TraduccionDetail from './pages/ObraLiteraria/TraduccionDetail';
 import ResenasLibros from './pages/ObraLiteraria/ResenasLibros';
 import ResenaDetail from './pages/ObraLiteraria/ResenaDetail';
 import CriticaAndalusi from './pages/ObraLiteraria/CriticaAndalusi';
 import Prologos from './pages/ObraLiteraria/Prologos';
+import PrologoDetail from './pages/ObraLiteraria/PrologoDetail';
 import Entrevistas from './pages/ObraLiteraria/Entrevistas';
 import EntrevistaDetail from './pages/ObraLiteraria/EntrevistaDetail';
 // import Articulos from './pages/ObraLiteraria/Articulos'; // Keeping if needed or deleting
@@ -46,6 +49,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/sobre-belen" element={<SobreBelen />} />
+            <Route path="/sobre-belen/curriculum-cientifico" element={<CvaCientifico />} />
 
             <Route path="/obra-literaria" element={<ObraLiteraria />}>
               <Route index element={<Navigate to="libros" replace />} />
@@ -61,7 +65,9 @@ function App() {
               <Route path="critica/:slug" element={<CriticaDetail />} />
               <Route path="critica-andalusi" element={<CriticaAndalusi />} />
               <Route path="prologos" element={<Prologos />} />
+              <Route path="prologos/:slug" element={<PrologoDetail />} />
               <Route path="traduccion" element={<Traduccion />} />
+              <Route path="traduccion/:slug" element={<TraduccionDetail />} />
               <Route path="entrevistas" element={<Entrevistas />} />
               <Route path="entrevistas/:slug" element={<EntrevistaDetail />} />
             </Route>
@@ -86,6 +92,7 @@ function App() {
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:id" element={<BlogPostView />} />
 
+            <Route path="/cva-cientifico" element={<Navigate to="/sobre-belen/curriculum-cientifico" replace />} />
             <Route path="/contacto" element={<Contacto />} />
           </Routes>
         </main>
@@ -96,3 +103,5 @@ function App() {
 }
 
 export default App;
+
+
