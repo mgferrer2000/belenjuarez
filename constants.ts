@@ -1516,7 +1516,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'ROTULADOR NEGRO Y CERA',
     mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
     year: '1987',
-    imageUrl: '/images/cuadros/rostros/1 Verde. Rostro de los siete colores.png',
+    imageUrl: '/images/cuadros/rostros/1 Verde. Rostro de los siete colores.jpg',
     aspectRatio: 'portrait',
     description: 'Verde. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
     category: 'cuadros'
@@ -1527,7 +1527,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'ROTULADOR NEGRO Y CERA',
     mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
     year: '1987',
-    imageUrl: '/images/cuadros/rostros/2 Azul. Rostro de los siete colores.png',
+    imageUrl: '/images/cuadros/rostros/2 Azul. Rostro de los siete colores.jpg',
     aspectRatio: 'portrait',
     description: 'Azul. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
     category: 'cuadros'
@@ -1538,7 +1538,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'ROTULADOR NEGRO Y CERA',
     mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
     year: '1987',
-    imageUrl: '/images/cuadros/rostros/3 Violeta. Rostro de los siete colores.png',
+    imageUrl: '/images/cuadros/rostros/3 Violeta. Rostro de los siete colores.jpg',
     aspectRatio: 'portrait',
     description: 'Violeta. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
     category: 'cuadros'
@@ -1549,7 +1549,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'ROTULADOR NEGRO Y CERA',
     mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
     year: '1987',
-    imageUrl: '/images/cuadros/rostros/4 Rosa. Rostro de los siete colores.png',
+    imageUrl: '/images/cuadros/rostros/4 Rosa. Rostro de los siete colores.jpg',
     aspectRatio: 'portrait',
     description: 'Rosa. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
     category: 'cuadros'
@@ -1560,7 +1560,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'ROTULADOR NEGRO Y CERA',
     mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
     year: '1987',
-    imageUrl: '/images/cuadros/rostros/5 Rojo. rostro de los siete colores.png',
+    imageUrl: '/images/cuadros/rostros/5 Rojo. rostro de los siete colores.jpg',
     aspectRatio: 'portrait',
     description: 'Rojo. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
     category: 'cuadros'
@@ -1571,7 +1571,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'ROTULADOR NEGRO Y CERA',
     mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
     year: '1987',
-    imageUrl: '/images/cuadros/rostros/6 Naranja. Rostro de los siete colores.png',
+    imageUrl: '/images/cuadros/rostros/6 Naranja. Rostro de los siete colores.jpg',
     aspectRatio: 'portrait',
     description: 'Naranja. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
     category: 'cuadros'
@@ -1582,7 +1582,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'ROTULADOR NEGRO Y CERA',
     mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
     year: '1987',
-    imageUrl: '/images/cuadros/rostros/7 amarillo. Rostro de los siete colores.png',
+    imageUrl: '/images/cuadros/rostros/7 amarillo. Rostro de los siete colores.jpg',
     aspectRatio: 'portrait',
     description: 'Amarillo. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
     category: 'cuadros'
@@ -1767,7 +1767,7 @@ export const ILLUSTRATED_BOOKS: IllustratedBook[] = [
     description: 'Colección de ilustraciones para la Plaquette Ficciones 4.',
     coverUrl: '/images/ilustraciones/Plaquette_ficciones4/PORTADA.jpeg',
     illustrations: [
-      { id: 'pf1', title: 'Plaquette I', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p1.png', aspectRatio: 'portrait' },
+      { id: 'pf1', title: 'Plaquette I', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p1.jpg', aspectRatio: 'portrait' },
       { id: 'pf2', title: 'Plaquette II', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p2.png', aspectRatio: 'portrait' },
       { id: 'pf3', title: 'Plaquette III', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p3.png', aspectRatio: 'portrait' },
       { id: 'pf4', title: 'Plaquette IV', medium: 'Tinta', imageUrl: '/images/ilustraciones/Plaquette_ficciones4/p4(2).jpeg', aspectRatio: 'portrait' },
@@ -2760,8 +2760,8 @@ para siempre...`
     description: 'Antología y catálogos',
     coverImage: '/images/PoesiaVisual/PoesiaVisualAndaluza/Portada_pva.jpeg',
     artworkImages: [
-      '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen1 poesia visual andaluza.png',
-      '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen2 poesia visual andaluza.png'
+      '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen1 poesia visual andaluza.webp',
+      '/images/PoesiaVisual/PoesiaVisualAndaluza/Imagen2 poesia visual andaluza.webp'
     ]
   },
   {
@@ -2774,6 +2774,9 @@ para siempre...`
     ]
   }
 ];
+
+
+
 
 
 
