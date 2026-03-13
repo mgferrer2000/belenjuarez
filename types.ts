@@ -19,6 +19,7 @@ export interface Collaboration {
   title: string;
   type: 'Revista' | 'Antología' | 'Crítica';
   url?: string;
+  externalNote?: string;
   date: string;
   description: string;
   coverUrl: string;

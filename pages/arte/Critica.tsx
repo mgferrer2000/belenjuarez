@@ -98,7 +98,7 @@ const Critica: React.FC = () => {
 
                             <div className="bg-paper p-6 border-l-2 border-gold/40">
                                 <p className="text-ink/60 font-sans text-[11px] italic leading-relaxed">
-                                    "La joven pintora cohesiona las deshilvanadas masas cromáticas gracias al negro, expresión de lo trágico..."
+                                    "El negro es el protagonista indiscutible de estas misteriosas obras, en las que, más que organicidad, lo que se palpa es el frío metálico y deshumanizado de los submundos imposibles a los que puede abocar la mente humana"
                                 </p>
                             </div>
                         </div>
@@ -149,3 +149,4 @@ const Critica: React.FC = () => {
 };
 
 export default Critica;
+

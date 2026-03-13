@@ -29,6 +29,7 @@ const Navbar: React.FC = () => {
       path: '/sobre-belen',
       submenu: [
         { name: 'Biografía', path: '/sobre-belen' },
+        { name: 'Currículum literario y artístico', path: '/sobre-belen/curriculum-literario-artistico' },
         { name: 'Currículum científico', path: '/sobre-belen/curriculum-cientifico' },
       ]
     },
@@ -195,5 +196,9 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
+
+
+
 
 

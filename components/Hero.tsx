@@ -45,16 +45,7 @@ const Hero: React.FC = () => {
         </motion.p>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ duration: 2, delay: 1.5, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-ink/50"
-      >
-        <a href="#bio" aria-label="Scroll down">
-          <ArrowDown size={32} strokeWidth={1} />
-        </a>
-      </motion.div>
+
     </section>
   );
 };

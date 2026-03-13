@@ -5,23 +5,23 @@ const metrics = [
     { label: 'Quinquenios', value: '4' },
     { label: 'Sexenios CNEAI', value: '3' },
     { label: 'Tramos autonómicos', value: '5' },
-    { label: 'Publicaciones', value: '44' },
-    { label: 'Índice H', value: '18' },
-    { label: 'Citas recibidas', value: '862' },
+    { label: 'Publicaciones', value: '41' },
+    { label: 'Índice H', value: '19' },
+    { label: 'Citas recibidas', value: '985' },
     { label: 'Tesis dirigidas', value: '4' },
 ];
 
 const formationParagraphs = [
-    'M.J. Belén Juárez Jiménez es Doctora por la Universidad de Granada (UGR) en 2002 y Especialista en Análisis Clínicos por la UGR y MEC en 1994. Es Profesora Titular de Universidad adscrita al Departamento de Microbiología, sección Farmacia, de la UGR desde 2019.',
+    'M.J. Belén Juárez Jiménez obtuvo el Grado de Doctora por la Universidad de Granada (UGR) en 2002 y el de Especialista en Análisis Clínicos por la UGR y MEC en 1994. Actualmente, es Profesora Titular de Universidad adscrita al Departamento de Microbiología, sección Farmacia de la UGR desde 2019; Además, es coordinadora del Módulo de Bacteriología del Máter Universitario Análisis Biológico y Diagnóstico de Laboratorio.',
     'Actualmente imparte docencia en el Grado en Farmacia y en dos Másteres oficiales de postgrado de la UGR, con más de 2.500 horas impartidas. Tiene reconocidos 4 quinquenios docentes, 3 sexenios de investigación CNEAI, con último sexenio reconocido en el periodo 2015-2020, y 5 tramos autonómicos reconocidos en 2019.',
     'Durante la tesis doctoral disfrutó de 54 meses de becas predoctorales homologadas, obtenidas en convocatoria pública competitiva, adscritas al Proyecto Europeo Cleanner, Controlled and Cost-Efficient Olive Production (COOP), centrado en el estudio y biodepuración de efluentes industriales, y al Proyecto Nacional MEC sobre sistemas de bajo costo para el tratamiento de efluentes industriales con alta carga de compuestos nitrogenados.',
     'En la etapa postdoctoral obtuvo una beca del Plan Propio de la UGR (2004-2006), también en convocatoria pública competitiva, para trabajar en el Dipartimento di Agrobiologia ed Agrochimica della Universita degli Studi della Tuscia, en Viterbo, Italia, sobre actividades enzimáticas de bacterias marinas. En 2006 fue miembro investigador por la parte italiana de una Acción Integrada España-Italia.',
-    'Entre 2008 y 2012 desarrolló un Contrato de Reincorporación de Doctores del Plan Propio de la UGR. Entre 2012 y 2019 fue Profesora Contratada Doctora en la misma universidad, antes de su actual etapa como Profesora Titular.'
+    'Entre 2008 y 2012 obtuvo un Contrato de Reincorporación de Doctores del Plan Propio de la UGR. Entre 2012 y 2019 fue Profesora Contratada Doctora en la misma universidad, antes de su actual etapa como Profesora Titular.'
 ];
 
 const productionParagraphs = [
-    'Su producción científica reúne 44 publicaciones, de las cuales 34 están indexadas. De estas, 19 pertenecen al primer cuartil (Q1), 8 al segundo (Q2), 3 al tercero (Q3) y 4 al cuarto (Q4). Los promedios son: Q1 55,8 %, Q2 23,5 %, Q3 8,8 % y Q4 11,7 %.',
-    'Ha recibido 862 citas y presenta un índice H de 18. A ello se suman 3 capítulos de libro, diversas publicaciones en revistas no indexadas y 20 participaciones en congresos nacionales e internacionales.'
+    'Su producción científica reúne 41 publicaciones indexadas. De estas, 22 pertenecen al primer cuartil (Q1), 8 al segundo (Q2), 3 al tercero (Q3) y 4 al cuarto (Q4). Los promedios son: Q1 62,5 %, Q2 20 %, Q3 7,5 % y Q4 10 %.',
+    'Ha recibido 985 citas y presenta un índice H de 19. A ello se suman 3 capítulos de libro, diversas publicaciones en revistas no indexadas y 20 participaciones en congresos nacionales e internacionales.'
 ];
 
 const leadershipParagraphs = [
@@ -32,10 +32,118 @@ const leadershipParagraphs = [
 const meritsParagraphs = [
     'Ha dirigido 4 tesis doctorales y ha sido tutora de 3 Trabajos Fin de Máster defendidos en 2009, 2017 y 2024, además de 3 TFM de próxima defensa en 2026 y diversos Trabajos Fin de Grado.',
     'Es revisora de Microbial Cell Factories y Polar Biology, evaluadora externa de un proyecto de investigación en la Universidad Tecnológica Metropolitana del Estado de Chile en 2024, y miembro del Grupo de Investigación de Microbiología Ambiental (RMN 270, PAI) desde 1997.',
-    'Forma parte del Consejo del Instituto de Investigación del Agua de la UGR, coordina el área de Microbiología Clínica y es miembro del equipo editorial de la revista científica Ars Pharmaceutica, editada en la Facultad de Farmacia de la UGR.',
-    'Ha sido miembro de la Sociedad Española de Microbiología hasta 2025, del Comité Científico del Congreso Internacional BioRemid2017 y ha integrado 8 tribunales de tesis doctorales con mención internacional entre 2012 y 2026 en las universidades de Granada y Almería.'
+    'Forma parte del Consejo del Instituto de Investigación del Agua de la UGR, y es miembro del equipo editorial de la revista científica Ars Pharmaceutica, editada en la Facultad de Farmacia de la UGR y donde coordina la sección de Microbiología Clínica.',
+    'Ha sido miembro de la Sociedad Española de Microbiología hasta 2025, del Comité Científico del Congreso Internacional BioRemid2017 y ha formado parte de 7 8 tribunales de tesis doctorales con mención internacional entre 2012 y 2025 en las universidades de Granada y Almería. Recientemente, ha sido nombrada Secretaria de otro Tribunal de Tesis Doctoral, la cual será defendida en abril de 2026.'
 ];
 
+
+const professionalStays = [
+    {
+        institution: 'Servicio Andaluz de Salud (SAS)',
+        location: 'Alcalá la Real (Jaén)',
+        duration: '12 meses',
+        dates: '01/10/1993 - 30/09/1994',
+        role: 'Analista en prácticas de la Especialidad de Análisis Clínicos cursada',
+    },
+];
+
+const outreachLectures = [
+    {
+        title: 'Estudio y Análisis de los efectos del alpechín',
+        context: 'Aula de Pensamiento y Opinión <A-riat>. Área de Cultura. Ayuntamiento de Arriate',
+        date: 'Enero 2002',
+    },
+    {
+        title: 'Cromatografía de gases y espectrometría de masas',
+        context: 'Curso Técnicas de Biotratamiento Aplicadas a la Reutilización y Reciclado de Residuos (código FO/0102), Fundación Empresa-Universidad de Granada',
+        audience: 'Dirigido a alumnado de licenciaturas de ciencias experimentales; curso reconocido académicamente como créditos de libre configuración',
+        date: '04/03/2002, 03/03/2003, 02/03/2004 y 01/03/2005',
+    },
+    {
+        title: 'Indicadores biológicos de contaminación de aguas',
+        context: 'Aula Permanente de Formación Abierta del Curso Académico 2010-11, Facultad de Ciencias, Universidad de Granada',
+        audience: 'Dirigido a alumnado asistente al aula de mayores',
+        date: '05/04/2011',
+    },
+    {
+        title: 'Enfermedades infecciosas relacionadas con el consumo y uso de agua',
+        context: 'Ciencia y Sociedad: Proyecto de Fomento de la Cultura Científica en la Ciudadanía. Facultad de Ciencias de la Universidad de Granada y Diputación de Granada',
+        location: 'Alhendín (Granada)',
+        date: '15/12/2010',
+        duration: '2 horas',
+    },
+];
+
+const internationalMeetings = [
+    {
+        year: '1998',
+        title: 'Asistencia como ponente y defensa de los resultados del proyecto COOP',
+        location: 'Génova, Italia',
+    },
+    {
+        year: '2000',
+        title: 'Asistencia como ponente y defensa de los resultados del proyecto MEDUSA WATER',
+        location: 'Lisboa, Portugal',
+    },
+    {
+        year: 'Actualidad',
+        title: 'Asistencia a las reuniones internacionales del proyecto "Biotechnological recycle of olive mills washing water by microalgae"',
+        location: 'Proyecto internacional',
+    },
+];
+
+const seminarActivities = [
+    {
+        year: '1997',
+        title: 'Seminario: "Es el momento...". Técnicas y avances de GC/MS',
+        context: 'Hewlett Packard, S.A.',
+        location: 'Madrid',
+    },
+    {
+        year: '2005',
+        title: 'Reunión "Le Biotecnologie nella depurazione delle acque: applicazione e nuove problematiche"',
+        context: 'Convenios científicos',
+        location: 'Viterbo / Montefiascone, 28-29 de septiembre de 2005',
+    },
+    {
+        year: '2009',
+        title: 'Asistencia y participación en el 5º Meeting Grundtvig',
+        context: 'Water Saving-Manking Saving. UE-Asociaciones de Aprendizaje Grundtvig. Ref: 2008-1-ES1-GRU06-0246. Conferenciante-colaborador',
+        location: 'Universidad de Corse Pasquale Paoli (Francia), 6-9 de abril de 2009',
+    },
+];
+
+const coordinationActivities = [
+    {
+        title: 'Organización y Coordinación de un Ciclo de Conferencias para la Difusión del Conocimiento Científico',
+        institution: 'Instituto del Agua, Universidad de Granada',
+        date: 'Enero 2011 - Enero 2012',
+        details: 'Participación de 23 científicos y profesores de la UGR y CSIC de Granada. Idioma: inglés.',
+    },
+];
+
+const distinctions = [
+    {
+        type: 'Premio de Investigación',
+        title: 'Primer Premio de Investigación de la Asociación Vicente Callao',
+        year: '1992',
+        location: 'Murcia',
+        details: 'Por el trabajo titulado "Actividad antimicrobiana del alpechín".',
+    },
+    {
+        type: 'Miembro del Banco de Expertos',
+        title: 'Agencia Estatal de Investigación. Ministerio de Ciencia e Innovación',
+        year: '01/12/2020',
+        location: 'Madrid, España',
+        details: 'Entidad acreditante: Agencia Estatal de Investigación.',
+    },
+    {
+        type: 'Revisión científica',
+        title: 'Revisora de revistas científicas',
+        year: 'Actualidad',
+        details: 'Revisora de la revista Microbial Cell Factories.',
+    },
+];
 const selectedArticles = [
     {
         authors: "María García-Toledo, Belén Juárez-Jiménez, Belén Rodelas, Clementina Pozo, Jessica Purswani",
@@ -335,6 +443,32 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Estancias en otros centros</p>
+                        </div>
+                        <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
+                            <div className="space-y-4">
+                                {professionalStays.map((item, index) => (
+                                    <article key={index} className="border border-gold/10 bg-paper/50 px-5 py-5">
+                                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.duration}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.dates}</p>
+                                        </div>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.institution}</h3>
+                                        <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.role}</span>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
+                        <div>
                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Producción científica</p>
                         </div>
                         <div className="space-y-5 text-ink/75 font-light text-lg leading-relaxed text-justify">
@@ -357,6 +491,138 @@ const CvaCientifico: React.FC = () => {
                         </div>
                         <div className="space-y-5 text-ink/75 font-light text-lg leading-relaxed text-justify">
                             {meritsParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                        </div>
+                    </section>
+
+                    <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
+                        <div>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Conferencias de divulgación</p>
+                        </div>
+                        <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
+                            <div className="space-y-4">
+                                {outreachLectures.map((item, index) => (
+                                    <article key={index} className="border border-gold/10 bg-paper/50 px-5 py-5">
+                                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.date}</p>
+                                            {item.duration && (
+                                                <>
+                                                    <span className="text-ink/30">·</span>
+                                                    <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.duration}</p>
+                                                </>
+                                            )}
+                                        </div>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.context}</span>
+                                            {item.location && <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>}
+                                        </div>
+                                        {item.audience && (
+                                            <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{item.audience}</p>
+                                        )}
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
+                        <div>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Reuniones internacionales</p>
+                        </div>
+                        <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
+                            <div className="space-y-4">
+                                {internationalMeetings.map((item, index) => (
+                                    <article key={index} className="border border-gold/10 bg-paper/50 px-5 py-5">
+                                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                        </div>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60">
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
+                        <div>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Seminarios y actos científicos</p>
+                        </div>
+                        <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
+                            <div className="space-y-4">
+                                {seminarActivities.map((item, index) => (
+                                    <article key={index} className="border border-gold/10 bg-paper/50 px-5 py-5">
+                                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                        </div>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.context}</span>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
+                        <div>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Organización y coordinación</p>
+                        </div>
+                        <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
+                            <div className="space-y-4">
+                                {coordinationActivities.map((item, index) => (
+                                    <article key={index} className="border border-gold/10 bg-paper/50 px-5 py-5">
+                                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.date}</p>
+                                        </div>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.institution}</span>
+                                        </div>
+                                        <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{item.details}</p>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
+                        <div>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Reconocimientos y evaluación</p>
+                        </div>
+                        <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
+                            <div className="space-y-4">
+                                {distinctions.map((item, index) => (
+                                    <article key={index} className="border border-gold/10 bg-paper/50 px-5 py-5">
+                                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                            <span className="text-ink/30">·</span>
+                                            <p className="text-deep-red/80 font-sans text-[10px] uppercase tracking-[0.2em]">{item.type}</p>
+                                        </div>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        {item.location && (
+                                            <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
+                                                <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
+                                            </div>
+                                        )}
+                                        <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{item.details}</p>
+                                    </article>
+                                ))}
+                            </div>
                         </div>
                     </section>
 
@@ -471,6 +737,13 @@ const CvaCientifico: React.FC = () => {
 };
 
 export default CvaCientifico;
+
+
+
+
+
+
+
 
 
 

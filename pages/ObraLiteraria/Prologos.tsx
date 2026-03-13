@@ -13,15 +13,15 @@ const Prologos: React.FC = () => {
                 </div>
 
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-ink leading-tight mb-5">
-                    Prologos y capitulos de libro
+                    Prólogos y capítulos de libro
                 </h2>
 
                 <div className="w-24 h-[1px] bg-deep-red/60 mb-8"></div>
 
                 <div className="max-w-3xl space-y-5 text-ink/70 font-light leading-relaxed text-lg text-justify">
                     <p>
-                        Este apartado reune prologos, estudios introductorios y capitulos de libro escritos por Belen Juarez.
-                        La pagina principal presenta cada publicacion como una pieza editorial independiente.
+                        Este apartado reúne prólogos, estudios introductorios y capítulos de libro escritos por Belén Juárez.
+                        La página principal presenta cada publicación como una pieza editorial independiente.
                     </p>
                     <p>
                         Cada ficha conduce a una lectura de detalle pensada para consulta reposada, manteniendo la sobriedad y el ritmo visual del resto de la obra literaria.
@@ -90,3 +90,4 @@ const Prologos: React.FC = () => {
 };
 
 export default Prologos;
+

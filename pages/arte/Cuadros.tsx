@@ -35,7 +35,7 @@ const Cuadros: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-ink/60 font-sans max-w-2xl mx-auto italic mb-8"
                 >
-                    Dibujos, pinturas y bocetos. La línea como extensión del verso.
+                    Dibujos, pinturas y bocetos. La línea como extensión del verso
                 </motion.p>
 
                 {/* Filter Controls */}
@@ -207,3 +207,4 @@ const Cuadros: React.FC = () => {
 };
 
 export default Cuadros;
+

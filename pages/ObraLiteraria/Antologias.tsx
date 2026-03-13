@@ -28,6 +28,19 @@ const Antologias: React.FC = () => {
                                         />
                                     </div>
                                 </Link>
+                                {collab.externalNote && collab.url && (
+                                    <a
+                                        href={collab.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="mt-4 block text-xs font-sans leading-relaxed text-ink/60 hover:text-deep-red transition-colors"
+                                    >
+                                        <span className="inline-flex items-start gap-2">
+                                            <ExternalLink size={13} className="mt-0.5 flex-shrink-0" />
+                                            <span>{collab.externalNote}</span>
+                                        </span>
+                                    </a>
+                                )}
                             </div>
 
                             {/* Content Column */}
@@ -71,3 +84,6 @@ const Antologias: React.FC = () => {
 };
 
 export default Antologias;
+
+
+

@@ -1,4 +1,4 @@
-﻿export interface VisualPoetry {
+export interface VisualPoetry {
   id: string;
   title: string;
   description?: string;
@@ -222,7 +222,7 @@ olvidando su rostro caído tras la noche.
     date: '1999',
     description: 'Selección de poemas de "La Noche de Ayer" en Ánfora Nova.',
     coverUrl: '/images/antologias/anfora_nova.jpg',
-    imagePosition: 'top',
+    imagePosition: 'center 18%',
     fullText: `Del libro La Noche de Ayer
 Ánfora Nova, nº39-40. 1999
 
@@ -516,7 +516,7 @@ bahía de la fúlgida ensenada,
     date: '2005',
     description: 'Nº 0. 2005',
     coverUrl: '/images/antologias/entrerrios.jpeg',
-    imagePosition: 'top',
+    imagePosition: 'center 18%',
     fullText: `SOBRE este _Azul_, 
 la verticalidad de una febril respiración 
 festejando un acantilado, 
@@ -556,10 +556,12 @@ al abrigo de un cálido sol de septiembre.`,
     publication: 'POETAS POR LA PAZ. Ilustre Colegio de Gestores Administrativos de Granada, Jaén y Almería',
     title: 'PALESTINA y MI DENUNCIA',
     type: 'Antología',
+    url: 'https://librujula.publico.es/y-mi-denuncia-de-belen-juarez/',
+    externalNote: 'Poema publicado en el Club de Poesía de la Revista Librujula, 2025',
     date: '2002',
     description: 'Participación en la antología Poetas por la Paz.',
     coverUrl: '/images/antologias/PORTADA_poetas-paz.jpg',
-    imagePosition: 'top',
+    imagePosition: 'center 18%',
     fullText: `>> **PALESTINA**
 
 Un mundo de declives
@@ -778,7 +780,7 @@ _por el soldado de las estrellas._`,
     date: '2000',
     description: 'Revista cultural número 53. Teruel.',
     coverUrl: '/images/antologias/Turia_PORTADA.jpg',
-    imagePosition: 'top',
+    imagePosition: 'center 18%',
     fullText: `>> «El mar al fausto beso,
 >> En olas mil se riza…»
 
@@ -805,6 +807,157 @@ desde la experiencia.`,
     images: [
       '/images/antologias/Turia_Imagen1.png'
     ]
+  }
+  ,{
+    id: '13',
+    publication: 'Librujula. Club de la Poesía',
+    title: 'Las cerezas de mi padre',
+    type: 'Revista',
+    url: 'https://librujula.publico.es/las-cerezas-de-mi-padre-de-belen-juarez-jimenez/',
+    externalNote: 'Poema publicado en el Club de la Poesía de Librujula 2024',
+    date: '2024',
+    description: 'Publicación del poema "Las cerezas de mi padre" en Librujula.',
+    coverUrl: '/images/antologias/portada_librujula.png',
+    imagePosition: 'center 18%',
+    fullText: `>> **LAS CEREZAS DE MI PADRE**
+
+>>> A ti, Papá
+
+No existe mayor dolor
+que el de no poder detener el tiempo
+cuando conoces el futuro….
+
+
+>> **I.**
+
+Es el tiempo una cuna de ansiedad,
+una rima de hilos de luz,
+diamante de la vida que se esconde
+tras la carne que nace, que muere, y que…
+pregunta.
+
+Cuna a destiempo
+a lomos de las horas, desgarrando
+la mente hundida en un silencio de neón
+que destella la infamia de tanto sufrir.
+
+He aquí el maldito rostro de un dios
+que juega con los trozos de mi ser,
+que me hizo adulta y más niña si cabe,
+y donde mi llanto implorando,
+sudando la muerte entre mis palmas,
+era un juego infantil
+para aquel que creó la vida.
+
+
+>> **II.**
+
+Tal vez un ángel atrevido,
+un ángel rencoroso,
+un dios disfrazado de ángel,
+ángeles que inventamos,
+un ángel desterrado,
+malévolo de emociones,
+tal vez un ángel que bautiza con amor
+todas las preguntas de nuestros ojos.
+
+Y hoy soy,
+como infinita gota entre multitud de océanos,
+un abrazo más del rencor de aquel ángel,
+intuyendo la augusta venganza,
+le supliqué no alzar su espada
+contra la propia creación del que dicen es
+Señor del Universo conocido.
+
+Me atravesó…
+me atravesó el vientre, los puños y los pies,
+sin dejarme morir, sin dejarme abatir,
+aplaudiendo mis ojos húmedos,
+obligándome a vivir,
+con la deshonra de ser hija del viento,
+con la memoria intacta,
+con la fuerza del reproche,
+y la conciencia de saberme hija de mi padre,
+de mi padre… al que nunca más volveré a ver…
+
+
+>> **III.**
+
+Él me dio la sangre,
+el huerto de mis años más felices
+donde crecí,
+jugando con mis insectos.
+
+Tantísimos ojos azules en su rostro,
+un cielo a la altura de mis bucles,
+el suave tacto de sentirme niña para siempre,
+y comprendo,
+comprendo que me ciñe la memoria
+contra la vida,
+ahogando palabras,
+como un delfín sin espumas
+brotando mis saludos contra el Magnífico
+contra el oídium
+que por blanco o gris perla
+finge eterna belleza…
+
+Veinte años,
+            y mis fuerzas que no pueden
+maltratarme más …
+
+
+>> **IV.**
+
+Aquel que fue mi padre suplicó
+con los puños cerrados
+contra la única primavera que
+resbalaba de su tiempo,
+volver a ver a su niña
+antes de cerrar los ojos para siempre,
+antes de cerrar su risa, la luna de sus lágrimas,
+el manto de su amor, la ira de sus horas.
+
+Sucedió la tarde,
+y las lanzas del sol invadieron mis ventanas,
+el plomo de aquel ocaso, de gris metal,
+sacudía mi esperanza,
+la esperanza que se me negó,
+la esperanza de la que hablan los creyentes,
+esa esperanza que dicen del buen dios,
+y que nunca merecí con tanta maldad,
+que me marcara el pecho a latigazos.
+
+
+>> **V.**
+
+Y sigo llorando…
+ahora sigo llorando,
+me llega el aroma de la flor de la rapilla
+– nomeolvides – insistía…
+mi padre me dijo con una flor en la mano
+– nomeolvides –
+mientras el azul de su mirada,
+me sigue devolviendo la tristeza,
+como manjar de un tiempo de mangos y aguacates
+que jamás madurarán ni morirán en mi recuerdo.
+
+Veinte años después de aquel día de vértigos,
+sigo viendo entre sus manos,
+aquellas últimas cerezas que me pidió,
+las ultimas gotas de vida que me pidió saborear,
+las únicas que se llevó hacia el silencio.
+
+– Dios de los otros,
+estoy llorando y
+no puedo ya ni controlar
+mi desprecio hacia ti,
+me lo quitaste sin merecerlo,
+sin preguntarme.
+
+– En este mundo de necios que permites,
+de almas hermosas que no permites,
+ya no mereces
+ni siquiera el título de Dios.`
   }
 ];
 
@@ -1357,6 +1510,201 @@ export const ART_PIECES: ArtPiece[] = [
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
+  {
+    id: '30',
+    title: 'VERDE 1987',
+    medium: 'ROTULADOR NEGRO Y CERA',
+    mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
+    year: '1987',
+    imageUrl: '/images/cuadros/rostros/1 Verde. Rostro de los siete colores.png',
+    aspectRatio: 'portrait',
+    description: 'Verde. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
+    category: 'cuadros'
+  },
+  {
+    id: '31',
+    title: 'AZUL 1987',
+    medium: 'ROTULADOR NEGRO Y CERA',
+    mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
+    year: '1987',
+    imageUrl: '/images/cuadros/rostros/2 Azul. Rostro de los siete colores.png',
+    aspectRatio: 'portrait',
+    description: 'Azul. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
+    category: 'cuadros'
+  },
+  {
+    id: '32',
+    title: 'VIOLETA 1987',
+    medium: 'ROTULADOR NEGRO Y CERA',
+    mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
+    year: '1987',
+    imageUrl: '/images/cuadros/rostros/3 Violeta. Rostro de los siete colores.png',
+    aspectRatio: 'portrait',
+    description: 'Violeta. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
+    category: 'cuadros'
+  },
+  {
+    id: '33',
+    title: 'ROSA 1987',
+    medium: 'ROTULADOR NEGRO Y CERA',
+    mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
+    year: '1987',
+    imageUrl: '/images/cuadros/rostros/4 Rosa. Rostro de los siete colores.png',
+    aspectRatio: 'portrait',
+    description: 'Rosa. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
+    category: 'cuadros'
+  },
+  {
+    id: '34',
+    title: 'ROJO 1987',
+    medium: 'ROTULADOR NEGRO Y CERA',
+    mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
+    year: '1987',
+    imageUrl: '/images/cuadros/rostros/5 Rojo. rostro de los siete colores.png',
+    aspectRatio: 'portrait',
+    description: 'Rojo. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
+    category: 'cuadros'
+  },
+  {
+    id: '35',
+    title: 'NARANJA 1987',
+    medium: 'ROTULADOR NEGRO Y CERA',
+    mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
+    year: '1987',
+    imageUrl: '/images/cuadros/rostros/6 Naranja. Rostro de los siete colores.png',
+    aspectRatio: 'portrait',
+    description: 'Naranja. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
+    category: 'cuadros'
+  },
+  {
+    id: '36',
+    title: 'AMARILLO 1987',
+    medium: 'ROTULADOR NEGRO Y CERA',
+    mediumDetail: 'Serie “Rostro de los siete colores”. Exposición “Rostros”, 1991',
+    year: '1987',
+    imageUrl: '/images/cuadros/rostros/7 amarillo. Rostro de los siete colores.png',
+    aspectRatio: 'portrait',
+    description: 'Amarillo. Rostro de los siete colores. Pertenece a la serie “Rostro de los siete colores” y formó parte de la exposición “Rostros” de 1991.',
+    category: 'cuadros'
+  },
+  {
+    id: '37',
+    title: 'Fantasma 1988',
+    medium: 'ROTULADOR NEGRO',
+    year: '1988',
+    imageUrl: '/images/cuadros/Fantasma.jpg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '38',
+    title: 'Amistad 1999',
+    medium: 'ROTULADOR NEGRO',
+    year: '1999',
+    imageUrl: '/images/cuadros/Amistad.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '39',
+    title: 'Hombre 1 1998',
+    medium: 'LÁPIZ',
+    year: '1998',
+    imageUrl: '/images/cuadros/Hombre 1 1998.jpeg',
+    aspectRatio: 'portrait',
+    category: 'bocetos'
+  },
+  {
+    id: '40',
+    title: 'Hombre 2 1998',
+    medium: 'LÁPIZ',
+    year: '1998',
+    imageUrl: '/images/cuadros/Hombre 2 1998.jpeg',
+    aspectRatio: 'portrait',
+    category: 'bocetos'
+  },
+  {
+    id: '41',
+    title: 'La Poesía escapa del papel 1999',
+    medium: 'DIBUJO ENTINTADO, TINTA CHINA',
+    year: '1999',
+    imageUrl: '/images/cuadros/La Poesía escapa del papel 1999.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '42',
+    title: 'Lugareña 1998',
+    medium: 'TINTA CHINA, PINCEL CHINO',
+    mediumDetail: 'Exposición Internacional de Torres Vedras (Portugal) 1998',
+    year: '1998',
+    imageUrl: '/images/cuadros/Lugareña.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '43',
+    title: 'Música 2005',
+    medium: 'TINTA CHINA, PINCEL CHINO',
+    year: '2005',
+    imageUrl: '/images/cuadros/Musica 2005.jpg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '44',
+    title: 'Sepultura 2005',
+    medium: 'TINTA CHINA, PINCEL CHINO',
+    year: '2005',
+    imageUrl: '/images/cuadros/Sepultura 2005.jpg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '45',
+    title: 'Sanguina y Negros-1 1987',
+    medium: 'SANGUINA, CARBONCILLO',
+    year: '1987',
+    imageUrl: '/images/cuadros/Sanguina y Negros1.jpg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '46',
+    title: 'Sanguina y Negros-2 1987',
+    medium: 'SANGUINA, CARBONCILLO',
+    year: '1987',
+    imageUrl: '/images/cuadros/Sanguina y Negros 2.jpg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '47',
+    title: 'Sanguina y Negros-3 1987',
+    medium: 'SANGUINA, CARBONCILLO',
+    year: '1987',
+    imageUrl: '/images/cuadros/Sanguina y negros 3.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '48',
+    title: 'Caballo 2001',
+    medium: 'TINTA',
+    year: '2001',
+    imageUrl: '/images/cuadros/Caballo 2001.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
+  {
+    id: '49',
+    title: 'Laberinto 2001',
+    medium: 'TINTA',
+    year: '2001',
+    imageUrl: '/images/cuadros/Laberinto 2001.jpeg',
+    aspectRatio: 'portrait',
+    category: 'cuadros'
+  },
   // BOCETOS A LÁPIZ
   {
     id: '23',
@@ -1388,7 +1736,7 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'LÁPIZ',
     imageUrl: '/images/cuadros/Lapiz/autorretrato-belen.jpg',
     aspectRatio: 'portrait',
-    category: 'bocetos'
+    category: 'cuadros'
   }
 ];
 
@@ -1400,16 +1748,16 @@ export const ILLUSTRATED_BOOKS: IllustratedBook[] = [
     description: 'Ilustraciones interiores para el poemario Noches Azules del Alma.',
     coverUrl: '/images/ilustraciones/Nochesazulesdelalma/PORTADA.jpeg',
     illustrations: [
-      { id: 'na1', title: 'Ilustración I', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/1.jpeg', aspectRatio: 'portrait' },
-      { id: 'na2', title: 'Ilustración II', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/2.jpeg', aspectRatio: 'portrait' },
-      { id: 'na3', title: 'Ilustración III', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/3.jpeg', aspectRatio: 'portrait' },
-      { id: 'na4', title: 'Ilustración IV', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/4.jpeg', aspectRatio: 'portrait' },
-      { id: 'na5', title: 'Ilustración V', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/5.jpeg', aspectRatio: 'portrait' },
-      { id: 'na6', title: 'Ilustración VI', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/6.jpeg', aspectRatio: 'portrait' },
-      { id: 'na7', title: 'Ilustración VII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/7.jpeg', aspectRatio: 'portrait' },
-      { id: 'na8', title: 'Ilustración VIII', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/8.jpeg', aspectRatio: 'portrait' },
-      { id: 'na9', title: 'Ilustración IX', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/9.jpeg', aspectRatio: 'portrait' },
-      { id: 'na10', title: 'Ilustración X', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/10.jpeg', aspectRatio: 'portrait' },
+      { id: 'na1', title: 'Inicio de Azules', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/1.jpeg', aspectRatio: 'portrait' },
+      { id: 'na2', title: 'Verbo de silencios', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/2.jpeg', aspectRatio: 'portrait' },
+      { id: 'na3', title: 'Perfil del aire', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/3.jpeg', aspectRatio: 'portrait' },
+      { id: 'na4', title: 'Cuando los cuerpos', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/4.jpeg', aspectRatio: 'portrait' },
+      { id: 'na5', title: 'Trampa celeste', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/5.jpeg', aspectRatio: 'portrait' },
+      { id: 'na6', title: 'Rostro del tiempo', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/6.jpeg', aspectRatio: 'portrait' },
+      { id: 'na7', title: 'Dama en soledad de aguas', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/7.jpeg', aspectRatio: 'portrait' },
+      { id: 'na8', title: 'Universo de cuerpos azules', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/8.jpeg', aspectRatio: 'portrait' },
+      { id: 'na9', title: 'Rojos en el Verso', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/9.jpeg', aspectRatio: 'portrait' },
+      { id: 'na10', title: 'Eternidad siempre en la palabra', medium: 'Tinta', imageUrl: '/images/ilustraciones/Nochesazulesdelalma/10.jpeg', aspectRatio: 'portrait' },
     ]
   },
   {
@@ -1446,11 +1794,11 @@ export const ART_CRITIQUES: ArtArticle[] = [
     publication: 'Revista Campus',
     date: 'Junio de 1991',
     extraInfo: 'Número 54, editada por la Universidad de Granada',
-    coverUrl: '/images/Critica-artistica/revista_campus_grande.jpg',
+    coverUrl: '/images/Critica-artistica/rostros2.jpg',
     images: [
       { url: '/images/Critica-artistica/revista_campus_grande.jpg' },
       { url: '/images/Critica-artistica/rostro_de_perro.jpg', caption: 'Cráneo de perro 1990. Marmol/Oleo' },
-      { url: '/images/Critica-artistica/rostros.jpg', caption: 'Algunos cuadros de la serie “Rostro de los siete colores” 1987. Cera/Tinta sobre papel.' }
+      { url: '/images/Critica-artistica/rostros2.jpg', caption: 'Algunos cuadros de la serie “Rostro de los siete colores” 1987. Cera/Tinta sobre papel.' }
     ],
     content: `En la Facultad de Ciencias expuso Belén Juárez sus "Rostros" hasta el 10 de Mayo. En torno a esta temática obsesiva, la joven artista ha desarrollado una interesante serie de trabajos que sienta claramente las bases de lo que en un futuro puede ser un más amplio desarrollo de las esotéricas ideas que dan forma y vigencia a esos recuerdos, premoniciones y sensaciones que impregnan totalmente su afán creador.
 
@@ -2426,3 +2774,16 @@ para siempre...`
     ]
   }
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -50,7 +50,16 @@ const CollaborationDetail: React.FC = () => {
                         </div>
 
                         <div className="space-y-3">
-
+                            {collaboration.externalNote && collaboration.url && (
+                                <a
+                                    href={collaboration.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-sm font-sans leading-relaxed text-ink/70 hover:text-deep-red transition-colors"
+                                >
+                                    {collaboration.externalNote}
+                                </a>
+                            )}
 
                             {collaboration.url && (
                                 <a
@@ -59,7 +68,7 @@ const CollaborationDetail: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="block w-full text-center py-2 px-4 border border-ink text-ink text-sm uppercase tracking-widest hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
                                 >
-                                    Leer Online <ExternalLink size={14} />
+                                    Visitar <ExternalLink size={14} />
                                 </a>
                             )}
                         </div>
@@ -238,3 +247,6 @@ const CollaborationDetail: React.FC = () => {
 };
 
 export default CollaborationDetail;
+
+
+

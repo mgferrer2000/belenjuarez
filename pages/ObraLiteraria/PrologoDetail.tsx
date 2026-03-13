@@ -11,6 +11,8 @@ const PrologoDetail: React.FC = () => {
         return <Navigate to="/obra-literaria/prologos" replace />;
     }
 
+    const officialWebsite = work.slug === 'gustavo-vega-poeticas-visuales' ? 'https://www.gustavovega.com/' : null;
+
     return (
         <div className="max-w-6xl mx-auto pb-24">
             <div className="mb-10">
@@ -40,9 +42,21 @@ const PrologoDetail: React.FC = () => {
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-ink italic leading-tight mb-4">
                             {work.title}
                         </h1>
-                        <p className="text-sm font-sans uppercase tracking-[0.2em] text-ink/45 mb-6">
+                        <p className="text-sm font-sans uppercase tracking-[0.2em] text-ink/45 mb-3">
                             {work.publication}{work.year ? ` · ${work.year}` : ''}
                         </p>
+                        {officialWebsite && (
+                            <p className="font-sans text-sm text-ink/55 mb-6">
+                                <a
+                                    href={officialWebsite}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="border-b border-ink/20 pb-[1px] transition-colors hover:text-deep-red hover:border-deep-red/40"
+                                >
+                                    Web oficial de Gustavo Vega
+                                </a>
+                            </p>
+                        )}
                         <div className="w-24 h-[1px] bg-deep-red/60"></div>
                     </div>
 
@@ -83,3 +97,5 @@ const PrologoDetail: React.FC = () => {
 };
 
 export default PrologoDetail;
+
+

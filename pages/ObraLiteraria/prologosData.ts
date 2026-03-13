@@ -13,13 +13,13 @@ export type PrologueWork = {
 export const PROLOGUE_WORKS: PrologueWork[] = [
   {
     slug: 'quimica-del-amor',
-    title: 'La Quimica del Amor',
+    title: 'La Química del Amor',
     publication: 'Cuadernos del Magreb / Universidad de Granada',
     year: '2013',
-    typeLabel: 'Capitulo de libro',
+    typeLabel: 'Capítulo de libro',
     coverUrl: '/images/prologos/quimica-del-amor-portada.jpeg',
     authorsLine: 'Belén Juárez',
-    description: 'Capitulo dedicado al amor en la poesia de al-Andalus, integrado en un volumen de investigacion sobre Marruecos, el Sahara Occidental y la tradicion cultural andalusi.',
+    description: 'Capítulo dedicado al amor en la poesía de al-Andalus, integrado en un volumen de investigación sobre Marruecos, el Sahara Occidental y la tradición cultural andalusí.',
     content: [
       'TRES AMORES ÁRABES',
       'APROXIMACIÓN AL AMOR EN AL-ANDALUS',
@@ -583,13 +583,13 @@ export const PROLOGUE_WORKS: PrologueWork[] = [
   },
   {
     slug: 'extramuros-31-poesia-arabe',
-    title: 'Poesia arabe: Tesoros y Oasis Linguistico del Espiritu del Hombre',
+    title: 'Poesía árabe: Tesoros y oasis lingüístico del espíritu del hombre',
     publication: 'Extramuros, Revista Literaria',
     year: '2003',
-    typeLabel: 'Prologo / Edicion especial',
+    typeLabel: 'Prólogo / Edición especial',
     coverUrl: '/images/prologos/extramuros-31-portada.jpeg',
     authorsLine: 'Coordinadora y seleccion: Belén Juárez',
-    description: 'Texto de apertura para un numero especial de Extramuros dedicado a la poesia arabe contemporanea, con enfoque historico, cultural y panoramico.',
+    description: 'Texto de apertura para un número especial de Extramuros dedicado a la poesía árabe contemporánea, con enfoque histórico, cultural y panorámico.',
     content: [
       'EXTRAMUROS, Revista Literaria',
       'Nº 31, Año VIII, 2003',
@@ -615,13 +615,13 @@ export const PROLOGUE_WORKS: PrologueWork[] = [
   },
   {
     slug: 'la-n-literaria-poesia-arabe',
-    title: 'Poesia Arabe Contemporanea',
+    title: 'Poesía Árabe Contemporánea',
     publication: 'La Ñ Literaria',
     year: '1999',
-    typeLabel: 'Prologo',
+    typeLabel: 'Prólogo',
     coverUrl: '/images/prologos/la-n-literaria-portada.jpg',
     authorsLine: 'Prologo a la edicion de Belén Juárez',
-    description: 'Introduccion a una seleccion de poesia arabe contemporanea, centrada en la relevancia cultural del genero y en varios autores arabes actuales.',
+    description: 'Introducción a una selección de poesía árabe contemporánea, centrada en la relevancia cultural del género y en varios autores árabes actuales.',
     content: [
       'LA Ñ LITERARIA',
       'POESÍA ÁRABE CONTEMPORÁNEA',
@@ -635,12 +635,12 @@ export const PROLOGUE_WORKS: PrologueWork[] = [
   },
   {
     slug: 'gustavo-vega-poeticas-visuales',
-    title: 'Gustavo Vega: Treinta anos de imagenes y verbos proyectados sobre el infinito',
-    publication: 'Libro: Gustavo Vega. Poeticas Visuales',
-    typeLabel: 'Prologo / Estudio introductorio',
+    title: 'Gustavo Vega: Treinta años de imágenes y verbos proyectados sobre el infinito',
+    publication: 'Libro: Gustavo Vega. Poéticas Visuales',
+    typeLabel: 'Prólogo / Estudio introductorio',
     coverUrl: '/images/prologos/gustavo-vega-portada.jpeg',
     authorsLine: 'Belén Juárez',
-    description: 'Amplio estudio introductorio sobre la trayectoria creativa y la poesia visual de Gustavo Vega, escrito como marco para el libro Poeticas Visuales.',
+    description: 'Amplio estudio introductorio sobre la trayectoria creativa y la poesía visual de Gustavo Vega, escrito como marco para el libro Poéticas Visuales.',
     content: [
       'GUSTAVO VEGA: TREINTA AÑOS DE IMÁGENES Y VERBOS PROYECTADOS SOBRE EL INFINITO',
       'Belén Juárez',
@@ -654,7 +654,7 @@ export const PROLOGUE_WORKS: PrologueWork[] = [
       'De acuerdo con estas premisas, no resulta extraño que la curiosidad insaciable de algunos que han devenido poetas visuales tenga su origen en las mismas preguntas que los filósofos se han formulado a largo de los tiempos y, aunque con métodos diferentes, en sus mismas búsquedas y anhelos en pro de la Belleza, la Bondad..., o de la disolución del Caos, o en el Caos, o del reencuentro con el Ser, o el Ente, el Dasein..., o el Todo, la Nada, lo Absoluto..., para poder comprender y aprehender la Realidad, el Cosmos. Tendencia universal que compartimos todos, no como una visión del mundo, sino, como una sensación abstracta que va hacia lo indecible, algo oscuro y remoto que es a la vez común y particular de cada individuo. Por poner un ejemplo, advertimos que Martin Heidegger, en El Ser y el Tiempo, pone los pilares tanto del Existencialismo como de las teorías de la Deconstrucción del Arte, que tanto han influido en el siglo XX, y con ello también en muchos planteamientos de la actual poesía visual.',
       '"Tratar de ver más y mejor no es una fantasía, una curiosidad, un lujo. Ver o perecer, tal es la condición humana", escribió Tellhard de Chardin en El Fenómeno Humano y este parece ser uno de los pilares de la creación poética de Gustavo Vega, estudioso que fue de la obra de este paleontólogo y pensador francés. El deseo de ver, ver más y mejor, de conocer... puede entenderse como una actitud, una búsqueda, que da sentido a toda una vida. Se trata de una búsqueda estética y metafísica, relacionada con lo órfico, aunque no despreocupada del contexto y dimensión social, solidaria con los demás.',
       'Es en estos parámetros en donde nos encontramos con la obra de Vega, un filósofo vocacional, comprometido con todas las derivaciones del Conocimiento, que es desde los años 70 también poeta visual. Su insaciable búsqueda del ser, creatividad, ha tenido su lugar a través de la plástica y del verbo. Siendo de destacar en este punto su empeño por aproximarse o desvelar las dimensiones más ocultas del ser humano mediante este instrumento artístico-verbal de investigación que es la Poesía Visual. "Me definiría como un híbrido entre la filosofía, la literatura y la plástica. El adjetivo de poeta me vale, pero el de pintor me limita mucho"1',
-      'En una entrevista2 realizada por la profesora de la Universidad de California, Carlota Caulfield, el poeta nos comenta que "siendo muy joven, atraído por lo místico y lo religioso, y al mismo tiempo, comprometido internamente en el cambio social, me interesé por la Filosofía como respuesta a ciertos planteamientos teóricos, lo que me llevó a su estudio y posterior dedicación profesional. Aunque, al tiempo que estudiaba Filosofía, disfrutaba pintando, iba a clases de pintura". Se trata, por tanto, de un filósofo internamente visual, de vocación indiscutible como podemos comprobar en el siguiente comentario: "Ocurrió en un cierto momento, allá por 1976 o 77, que intenté la síntesis de lo conceptual, de lo filosófico, con la expresión plástica que tanto me interesaba. Había en ello como un intento de plasmar lo complejo, los largos discursos de la Filosofía, en la instantaneidad de la mirada".',
+      'En una entrevista realizada por la profesora de la Universidad de California, Carlota Caulfield, el poeta nos comenta que "siendo muy joven, atraído por lo místico y lo religioso, y al mismo tiempo, comprometido internamente en el cambio social, me interesé por la Filosofía como respuesta a ciertos planteamientos teóricos, lo que me llevó a su estudio y posterior dedicación profesional."',
       'Efectivamente, Gustavo Vega se licenció en Filosofía en Roma por la Universidad Santo Tomás de Aquino, 1972, en Filosofía y Letras por la Universidad de Barcelona, 1974, y posteriormente se doctoró en Filología Hispánica y Literatura por la Universidad de Barcelonaen 2004, con la Tesis: "Poéticas de Creación Visual en España", posteriormente distinguida con el Premio Extraordinario de Doctorado de dicha Universidad en 2006. Ello nos demuestra que su afán de conocimiento y la actividad creativa con él implicada ha generado una prolífica y extensa obra dentro del movimiento de la plástica verbal. Todo un compendio de investigación artística y literaria que se solubiliza en el estado líquido más puro de acción creativa: la Poesía Visual.',
       'Se trata de una actividad que el poeta ha tomado como un proyecto vital, con la mayor de las seriedades. En el prólogo al libro Prólogo para un Silencio3, el crítico y catedrático de la Universidad de Barcelona, Joaquín Marco escribió: "Gustavo Vega es un hombre profundamente serio. Es tan serio como su ambición: la poesía visual, el poema hecho imagen, la letra, el signo, invadiendo nuestra realidad". Y que años después subrayó José Mª Balcells, filólogo y catedrático de la Universidad de León, en el prólogo del libro El Placer de Ser3 diciendo: "El escritor leonés Gustavo Vega es uno de los más singulares poetas de las letras españolas de la segunda mitad del siglo XX. Uno de los factores que más inequívocamente singularizan su figura literaria es la indeclinable fidelidad a la exploraciónde la veta que, en términos muy amplios, cabría denominar poéticas de creación visual". Y más adelante añade que cuando situamos a Vega en la línea de los muy contados poetas de creación visual de las últimas décadas, "entonces se recorta ante nosotros la verdadera dimensión que lo caracteriza, porque si bien se parece a algunos en haberse mantenido fiel al rumbo antedicho, un rumbo muy plural, no se parece a nadie en la decidida constancia y esfuerzo en indagar y producir con todos los medios, implicando en ello y coimplicando tanto los recursos literarios más convencionales y arraigados en la tradición como los vanguardistas y experimentales".',
       'En la conferencia titulada "Poesía Para Ver"4, Gustavo Vega explicó que le nacieron -comenzar a vivir y morir son actividades pasivas, dijo-, en 1948, en un pueblecito leonés de la singular comarca de El Bierzo. En él, donde sólo vivió hasta los dos años y volvió sólo esporádicamente con posterioridad, captó las primeras luces, intensos destellos, de los que le quedaron algunos recuerdos que han ido saliendo a la luz en alguno de sus escritos: "Un Yo-niño, /pupila azul, / miraba/henchidas de misterios/de nostalgias/ difuminarse lejos/ las montañas//\'Azul/...son azules... !/preguntaba.."5. Con una claridad meridiana aquellas primeras imágenes, vivencias, de tan tierna edad le han acompañado a lo largo de una vida que ha conocido un sinfín de lejanos lugares y variadas situaciones. El territorio e imágenes bercianas ocupan un lugar privilegiado en su universo fantástico yen su afecto.',
@@ -782,4 +782,6 @@ export const PROLOGUE_WORKS: PrologueWork[] = [
 
 export const getPrologueWorkBySlug = (slug: string) =>
   PROLOGUE_WORKS.find((work) => work.slug === slug);
+
+
 

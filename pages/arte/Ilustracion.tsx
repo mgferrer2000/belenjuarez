@@ -46,7 +46,7 @@ const Ilustracion: React.FC = () => {
                 >
                     {selectedBook
                         ? (selectedBook.description || `Ilustraciones para ${selectedBook.title}`)
-                        : 'Acompañando la palabra. El trazo que da vida a la voz escrita.'
+                        : 'Acompañando la palabra. El trazo que da vida a la voz escrita'
                     }
                 </motion.p>
 
@@ -225,14 +225,6 @@ const Ilustracion: React.FC = () => {
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <div className="space-y-2">
-                                    <p className="font-sans text-xs tracking-[0.3em] text-gold-accent font-bold">
-                                        <span className="uppercase">{selectedPiece.medium}</span>
-                                    </p>
-                                    {selectedPiece.mediumDetail && (
-                                        <p className="font-sans text-xs tracking-widest text-gold-accent font-medium italic">
-                                            {selectedPiece.mediumDetail}
-                                        </p>
-                                    )}
                                     <h2 className="font-serif text-3xl md:text-4xl italic text-paper">{selectedPiece.title}</h2>
                                 </div>
                                 <div className="h-[1px] w-16 bg-gold-accent/50 mx-auto md:mx-0"></div>
@@ -251,3 +243,6 @@ const Ilustracion: React.FC = () => {
 };
 
 export default Ilustracion;
+
+
+

@@ -85,7 +85,6 @@ const Bio: React.FC = () => {
 
         {/* Section 3: Mid-page Gallery (5B2, 6B, 9B4) */}
         <div className="flex flex-col gap-4 md:gap-8 mb-20 md:mb-24 lg:mb-32">
-          {/* Featured Landscape Image */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +94,6 @@ const Bio: React.FC = () => {
             <img src="/images/sobrebelen/5B2.jpg" className="w-full h-auto object-cover opacity-90" alt="Detalle artístico apaisado" />
           </motion.div>
 
-          {/* Sibling Images */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -166,10 +164,8 @@ const Bio: React.FC = () => {
               La Poesía no hay que entenderla, hay que vivirla. No conozco ningún poeta "auténtico" que no tenga corazón
             </h3>
             <span className="text-gold text-3xl md:text-4xl font-serif block rotate-180">"</span>
-
           </div>
 
-          {/* Featured Images: Mano and 2B3 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-10 md:mb-20">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <img src="/images/sobrebelen/mano.jpg" alt="Detalle de las manos" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl" />
@@ -207,11 +203,9 @@ const Bio: React.FC = () => {
             <span className="text-xs uppercase tracking-[0.3em] text-ink/40 mt-2 block">Álbum Musical</span>
           </div>
         </div>
-
       </div>
     </section>
   );
 };
 
 export default Bio;
-

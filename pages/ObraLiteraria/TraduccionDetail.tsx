@@ -101,14 +101,11 @@ const TraduccionDetail: React.FC = () => {
                 {work.sections.map((section) => (
                     <article key={section.id} className="border border-gold/10 bg-white/70 rounded-sm shadow-sm overflow-hidden">
                         <div className="px-8 md:px-10 py-8 border-b border-ink/5 bg-paper/70">
-                            <h2 className="text-2xl md:text-3xl font-serif text-ink italic mb-3">
-                                {section.title}
-                            </h2>
-                            <div className="flex flex-wrap gap-4 text-[10px] font-sans uppercase tracking-[0.3em] text-ink/45">
-                                <span>{section.sourceLanguage}</span>
-                                <span className="text-deep-red">·</span>
-                                <span>{section.targetLanguage}</span>
-                            </div>
+                            {section.title && !/^Poema\s+[IVXLCDM]+$/i.test(section.title) && (
+                                <h2 className="text-2xl md:text-3xl font-serif text-ink italic mb-3">
+                                    {section.title}
+                                </h2>
+                            )}
                         </div>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2">
@@ -160,3 +157,5 @@ const TraduccionDetail: React.FC = () => {
 };
 
 export default TraduccionDetail;
+
+

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -7,6 +6,7 @@ import Inicio from './pages/Inicio';
 import SobreBelen from './pages/SobreBelen';
 import Contacto from './pages/Contacto';
 import CvaCientifico from './pages/CvaCientifico';
+import CurriculumLiterarioArtistico from './pages/CurriculumLiterarioArtistico';
 import ObraLiteraria from './pages/ObraLiteraria';
 import Libros from './pages/ObraLiteraria/Libros';
 import Antologias from './pages/ObraLiteraria/Antologias';
@@ -25,7 +25,6 @@ import Prologos from './pages/ObraLiteraria/Prologos';
 import PrologoDetail from './pages/ObraLiteraria/PrologoDetail';
 import Entrevistas from './pages/ObraLiteraria/Entrevistas';
 import EntrevistaDetail from './pages/ObraLiteraria/EntrevistaDetail';
-// import Articulos from './pages/ObraLiteraria/Articulos'; // Keeping if needed or deleting
 import PoesiaVisual from './pages/PoesiaVisual';
 import PoesiaVisualDetail from './pages/PoesiaVisualDetail';
 import Arte from './pages/arte';
@@ -36,7 +35,6 @@ import Musica from './pages/musica';
 import Poesia from './pages/musica/Poesia';
 import Horizonte from './pages/musica/Horizonte';
 import Videos from './pages/musica/Videos';
-
 import BlogList from './src/pages/Blog/BlogList';
 import BlogPostView from './src/pages/Blog/BlogPost';
 
@@ -49,6 +47,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/sobre-belen" element={<SobreBelen />} />
+            <Route path="/sobre-belen/curriculum-literario-artistico" element={<CurriculumLiterarioArtistico />} />
             <Route path="/sobre-belen/curriculum-cientifico" element={<CvaCientifico />} />
 
             <Route path="/obra-literaria" element={<ObraLiteraria />}>
@@ -103,5 +102,3 @@ function App() {
 }
 
 export default App;
-
-
