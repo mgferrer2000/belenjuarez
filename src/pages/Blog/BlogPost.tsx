@@ -33,35 +33,60 @@ const BlogPostView: React.FC = () => {
         fetchContent();
     }, [id]);
 
-    // A very basic block renderer. In production you probably want a library like `react-notion-x` or mapping each block type
+    // Helper to render rich text segments with annotations (bold, italic, etc.)
+    const renderRichText = (richText: any[]) => {
+        return richText.map((t: any, i: number) => {
+            const { annotations, text, href } = t;
+            let element: React.ReactNode = text.content;
+
+            if (annotations.bold) element = <strong key={`b-${i}`}>{element}</strong>;
+            if (annotations.italic) element = <em key={`i-${i}`}>{element}</em>;
+            if (annotations.strikethrough) element = <s key={`s-${i}`}>{element}</s>;
+            if (annotations.underline) element = <u key={`u-${i}`}>{element}</u>;
+            if (annotations.code) element = <code key={`c-${i}`} className="bg-ink/5 px-1 rounded">{element}</code>;
+            
+            if (href) {
+                element = (
+                    <a key={`a-${i}`} href={href} target="_blank" rel="noopener noreferrer" className="text-deep-red hover:underline">
+                        {element}
+                    </a>
+                );
+            }
+
+            return <React.Fragment key={i}>{element}</React.Fragment>;
+        });
+    };
+
     const renderBlock = (block: any) => {
         const type = block.type;
         const value = block[type];
 
-        if (!value || !value.rich_text) return null;
+        if (!value || (!value.rich_text && type !== 'divider')) return null;
 
-        const text = value.rich_text.map((t: any) => t.plain_text).join('');
+        const richText = value.rich_text || [];
+        const content = renderRichText(richText);
 
-        if (!text && type === 'paragraph') return <br key={block.id} />;
+        if (richText.length === 0 && type === 'paragraph') return <br key={block.id} />;
 
         switch (type) {
             case 'heading_1':
-                return <h1 key={block.id} className="text-4xl font-serif text-ink mt-12 mb-6">{text}</h1>;
+                return <h1 key={block.id} className="text-4xl font-serif text-ink mt-12 mb-6">{content}</h1>;
             case 'heading_2':
-                return <h2 key={block.id} className="text-3xl font-serif text-ink mt-10 mb-4">{text}</h2>;
+                return <h2 key={block.id} className="text-3xl font-serif text-ink mt-10 mb-4">{content}</h2>;
             case 'heading_3':
-                return <h3 key={block.id} className="text-2xl font-serif text-ink mt-8 mb-4">{text}</h3>;
+                return <h3 key={block.id} className="text-2xl font-serif text-ink mt-8 mb-4">{content}</h3>;
             case 'paragraph':
-                return <p key={block.id} className="mb-6 text-ink/80 leading-relaxed font-serif text-lg">{text}</p>;
+                return <p key={block.id} className="mb-6 text-ink/80 leading-relaxed font-serif text-lg">{content}</p>;
             case 'bulleted_list_item':
-                return <li key={block.id} className="ml-4 list-disc text-ink/80 mb-2 font-serif">{text}</li>;
+                return <li key={block.id} className="ml-4 list-disc text-ink/80 mb-2 font-serif">{content}</li>;
             case 'numbered_list_item':
-                return <li key={block.id} className="ml-4 list-decimal text-ink/80 mb-2 font-serif">{text}</li>;
+                return <li key={block.id} className="ml-4 list-decimal text-ink/80 mb-2 font-serif">{content}</li>;
             case 'quote':
-                return <blockquote key={block.id} className="pl-6 border-l-4 border-deep-red text-ink/70 italic font-serif my-8 text-xl">{text}</blockquote>;
+                return <blockquote key={block.id} className="pl-6 border-l-4 border-deep-red text-ink/70 italic font-serif my-8 text-xl">{content}</blockquote>;
+            case 'divider':
+                return <hr key={block.id} className="my-12 border-ink/10" />;
             default:
-                // Render raw markdown if plain paragraph or unknown type is detected as simple string
-                return <p key={block.id} className="mb-6 text-ink/80">{text}</p>;
+                return <p key={block.id} className="mb-6 text-ink/80">{content}</p>;
         }
     };
 
