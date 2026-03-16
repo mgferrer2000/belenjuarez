@@ -1,13 +1,238 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, ReactNode, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getPostContent, getPublishedPosts, BlogPost } from '../../services/notion';
-import ReactMarkdown from 'react-markdown';
 import { ArrowLeft, Calendar } from 'lucide-react';
+
+type RichTextAnnotation = {
+    bold?: boolean;
+    italic?: boolean;
+    strikethrough?: boolean;
+    underline?: boolean;
+    code?: boolean;
+    color?: string;
+};
+
+type RichTextItem = {
+    plain_text?: string;
+    href?: string | null;
+    annotations?: RichTextAnnotation;
+    text?: {
+        link?: {
+            url?: string;
+        } | null;
+    };
+};
+
+type NotionBlock = {
+    id: string;
+    type: string;
+    has_children?: boolean;
+    [key: string]: any;
+};
+
+const cx = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ');
+
+const renderPlainTextWithBreaks = (text: string) => {
+    const parts = text.split('\n');
+
+    return parts.map((part, index) => (
+        <Fragment key={`${part}-${index}`}>
+            {part}
+            {index < parts.length - 1 ? <br /> : null}
+        </Fragment>
+    ));
+};
+
+const renderRichText = (richText: RichTextItem[] = []) => {
+    if (!richText.length) {
+        return null;
+    }
+
+    return richText.map((item, index) => {
+        const text = item.plain_text ?? '';
+        const annotations = item.annotations ?? {};
+        const colorClass = annotations.color && annotations.color !== 'default' ? 'text-deep-red' : '';
+        const content = renderPlainTextWithBreaks(text);
+        const link = item.href || item.text?.link?.url;
+
+        let node: ReactNode = (
+            <span
+                className={cx(
+                    annotations.bold && 'font-semibold text-ink',
+                    annotations.italic && 'italic',
+                    annotations.strikethrough && 'line-through',
+                    annotations.underline && 'underline underline-offset-2',
+                    annotations.code && 'font-mono text-[0.9em] bg-ink/5 px-1.5 py-0.5 rounded-sm',
+                    colorClass,
+                )}
+            >
+                {content}
+            </span>
+        );
+
+        if (link) {
+            node = (
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-deep-red decoration-deep-red/50 underline underline-offset-4 hover:text-ink transition-colors"
+                >
+                    {node}
+                </a>
+            );
+        }
+
+        return <Fragment key={`${item.plain_text ?? 'segment'}-${index}`}>{node}</Fragment>;
+    });
+};
+
+const getBlockRichText = (block: NotionBlock): RichTextItem[] => {
+    const value = block[block.type];
+    return value?.rich_text ?? [];
+};
+
+const getPlainText = (richText: RichTextItem[]) => richText.map(item => item.plain_text ?? '').join('');
+
+const isPoetryParagraph = (text: string) => {
+    const lines = text.split('\n').filter(line => line.trim().length > 0);
+
+    if (lines.length < 2) {
+        return false;
+    }
+
+    const averageLength = lines.reduce((sum, line) => sum + line.trim().length, 0) / lines.length;
+    return averageLength <= 42 || text.includes('\n\n');
+};
+
+const renderBlock = (block: NotionBlock) => {
+    const type = block.type;
+    const richText = getBlockRichText(block);
+    const text = getPlainText(richText);
+    const content = renderRichText(richText);
+    const value = block[type];
+
+    switch (type) {
+        case 'heading_1':
+            return <h1 key={block.id} className="text-4xl font-serif text-ink mt-12 mb-6 leading-tight">{content}</h1>;
+        case 'heading_2':
+            return <h2 key={block.id} className="text-3xl font-serif text-ink mt-10 mb-4 leading-tight">{content}</h2>;
+        case 'heading_3':
+            return <h3 key={block.id} className="text-2xl font-serif text-ink mt-8 mb-4 leading-tight">{content}</h3>;
+        case 'paragraph':
+            if (!text.trim()) {
+                return <div key={block.id} className="h-6" aria-hidden="true" />;
+            }
+
+            return (
+                <p
+                    key={block.id}
+                    className={cx(
+                        'text-ink/80 font-serif text-lg',
+                        isPoetryParagraph(text)
+                            ? 'mb-8 leading-[1.95] whitespace-pre-wrap max-w-2xl'
+                            : 'mb-6 leading-relaxed whitespace-pre-wrap',
+                    )}
+                >
+                    {content}
+                </p>
+            );
+        case 'quote':
+            return (
+                <blockquote
+                    key={block.id}
+                    className="pl-6 border-l-4 border-deep-red text-ink/75 italic font-serif my-8 text-xl leading-relaxed whitespace-pre-wrap"
+                >
+                    {content}
+                </blockquote>
+            );
+        case 'callout':
+            return (
+                <div key={block.id} className="my-8 border border-deep-red/20 bg-deep-red/5 px-5 py-4 rounded-sm text-ink/80 font-serif text-lg leading-relaxed whitespace-pre-wrap">
+                    {content}
+                </div>
+            );
+        case 'divider':
+            return <hr key={block.id} className="my-10 border-0 border-t border-ink/10" />;
+        case 'image': {
+            const imageUrl = value?.file?.url || value?.external?.url;
+            const caption = value?.caption?.length ? renderRichText(value.caption) : null;
+
+            if (!imageUrl) {
+                return null;
+            }
+
+            return (
+                <figure key={block.id} className="my-10">
+                    <img src={imageUrl} alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)} className="w-full rounded-sm border border-ink/10" />
+                    {caption ? <figcaption className="mt-3 text-sm text-ink/55 font-sans leading-relaxed">{caption}</figcaption> : null}
+                </figure>
+            );
+        }
+        case 'code':
+            return (
+                <pre key={block.id} className="my-8 overflow-x-auto rounded-sm bg-ink text-paper p-5 text-sm leading-relaxed">
+                    <code>{text}</code>
+                </pre>
+            );
+        default:
+            if (!text.trim()) {
+                return null;
+            }
+
+            return (
+                <p key={block.id} className="mb-6 text-ink/80 leading-relaxed font-serif text-lg whitespace-pre-wrap">
+                    {content}
+                </p>
+            );
+    }
+};
+
+const postTitleFallback = (block: NotionBlock) => `Imagen del post ${block.id}`;
+
+const renderBlocks = (blocks: NotionBlock[]) => {
+    const elements: ReactNode[] = [];
+
+    for (let index = 0; index < blocks.length; index += 1) {
+        const block = blocks[index];
+
+        if (block.type === 'bulleted_list_item' || block.type === 'numbered_list_item') {
+            const isBulleted = block.type === 'bulleted_list_item';
+            const listItems: NotionBlock[] = [block];
+
+            while (index + 1 < blocks.length && blocks[index + 1].type === block.type) {
+                index += 1;
+                listItems.push(blocks[index]);
+            }
+
+            const ListTag = isBulleted ? 'ul' : 'ol';
+            const listClassName = isBulleted
+                ? 'mb-8 ml-6 list-disc space-y-2 text-ink/80 font-serif text-lg'
+                : 'mb-8 ml-6 list-decimal space-y-2 text-ink/80 font-serif text-lg';
+
+            elements.push(
+                <ListTag key={`list-${block.id}`} className={listClassName}>
+                    {listItems.map(item => (
+                        <li key={item.id} className="pl-1 leading-relaxed whitespace-pre-wrap">
+                            {renderRichText(getBlockRichText(item))}
+                        </li>
+                    ))}
+                </ListTag>
+            );
+
+            continue;
+        }
+
+        elements.push(renderBlock(block));
+    }
+
+    return elements;
+};
 
 const BlogPostView: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [post, setPost] = useState<BlogPost | null>(null);
-    const [content, setContent] = useState<any[]>([]);
+    const [content, setContent] = useState<NotionBlock[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -15,16 +240,14 @@ const BlogPostView: React.FC = () => {
             if (!id) return;
 
             try {
-                // Fetch the list again to find the metadata for this post
                 const posts = await getPublishedPosts();
                 const currentPost = posts.find(p => p.id === id);
                 if (currentPost) setPost(currentPost);
 
-                // Fetch the actual Notion blocks
                 const blocks = await getPostContent(id);
                 setContent(blocks);
             } catch (error) {
-                console.error("Error fetching post content:", error);
+                console.error('Error fetching post content:', error);
             } finally {
                 setLoading(false);
             }
@@ -32,38 +255,6 @@ const BlogPostView: React.FC = () => {
 
         fetchContent();
     }, [id]);
-
-    // A very basic block renderer. In production you probably want a library like `react-notion-x` or mapping each block type
-    const renderBlock = (block: any) => {
-        const type = block.type;
-        const value = block[type];
-
-        if (!value || !value.rich_text) return null;
-
-        const text = value.rich_text.map((t: any) => t.plain_text).join('');
-
-        if (!text && type === 'paragraph') return <br key={block.id} />;
-
-        switch (type) {
-            case 'heading_1':
-                return <h1 key={block.id} className="text-4xl font-serif text-ink mt-12 mb-6">{text}</h1>;
-            case 'heading_2':
-                return <h2 key={block.id} className="text-3xl font-serif text-ink mt-10 mb-4">{text}</h2>;
-            case 'heading_3':
-                return <h3 key={block.id} className="text-2xl font-serif text-ink mt-8 mb-4">{text}</h3>;
-            case 'paragraph':
-                return <p key={block.id} className="mb-6 text-ink/80 leading-relaxed font-serif text-lg">{text}</p>;
-            case 'bulleted_list_item':
-                return <li key={block.id} className="ml-4 list-disc text-ink/80 mb-2 font-serif">{text}</li>;
-            case 'numbered_list_item':
-                return <li key={block.id} className="ml-4 list-decimal text-ink/80 mb-2 font-serif">{text}</li>;
-            case 'quote':
-                return <blockquote key={block.id} className="pl-6 border-l-4 border-deep-red text-ink/70 italic font-serif my-8 text-xl">{text}</blockquote>;
-            default:
-                // Render raw markdown if plain paragraph or unknown type is detected as simple string
-                return <p key={block.id} className="mb-6 text-ink/80">{text}</p>;
-        }
-    };
 
     if (loading) {
         return (
@@ -76,7 +267,7 @@ const BlogPostView: React.FC = () => {
     if (!post && !content.length) {
         return (
             <div className="min-h-screen bg-paper pt-32 text-center text-ink">
-                <h1 className="text-2xl font-serif">Artículo no encontrado</h1>
+                <h1 className="text-2xl font-serif">Articulo no encontrado</h1>
                 <Link to="/blog" className="text-deep-red mt-4 inline-block hover:underline">Volver al blog</Link>
             </div>
         );
@@ -84,10 +275,9 @@ const BlogPostView: React.FC = () => {
 
     return (
         <article className="min-h-screen bg-paper text-ink pt-32 pb-24">
-            {/* Header Container */}
             <div className="max-w-3xl mx-auto px-6 mb-12">
                 <Link to="/blog" className="inline-flex items-center gap-2 text-deep-red hover:text-ink/70 transition-colors uppercase tracking-widest text-xs font-mono mb-12">
-                    <ArrowLeft size={14} /> Volver al índice
+                    <ArrowLeft size={14} /> Volver al indice
                 </Link>
 
                 <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 mb-6 font-mono">
@@ -106,7 +296,6 @@ const BlogPostView: React.FC = () => {
                 </h1>
             </div>
 
-            {/* Hero Image if exists */}
             {post?.coverImage && (
                 <div className="max-w-5xl mx-auto px-6 mb-12">
                     <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 bg-white rounded-sm overflow-hidden border border-ink/10">
@@ -119,10 +308,9 @@ const BlogPostView: React.FC = () => {
                 </div>
             )}
 
-            {/* Article Content */}
             <div className="max-w-3xl mx-auto px-6">
-                <div className="prose prose-invert prose-lg max-w-none">
-                    {content.map(renderBlock)}
+                <div className="max-w-none">
+                    {renderBlocks(content)}
                 </div>
             </div>
         </article>
