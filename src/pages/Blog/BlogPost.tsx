@@ -52,27 +52,34 @@ const renderRichText = (richText: RichTextItem[] = []) => {
         const text = item.plain_text ?? '';
         const annotations = item.annotations ?? {};
         const colorClass = annotations.color && annotations.color !== 'default' ? 'text-deep-red' : '';
-        const content = renderPlainTextWithBreaks(text);
         const link = item.href || item.text?.link?.url;
 
-        let node: ReactNode = (
-            <span
-                className={cx(
-                    annotations.bold && 'font-semibold text-ink',
-                    annotations.italic && 'italic',
-                    annotations.strikethrough && 'line-through',
-                    annotations.underline && 'underline underline-offset-2',
-                    annotations.code && 'font-mono text-[0.9em] bg-ink/5 px-1.5 py-0.5 rounded-sm',
-                    colorClass,
-                )}
-            >
-                {content}
-            </span>
-        );
+        let node: ReactNode = renderPlainTextWithBreaks(text);
+
+        if (annotations.bold) node = <strong key={`b-${index}`}>{node}</strong>;
+        if (annotations.italic) node = <em key={`i-${index}`}>{node}</em>;
+        if (annotations.strikethrough) node = <s key={`s-${index}`}>{node}</s>;
+        if (annotations.underline) node = <u key={`u-${index}`}>{node}</u>;
+        if (annotations.code) node = <code key={`c-${index}`} className="font-mono text-[0.9em] bg-ink/5 px-1.5 py-0.5 rounded-sm">{node}</code>;
+        
+        if (colorClass || annotations.bold || annotations.italic || annotations.strikethrough || annotations.underline || annotations.code) {
+            node = (
+                <span
+                    key={`span-${index}`}
+                    className={cx(
+                        !annotations.bold && !annotations.italic && !annotations.strikethrough && !annotations.underline && !annotations.code && colorClass,
+                        colorClass
+                    )}
+                >
+                    {node}
+                </span>
+            );
+        }
 
         if (link) {
             node = (
                 <a
+                    key={`link-${index}`}
                     href={link}
                     target="_blank"
                     rel="noreferrer"
