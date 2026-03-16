@@ -274,7 +274,7 @@ const BlogPostView: React.FC = () => {
     if (!post && !content.length) {
         return (
             <div className="min-h-screen bg-paper pt-32 text-center text-ink">
-                <h1 className="text-2xl font-serif">Articulo no encontrado</h1>
+                <h1 className="text-2xl font-serif">Artículo no encontrado</h1>
                 <Link to="/blog" className="text-deep-red mt-4 inline-block hover:underline">Volver al blog</Link>
             </div>
         );
@@ -284,7 +284,7 @@ const BlogPostView: React.FC = () => {
         <article className="min-h-screen bg-paper text-ink pt-32 pb-24">
             <div className="max-w-3xl mx-auto px-6 mb-12">
                 <Link to="/blog" className="inline-flex items-center gap-2 text-deep-red hover:text-ink/70 transition-colors uppercase tracking-widest text-xs font-mono mb-12">
-                    <ArrowLeft size={14} /> Volver al indice
+                    <ArrowLeft size={14} /> Volver al índice
                 </Link>
 
                 <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 mb-6 font-mono">
