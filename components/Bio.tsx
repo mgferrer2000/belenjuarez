@@ -170,7 +170,7 @@ const Bio: React.FC = () => {
 
         {/* Section 5: Gallery Strip (7B2, IMG_0314, IMG_7807) */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-20 md:mb-24 lg:mb-32 px-0 max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="relative group">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="relative group overflow-hidden rounded-sm shadow-md">
             <img src="/images/sobrebelen/7B2.jpeg" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md group-hover:scale-105 transition-transform duration-1000" alt="Espacio" />
             <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
               <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
@@ -181,7 +181,7 @@ const Bio: React.FC = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="col-span-2 md:col-span-1 md:-mt-12 relative group">
             <img src="/images/sobrebelen/IMG_0314.JPEG" className="w-full h-auto rounded-sm shadow-xl border-4 border-white/50 group-hover:scale-105 transition-transform duration-1000" alt="Retrato Belén" />
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="hidden md:block relative group">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="hidden md:block relative group overflow-hidden rounded-sm shadow-md">
             <img src="/images/sobrebelen/IMG_7807.JPEG" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md group-hover:scale-105 transition-transform duration-1000" alt="Detalle poético" />
             <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
               <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
@@ -202,7 +202,7 @@ const Bio: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-10 md:mb-20">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative group">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative group overflow-hidden rounded-sm shadow-xl">
               <img src="/images/sobrebelen/mano.jpg" alt="Detalle de las manos" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
                 <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
@@ -210,7 +210,7 @@ const Bio: React.FC = () => {
                 </p>
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="hidden md:block relative group">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="hidden md:block relative group overflow-hidden rounded-sm shadow-xl">
               <img src="/images/sobrebelen/2B3.jpg" alt="Detalle artístico" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
                 <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
