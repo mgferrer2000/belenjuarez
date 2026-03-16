@@ -51,7 +51,7 @@ const Contact: React.FC = () => {
     setStatus('sending');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/belenjj.bjj4@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/contacto@belenjuarez.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
