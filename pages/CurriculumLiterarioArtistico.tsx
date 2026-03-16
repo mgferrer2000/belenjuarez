@@ -34,7 +34,7 @@ const literaryCvSections = [
   {
     title: 'Gestión cultural y traducción',
     items: [
-      'Co-directora del programa de radio “La Vuelta de Llave”, 1997.',
+      'Codirectora del programa de radio “La Vuelta de Llave”, junto a Mariola Cantarero y Ana Isabel López-Siles, 1997. Programa dedicado a entrevistas de poetas granadinos y lecturas poéticas.',
       'Coordinadora del programa cultural “Puerta Abierta del Diálogo Internacional”, 2001-2002, Fundación Euroárabe (Granada, España), con participación de poetas de diferentes países árabes.',
       'Traducción de poesía castellano-francés: “Las noches azules del alma”, textos del poeta Enrique Villagrasa. Fundación Euroárabe, 2001.',
       'Ilustraciones del libro “Las noches azules del alma”, Fundación Euroárabe (Granada), 2001.'

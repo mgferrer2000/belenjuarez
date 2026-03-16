@@ -28,7 +28,7 @@ const BlogList: React.FC = () => {
                 <div className="mb-16">
                     <h1 className="text-4xl md:text-5xl font-serif text-ink mb-6">Diario Abierto</h1>
                     <p className="text-xl text-gray-600 font-light max-w-2xl">
-                        Textos, poemas y pedazos de papel compartidos.
+                        Últimas participaciones en recitales y encuentros poéticos: poemas y textos inéditos.
                     </p>
                 </div>
 

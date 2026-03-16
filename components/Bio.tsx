@@ -64,12 +64,17 @@ const Bio: React.FC = () => {
             viewport={{ once: true }}
             className="w-full lg:w-4/12 mx-auto max-w-sm lg:max-w-none"
           >
-            <div className="aspect-square rounded-sm overflow-hidden shadow-xl grayscale hover:grayscale-0 transition-all duration-700">
+            <div className="aspect-square rounded-sm overflow-hidden shadow-xl grayscale hover:grayscale-0 transition-all duration-700 relative group">
               <img
                 src="/images/sobrebelen/3B3.jpg"
                 alt="Trayectoria Artística"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
               />
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+                <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                  Almuñécar, Granada. 2025
+                </p>
+              </div>
             </div>
           </motion.div>
 
@@ -89,9 +94,14 @@ const Bio: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="w-full rounded-sm overflow-hidden shadow-lg border border-gold/5"
+            className="w-full rounded-sm overflow-hidden shadow-lg border border-gold/5 relative group"
           >
-            <img src="/images/sobrebelen/5B2.jpg" className="w-full h-auto object-cover opacity-90" alt="Detalle artístico apaisado" />
+            <img src="/images/sobrebelen/5B2.jpg" className="w-full h-auto object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Detalle artístico apaisado" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+              <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                Peñones de San Francisco de Sierra Nevada, Granada. Al fondo el Veleta. 2023.
+              </p>
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
@@ -103,15 +113,25 @@ const Bio: React.FC = () => {
             >
               <img src="/images/sobrebelen/6B.jpeg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Detalle" />
               <div className="absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-all duration-500"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+                <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                  Con José Domínguez en Arriate, Málaga. 2024
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="hidden md:block h-[400px] rounded-sm overflow-hidden shadow-md"
+              className="hidden md:block h-[400px] rounded-sm overflow-hidden shadow-md relative group"
             >
-              <img src="/images/sobrebelen/9B4.jpg" className="w-full h-full object-cover" alt="Estudio" />
+              <img src="/images/sobrebelen/9B4.jpg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Estudio" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+                <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                  Almuñécar, Granada. 2025
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -124,12 +144,17 @@ const Bio: React.FC = () => {
             viewport={{ once: true }}
             className="w-full lg:w-4/12 mx-auto max-w-sm lg:max-w-none"
           >
-            <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-xl grayscale hover:grayscale-0 transition-all duration-700">
+            <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-xl grayscale hover:grayscale-0 transition-all duration-700 relative group">
               <img
                 src="/images/sobrebelen/belen2.jpg"
                 alt="Retrato Artístico"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
               />
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+                <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                  Feria del Libro de Motril, Granada. 2001
+                </p>
+              </div>
             </div>
           </motion.div>
 
@@ -145,14 +170,24 @@ const Bio: React.FC = () => {
 
         {/* Section 5: Gallery Strip (7B2, IMG_0314, IMG_7807) */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-20 md:mb-24 lg:mb-32 px-0 max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-            <img src="/images/sobrebelen/7B2.jpeg" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md" alt="Espacio" />
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="relative group">
+            <img src="/images/sobrebelen/7B2.jpeg" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md group-hover:scale-105 transition-transform duration-1000" alt="Espacio" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+              <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                Arriate, Málaga. 2024
+              </p>
+            </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="col-span-2 md:col-span-1 md:-mt-12">
-            <img src="/images/sobrebelen/IMG_0314.JPEG" className="w-full h-auto rounded-sm shadow-xl border-4 border-white/50" alt="Retrato Belén" />
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="col-span-2 md:col-span-1 md:-mt-12 relative group">
+            <img src="/images/sobrebelen/IMG_0314.JPEG" className="w-full h-auto rounded-sm shadow-xl border-4 border-white/50 group-hover:scale-105 transition-transform duration-1000" alt="Retrato Belén" />
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="hidden md:block">
-            <img src="/images/sobrebelen/IMG_7807.JPEG" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md" alt="Detalle poético" />
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="hidden md:block relative group">
+            <img src="/images/sobrebelen/IMG_7807.JPEG" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md group-hover:scale-105 transition-transform duration-1000" alt="Detalle poético" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+              <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                Valle de Lecrín, Granada. 2025
+              </p>
+            </div>
           </motion.div>
         </div>
 
@@ -167,11 +202,21 @@ const Bio: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-10 md:mb-20">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <img src="/images/sobrebelen/mano.jpg" alt="Detalle de las manos" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl" />
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative group">
+              <img src="/images/sobrebelen/mano.jpg" alt="Detalle de las manos" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+                <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                  La noche de Ayer. 2001
+                </p>
+              </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="hidden md:block">
-              <img src="/images/sobrebelen/2B3.jpg" alt="Detalle artístico" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl" />
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="hidden md:block relative group">
+              <img src="/images/sobrebelen/2B3.jpg" alt="Detalle artístico" className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+                <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
+                  Almuñécar, Granada. 2026
+                </p>
+              </div>
             </motion.div>
           </div>
 

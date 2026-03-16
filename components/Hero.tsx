@@ -42,6 +42,8 @@ const Hero: React.FC = () => {
           className="text-lg md:text-xl font-sans font-light text-ink/70 max-w-2xl mx-auto leading-relaxed"
         >
           "Escribo para encontrar el nombre exacto de las cosas que no existen hasta que se nombran."
+          <br />
+          “Siempre habrá un verso libre y entregado que nazca de la garganta del poeta, para todo aquel que le sostenga la mirada”
         </motion.p>
       </div>
 

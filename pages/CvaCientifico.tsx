@@ -33,7 +33,7 @@ const meritsParagraphs = [
     'Ha dirigido 4 tesis doctorales y ha sido tutora de 3 Trabajos Fin de Máster defendidos en 2009, 2017 y 2024, además de 3 TFM de próxima defensa en 2026 y diversos Trabajos Fin de Grado.',
     'Es revisora de Microbial Cell Factories y Polar Biology, evaluadora externa de un proyecto de investigación en la Universidad Tecnológica Metropolitana del Estado de Chile en 2024, y miembro del Grupo de Investigación de Microbiología Ambiental (RMN 270, PAI) desde 1997.',
     'Forma parte del Consejo del Instituto de Investigación del Agua de la UGR, y es miembro del equipo editorial de la revista científica Ars Pharmaceutica, editada en la Facultad de Farmacia de la UGR y donde coordina la sección de Microbiología Clínica.',
-    'Ha sido miembro de la Sociedad Española de Microbiología hasta 2025, del Comité Científico del Congreso Internacional BioRemid2017 y ha formado parte de 7 8 tribunales de tesis doctorales con mención internacional entre 2012 y 2025 en las universidades de Granada y Almería. Recientemente, ha sido nombrada Secretaria de otro Tribunal de Tesis Doctoral, la cual será defendida en abril de 2026.'
+    'Ha sido miembro de la Sociedad Española de Microbiología hasta 2025, del Comité Científico del Congreso Internacional BioRemid2017, y ha formado parte de  8 tribunales de Tesis Doctorales con mención internacional entre 2012 y 2025 en las universidades de Granada y Almería. Recientemente, ha sido nombrada Secretaria de otro Tribunal de Tesis Doctoral, la cual será defendida en abril de 2026.'
 ];
 
 
