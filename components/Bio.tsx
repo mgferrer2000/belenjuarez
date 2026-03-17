@@ -43,7 +43,7 @@ const Bio: React.FC = () => {
 
         <div className="grid grid-cols-2 gap-3 mb-16 lg:hidden">
           <div className="border border-gold/10 bg-white/70 px-4 py-4 text-center rounded-sm">
-            <span className="block text-3xl font-serif text-deep-red">2</span>
+            <span className="block text-3xl font-serif text-deep-red">3</span>
             <span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-ink/45">Libros</span>
           </div>
           <div className="border border-gold/10 bg-white/70 px-4 py-4 text-center rounded-sm">
@@ -236,7 +236,7 @@ const Bio: React.FC = () => {
         {/* Stats Footer */}
         <div className="hidden lg:flex mt-20 pt-16 border-t border-gold/10 flex-wrap justify-center gap-16 mb-24">
           <div className="text-center group">
-            <span className="block text-5xl font-serif text-deep-red group-hover:scale-110 transition-transform cursor-default">2</span>
+            <span className="block text-5xl font-serif text-deep-red group-hover:scale-110 transition-transform cursor-default">3</span>
             <span className="text-xs uppercase tracking-[0.3em] text-ink/40 mt-2 block">Libros Publicados</span>
           </div>
           <div className="text-center group">
