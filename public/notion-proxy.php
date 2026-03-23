@@ -194,24 +194,6 @@ if ($action === 'getBlocks') {
         respondJson(400, array('error' => 'Invalid blockId'));
     }
 
-    $postsResult = fetchPublishedPosts($DATABASE_ID, $NOTION_API_KEY, $NOTION_VERSION);
-    if (!$postsResult['ok']) {
-        respondJson($postsResult['status'], $postsResult['body']);
-    }
-
-    $publishedIds = array();
-    if (isset($postsResult['body']['results']) && is_array($postsResult['body']['results'])) {
-        foreach ($postsResult['body']['results'] as $page) {
-            if (isset($page['id'])) {
-                $publishedIds[] = $page['id'];
-            }
-        }
-    }
-
-    if (!in_array($blockId, $publishedIds, true)) {
-        respondJson(403, array('error' => 'Block is not available'));
-    }
-
     $url = 'https://api.notion.com/v1/blocks/' . rawurlencode($blockId) . '/children?page_size=100';
     $result = executeNotionRequest($url, $NOTION_API_KEY, $NOTION_VERSION, 'GET', null);
     respondJson($result['status'], $result['body']);
