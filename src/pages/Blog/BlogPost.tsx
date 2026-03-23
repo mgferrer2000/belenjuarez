@@ -27,6 +27,7 @@ type NotionBlock = {
     id: string;
     type: string;
     has_children?: boolean;
+    children?: NotionBlock[];
     [key: string]: any;
 };
 
@@ -112,7 +113,7 @@ const isPoetryParagraph = (text: string) => {
     return averageLength <= 42 || text.includes('\n\n');
 };
 
-const renderBlock = (block: NotionBlock) => {
+function renderBlock(block: NotionBlock) {
     const type = block.type;
     const richText = getBlockRichText(block);
     const text = getPlainText(richText);
@@ -161,6 +162,61 @@ const renderBlock = (block: NotionBlock) => {
             );
         case 'divider':
             return <hr key={block.id} className="my-10 border-0 border-t border-ink/10" />;
+        case 'column_list': {
+            const cols = block.children?.length || 1;
+            const gridClass = cols === 3 ? 'md:grid-cols-3' : cols === 2 ? 'md:grid-cols-2' : 'grid-cols-1';
+            return (
+                <div key={block.id} className={`grid grid-cols-1 ${gridClass} gap-6 my-8 items-start`}>
+                    {block.children ? renderBlocks(block.children) : null}
+                </div>
+            );
+        }
+        case 'column':
+            return (
+                <div key={block.id} className="flex flex-col gap-4">
+                    {block.children ? renderBlocks(block.children) : null}
+                </div>
+            );
+        case 'video': {
+            const videoUrl = value?.file?.url || value?.external?.url;
+            const caption = value?.caption?.length ? renderRichText(value.caption) : null;
+            
+            if (!videoUrl) return null;
+            
+            if (value?.type === 'external') {
+                let embedUrl = videoUrl;
+                if (videoUrl.includes('youtube.com/watch?v=')) {
+                    embedUrl = videoUrl.replace('watch?v=', 'embed/');
+                } else if (videoUrl.includes('youtu.be/')) {
+                    embedUrl = videoUrl.replace('youtu.be/', 'youtube.com/embed/');
+                }
+
+                return (
+                    <figure key={block.id} className="my-10 flex flex-col items-center">
+                        <div className="w-full aspect-video rounded-sm overflow-hidden border border-ink/10 bg-ink/5">
+                            <iframe 
+                                src={embedUrl} 
+                                title="Embedded Video"
+                                className="w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowFullScreen
+                            />
+                        </div>
+                        {caption ? <figcaption className="mt-3 text-sm text-ink/55 font-sans leading-relaxed text-center">{caption}</figcaption> : null}
+                    </figure>
+                );
+            }
+            
+            return (
+                <figure key={block.id} className="my-10 flex flex-col items-center">
+                    <video controls className="w-full rounded-sm border border-ink/10 bg-ink/5">
+                        <source src={videoUrl} />
+                        Tu navegador no soporta la etiqueta de vídeo.
+                    </video>
+                    {caption ? <figcaption className="mt-3 text-sm text-ink/55 font-sans leading-relaxed text-center">{caption}</figcaption> : null}
+                </figure>
+            );
+        }
         case 'image': {
             const imageUrl = value?.file?.url || value?.external?.url;
             const caption = value?.caption?.length ? renderRichText(value.caption) : null;
@@ -170,8 +226,8 @@ const renderBlock = (block: NotionBlock) => {
             }
 
             return (
-                <figure key={block.id} className="my-10">
-                    <img src={imageUrl} alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)} className="w-full rounded-sm border border-ink/10" />
+                <figure key={block.id} className="my-10 text-center flex flex-col items-center">
+                    <img src={imageUrl} alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)} className="max-w-full rounded-sm border border-ink/10 h-auto object-contain" />
                     {caption ? <figcaption className="mt-3 text-sm text-ink/55 font-sans leading-relaxed">{caption}</figcaption> : null}
                 </figure>
             );
@@ -197,7 +253,7 @@ const renderBlock = (block: NotionBlock) => {
 
 const postTitleFallback = (block: NotionBlock) => `Imagen del post ${block.id}`;
 
-const renderBlocks = (blocks: NotionBlock[]) => {
+function renderBlocks(blocks: NotionBlock[]) {
     const elements: ReactNode[] = [];
 
     for (let index = 0; index < blocks.length; index += 1) {

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const BlogList: React.FC = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [selectedTag, setSelectedTag] = useState<string>('Todas');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -22,6 +23,11 @@ const BlogList: React.FC = () => {
         fetchPosts();
     }, []);
 
+    const availableTags = ['Todas', ...Array.from(new Set(posts.flatMap(post => post.tags))).sort((a, b) => a.localeCompare(b, 'es'))];
+    const filteredPosts = selectedTag === 'Todas'
+        ? posts
+        : posts.filter(post => post.tags.includes(selectedTag));
+
     return (
         <div className="pt-32 pb-24 min-h-screen bg-paper text-ink">
             <div className="max-w-7xl mx-auto px-6">
@@ -32,19 +38,44 @@ const BlogList: React.FC = () => {
                     </p>
                 </div>
 
+                {!loading && availableTags.length > 1 && (
+                    <div className="mb-12 flex flex-wrap gap-3">
+                        {availableTags.map((tag) => {
+                            const isActive = tag === selectedTag;
+
+                            return (
+                                <button
+                                    key={tag}
+                                    type="button"
+                                    onClick={() => setSelectedTag(tag)}
+                                    className={`border px-4 py-2 text-xs uppercase tracking-[0.24em] transition-colors ${
+                                        isActive
+                                            ? 'border-deep-red bg-deep-red text-paper'
+                                            : 'border-ink/15 bg-white text-ink/70 hover:border-deep-red hover:text-deep-red'
+                                    }`}
+                                >
+                                    {tag}
+                                </button>
+                            );
+                        })}
+                    </div>
+                )}
+
                 {loading ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[1, 2, 3].map((skeleton) => (
                             <div key={skeleton} className="animate-pulse bg-ink/5 h-96 rounded-sm"></div>
                         ))}
                     </div>
-                ) : posts.length === 0 ? (
+                ) : filteredPosts.length === 0 ? (
                     <div className="text-center py-20 text-gray-500 font-serif italic text-lg">
-                        Aún no se han publicado artículos. Vuelve pronto para leer nuevos textos.
+                        {posts.length === 0
+                            ? 'Aún no se han publicado artículos. Vuelve pronto para leer nuevos textos.'
+                            : 'No hay artículos publicados con esa etiqueta.'}
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {posts.map((post, index) => (
+                        {filteredPosts.map((post, index) => (
                             <motion.article
                                 key={post.id}
                                 initial={{ opacity: 0, y: 20 }}
@@ -67,6 +98,21 @@ const BlogList: React.FC = () => {
                                 </Link>
 
                                 <div className="p-8 flex flex-col flex-grow">
+                                    {post.tags.length > 0 && (
+                                        <div className="mb-5 flex flex-wrap gap-2">
+                                            {post.tags.map((tag) => (
+                                                <button
+                                                    key={`${post.id}-${tag}`}
+                                                    type="button"
+                                                    onClick={() => setSelectedTag(tag)}
+                                                    className="border border-deep-red/25 bg-deep-red/5 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-deep-red transition-colors hover:border-deep-red hover:bg-deep-red hover:text-paper"
+                                                >
+                                                    {tag}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+
                                     <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-deep-red mb-4">
                                         <Calendar size={14} />
                                         <time dateTime={post.date}>

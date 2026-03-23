@@ -66,6 +66,7 @@ export const COLLABORATIONS: Collaboration[] = [
     date: '2005',
     description: 'Participación en el encuentro anual de mujeres poetas.',
     coverUrl: '/images/antologias/acta_mujeres_poetas.jpg',
+    imagePosition: 'center 40%',
     fullText: `Diversidad de voces y formas
 Actas del VIII Encuentro de mujeres poetas
 En memoria de Ernestina de Champourcin
@@ -222,7 +223,7 @@ olvidando su rostro caído tras la noche.
     date: '1999',
     description: 'Selección de poemas de "La Noche de Ayer" en Ánfora Nova.',
     coverUrl: '/images/antologias/anfora_nova.jpg',
-    imagePosition: 'center 18%',
+    imagePosition: 'top',
     fullText: `Del libro La Noche de Ayer
 Ánfora Nova, nº39-40. 1999
 
@@ -308,6 +309,7 @@ de conmover a los sensatos.
     date: '2014',
     description: 'Poema "Las hijas de Dionisios" en Ánfora Nova / Universos del Vino.',
     coverUrl: '/images/antologias/anfora_97_98.jpg',
+    imagePosition: 'top',
     fullText: `Ánfora Nova
 Universos del Vino
 Antología Internacional
@@ -372,6 +374,7 @@ repartiéndose tus semillas.`,
     date: '2006',
     description: 'Poema "En Altamira" en la antología Con Voz Propia.',
     coverUrl: '/images/antologias/con_voz_propia.jpg',
+    imagePosition: 'top',
     fullText: `
 
 **EN ALTAMIRA**
@@ -408,7 +411,7 @@ Fue en Altamira, pero nunca existió el fuego.`,
     date: '2008',
     description: 'Poema "Hombre Olivo" en la antología El Oro Líquido.',
     coverUrl: '/images/antologias/el_oro_liquido_cover.jpg',
-    imagePosition: 'center 20%',
+    imagePosition: 'center 25%',
     fullText: `
 
 
@@ -468,7 +471,7 @@ hombre olivo de mis aplausos ...`,
     date: '2025',
     description: 'Edición de Diego Castillo Barco y Pedro Luis Ibáñez Lérida. La Puebla de los Infantes. Sevilla.',
     coverUrl: '/images/antologias/encuentro_letras_celestes_cover.jpg',
-    imagePosition: 'center 90%',
+    imagePosition: 'bottom',
     fullText: `HOMBRE OLIVO
 Proyecto Encuentro de Letras Celestes
 Edición de Diego Castillo Barco y Pedro Luis Ibáñez Lérida
@@ -516,7 +519,7 @@ bahía de la fúlgida ensenada,
     date: '2005',
     description: 'Nº 0. 2005',
     coverUrl: '/images/antologias/entrerrios.jpeg',
-    imagePosition: 'center 18%',
+    imagePosition: 'top',
     fullText: `SOBRE este _Azul_, 
 la verticalidad de una febril respiración 
 festejando un acantilado, 
@@ -561,7 +564,7 @@ al abrigo de un cálido sol de septiembre.`,
     date: '2002',
     description: 'Participación en la antología Poetas por la Paz.',
     coverUrl: '/images/antologias/PORTADA_poetas-paz.jpg',
-    imagePosition: 'center 18%',
+    imagePosition: 'center 25%',
     fullText: `>> **PALESTINA**
 
 Un mundo de declives
@@ -780,7 +783,7 @@ _por el soldado de las estrellas._`,
     date: '2000',
     description: 'Revista cultural número 53. Teruel.',
     coverUrl: '/images/antologias/Turia_PORTADA.jpg',
-    imagePosition: 'center 18%',
+    imagePosition: 'top',
     fullText: `>> «El mar al fausto beso,
 >> En olas mil se riza…»
 
@@ -808,7 +811,7 @@ desde la experiencia.`,
       '/images/antologias/Turia_Imagen1.png'
     ]
   }
-  ,{
+  , {
     id: '13',
     publication: 'Librujula. Club de la Poesía',
     title: 'Las cerezas de mi padre',
@@ -818,7 +821,7 @@ desde la experiencia.`,
     date: '2024',
     description: 'Publicación del poema "Las cerezas de mi padre" en Librujula.',
     coverUrl: '/images/antologias/portada_librujula.png',
-    imagePosition: 'center 18%',
+    imagePosition: 'top',
     fullText: `>> **LAS CEREZAS DE MI PADRE**
 
 >>> A ti, Papá
@@ -1675,15 +1678,6 @@ export const ART_PIECES: ArtPiece[] = [
     medium: 'SANGUINA, CARBONCILLO',
     year: '1987',
     imageUrl: '/images/cuadros/Sanguina y Negros 2.jpg',
-    aspectRatio: 'portrait',
-    category: 'cuadros'
-  },
-  {
-    id: '47',
-    title: 'Sanguina y Negros-3 1987',
-    medium: 'SANGUINA, CARBONCILLO',
-    year: '1987',
-    imageUrl: '/images/cuadros/Sanguina y negros 3.jpeg',
     aspectRatio: 'portrait',
     category: 'cuadros'
   },
