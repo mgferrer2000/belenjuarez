@@ -22,6 +22,16 @@ const Navbar: React.FC = () => {
     setActiveDropdown(null);
   }, [location]);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMenuOpen]);
+
   const navLinks = [
     { name: 'Inicio', path: '/' },
     {
@@ -141,6 +151,9 @@ const Navbar: React.FC = () => {
         <button
           className={`lg:hidden z-50 transition-colors ${isMenuOpen ? 'text-ink' : textColorClass}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
         >
           {isMenuOpen ? <X /> : <Menu />}
         </button>
@@ -148,7 +161,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Nav */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-paper z-40 flex flex-col pt-24 px-6 overflow-y-auto">
+        <div id="mobile-navigation" className="fixed inset-0 bg-paper z-40 flex flex-col pt-20 px-5 overflow-y-auto overscroll-contain">
           <div className="flex flex-col space-y-4 pb-12">
             {navLinks.map((link) => (
               <div key={link.name} className="border-b border-gray-100 pb-2">
@@ -156,7 +169,8 @@ const Navbar: React.FC = () => {
                   <div>
                     <button
                       onClick={() => toggleDropdown(link.name)}
-                      className="flex justify-between items-center w-full text-lg font-serif text-ink py-2"
+                      className="flex min-h-12 justify-between items-center w-full text-lg font-serif text-ink py-2"
+                      aria-expanded={activeDropdown === link.name}
                     >
                       {link.name}
                       <ChevronDown
@@ -170,7 +184,7 @@ const Navbar: React.FC = () => {
                           <Link
                             key={subItem.path}
                             to={subItem.path}
-                            className="text-ink/70 hover:text-deep-red"
+                            className={`flex min-h-11 items-center text-ink/70 hover:text-deep-red ${location.pathname === subItem.path ? 'text-deep-red font-medium' : ''}`}
                           >
                             {subItem.name}
                           </Link>
@@ -181,7 +195,7 @@ const Navbar: React.FC = () => {
                 ) : (
                   <Link
                     to={link.path}
-                    className="block text-lg font-serif text-ink py-2"
+                    className={`flex min-h-12 items-center text-lg font-serif text-ink py-2 ${location.pathname === link.path ? 'text-deep-red font-semibold' : ''}`}
                   >
                     {link.name}
                   </Link>

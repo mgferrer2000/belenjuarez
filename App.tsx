@@ -1,42 +1,49 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Inicio from './pages/Inicio';
-import SobreBelen from './pages/SobreBelen';
-import Contacto from './pages/Contacto';
-import CvaCientifico from './pages/CvaCientifico';
-import CurriculumLiterarioArtistico from './pages/CurriculumLiterarioArtistico';
-import ObraLiteraria from './pages/ObraLiteraria';
-import Libros from './pages/ObraLiteraria/Libros';
-import Antologias from './pages/ObraLiteraria/Antologias';
-import CollaborationDetail from './pages/ObraLiteraria/CollaborationDetail';
-import Plaquettes from './pages/ObraLiteraria/Plaquettes';
-import Relatos from './pages/ObraLiteraria/Relatos';
-import RelatoDetail from './pages/ObraLiteraria/RelatoDetail';
-import CriticaLiteraria from './pages/ObraLiteraria/Critica';
-import CriticaDetail from './pages/ObraLiteraria/CriticaDetail';
-import Traduccion from './pages/ObraLiteraria/Traduccion';
-import TraduccionDetail from './pages/ObraLiteraria/TraduccionDetail';
-import ResenasLibros from './pages/ObraLiteraria/ResenasLibros';
-import ResenaDetail from './pages/ObraLiteraria/ResenaDetail';
-import CriticaAndalusi from './pages/ObraLiteraria/CriticaAndalusi';
-import Prologos from './pages/ObraLiteraria/Prologos';
-import PrologoDetail from './pages/ObraLiteraria/PrologoDetail';
-import Entrevistas from './pages/ObraLiteraria/Entrevistas';
-import EntrevistaDetail from './pages/ObraLiteraria/EntrevistaDetail';
-import PoesiaVisual from './pages/PoesiaVisual';
-import PoesiaVisualDetail from './pages/PoesiaVisualDetail';
-import Arte from './pages/arte';
-import Cuadros from './pages/arte/Cuadros';
-import CriticaArtistica from './pages/arte/Critica';
-import Ilustracion from './pages/arte/Ilustracion';
-import Musica from './pages/musica';
-import Poesia from './pages/musica/Poesia';
-import Horizonte from './pages/musica/Horizonte';
-import Videos from './pages/musica/Videos';
-import BlogList from './src/pages/Blog/BlogList';
-import BlogPostView from './src/pages/Blog/BlogPost';
+
+const Inicio = lazy(() => import('./pages/Inicio'));
+const SobreBelen = lazy(() => import('./pages/SobreBelen'));
+const Contacto = lazy(() => import('./pages/Contacto'));
+const CvaCientifico = lazy(() => import('./pages/CvaCientifico'));
+const CurriculumLiterarioArtistico = lazy(() => import('./pages/CurriculumLiterarioArtistico'));
+const ObraLiteraria = lazy(() => import('./pages/ObraLiteraria'));
+const Libros = lazy(() => import('./pages/ObraLiteraria/Libros'));
+const Antologias = lazy(() => import('./pages/ObraLiteraria/Antologias'));
+const CollaborationDetail = lazy(() => import('./pages/ObraLiteraria/CollaborationDetail'));
+const Plaquettes = lazy(() => import('./pages/ObraLiteraria/Plaquettes'));
+const Relatos = lazy(() => import('./pages/ObraLiteraria/Relatos'));
+const RelatoDetail = lazy(() => import('./pages/ObraLiteraria/RelatoDetail'));
+const CriticaLiteraria = lazy(() => import('./pages/ObraLiteraria/Critica'));
+const CriticaDetail = lazy(() => import('./pages/ObraLiteraria/CriticaDetail'));
+const Traduccion = lazy(() => import('./pages/ObraLiteraria/Traduccion'));
+const TraduccionDetail = lazy(() => import('./pages/ObraLiteraria/TraduccionDetail'));
+const ResenasLibros = lazy(() => import('./pages/ObraLiteraria/ResenasLibros'));
+const ResenaDetail = lazy(() => import('./pages/ObraLiteraria/ResenaDetail'));
+const CriticaAndalusi = lazy(() => import('./pages/ObraLiteraria/CriticaAndalusi'));
+const Prologos = lazy(() => import('./pages/ObraLiteraria/Prologos'));
+const PrologoDetail = lazy(() => import('./pages/ObraLiteraria/PrologoDetail'));
+const Entrevistas = lazy(() => import('./pages/ObraLiteraria/Entrevistas'));
+const EntrevistaDetail = lazy(() => import('./pages/ObraLiteraria/EntrevistaDetail'));
+const PoesiaVisual = lazy(() => import('./pages/PoesiaVisual'));
+const PoesiaVisualDetail = lazy(() => import('./pages/PoesiaVisualDetail'));
+const Arte = lazy(() => import('./pages/arte'));
+const Cuadros = lazy(() => import('./pages/arte/Cuadros'));
+const CriticaArtistica = lazy(() => import('./pages/arte/Critica'));
+const Ilustracion = lazy(() => import('./pages/arte/Ilustracion'));
+const Musica = lazy(() => import('./pages/musica'));
+const Poesia = lazy(() => import('./pages/musica/Poesia'));
+const Horizonte = lazy(() => import('./pages/musica/Horizonte'));
+const Videos = lazy(() => import('./pages/musica/Videos'));
+const BlogList = lazy(() => import('./src/pages/Blog/BlogList'));
+const BlogPostView = lazy(() => import('./src/pages/Blog/BlogPost'));
+
+const RouteLoader = () => (
+  <div className="min-h-[45vh] flex items-center justify-center bg-paper" role="status">
+    <p className="font-serif italic text-ink/55 tracking-wide">Abriendo página…</p>
+  </div>
+);
 
 function App() {
   return (
@@ -44,6 +51,7 @@ function App() {
       <div className="bg-paper min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow flex flex-col">
+          <Suspense fallback={<RouteLoader />}>
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/sobre-belen" element={<SobreBelen />} />
@@ -94,6 +102,7 @@ function App() {
             <Route path="/cva-cientifico" element={<Navigate to="/sobre-belen/curriculum-cientifico" replace />} />
             <Route path="/contacto" element={<Contacto />} />
           </Routes>
+          </Suspense>
         </main>
         <Footer />
       </div>

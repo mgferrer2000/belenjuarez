@@ -2,14 +2,24 @@ import React, { useState } from 'react';
 import { ART_PIECES } from '../../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import ResponsiveImage from '../../components/ResponsiveImage';
+import { useIsMobile } from '../../src/hooks/useIsMobile';
+import { getMobileImagePath } from '../../src/utils/images';
+
+const MOBILE_INITIAL_PIECES = 12;
 
 const Cuadros: React.FC = () => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [filter, setFilter] = useState<'todos' | 'cuadros' | 'bocetos'>('todos');
+    const [visibleMobilePieces, setVisibleMobilePieces] = useState(MOBILE_INITIAL_PIECES);
+    const isMobile = useIsMobile();
 
     const filteredPieces = ART_PIECES.filter(piece =>
         filter === 'todos' || piece.category === filter
     );
+    const displayedPieces = isMobile
+        ? filteredPieces.slice(0, visibleMobilePieces)
+        : filteredPieces;
 
     const handlePrev = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -50,6 +60,7 @@ const Cuadros: React.FC = () => {
                             onClick={() => {
                                 setFilter(item.id as any);
                                 setSelectedIndex(null);
+                                setVisibleMobilePieces(MOBILE_INITIAL_PIECES);
                             }}
                             className={`font-sans text-xs uppercase tracking-[0.2em] transition-all relative py-2 ${filter === item.id ? 'text-ink' : 'text-ink/40 hover:text-ink/60'
                                 }`}
@@ -72,7 +83,7 @@ const Cuadros: React.FC = () => {
                 className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
             >
                 <AnimatePresence mode='popLayout'>
-                    {filteredPieces.map((piece, index) => (
+                    {displayedPieces.map((piece, index) => (
                         <motion.div
                             key={piece.id}
                             layout
@@ -81,12 +92,13 @@ const Cuadros: React.FC = () => {
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={{ duration: 0.4 }}
                             viewport={{ once: true }}
-                            className="break-inside-avoid group cursor-none"
+                            className="break-inside-avoid group cursor-pointer md:cursor-none"
                             onClick={() => setSelectedIndex(index)}
                         >
                             <div className="relative overflow-hidden bg-cream/30 border border-ink/5 rounded-sm transition-all duration-500 hover:shadow-xl hover:border-ink/10">
-                                <img
+                                <ResponsiveImage
                                     src={piece.imageUrl}
+                                    mobileSrc={getMobileImagePath(piece.imageUrl)}
                                     alt={piece.title}
                                     className="w-full h-auto transition-transform duration-1000 group-hover:scale-105"
                                 />
@@ -118,6 +130,18 @@ const Cuadros: React.FC = () => {
                     ))}
                 </AnimatePresence>
             </motion.div>
+
+            {isMobile && displayedPieces.length < filteredPieces.length && (
+                <div className="mt-10 flex justify-center">
+                    <button
+                        type="button"
+                        onClick={() => setVisibleMobilePieces(count => count + MOBILE_INITIAL_PIECES)}
+                        className="min-h-11 border border-ink/20 px-6 py-3 font-sans text-xs uppercase tracking-[0.22em] text-ink transition-colors hover:border-deep-red hover:text-deep-red"
+                    >
+                        Ver más obras
+                    </button>
+                </div>
+            )}
 
             {/* Advanced Lightbox Modal */}
             <AnimatePresence>
