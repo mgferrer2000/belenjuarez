@@ -162,7 +162,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Nav */}
       {isMenuOpen && (
         <div id="mobile-navigation" className="fixed inset-0 bg-paper z-40 flex flex-col pt-20 px-5 overflow-y-auto overscroll-contain">
-          <div className="flex flex-col space-y-4 pb-12">
+          <div className="flex flex-col space-y-2 pb-10">
             {navLinks.map((link) => (
               <div key={link.name} className="border-b border-gray-100 pb-2">
                 {link.submenu ? (
@@ -179,12 +179,12 @@ const Navbar: React.FC = () => {
                       />
                     </button>
                     {activeDropdown === link.name && (
-                      <div className="flex flex-col pl-4 space-y-3 mt-2 mb-4">
+                      <div className="grid grid-cols-2 gap-px mt-1 mb-3 overflow-hidden border border-ink/10 bg-ink/10">
                         {link.submenu.map((subItem) => (
                           <Link
                             key={subItem.path}
                             to={subItem.path}
-                            className={`flex min-h-11 items-center text-ink/70 hover:text-deep-red ${location.pathname === subItem.path ? 'text-deep-red font-medium' : ''}`}
+                            className={`flex min-h-[42px] items-center bg-paper px-3 py-2 font-sans text-[11px] leading-snug tracking-[0.02em] text-ink/65 transition-colors hover:text-deep-red ${location.pathname === subItem.path ? 'bg-deep-red text-paper font-medium hover:text-paper' : ''}`}
                           >
                             {subItem.name}
                           </Link>
