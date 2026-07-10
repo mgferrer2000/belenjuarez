@@ -141,9 +141,6 @@ function publishedPostsQueryBody() {
             'property' => 'Publicado',
             'checkbox' => array('equals' => true),
         ),
-        'sorts' => array(
-            array('property' => 'Fecha', 'direction' => 'descending'),
-        ),
         'page_size' => 100,
     ), JSON_UNESCAPED_UNICODE);
 }
@@ -184,6 +181,18 @@ if (!$NOTION_API_KEY) {
 
 if ($action === 'getPosts') {
     $result = fetchPublishedPosts($DATABASE_ID, $NOTION_API_KEY, $NOTION_VERSION);
+    respondJson($result['status'], $result['body']);
+}
+
+if ($action === 'getPost') {
+    $pageId = isset($_GET['pageId']) ? $_GET['pageId'] : '';
+
+    if (!$pageId || !isValidNotionId($pageId)) {
+        respondJson(400, array('error' => 'Invalid pageId'));
+    }
+
+    $url = 'https://api.notion.com/v1/pages/' . rawurlencode($pageId);
+    $result = executeNotionRequest($url, $NOTION_API_KEY, $NOTION_VERSION, 'GET', null);
     respondJson($result['status'], $result['body']);
 }
 

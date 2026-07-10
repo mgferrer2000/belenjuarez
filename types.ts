@@ -81,6 +81,11 @@ export interface BookReview {
   coverUrl: string;
   condensedQuote: string;
   fullContent: string;
+  externalUrl?: string;
+  sourceUrl?: string;
+  sourceLabel?: string;
+  detailImageUrl?: string;
+  detailImageCaption?: string;
 }
 
 export interface PlaquetteSection {

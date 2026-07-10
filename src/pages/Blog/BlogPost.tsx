@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getPostContent, getPublishedPosts, BlogPost } from '../../services/notion';
+import { getPostContent, getPost, BlogPost } from '../../services/notion';
 import { ArrowLeft, Calendar } from 'lucide-react';
 
 type RichTextAnnotation = {
@@ -102,6 +102,48 @@ const getBlockRichText = (block: NotionBlock): RichTextItem[] => {
 
 const getPlainText = (richText: RichTextItem[]) => richText.map(item => item.plain_text ?? '').join('');
 
+const getYouTubeEmbedUrl = (url: string) => {
+    try {
+        const parsedUrl = new URL(url);
+        const host = parsedUrl.hostname.replace(/^www\./, '').replace(/^m\./, '');
+        const isYouTubeHost = host === 'youtube.com' || host === 'youtu.be' || host === 'music.youtube.com' || host === 'youtube-nocookie.com';
+
+        if (!isYouTubeHost) {
+            return null;
+        }
+
+        let videoId = '';
+
+        if (host === 'youtu.be') {
+            videoId = parsedUrl.pathname.split('/').filter(Boolean)[0] ?? '';
+        } else if (parsedUrl.pathname === '/watch') {
+            videoId = parsedUrl.searchParams.get('v') ?? '';
+        } else if (parsedUrl.pathname.startsWith('/shorts/')) {
+            videoId = parsedUrl.pathname.split('/').filter(Boolean)[1] ?? '';
+        } else if (parsedUrl.pathname.startsWith('/live/')) {
+            videoId = parsedUrl.pathname.split('/').filter(Boolean)[1] ?? '';
+        } else if (parsedUrl.pathname.startsWith('/embed/')) {
+            videoId = parsedUrl.pathname.split('/').filter(Boolean)[1] ?? '';
+        }
+
+        if (!videoId) {
+            return null;
+        }
+
+        const embedUrl = new URL(`https://www.youtube-nocookie.com/embed/${videoId}`);
+        const playlistId = parsedUrl.searchParams.get('list');
+
+        if (playlistId) {
+            embedUrl.searchParams.set('list', playlistId);
+        }
+
+        embedUrl.searchParams.set('rel', '0');
+        return embedUrl.toString();
+    } catch {
+        return null;
+    }
+};
+
 const isPoetryParagraph = (text: string) => {
     const lines = text.split('\n').filter(line => line.trim().length > 0);
 
@@ -184,12 +226,7 @@ function renderBlock(block: NotionBlock) {
             if (!videoUrl) return null;
             
             if (value?.type === 'external') {
-                let embedUrl = videoUrl;
-                if (videoUrl.includes('youtube.com/watch?v=')) {
-                    embedUrl = videoUrl.replace('watch?v=', 'embed/');
-                } else if (videoUrl.includes('youtu.be/')) {
-                    embedUrl = videoUrl.replace('youtu.be/', 'youtube.com/embed/');
-                }
+                const embedUrl = getYouTubeEmbedUrl(videoUrl) ?? videoUrl;
 
                 return (
                     <figure key={block.id} className="my-10 flex flex-col items-center">
@@ -197,6 +234,7 @@ function renderBlock(block: NotionBlock) {
                             <iframe 
                                 src={embedUrl} 
                                 title="Embedded Video"
+                                loading="lazy"
                                 className="w-full h-full"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowFullScreen
@@ -227,7 +265,7 @@ function renderBlock(block: NotionBlock) {
 
             return (
                 <figure key={block.id} className="my-10 text-center flex flex-col items-center">
-                    <img src={imageUrl} alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)} className="max-w-full rounded-sm border border-ink/10 h-auto object-contain" />
+                    <img src={imageUrl} alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)} loading="lazy" className="max-w-full rounded-sm border border-ink/10 h-auto object-contain" />
                     {caption ? <figcaption className="mt-3 text-sm text-ink/55 font-sans leading-relaxed">{caption}</figcaption> : null}
                 </figure>
             );
@@ -303,12 +341,12 @@ const BlogPostView: React.FC = () => {
             if (!id) return;
 
             try {
-                const posts = await getPublishedPosts();
-                const currentPost = posts.find(p => p.id === id);
+                const [currentPost, blocks] = await Promise.all([
+                    getPost(id),
+                    getPostContent(id)
+                ]);
                 if (currentPost) setPost(currentPost);
-
-                const blocks = await getPostContent(id);
-                setContent(blocks);
+                if (blocks) setContent(blocks);
             } catch (error) {
                 console.error('Error fetching post content:', error);
             } finally {
@@ -365,6 +403,7 @@ const BlogPostView: React.FC = () => {
                         <img
                             src={post.coverImage}
                             alt={post.title}
+                            loading="lazy"
                             className="w-full h-full object-cover"
                         />
                     </div>

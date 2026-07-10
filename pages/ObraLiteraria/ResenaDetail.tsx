@@ -75,6 +75,21 @@ const ResenaDetail: React.FC = () => {
                     </div>
                 </div>
 
+                {review.detailImageUrl && (
+                    <figure className="mt-16">
+                        <img
+                            src={review.detailImageUrl}
+                            alt={review.detailImageCaption ?? `Imagen relacionada con ${review.title}`}
+                            className="w-full rounded-sm shadow-2xl border border-gray-100"
+                        />
+                        {review.detailImageCaption && (
+                            <figcaption className="mt-4 text-center text-[10px] font-sans uppercase tracking-[0.25em] text-ink/45">
+                                {review.detailImageCaption}
+                            </figcaption>
+                        )}
+                    </figure>
+                )}
+
                 {/* Footer / Actions */}
                 <footer className="mt-16 pt-8 border-t border-gray-100 flex justify-between items-center text-ink/40">
                     <div className="flex gap-6">

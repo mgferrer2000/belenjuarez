@@ -24,6 +24,16 @@ const ResenasLibros: React.FC = () => {
                             />
                             <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                         </div>
+                        {review.sourceUrl && (
+                            <a
+                                href={review.sourceUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-4 inline-block text-[10px] font-sans uppercase tracking-[0.22em] text-deep-red border-b border-deep-red/30 hover:text-ink hover:border-ink/40 transition-colors"
+                            >
+                                {review.sourceLabel ?? 'Ver fuente original'}
+                            </a>
+                        )}
                     </motion.div>
 
                     {/* Content Preview */}
@@ -52,12 +62,23 @@ const ResenasLibros: React.FC = () => {
                         </div>
 
                         <div className="pt-4">
-                            <Link
-                                to={`/obra-literaria/resenas-libros/${review.id}`}
-                                className="inline-flex items-center gap-3 px-8 py-3 bg-ink text-paper font-sans text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-deep-red transition-colors shadow-lg"
-                            >
-                                <BookOpen size={14} /> Seguir leyendo
-                            </Link>
+                            {review.externalUrl ? (
+                                <a
+                                    href={review.externalUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-3 px-8 py-3 bg-ink text-paper font-sans text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-deep-red transition-colors shadow-lg"
+                                >
+                                    <BookOpen size={14} /> Seguir leyendo
+                                </a>
+                            ) : (
+                                <Link
+                                    to={`/obra-literaria/resenas-libros/${review.id}`}
+                                    className="inline-flex items-center gap-3 px-8 py-3 bg-ink text-paper font-sans text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-deep-red transition-colors shadow-lg"
+                                >
+                                    <BookOpen size={14} /> Seguir leyendo
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>

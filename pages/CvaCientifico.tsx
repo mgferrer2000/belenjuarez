@@ -2,12 +2,12 @@ import React from 'react';
 
 const metrics = [
     { label: 'Horas de docencia', value: '+2.500' },
-    { label: 'Quinquenios', value: '4' },
+    { label: 'Quinquenios', value: '5' },
     { label: 'Sexenios CNEAI', value: '3' },
     { label: 'Tramos autonómicos', value: '5' },
-    { label: 'Publicaciones', value: '41' },
-    { label: 'Índice H', value: '19' },
-    { label: 'Citas recibidas', value: '985' },
+    { label: 'Publicaciones', value: '44' },
+    { label: 'Índice H', value: '20' },
+    { label: 'Citas recibidas', value: '1292' },
     { label: 'Tesis dirigidas', value: '4' },
 ];
 
@@ -20,8 +20,8 @@ const formationParagraphs = [
 ];
 
 const productionParagraphs = [
-    'Su producción científica reúne 41 publicaciones indexadas. De estas, 22 pertenecen al primer cuartil (Q1), 8 al segundo (Q2), 3 al tercero (Q3) y 4 al cuarto (Q4). Los promedios son: Q1 62,5 %, Q2 20 %, Q3 7,5 % y Q4 10 %.',
-    'Ha recibido 985 citas y presenta un índice H de 19. A ello se suman 3 capítulos de libro, diversas publicaciones en revistas no indexadas y 20 participaciones en congresos nacionales e internacionales.'
+    'Su producción científica reúne 44 publicaciones indexadas. De estas, 24 pertenecen al primer cuartil (Q1, 54,5%), 8 al segundo (Q2, 15,9%), 3 al tercero (Q3, 6,8%) y 4 al cuarto (Q4, 9,1%).',
+    'Ha recibido 1292 citas y presenta un índice H de 20. A ello se suman 3 capítulos de libro, diversas publicaciones en revistas no indexadas y 20 participaciones en congresos nacionales e internacionales.'
 ];
 
 const leadershipParagraphs = [
@@ -30,10 +30,10 @@ const leadershipParagraphs = [
 ];
 
 const meritsParagraphs = [
-    'Ha dirigido 4 tesis doctorales y ha sido tutora de 3 Trabajos Fin de Máster defendidos en 2009, 2017 y 2024, además de 3 TFM de próxima defensa en 2026 y diversos Trabajos Fin de Grado.',
+    'Ha dirigido 4 tesis doctorales y ha sido tutora de 6 Trabajos Fin de Máster defendidos en 2009, 2017, 2024 y 2026, además de diversos Trabajos Fin de Grado (los dos últimos en 2026).',
     'Es revisora de Microbial Cell Factories y Polar Biology, evaluadora externa de un proyecto de investigación en la Universidad Tecnológica Metropolitana del Estado de Chile en 2024, y miembro del Grupo de Investigación de Microbiología Ambiental (RMN 270, PAI) desde 1997.',
     'Forma parte del Consejo del Instituto de Investigación del Agua de la UGR, y es miembro del equipo editorial de la revista científica Ars Pharmaceutica, editada en la Facultad de Farmacia de la UGR y donde coordina la sección de Microbiología Clínica.',
-    'Ha sido miembro de la Sociedad Española de Microbiología hasta 2025, del Comité Científico del Congreso Internacional BioRemid2017, y ha formado parte de  8 tribunales de Tesis Doctorales con mención internacional entre 2012 y 2025 en las universidades de Granada y Almería. Recientemente, ha sido nombrada Secretaria de otro Tribunal de Tesis Doctoral, la cual será defendida en abril de 2026.'
+    'Ha sido miembro de la Sociedad Española de Microbiología hasta 2025, del Comité Científico del Congreso Internacional BioRemid2017, y ha formado parte de 9 tribunales de Tesis Doctorales con mención internacional entre 2012 y 2026 en las universidades de Granada y Almería. Último Tribunal de Tesis doctoral: Facultad de Ciencias, Universidad de Granada (abril, 2026).'
 ];
 
 

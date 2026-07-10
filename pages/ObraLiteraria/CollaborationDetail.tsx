@@ -28,7 +28,7 @@ const CollaborationDetail: React.FC = () => {
         : [collaboration.description];
 
     return (
-        <div className="max-w-4xl mx-auto pb-20 fade-in">
+        <div className={`${collaboration.id === '14' ? 'max-w-6xl' : 'max-w-4xl'} mx-auto pb-20 fade-in`}>
             <Link
                 to="/obra-literaria/antologias"
                 className="inline-flex items-center text-gray-500 hover:text-deep-red mb-8 transition-colors"
@@ -110,6 +110,7 @@ const CollaborationDetail: React.FC = () => {
                             const rightImages = imgMatches.filter(m => m[1] === 'R');
                             const bottomRightImages = imgMatches.filter(m => m[1] === 'BR');
                             const bottomImages = imgMatches.filter(m => m[1] === 'B');
+                            const useWideBottomImage = collaboration.id === '14';
 
                             const renderImages = (matches: RegExpMatchArray[]) => (
                                 <div className="flex flex-col gap-4 w-48 md:w-56">
@@ -192,7 +193,7 @@ const CollaborationDetail: React.FC = () => {
                                                 if (!imgUrl) return null;
 
                                                 return (
-                                                    <div key={i} className="rounded-lg overflow-hidden shadow-md border border-gray-100 w-48 md:w-56 flex-shrink-0">
+                                                    <div key={i} className={`${useWideBottomImage ? 'w-full md:w-[118%] md:-ml-[9%]' : 'w-48 md:w-56 flex-shrink-0'} rounded-lg overflow-hidden shadow-md border border-gray-100`}>
                                                         <img
                                                             src={imgUrl}
                                                             alt={`Ilustración para ${collaboration.title}`}

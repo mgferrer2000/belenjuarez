@@ -81,9 +81,9 @@ const recentActivity = [
     detail: 'Publicación de los poemas “Las cerezas de mi padre” (2024) y “Y mi denuncia” (2025) en el Club de Poesía de la revista Librujula, bajo la coordinación de Enrique Villagrasa.'
   },
   {
-    year: '2025',
+    year: '2025-2026',
     title: 'Encuentro de Letras Celestes',
-    detail: 'Participación en la antología de poesía “Encuentro de Letras Celestes”, Sevilla, 2025, coordinada por Pedro Luis Ibáñez Lérida.'
+    detail: 'Participación en las dos últimas antologías de poesía incluidas en el proyecto “Encuentro de Letras Celestes”, Sevilla, 2025 y 2026, de Pedro Luis Ibáñez Lérida y Diego Castillo Barco.'
   },
   {
     year: '2025',
@@ -106,9 +106,9 @@ const recentActivity = [
     detail: 'Participación en el primer recital de microrrelatos celebrado en el Centro Cultural de Montequinto (Dos Hermanas, Sevilla), coordinado por Maritxé Abad y organizado por la Delegación en Sevilla de la Academia Norteamericana de Literatura Moderna Internacional.'
   },
   {
-    year: '2025-2026',
+    year: '2026',
     title: 'Horizonte de Sucesos',
-    detail: 'Nuevo libro de poesía publicado en la colección Rayo Azul de la editorial Huerga & Fierro, veinticinco años después de la publicación de su último libro.'
+    detail: 'Nuevo libro de poesía publicado en la colección Rayo Azul de la editorial Huerga & Fierro. Presentación en la Biblioteca de Andalucía el 21 de mayo, con la participación del pianista y compositor Eduardo Salas Arques, los editores Antonio Huerga y Charo Fierro, y los escritores Antonio Fernández Juárez y Maritxé Abad i Bueno.'
   }
 ];
 

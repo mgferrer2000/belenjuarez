@@ -61,7 +61,7 @@ export const COLLABORATIONS: Collaboration[] = [
   {
     id: '1',
     publication: 'ACTA ENCUENTRO MUJERES POETAS',
-    title: 'POÉTICA',
+    title: 'Poética',
     type: 'Antología',
     date: '2005',
     description: 'Participación en el encuentro anual de mujeres poetas.',
@@ -466,8 +466,10 @@ hombre olivo de mis aplausos ...`,
   {
     id: '8',
     publication: 'Proyecto Encuentro de Letras Celestes',
-    title: 'HOMBRE OLIVO',
+    title: 'Hombre Olivo',
     type: 'Antología',
+    url: 'https://drive.google.com/file/d/1MG_pMfXvSnDrBALD9bfHSBR1ZpiIx3GY/view?usp=sharing',
+    externalNote: 'Antología virtual “De pronto, ¡oh belleza!, canta el verderol”, 2025',
     date: '2025',
     description: 'Edición de Diego Castillo Barco y Pedro Luis Ibáñez Lérida. La Puebla de los Infantes. Sevilla.',
     coverUrl: '/images/antologias/encuentro_letras_celestes_cover.jpg',
@@ -510,6 +512,53 @@ bahía de la fúlgida ensenada,
       '/images/antologias/hombreolivo2.jpg'
     ],
     purchaseUrl: '#'
+  },
+  {
+    id: '14',
+    publication: 'Y ser como la estrella inaccesible y alta, alumbrando en silencio. Una antología',
+    title: 'Mediodía del pasado y del futuro',
+    type: 'Antología',
+    url: 'https://drive.google.com/file/d/1fIJLo6ZMwM0NWlyYUZyyCK4JxLR3yfiy/view?usp=sharing',
+    externalNote: 'Antología virtual “Y ser como la estrella inaccesible y alta, alumbrando en silencio”, 2026',
+    date: '2026',
+    description: 'Poema publicado en la antología virtual del Proyecto Encuentro de Letras Celestes, edición 2026.',
+    coverUrl: '/images/antologias/y_ser_como_estrella_2026_portada.png',
+    imagePosition: 'center 62%',
+    fullText: `**Mediodía del pasado y del futuro**
+Belén Juárez. 2026
+
+Poema publicado en la Antología virtual “Y ser como la estrella inaccesible y alta, alumbrando en silencio” (Proyecto “Letras Celestes” de Pedro Luis Ibáñez Lérida y Diego Castillo, La Puebla de los Infantes, Sevilla). Edición 2026.
+
+Nunca las estrellas inventaron sus luces.
+Guardianas del aroma del amor
+nos cubrieron de momentos del ayer.
+El pasado es un paraíso de áureas músicas,
+el que se sueña de madrugada sobre una almohada,
+allí donde un dios de barro no estuvo nunca,
+ni la suerte puede cambiar el aire que respiramos.
+En el mediodía de un silencioso universo,
+enjambre de otros universos,
+anegados astros de débiles cuellos,
+como _Caballo de Troya_ rozando la memoria,
+encontraremos sus fuentes,
+sus montañas, sus templados días,
+las piedras de la vida,
+los soles y sus arbóreas selvas,
+la ausencia de la costumbre,
+la amada conciencia.
+En el rostro de un sereno y mudo universo,
+dibujaremos la mirada remansada
+de quien trató de amarnos alguna vez.
+Y viajaremos trenzando nuestras vidas
+hacia el lugar de las estrellas,
+como destino de una única verdad,
+donde la _Curva_ es pregunta,
+y es respuesta.
+
+[[IMG:B:0]]`,
+    images: [
+      '/images/antologias/mediodia_pasado_futuro_postal_2026.jpg'
+    ]
   },
   {
     id: '9',
@@ -557,7 +606,7 @@ al abrigo de un cálido sol de septiembre.`,
   {
     id: '10',
     publication: 'POETAS POR LA PAZ. Ilustre Colegio de Gestores Administrativos de Granada, Jaén y Almería',
-    title: 'PALESTINA y MI DENUNCIA',
+    title: 'Palestina y Mi denuncia',
     type: 'Antología',
     url: 'https://librujula.publico.es/y-mi-denuncia-de-belen-juarez/',
     externalNote: 'Poema publicado en el Club de Poesía de la Revista Librujula, 2025',
@@ -1805,6 +1854,91 @@ El negro es el protagonista indiscutible de estas misteriosas obras, en las que,
 ];
 
 export const BOOK_REVIEWS: BookReview[] = [
+  {
+    id: 'horizonte-de-sucesos-ideal-fernando-de-villena',
+    title: 'Horizonte de Sucesos',
+    bookTitle: 'Horizonte de sucesos',
+    author: 'Fernando de Villena',
+    publication: 'IDEAL / De la Academia de Buenas Letras de Granada',
+    date: '25/06/2026',
+    coverUrl: '/images/resenas/ideal-horizonte.png',
+    condensedQuote: 'Lo primero que nos sorprende en este libro es su novedad, su decidida apuesta por la poesía cuántica; esa en la que fue precursor Gregorio Morales, y también por la Inteligencia Artificial; lo segundo, una visión positiva de la autora: su defensa de la naturaleza, de los animales, los árboles, la piedra, el mar, todo el cosmos en suma; panteísmo casi y un encendido canto de amor a la poesía…',
+    fullContent: `Siempre me ha intrigado el silencio que guardan ciertos poetas durante largos años y su vuelta cuando menos se la espera. Pero es que la poesía constituye un completo misterio y someterla a los cánones de la normalidad resulta absurdo.
+
+La poetisa parisina -profesora de Microbiología en la Universidad de Granada- Belén Juárez se mostró muy activa a finales del siglo pasado y principios del presente. Estuvo entonces vinculada a la revista “Ficciones” y a la histórica Tertulia del Salón y publicó los poemarios “Destierro en Cuatro Ángulos” (1999) y “La Noche de Ayer (2002). Después, cuestiones de salud la mantuvieron alejada de la vida literaria y recientemente ha vuelto por la puerta grande a la creación mediante un álbum de música, un espectáculo audiovisual y un nuevo libro de poemas que forman una unidad titulada “Horizonte de sucesos” (Huerga y Fierro Editores, colección Rayo Azul, 2026). La espectacular presentación de todo ello se llevó a cabo este mes de mayo en al biblioteca de Andalucía.
+
+Lo primero que nos sorprende en este libro es su novedad, su decidida apuesta por la poesía cuántica; lo segundo, la visión positiva de la autora: su defensa de la naturaleza, de los animales, los árboles, la piedra, el mar, todo el cosmos en suma; panteísmo casi y un encendido canto de amor a la poesía.
+
+Se nos presentan paisajes y también animales llenos de simbolismo: así la relectura del mito de los lobos, así el búho, que no solo representa la sabiduría de Minerva, sino también lo más íntimo, al igual que el fenómeno poético. Encontramos imágenes visionarias, oníricas y atrevidas, y referencias científicas en versos que fluyen de modo torrencial con un ritmo marcado por los paralelismos y las anáforas.
+
+Son poemas impregnados de color, con un léxico lujoso, abundantísimo -nival, bellido, dragontea, turpiales…-, con frecuentes símiles que a veces nos llegan a pensar en Gerardo Diego: «Orcas como un manantial de espumas en alta mar». Versos que sorprenden al lector con un halo de neorromanticismo: «Te esperaré como espera un amigo,/ dormido sobre el musgo de una tumba, en primavera».
+
+    Y frente a toda esa fiesta de la naturaleza y de la poesía, un duro alegato contra la ciudad con su asfalto, sus « afilados silbidos de neón» y su tristeza.`,
+    sourceUrl: 'https://www.ideal.es/opinion/fernando-de-villena-horizonte-sucesos-20260625225511-nt.html',
+    sourceLabel: 'Ver reseña en IDEAL',
+    detailImageUrl: '/images/resenas/resena-fernando-de-villena-periodico.jpeg',
+    detailImageCaption: 'Artículo publicado en IDEAL'
+  },
+  {
+    id: 'belen-juarez-emocion-ciencia-en-benalmadena',
+    title: 'Belén Juárez sorprende con nueva poesía que integra emoción y ciencia',
+    bookTitle: 'Horizonte de sucesos',
+    author: 'Isabel Fuentes',
+    publication: 'En Benalmádena',
+    date: '05/06/2026',
+    coverUrl: '/images/resenas/benalmadena-horizonte.png',
+    condensedQuote: '… La publicación resulta relevante porque reúne dos urgencias del presente cultural: por un lado, la recuperación de voces femeninas con trayectoria plural; por otro, la experimentación formal que dialoga con saberes científicos. En un momento en que la frontera entre disciplinas se difumina, este libro ofrece un modelo de convivencia entre precisión y emoción…',
+    fullContent: `… La publicación resulta relevante porque reúne dos urgencias del presente cultural: por un lado, la recuperación de voces femeninas con trayectoria plural; por otro, la experimentación formal que dialoga con saberes científicos. En un momento en que la frontera entre disciplinas se difumina, este libro ofrece un modelo de convivencia entre precisión y emoción…`,
+    externalUrl: 'https://www.enbenalmadena.es/3128-belen-juarez-sorprende-con-nueva-poesia-que-integra-emocion-y-ciencia/'
+  },
+  {
+    id: 'horizonte-de-sucesos-cercle-artistes-europeens',
+    title: 'Belén Juárez. Horizonte de sucesos',
+    bookTitle: 'Horizonte de sucesos',
+    author: 'Cercle des Artistes Européens',
+    publication: 'Cercle des Artistes Européens',
+    date: '2025',
+    coverUrl: '/images/resenas/circulo-paris.png',
+    condensedQuote: '…Este álbum constituye una creación verdaderamente inédita: transformar su poesía en canciones y musicalizarlas gracias a la inteligencia artificial, con el fin de abrir la poesía a un público más amplio y proponer una nueva vía de acceso a la emoción poética…',
+    fullContent: `…Este álbum constituye una creación verdaderamente inédita: transformar su poesía en canciones y musicalizarlas gracias a la inteligencia artificial, con el fin de abrir la poesía a un público más amplio y proponer una nueva vía de acceso a la emoción poética…`,
+    externalUrl: 'https://www.cercledesartisteseuropeens.com/partenariats-et-sponsors-dans-l-art-et-la-culture/artistes-d-exception-rencontr%C3%A9s-au-fil-de-nos-%C3%A9v%C3%A9nements/'
+  },
+  {
+    id: 'poesia-feria-libro-madrid-2026-librujula',
+    title: 'Poesía para la feria del libro de Madrid 2026',
+    bookTitle: 'Horizonte de sucesos',
+    author: 'Enrique Villagrasa',
+    publication: 'Librújula',
+    date: '29/05/2026',
+    coverUrl: '/images/resenas/feria-libro.png',
+    condensedQuote: 'En esta entrada el crítico y lector de poesía nombra la poesía de Belén Juárez como: …verdad y belleza en unos poemas que son un regalo para nuestro cerebro.',
+    fullContent: `En esta entrada el crítico y lector de poesía nombra la poesía de Belén Juárez como: …verdad y belleza en unos poemas que son un regalo para nuestro cerebro.`,
+    externalUrl: 'https://librujula.publico.es/poesia-para-un-feria-donde-leer-reir-y-pasear/'
+  },
+  {
+    id: 'horizonte-de-sucesos-librujula',
+    title: 'Horizonte de sucesos',
+    bookTitle: 'Horizonte de sucesos',
+    author: 'Enrique Villagrasa',
+    publication: 'Librújula',
+    date: '22/05/2026',
+    coverUrl: '/images/resenas/librujula-horizonte.png',
+    condensedQuote: '… En el poemario se debate sobre diferentes temas: la naturaleza con su flora y fauna terrestre: el lobo (ecos del hermano lobo de Gubbio con Francisco de Asís); aérea: el búho sabio y marina: reivindicación de la delfínida orca, entre otros temas y cosas. Y Horizonte de sucesos también nos muestra además que poesía y ciencia o ciencia y poesía son muy similares, pues comparten y juegan con esa intuición y un tanto de azar justo y necesario que conlleva un salto al vacío de la fe, de esa fe que cree en uno mismo y en su trabajo, con temor y temblor.',
+    fullContent: `… En el poemario se debate sobre diferentes temas: la naturaleza con su flora y fauna terrestre: el lobo (ecos del hermano lobo de Gubbio con Francisco de Asís); aérea: el búho sabio y marina: reivindicación de la delfínida orca, entre otros temas y cosas. Y Horizonte de sucesos también nos muestra además que poesía y ciencia o ciencia y poesía son muy similares, pues comparten y juegan con esa intuición y un tanto de azar justo y necesario que conlleva un salto al vacío de la fe, de esa fe que cree en uno mismo y en su trabajo, con temor y temblor.`,
+    externalUrl: 'https://librujula.publico.es/belen-juarez-regresa-a-la-poesia-con-pasion-y-ciencia/'
+  },
+  {
+    id: 'horizonte-de-sucesos-en-clase-ideal',
+    title: 'Horizonte de sucesos, un proyecto surgido tras dos décadas de quietud lírica',
+    bookTitle: 'Horizonte de sucesos',
+    author: 'Antonio Arenas',
+    publication: 'IDEAL En Clase',
+    date: '20/05/2026',
+    coverUrl: '/images/resenas/portada-resena-en-clase-ideal.png',
+    condensedQuote: 'De “Horizontes de sucesos” informa que surge «como consecuencia de esa investigación o de esa idea de del diálogo y conversación entre el poeta y la poesía. De tal manera que el poeta cuestiona su labor dentro de su escritura y la poesía lo lleva por diferentes caminos. El título procede del último capítulo, y señala que es «un libro que está dedicado a muchas facetas de la vida».',
+    fullContent: `De “Horizontes de sucesos” informa que surge «como consecuencia de esa investigación o de esa idea de del diálogo y conversación entre el poeta y la poesía. De tal manera que el poeta cuestiona su labor dentro de su escritura y la poesía lo lleva por diferentes caminos. El título procede del último capítulo, y señala que es «un libro que está dedicado a muchas facetas de la vida».`,
+    externalUrl: 'https://en-clase.ideal.es/belen-juarez-publica-horizonte-de-sucesos-el-proyecto-surgido-tras-dos-decadas-de-quietud-lirica/'
+  },
   {
     id: 'la-noche-de-ayer-extramuros',
     title: 'La Noche de Ayer',

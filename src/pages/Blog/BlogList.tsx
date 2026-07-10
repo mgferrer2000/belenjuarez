@@ -23,10 +23,16 @@ const BlogList: React.FC = () => {
         fetchPosts();
     }, []);
 
-    const availableTags = ['Todas', ...Array.from(new Set(posts.flatMap(post => post.tags))).sort((a, b) => a.localeCompare(b, 'es'))];
+    const availableTags = ['Todas', ...Array.from(new Set(posts.flatMap(post => post.tags ?? []))).sort((a, b) => a.localeCompare(b, 'es'))];
     const filteredPosts = selectedTag === 'Todas'
         ? posts
-        : posts.filter(post => post.tags.includes(selectedTag));
+        : posts.filter(post => (post.tags ?? []).includes(selectedTag));
+
+    useEffect(() => {
+        if (!availableTags.includes(selectedTag)) {
+            setSelectedTag('Todas');
+        }
+    }, [availableTags, selectedTag]);
 
     return (
         <div className="pt-32 pb-24 min-h-screen bg-paper text-ink">
@@ -98,9 +104,9 @@ const BlogList: React.FC = () => {
                                 </Link>
 
                                 <div className="p-8 flex flex-col flex-grow">
-                                    {post.tags.length > 0 && (
+                                    {(post.tags ?? []).length > 0 && (
                                         <div className="mb-5 flex flex-wrap gap-2">
-                                            {post.tags.map((tag) => (
+                                            {(post.tags ?? []).map((tag) => (
                                                 <button
                                                     key={`${post.id}-${tag}`}
                                                     type="button"
