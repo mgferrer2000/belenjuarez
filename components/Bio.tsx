@@ -97,7 +97,7 @@ const Bio: React.FC = () => {
             className="w-full rounded-sm overflow-hidden shadow-lg border border-gold/5 relative group"
           >
             <img src="/images/sobrebelen/5B2.jpg" className="w-full h-auto object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Detalle artístico apaisado" />
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+            <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
               <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
                 Peñones de San Francisco de Sierra Nevada, Granada. Al fondo el Veleta. 2023.
               </p>
@@ -109,11 +109,11 @@ const Bio: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="h-[260px] sm:h-[320px] md:h-[400px] rounded-sm overflow-hidden relative group shadow-md"
+              className="h-auto sm:h-[320px] md:h-[400px] rounded-sm overflow-hidden relative group shadow-md"
             >
-              <img src="/images/sobrebelen/6B.jpeg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Detalle" />
-              <div className="absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-all duration-500"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+              <img src="/images/sobrebelen/6B.jpeg" className="w-full h-auto object-contain sm:h-full sm:object-cover group-hover:scale-105 transition-transform duration-1000" alt="Detalle" />
+              <div className="hidden sm:block absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-all duration-500"></div>
+              <div className="relative sm:absolute sm:bottom-0 sm:left-0 sm:right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
                 <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
                   Con José Domínguez en Arriate, Málaga. 2024
                 </p>
@@ -170,9 +170,9 @@ const Bio: React.FC = () => {
 
         {/* Section 5: Gallery Strip (7B2, IMG_0314, IMG_7807) */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-20 md:mb-24 lg:mb-32 px-0 max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="relative group overflow-hidden rounded-sm shadow-md">
-            <img src="/images/sobrebelen/7B2.jpeg" className="w-full aspect-[4/5] object-cover rounded-sm shadow-md group-hover:scale-105 transition-transform duration-1000" alt="Espacio" />
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="col-span-2 md:col-span-1 relative group overflow-hidden rounded-sm shadow-md">
+            <img src="/images/sobrebelen/7B2.jpeg" className="w-full h-auto object-contain md:aspect-[4/5] md:object-cover rounded-sm shadow-md group-hover:scale-105 transition-transform duration-1000" alt="Espacio" />
+            <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 p-3 bg-paper/90 backdrop-blur-sm border-t border-gold/20">
               <p className="text-ink/80 text-[10px] sm:text-xs font-sans tracking-wide">
                 Arriate, Málaga. 2024
               </p>

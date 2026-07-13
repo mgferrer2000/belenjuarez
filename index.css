@@ -11,6 +11,11 @@
   a {
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* La justificacion produce rios de blanco en columnas estrechas. */
+  .text-justify {
+    text-align: left !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
