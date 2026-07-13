@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const Musica: React.FC = () => {
     const location = useLocation();
+    const contentRef = useRef<HTMLDivElement>(null);
+    const shouldFocusContent = (location.state as { scrollToSectionContent?: boolean } | null)?.scrollToSectionContent;
     const links = [
         { name: 'Música y Poesía', path: '/musica/poesia' },
         { name: 'Horizonte de Sucesos', path: '/musica/horizonte' },
     ];
+
+    useLayoutEffect(() => {
+        if (shouldFocusContent && window.matchMedia('(max-width: 1023px)').matches) {
+            contentRef.current?.scrollIntoView({ block: 'start' });
+        }
+    }, [location.pathname, shouldFocusContent]);
 
     return (
         <div className="pt-24 min-h-screen bg-ink text-paper">
@@ -18,6 +26,7 @@ const Musica: React.FC = () => {
                             <Link
                                 key={link.path}
                                 to={link.path}
+                                state={{ scrollToSectionContent: true }}
                                 className={`flex min-h-[42px] items-center bg-ink px-3 py-2 text-[10px] uppercase leading-snug tracking-[0.04em] transition-colors hover:text-gold-accent lg:inline lg:min-h-0 lg:bg-transparent lg:px-0 lg:py-0 lg:text-sm lg:tracking-widest lg:whitespace-nowrap ${location.pathname === link.path ? 'bg-gold-accent text-ink font-bold hover:text-ink lg:bg-transparent lg:text-gold-accent lg:border-b-2 lg:border-gold-accent lg:hover:text-gold-accent' : 'text-white/60'
                                     }`}
                             >
@@ -26,7 +35,9 @@ const Musica: React.FC = () => {
                         ))}
                     </div>
                 </div>
-                <Outlet />
+                <div ref={contentRef} className="scroll-mt-20">
+                    <Outlet />
+                </div>
             </div>
         </div>
     );

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const ObraLiteraria: React.FC = () => {
     const location = useLocation();
+    const contentRef = useRef<HTMLDivElement>(null);
+    const shouldFocusContent = (location.state as { scrollToSectionContent?: boolean } | null)?.scrollToSectionContent;
     const links = [
         { name: 'Libros', path: '/obra-literaria/libros' },
         { name: 'Reseñas sobre libros', path: '/obra-literaria/resenas-libros' },
@@ -16,6 +18,12 @@ const ObraLiteraria: React.FC = () => {
         { name: 'Entrevistas a escritores', path: '/obra-literaria/entrevistas' },
     ];
 
+    useLayoutEffect(() => {
+        if (shouldFocusContent && window.matchMedia('(max-width: 1023px)').matches) {
+            contentRef.current?.scrollIntoView({ block: 'start' });
+        }
+    }, [location.pathname, shouldFocusContent]);
+
     return (
         <div className="pt-24 min-h-screen bg-paper">
             <div className="max-w-7xl mx-auto px-6">
@@ -26,6 +34,7 @@ const ObraLiteraria: React.FC = () => {
                             <Link
                                 key={link.path}
                                 to={link.path}
+                                state={{ scrollToSectionContent: true }}
                                 className={`flex min-h-[42px] items-center bg-paper px-3 py-2 text-[10px] uppercase leading-snug tracking-[0.04em] transition-colors hover:text-deep-red lg:inline lg:min-h-0 lg:bg-transparent lg:px-0 lg:py-0 lg:text-sm lg:tracking-widest lg:whitespace-nowrap ${location.pathname === link.path || location.pathname.startsWith(link.path + '/') ? 'bg-deep-red text-paper font-bold hover:text-paper lg:bg-transparent lg:text-deep-red lg:border-b-2 lg:border-deep-red lg:hover:text-deep-red' : 'text-ink/60'
                                     }`}
                             >
@@ -34,7 +43,9 @@ const ObraLiteraria: React.FC = () => {
                         ))}
                     </div>
                 </div>
-                <Outlet />
+                <div ref={contentRef} className="scroll-mt-20">
+                    <Outlet />
+                </div>
             </div>
         </div>
     );

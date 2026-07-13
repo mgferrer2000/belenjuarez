@@ -46,13 +46,14 @@ const RouteLoader = () => (
 );
 
 const MobileScrollToTop = () => {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const shouldFocusContent = (location.state as { scrollToSectionContent?: boolean } | null)?.scrollToSectionContent;
 
   useLayoutEffect(() => {
-    if (window.matchMedia('(max-width: 1023px)').matches) {
+    if (window.matchMedia('(max-width: 1023px)').matches && !shouldFocusContent) {
       window.scrollTo(0, 0);
     }
-  }, [pathname]);
+  }, [location.pathname, shouldFocusContent]);
 
   return null;
 };
