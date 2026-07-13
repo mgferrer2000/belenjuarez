@@ -1,11 +1,12 @@
 # Informe de implementacion mobile
 
-Fecha: 10 de julio de 2026  
-Rama: `codex/mobile-responsive`
+Fecha: 10 de julio de 2026
+Rama de desarrollo original: `codex/mobile-responsive`
+Integrada en `main`: 13 de julio de 2026
 
 ## Garantia de escritorio
 
-- `main` no se ha modificado.
+- La optimizacion se integro en `main` despues de verificar que no altera la experiencia de escritorio.
 - Las reglas de reduccion de contenido se activan exclusivamente por debajo de `768 px`.
 - Escritorio conserva todas las obras visibles, las imagenes originales y los reproductores de YouTube existentes.
 - Los textos, poemas, traducciones, rutas y datos no se han recortado ni reescrito.
@@ -19,6 +20,7 @@ Rama: `codex/mobile-responsive`
 5. Imagenes de Diario Abierto con carga diferida y decodificacion asincrona.
 6. Menu movil con areas tactiles mayores, estado activo, atributos accesibles y bloqueo del fondo.
 7. Reduccion de movimiento cuando el dispositivo solicita `prefers-reduced-motion`.
+8. Variantes WebP de 640 y 960 px para las imagenes de Notion, con cache y recuperacion del original.
 
 ## Metricas antes y despues
 
@@ -48,4 +50,4 @@ El unico aviso de consola procede del uso preexistente de Tailwind mediante CDN 
 
 ## Reversion
 
-La version definitiva de escritorio permanece en `main`. Mientras esta rama no se fusione, cualquier prueba o despliegue movil puede descartarse simplemente volviendo a `main`.
+La rama `codex/mobile-responsive` se conserva como respaldo del trabajo previo a la fusion. `main` contiene ya la version conjunta de escritorio y movil.
