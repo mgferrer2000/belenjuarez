@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -162,7 +163,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Nav */}
-      {isMenuOpen && (
+      {isMenuOpen && createPortal(
         <div id="mobile-navigation" className="fixed inset-0 bg-paper z-40 flex flex-col pt-20 px-5 overflow-y-auto overscroll-contain">
           <div className="flex flex-col space-y-2 pb-10">
             {navLinks.map((link) => (
@@ -205,7 +206,8 @@ const Navbar: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </nav>
   );
