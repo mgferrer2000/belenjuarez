@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode, useEffect, useState } from 'react';
+import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getPostContent, getPost, BlogPost } from '../../services/notion';
 import { ArrowLeft, Calendar } from 'lucide-react';
@@ -32,6 +32,79 @@ type NotionBlock = {
 };
 
 const cx = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ');
+
+type DeferredNotionImageProps = {
+    src: string;
+    alt: string;
+};
+
+const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ src, alt }) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [shouldLoad, setShouldLoad] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [hasError, setHasError] = useState(false);
+
+    useEffect(() => {
+        setShouldLoad(false);
+        setIsLoaded(false);
+        setHasError(false);
+
+        const container = containerRef.current;
+        if (!container || !('IntersectionObserver' in window)) {
+            setShouldLoad(true);
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setShouldLoad(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '240px 0px' },
+        );
+
+        observer.observe(container);
+        return () => observer.disconnect();
+    }, [src]);
+
+    return (
+        <div
+            ref={containerRef}
+            className="relative flex min-h-48 w-full items-center justify-center overflow-hidden bg-ink/[0.025] md:min-h-64"
+            aria-busy={shouldLoad && !isLoaded && !hasError}
+        >
+            {!isLoaded && !hasError ? (
+                <span className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.2em] text-ink/35">
+                    {shouldLoad ? 'Cargando imagen' : 'Imagen pendiente'}
+                </span>
+            ) : null}
+
+            {shouldLoad ? (
+                <img
+                    src={src}
+                    alt={alt}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                    onLoad={() => setIsLoaded(true)}
+                    onError={() => setHasError(true)}
+                    className={cx(
+                        'h-auto max-w-full object-contain transition-opacity duration-500',
+                        isLoaded ? 'opacity-100' : 'opacity-0',
+                    )}
+                />
+            ) : null}
+
+            {hasError ? (
+                <span className="px-6 py-12 text-center font-serif italic text-ink/45">
+                    No se ha podido cargar esta imagen.
+                </span>
+            ) : null}
+        </div>
+    );
+};
 
 const renderPlainTextWithBreaks = (text: string) => {
     const parts = text.split('\n');
@@ -265,7 +338,12 @@ function renderBlock(block: NotionBlock) {
 
             return (
                 <figure key={block.id} className="my-10 text-center flex flex-col items-center">
-                    <img src={imageUrl} alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)} loading="lazy" className="max-w-full rounded-sm border border-ink/10 h-auto object-contain" />
+                    <div className="w-full rounded-sm border border-ink/10 overflow-hidden">
+                        <DeferredNotionImage
+                            src={imageUrl}
+                            alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)}
+                        />
+                    </div>
                     {caption ? <figcaption className="mt-3 text-sm text-ink/55 font-sans leading-relaxed">{caption}</figcaption> : null}
                 </figure>
             );
@@ -404,6 +482,7 @@ const BlogPostView: React.FC = () => {
                             src={post.coverImage}
                             alt={post.title}
                             loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover"
                         />
                     </div>
