@@ -2,8 +2,11 @@
 import React from 'react';
 import { Film, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
+import DeferredYouTube from '../../components/DeferredYouTube';
+import { useIsMobile } from '../../src/hooks/useIsMobile';
 
 const Videos: React.FC = () => {
+    const isMobile = useIsMobile();
     // Array para facilitar añadir más vídeos en el futuro
     const videos = [
         {
@@ -94,22 +97,29 @@ const Videos: React.FC = () => {
                         key={video.id}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        transition={{
+                            duration: isMobile ? 0.5 : 0.6,
+                            delay: isMobile ? Math.min(index, 4) * 0.08 : index * 0.1
+                        }}
                         className="space-y-6"
                     >
                         {/* Video Embed */}
                         <div className="relative rounded-sm overflow-hidden shadow-2xl bg-black border border-white/10 aspect-video w-full group">
-                            <iframe
-                                src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0`}
-                                width="100%"
-                                height="100%"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                                allowFullScreen
-                                className="w-full h-full"
-                                loading="lazy"
-                                title={video.title}
-                            ></iframe>
+                            {isMobile ? (
+                                <DeferredYouTube youtubeId={video.youtubeId} title={video.title} />
+                            ) : (
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0`}
+                                    width="100%"
+                                    height="100%"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                                    allowFullScreen
+                                    className="w-full h-full"
+                                    loading="lazy"
+                                    title={video.title}
+                                />
+                            )}
                         </div>
 
                         {/* Video Info */}

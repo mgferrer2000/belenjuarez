@@ -154,6 +154,203 @@ function isValidNotionId($value) {
     return preg_match('/^[a-f0-9-]{32,36}$/i', $value) === 1;
 }
 
+function redirectToOriginalImage($url) {
+    header('Cache-Control: private, max-age=300');
+    header('Location: ' . $url, true, 302);
+    exit;
+}
+
+function fetchRemoteImage($url) {
+    $body = '';
+    $maxBytes = 20 * 1024 * 1024;
+    $tooLarge = false;
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_MAXREDIRS, 3);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 8);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 25);
+    curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($curl, $chunk) use (&$body, $maxBytes, &$tooLarge) {
+        if (strlen($body) + strlen($chunk) > $maxBytes) {
+            $tooLarge = true;
+            return 0;
+        }
+
+        $body .= $chunk;
+        return strlen($chunk);
+    });
+
+    $success = curl_exec($ch);
+    $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $contentType = (string) curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+    curl_close($ch);
+
+    if ($success === false || $tooLarge || $status < 200 || $status >= 300 || strpos($contentType, 'image/') !== 0) {
+        return null;
+    }
+
+    return $body;
+}
+
+function createMobileWebp($source, $targetWidth) {
+    if (!function_exists('imagecreatefromstring') || !function_exists('imagewebp')) {
+        return null;
+    }
+
+    $dimensions = @getimagesizefromstring($source);
+    if (!$dimensions || empty($dimensions[0]) || empty($dimensions[1])) {
+        return null;
+    }
+
+    $sourceWidth = (int) $dimensions[0];
+    $sourceHeight = (int) $dimensions[1];
+
+    // Avoid exhausting shared-hosting memory on exceptionally large originals.
+    if ($sourceWidth * $sourceHeight > 40000000) {
+        return null;
+    }
+
+    $image = @imagecreatefromstring($source);
+    if (!$image) {
+        return null;
+    }
+
+    $outputWidth = min($sourceWidth, $targetWidth);
+    $outputHeight = max(1, (int) round($sourceHeight * ($outputWidth / $sourceWidth)));
+    $output = imagecreatetruecolor($outputWidth, $outputHeight);
+
+    if (!$output) {
+        imagedestroy($image);
+        return null;
+    }
+
+    imagealphablending($output, false);
+    imagesavealpha($output, true);
+    $transparent = imagecolorallocatealpha($output, 0, 0, 0, 127);
+    imagefilledrectangle($output, 0, 0, $outputWidth, $outputHeight, $transparent);
+
+    imagecopyresampled(
+        $output,
+        $image,
+        0,
+        0,
+        0,
+        0,
+        $outputWidth,
+        $outputHeight,
+        $sourceWidth,
+        $sourceHeight
+    );
+
+    ob_start();
+    $encoded = imagewebp($output, null, 77);
+    $webp = ob_get_clean();
+    imagedestroy($output);
+    imagedestroy($image);
+
+    return $encoded && $webp !== false ? $webp : null;
+}
+
+function serveWebp($contents) {
+    $etag = '"' . hash('sha256', $contents) . '"';
+
+    if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && trim($_SERVER['HTTP_IF_NONE_MATCH']) === $etag) {
+        header('ETag: ' . $etag);
+        header('Cache-Control: public, max-age=86400, stale-while-revalidate=604800');
+        http_response_code(304);
+        exit;
+    }
+
+    header('Content-Type: image/webp');
+    header('Content-Length: ' . strlen($contents));
+    header('Cache-Control: public, max-age=86400, stale-while-revalidate=604800');
+    header('ETag: ' . $etag);
+    echo $contents;
+    exit;
+}
+
+function serveMobileNotionImage($apiKey, $notionVersion) {
+    $blockId = isset($_GET['blockId']) ? $_GET['blockId'] : '';
+    $pageId = isset($_GET['pageId']) ? $_GET['pageId'] : '';
+    $targetWidth = isset($_GET['width']) ? (int) $_GET['width'] : 960;
+
+    if (!in_array($targetWidth, array(640, 960), true)) {
+        respondJson(400, array('error' => 'Invalid image width'));
+    }
+
+    if ($blockId && isValidNotionId($blockId)) {
+        $entityId = $blockId;
+        $entityKind = 'block';
+        $notionUrl = 'https://api.notion.com/v1/blocks/' . rawurlencode($blockId);
+    } elseif ($pageId && isValidNotionId($pageId)) {
+        $entityId = $pageId;
+        $entityKind = 'cover';
+        $notionUrl = 'https://api.notion.com/v1/pages/' . rawurlencode($pageId);
+    } else {
+        respondJson(400, array('error' => 'Invalid image identifier'));
+    }
+
+    $cacheDirectory = __DIR__ . '/.notion-image-cache';
+    $cacheKey = hash('sha256', $entityKind . ':' . $entityId . ':' . $targetWidth . ':77');
+    $cachePath = $cacheDirectory . '/' . $cacheKey . '.webp';
+    $cacheLifetime = 86400;
+
+    if (is_readable($cachePath) && filemtime($cachePath) >= time() - $cacheLifetime) {
+        $cached = file_get_contents($cachePath);
+        if ($cached !== false) {
+            serveWebp($cached);
+        }
+    }
+
+    $result = executeNotionRequest($notionUrl, $apiKey, $notionVersion, 'GET', null);
+    if (!$result['ok']) {
+        respondJson($result['status'], $result['body']);
+    }
+
+    $entity = $result['body'];
+    if ($entityKind === 'block') {
+        $image = isset($entity['type'], $entity['image']) && $entity['type'] === 'image' ? $entity['image'] : null;
+    } else {
+        $image = isset($entity['cover']) ? $entity['cover'] : null;
+    }
+
+    if (!$image || !isset($image['type'])) {
+        respondJson(404, array('error' => 'Notion image not found'));
+    }
+
+    // External URLs are redirected to the browser, never fetched by this server.
+    if ($image['type'] === 'external' && !empty($image['external']['url'])) {
+        redirectToOriginalImage($image['external']['url']);
+    }
+
+    if ($image['type'] !== 'file' || empty($image['file']['url'])) {
+        respondJson(404, array('error' => 'Notion image not found'));
+    }
+
+    $originalUrl = $image['file']['url'];
+    $source = fetchRemoteImage($originalUrl);
+    if ($source === null) {
+        redirectToOriginalImage($originalUrl);
+    }
+
+    $webp = createMobileWebp($source, $targetWidth);
+    if ($webp === null) {
+        redirectToOriginalImage($originalUrl);
+    }
+
+    if ((!is_dir($cacheDirectory) && @mkdir($cacheDirectory, 0755, true)) || is_dir($cacheDirectory)) {
+        $temporaryPath = $cachePath . '.' . uniqid('', true) . '.tmp';
+        if (@file_put_contents($temporaryPath, $webp, LOCK_EX) !== false) {
+            @rename($temporaryPath, $cachePath);
+        } else {
+            @unlink($temporaryPath);
+        }
+    }
+
+    serveWebp($webp);
+}
+
 loadProjectEnv();
 allowSameOriginCors();
 
@@ -177,6 +374,10 @@ if (!$NOTION_VERSION) {
 
 if (!$NOTION_API_KEY) {
     respondJson(500, array('error' => 'Missing NOTION_API_KEY server configuration'));
+}
+
+if ($action === 'getImage') {
+    serveMobileNotionImage($NOTION_API_KEY, $NOTION_VERSION);
 }
 
 if ($action === 'getPosts') {

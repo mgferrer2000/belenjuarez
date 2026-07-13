@@ -3,11 +3,14 @@ import { getPublishedPosts, BlogPost } from '../../services/notion';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useIsMobile } from '../../hooks/useIsMobile';
+import NotionResponsiveImage from '../../components/NotionResponsiveImage';
 
 const BlogList: React.FC = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [selectedTag, setSelectedTag] = useState<string>('Todas');
     const [loading, setLoading] = useState(true);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -86,14 +89,21 @@ const BlogList: React.FC = () => {
                                 key={post.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{
+                                    duration: isMobile ? 0.45 : 0.5,
+                                    delay: isMobile ? Math.min(index, 5) * 0.07 : index * 0.1
+                                }}
                                 className="group border border-ink/10 rounded-sm overflow-hidden bg-white hover:border-deep-red transition-colors flex flex-col h-full"
                             >
                                 <Link to={`/blog/${post.id}`} className="block relative aspect-video overflow-hidden">
                                     {post.coverImage ? (
-                                        <img
+                                        <NotionResponsiveImage
+                                            notionId={post.id}
+                                            notionKind="cover"
                                             src={post.coverImage}
                                             alt={post.title}
+                                            loading="lazy"
+                                            decoding="async"
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                         />
                                     ) : (

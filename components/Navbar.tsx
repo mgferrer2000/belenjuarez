@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -21,6 +22,16 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(false);
     setActiveDropdown(null);
   }, [location]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMenuOpen]);
 
   const navLinks = [
     { name: 'Inicio', path: '/' },
@@ -143,22 +154,26 @@ const Navbar: React.FC = () => {
         <button
           className={`lg:hidden z-50 transition-colors ${isMenuOpen ? 'text-ink' : textColorClass}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
         >
           {isMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
 
       {/* Mobile Nav */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-paper z-40 flex flex-col pt-24 px-6 overflow-y-auto">
-          <div className="flex flex-col space-y-4 pb-12">
+      {isMenuOpen && createPortal(
+        <div id="mobile-navigation" className="fixed inset-0 bg-paper z-40 flex flex-col pt-20 px-5 overflow-y-auto overscroll-contain">
+          <div className="flex flex-col space-y-2 pb-10">
             {navLinks.map((link) => (
               <div key={link.name} className="border-b border-gray-100 pb-2">
                 {link.submenu ? (
                   <div>
                     <button
                       onClick={() => toggleDropdown(link.name)}
-                      className="flex justify-between items-center w-full text-lg font-serif text-ink py-2"
+                      className="flex min-h-12 justify-between items-center w-full text-lg font-serif text-ink py-2"
+                      aria-expanded={activeDropdown === link.name}
                     >
                       {link.name}
                       <ChevronDown
@@ -167,12 +182,12 @@ const Navbar: React.FC = () => {
                       />
                     </button>
                     {activeDropdown === link.name && (
-                      <div className="flex flex-col pl-4 space-y-3 mt-2 mb-4">
+                      <div className="grid grid-cols-2 gap-px mt-1 mb-3 overflow-hidden border border-ink/10 bg-ink/10">
                         {link.submenu.map((subItem) => (
                           <Link
                             key={subItem.path}
                             to={subItem.path}
-                            className="text-ink/70 hover:text-deep-red"
+                            className={`flex min-h-[42px] items-center bg-paper px-3 py-2 font-sans text-[11px] leading-snug tracking-[0.02em] text-ink/65 transition-colors hover:text-deep-red ${location.pathname === subItem.path ? 'bg-deep-red text-paper font-medium hover:text-paper' : ''}`}
                           >
                             {subItem.name}
                           </Link>
@@ -183,7 +198,7 @@ const Navbar: React.FC = () => {
                 ) : (
                   <Link
                     to={link.path}
-                    className="block text-lg font-serif text-ink py-2"
+                    className={`flex min-h-12 items-center text-lg font-serif text-ink py-2 ${location.pathname === link.path ? 'text-deep-red font-semibold' : ''}`}
                   >
                     {link.name}
                   </Link>
@@ -191,7 +206,8 @@ const Navbar: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </nav>
   );

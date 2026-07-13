@@ -4,6 +4,46 @@ const isDev = import.meta.env.DEV;
 const API_KEY = import.meta.env.VITE_NOTION_API_KEY;
 const DATABASE_ID = import.meta.env.VITE_NOTION_DATABASE_ID;
 const NOTION_VERSION = '2022-06-28';
+const MAX_CONCURRENT_NOTION_REQUESTS = 3;
+
+let activeNotionRequests = 0;
+const notionRequestQueue: Array<() => void> = [];
+const inFlightPostRequests = new Map<string, Promise<BlogPost | null>>();
+const inFlightBlockRequests = new Map<string, Promise<any[]>>();
+
+const processNotionQueue = () => {
+    while (activeNotionRequests < MAX_CONCURRENT_NOTION_REQUESTS && notionRequestQueue.length > 0) {
+        const nextRequest = notionRequestQueue.shift();
+        nextRequest?.();
+    }
+};
+
+const scheduleNotionRequest = <T>(request: () => Promise<T>): Promise<T> => new Promise((resolve, reject) => {
+    notionRequestQueue.push(() => {
+        activeNotionRequests += 1;
+        request()
+            .then(resolve, reject)
+            .finally(() => {
+                activeNotionRequests -= 1;
+                processNotionQueue();
+            });
+    });
+
+    processNotionQueue();
+});
+
+const fetchNotion = (input: RequestInfo | URL, init?: RequestInit) => scheduleNotionRequest(async () => {
+    let response = await fetch(input, init);
+
+    for (let attempt = 0; response.status === 429 && attempt < 2; attempt += 1) {
+        const retryAfter = Number.parseFloat(response.headers.get('Retry-After') || '');
+        const delay = Number.isFinite(retryAfter) ? retryAfter * 1000 : 1000 * (attempt + 1);
+        await new Promise(resolve => window.setTimeout(resolve, delay));
+        response = await fetch(input, init);
+    }
+
+    return response;
+});
 
 export interface BlogPost {
     id: string;
@@ -106,7 +146,7 @@ export const getPublishedPosts = async (): Promise<BlogPost[]> => {
 
         if (isDev && DATABASE_ID) {
             // MODO DESARROLLO (Vite Localhost Proxy)
-            response = await fetch(`/notion-api/v1/databases/${DATABASE_ID}/query`, {
+            response = await fetchNotion(`/notion-api/v1/databases/${DATABASE_ID}/query`, {
                 method: 'POST',
                 headers: getHeaders(),
                 body: JSON.stringify({
@@ -115,7 +155,7 @@ export const getPublishedPosts = async (): Promise<BlogPost[]> => {
             });
         } else {
             // MODO PRODUCCIÓN (Hostinger PHP Proxy)
-            response = await fetch('/notion-proxy.php?action=getPosts');
+            response = await fetchNotion('/notion-proxy.php?action=getPosts');
         }
 
         if (!response.ok) {
@@ -136,65 +176,98 @@ export const getPublishedPosts = async (): Promise<BlogPost[]> => {
 };
 
 export const getPost = async (pageId: string): Promise<BlogPost | null> => {
-    try {
-        let response;
+    const existingRequest = inFlightPostRequests.get(pageId);
+    if (existingRequest) {
+        return existingRequest;
+    }
 
-        if (isDev) {
-            response = await fetch(`/notion-api/v1/pages/${pageId}`, {
-                method: 'GET',
-                headers: getHeaders(),
-            });
-        } else {
-            response = await fetch(`/notion-proxy.php?action=getPost&pageId=${pageId}`);
-        }
+    const request = (async () => {
+        try {
+            let response;
 
-        if (!response.ok) {
-            throw new Error(`Proxy/API error: ${response.status} ${response.statusText}`);
-        }
+            if (isDev) {
+                response = await fetchNotion(`/notion-api/v1/pages/${pageId}`, {
+                    method: 'GET',
+                    headers: getHeaders(),
+                });
+            } else {
+                response = await fetchNotion(`/notion-proxy.php?action=getPost&pageId=${pageId}`);
+            }
 
-        const page = await response.json();
+            if (!response.ok) {
+                throw new Error(`Proxy/API error: ${response.status} ${response.statusText}`);
+            }
 
-        if (!page?.id || !page?.properties) {
+            const page = await response.json();
+
+            if (!page?.id || !page?.properties) {
+                return null;
+            }
+
+            return mapPageToPost(page);
+        } catch (err) {
+            console.error("Notion API Error querying single post:", err);
             return null;
         }
+    })();
 
-        return mapPageToPost(page);
-    } catch (err) {
-        console.error("Notion API Error querying single post:", err);
-        return null;
+    inFlightPostRequests.set(pageId, request);
+
+    try {
+        return await request;
+    } finally {
+        if (inFlightPostRequests.get(pageId) === request) {
+            inFlightPostRequests.delete(pageId);
+        }
     }
 };
 
 export const getPostContent = async (blockId: string): Promise<any[]> => {
-    try {
-        let response;
+    const existingRequest = inFlightBlockRequests.get(blockId);
+    if (existingRequest) {
+        return existingRequest;
+    }
 
-        if (isDev) {
-            response = await fetch(`/notion-api/v1/blocks/${blockId}/children?page_size=100`, {
-                method: 'GET',
-                headers: getHeaders(),
-            });
-        } else {
-            response = await fetch(`/notion-proxy.php?action=getBlocks&blockId=${blockId}`);
-        }
+    const request = (async () => {
+        try {
+            let response;
 
-        if (!response.ok) {
-            throw new Error(`Proxy/API blocks error: ${response.status} ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        const blocks = data.results || [];
-
-        // Fetch children recursively for specific nested blocks
-        for (const block of blocks) {
-            if (block.has_children && (block.type === 'column_list' || block.type === 'column')) {
-                block.children = await getPostContent(block.id);
+            if (isDev) {
+                response = await fetchNotion(`/notion-api/v1/blocks/${blockId}/children?page_size=100`, {
+                    method: 'GET',
+                    headers: getHeaders(),
+                });
+            } else {
+                response = await fetchNotion(`/notion-proxy.php?action=getBlocks&blockId=${blockId}`);
             }
-        }
 
-        return blocks;
-    } catch (err) {
-        console.error("Notion blocks fetch error:", err);
-        return [];
+            if (!response.ok) {
+                throw new Error(`Proxy/API blocks error: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            const blocks = data.results || [];
+
+            await Promise.all(blocks.map(async (block: any) => {
+                if (block.has_children && (block.type === 'column_list' || block.type === 'column')) {
+                    block.children = await getPostContent(block.id);
+                }
+            }));
+
+            return blocks;
+        } catch (err) {
+            console.error("Notion blocks fetch error:", err);
+            return [];
+        }
+    })();
+
+    inFlightBlockRequests.set(blockId, request);
+
+    try {
+        return await request;
+    } finally {
+        if (inFlightBlockRequests.get(blockId) === request) {
+            inFlightBlockRequests.delete(blockId);
+        }
     }
 };
