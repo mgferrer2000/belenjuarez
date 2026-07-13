@@ -2,6 +2,7 @@ import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getPostContent, getPost, BlogPost } from '../../services/notion';
 import { ArrowLeft, Calendar } from 'lucide-react';
+import NotionResponsiveImage from '../../components/NotionResponsiveImage';
 
 type RichTextAnnotation = {
     bold?: boolean;
@@ -34,11 +35,12 @@ type NotionBlock = {
 const cx = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ');
 
 type DeferredNotionImageProps = {
+    blockId: string;
     src: string;
     alt: string;
 };
 
-const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ src, alt }) => {
+const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ blockId, src, alt }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [shouldLoad, setShouldLoad] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -82,7 +84,9 @@ const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ src, alt }) =
             ) : null}
 
             {shouldLoad ? (
-                <img
+                <NotionResponsiveImage
+                    notionId={blockId}
+                    notionKind="block"
                     src={src}
                     alt={alt}
                     loading="lazy"
@@ -340,6 +344,7 @@ function renderBlock(block: NotionBlock) {
                 <figure key={block.id} className="my-10 text-center flex flex-col items-center">
                     <div className="w-full rounded-sm border border-ink/10 overflow-hidden">
                         <DeferredNotionImage
+                            blockId={block.id}
                             src={imageUrl}
                             alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)}
                         />
@@ -478,7 +483,9 @@ const BlogPostView: React.FC = () => {
             {post?.coverImage && (
                 <div className="max-w-5xl mx-auto px-6 mb-12">
                     <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 bg-white rounded-sm overflow-hidden border border-ink/10">
-                        <img
+                        <NotionResponsiveImage
+                            notionId={post.id}
+                            notionKind="cover"
                             src={post.coverImage}
                             alt={post.title}
                             loading="lazy"

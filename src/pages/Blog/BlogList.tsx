@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import NotionResponsiveImage from '../../components/NotionResponsiveImage';
 
 const BlogList: React.FC = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -96,7 +97,9 @@ const BlogList: React.FC = () => {
                             >
                                 <Link to={`/blog/${post.id}`} className="block relative aspect-video overflow-hidden">
                                     {post.coverImage ? (
-                                        <img
+                                        <NotionResponsiveImage
+                                            notionId={post.id}
+                                            notionKind="cover"
                                             src={post.coverImage}
                                             alt={post.title}
                                             loading="lazy"
