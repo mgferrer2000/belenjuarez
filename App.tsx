@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { lazy, Suspense, useLayoutEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -45,9 +45,22 @@ const RouteLoader = () => (
   </div>
 );
 
+const MobileScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   return (
     <Router>
+      <MobileScrollToTop />
       <div className="bg-paper min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow flex flex-col">
