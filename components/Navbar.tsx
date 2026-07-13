@@ -102,6 +102,8 @@ const Navbar: React.FC = () => {
             <div key={link.name} className="relative group">
               {link.submenu ? (
                 <button
+                  type="button"
+                  aria-haspopup="true"
                   className={`flex items-center gap-1 text-[12px] xl:text-sm uppercase tracking-widest transition-colors ${location.pathname.startsWith(link.path) ? activeColorClass : `${textColorClass}/80`
                     } ${hoverColorClass}`}
                 >
@@ -119,8 +121,8 @@ const Navbar: React.FC = () => {
 
               {/* Desktop Dropdown */}
               {link.submenu && (
-                <div className="absolute left-0 mt-2 w-max bg-paper shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left">
-                  <div className="py-2 flex flex-col">
+                <div className="absolute left-0 top-full w-max pt-3 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto transition-opacity duration-150">
+                  <div className="py-2 flex flex-col bg-paper shadow-xl border border-gray-100">
                     {link.submenu.map((subItem) => (
                       <Link
                         key={subItem.path}
