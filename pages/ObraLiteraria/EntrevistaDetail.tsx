@@ -2,23 +2,28 @@ import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { INTERVIEWS } from '../../constants';
 import { ArrowLeft } from 'lucide-react';
+import { useI18n } from '../../i18n/I18nProvider';
+import { INTERVIEW_UI, localizeInterview } from '../../i18n/interviewMessages';
 
 const EntrevistaDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
-    const interview = INTERVIEWS.find((i) => i.slug === slug);
+    const { locale, path } = useI18n();
+    const ui = INTERVIEW_UI[locale];
+    const originalInterview = INTERVIEWS.find((i) => i.slug === slug);
+    const interview = originalInterview ? localizeInterview(originalInterview, locale) : undefined;
 
     if (!interview) {
-        return <Navigate to="/obra-literaria/entrevistas" replace />;
+        return <Navigate to={path('/obra-literaria/entrevistas')} replace />;
     }
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             <Link
-                to="/obra-literaria/entrevistas"
+                to={path('/obra-literaria/entrevistas')}
                 className="inline-flex items-center text-deep-red text-sm font-sans uppercase tracking-widest hover:text-ink transition-colors mb-8 group"
             >
                 <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-                Volver
+                {ui.back}
             </Link>
 
             <article className="prose prose-lg mx-auto max-w-none">
@@ -39,7 +44,7 @@ const EntrevistaDetail: React.FC = () => {
                         {interview.interviewer && (
                             <>
                                 <span className="hidden md:inline">•</span>
-                                <span>Por {interview.interviewer}</span>
+                                <span>{ui.by} {interview.interviewer}</span>
                             </>
                         )}
                     </div>
@@ -50,7 +55,7 @@ const EntrevistaDetail: React.FC = () => {
                     <div className="aspect-[3/4] relative shadow-lg bg-white p-2 transform">
                         <img
                             src={interview.coverUrl}
-                            alt={interview.title}
+                            alt={ui.coverAlt(interview.title)}
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -61,7 +66,7 @@ const EntrevistaDetail: React.FC = () => {
                     <div className="aspect-[3/4] relative shadow-lg bg-white p-2 transform">
                         <img
                             src={interview.coverUrl}
-                            alt={interview.title}
+                            alt={ui.coverAlt(interview.title)}
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -123,14 +128,14 @@ const EntrevistaDetail: React.FC = () => {
                                             <div className="relative shadow-md bg-white p-1.5 max-w-[45%] md:max-w-[280px]">
                                                 <img
                                                     src={imgUrl1}
-                                                    alt={`Ilustración entrevista ${idx1 + 1}`}
+                                                    alt={ui.illustrationAlt(idx1 + 1)}
                                                     className="w-full h-auto object-contain"
                                                 />
                                             </div>
                                             <div className="relative shadow-md bg-white p-1.5 max-w-[45%] md:max-w-[280px]">
                                                 <img
                                                     src={imgUrl2}
-                                                    alt={`Ilustración entrevista ${idx2 + 1}`}
+                                                    alt={ui.illustrationAlt(idx2 + 1)}
                                                     className="w-full h-auto object-contain"
                                                 />
                                             </div>
@@ -155,7 +160,7 @@ const EntrevistaDetail: React.FC = () => {
                                                 <div className="relative shadow-md bg-white p-1.5">
                                                     <img
                                                         src={imgUrl}
-                                                        alt={`Ilustración entrevista ${imgIndex + 1}`}
+                                                        alt={ui.illustrationAlt(imgIndex + 1)}
                                                         className="w-full h-auto object-contain"
                                                     />
                                                 </div>
@@ -167,7 +172,7 @@ const EntrevistaDetail: React.FC = () => {
                                                 <div className="relative shadow-md bg-white p-1.5">
                                                     <img
                                                         src={imgUrl}
-                                                        alt={`Ilustración entrevista ${imgIndex + 1}`}
+                                                        alt={ui.illustrationAlt(imgIndex + 1)}
                                                         className="w-full h-auto object-contain"
                                                     />
                                                 </div>
@@ -179,7 +184,7 @@ const EntrevistaDetail: React.FC = () => {
                                                 <div className="relative shadow-lg bg-white p-2 max-w-[300px] md:max-w-[400px]">
                                                     <img
                                                         src={imgUrl}
-                                                        alt={`Ilustración entrevista ${imgIndex + 1}`}
+                                                        alt={ui.illustrationAlt(imgIndex + 1)}
                                                         className="w-full h-auto object-contain"
                                                     />
                                                 </div>
