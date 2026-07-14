@@ -1,7 +1,13 @@
 import React from 'react';
 import { BOOKS } from '../constants';
+import { useI18n } from '../i18n/I18nProvider';
+import { BOOKS_MESSAGES } from '../i18n/pageMessages';
 
-export const BookThumbnailRow: React.FC = () => (
+export const BookThumbnailRow: React.FC = () => {
+    const { locale } = useI18n();
+    const content = BOOKS_MESSAGES[locale];
+
+    return (
     <div className="grid md:grid-cols-2 gap-12 mb-12">
         {BOOKS.map((book) => {
             const publisherWebsite = book.id === '3'
@@ -12,13 +18,8 @@ export const BookThumbnailRow: React.FC = () => (
                         ? 'https://www.alhulia.es/es/'
                         : null;
 
-            const publisherLabel = book.id === '3'
-                ? 'Web de Huerga y Fierro editores'
-                : book.id === '1'
-                    ? 'Web de Editorial Devenir'
-                    : book.id === '2'
-                        ? 'Web de Editorial Alhulia'
-                        : null;
+            const publisherLabel = content.publishers[book.id] ?? null;
+            const translatedBook = content.descriptions[book.id];
 
             if (book.featured) {
                 return (
@@ -26,7 +27,7 @@ export const BookThumbnailRow: React.FC = () => (
                         <div className="w-full md:w-5/12 relative rounded-sm overflow-hidden shadow-2xl bg-stone-100 flex items-center justify-center">
                             <img
                                 src={book.coverUrl}
-                                alt={`${book.title} cover`}
+                                alt={content.coverAlt(book.title)}
                                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                             />
 
@@ -39,7 +40,7 @@ export const BookThumbnailRow: React.FC = () => (
                                             download
                                             className="w-full text-center border border-white text-white px-4 py-3 font-sans uppercase tracking-widest hover:bg-white hover:text-ink transition-colors text-[10px]"
                                         >
-                                            {download.label}
+                                            {content.downloads[download.label] ?? download.label}
                                         </a>
                                     ))}
                                     {book.purchaseUrl && book.purchaseUrl !== '#' && (
@@ -49,7 +50,7 @@ export const BookThumbnailRow: React.FC = () => (
                                             rel="noopener noreferrer"
                                             className="w-full text-center border border-white text-white px-4 py-3 font-sans uppercase tracking-widest hover:bg-white hover:text-ink transition-colors text-[10px]"
                                         >
-                                            Comprar
+                                            {content.buy}
                                         </a>
                                     )}
                                 </div>
@@ -57,7 +58,7 @@ export const BookThumbnailRow: React.FC = () => (
                         </div>
 
                         <div className="w-full md:w-7/12 flex flex-col justify-center">
-                            <div className="text-gold font-sans text-xs uppercase tracking-[0.3em] mb-4 font-bold">Última Publicación</div>
+                            <div className="text-gold font-sans text-xs uppercase tracking-[0.3em] mb-4 font-bold">{content.latestPublication}</div>
                             <h3 className="text-3xl md:text-5xl font-serif text-ink mb-3 leading-tight italic">{book.title}</h3>
                             {book.year && <p className="text-deep-red text-sm font-sans mb-3">{book.year}</p>}
                             {publisherWebsite && publisherLabel && (
@@ -75,12 +76,12 @@ export const BookThumbnailRow: React.FC = () => (
 
                             <div className="space-y-6">
                                 <p className="text-ink/90 font-sans font-medium leading-relaxed text-lg text-justify">
-                                    {book.description}
+                                    {translatedBook?.description ?? book.description}
                                 </p>
 
-                                {book.extendedDescription && (
+                                {(translatedBook?.extendedDescription ?? book.extendedDescription) && (
                                     <p className="text-ink/70 font-light leading-relaxed text-base text-justify">
-                                        {book.extendedDescription}
+                                        {translatedBook?.extendedDescription ?? book.extendedDescription}
                                     </p>
                                 )}
 
@@ -94,7 +95,7 @@ export const BookThumbnailRow: React.FC = () => (
                                                 </p>
                                             ))}
                                         </div>
-                                        <p className="text-[10px] text-ink/30 uppercase tracking-[0.2em] font-sans mt-4 ml-8 italic">— Contraportada</p>
+                                        <p className="text-[10px] text-ink/30 uppercase tracking-[0.2em] font-sans mt-4 ml-8 italic">— {content.backCover}</p>
                                     </div>
                                 )}
                             </div>
@@ -108,7 +109,7 @@ export const BookThumbnailRow: React.FC = () => (
                     <div className={`relative w-full mb-6 rounded-sm shadow-lg overflow-hidden ${book.aspectRatio || 'aspect-video'}`}>
                         <img
                             src={book.coverUrl}
-                            alt={`${book.title} cover`}
+                            alt={content.coverAlt(book.title)}
                             className={`w-full h-full ${book.coverPosition || 'object-cover object-top'} transition-transform duration-500 group-hover:scale-105`}
                         />
                         {(book.downloads || (book.purchaseUrl && book.purchaseUrl !== '#')) && (
@@ -120,7 +121,7 @@ export const BookThumbnailRow: React.FC = () => (
                                         download
                                         className="w-full text-center border border-white text-white px-4 py-3 font-sans uppercase tracking-widest hover:bg-white hover:text-ink transition-colors text-[10px]"
                                     >
-                                        {download.label}
+                                        {content.downloads[download.label] ?? download.label}
                                     </a>
                                 ))}
                                 {book.purchaseUrl && book.purchaseUrl !== '#' && (
@@ -130,7 +131,7 @@ export const BookThumbnailRow: React.FC = () => (
                                         rel="noopener noreferrer"
                                         className="w-full text-center border border-white text-white px-4 py-3 font-sans uppercase tracking-widest hover:bg-white hover:text-ink transition-colors text-[10px]"
                                     >
-                                        Comprar
+                                        {content.buy}
                                     </a>
                                 )}
                             </div>
@@ -151,10 +152,11 @@ export const BookThumbnailRow: React.FC = () => (
                         </p>
                     )}
                     <p className="text-ink/70 font-light leading-relaxed text-sm text-justify">
-                        {book.description}
+                        {translatedBook?.description ?? book.description}
                     </p>
                 </div>
             );
         })}
     </div>
-);
+    );
+};
