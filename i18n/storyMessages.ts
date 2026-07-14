@@ -158,6 +158,39 @@ const FR_STORY_SECTIONS: Record<string, Record<number, Partial<StorySection>>> =
 
      Miguel transpirait davantage encore : la main qui l’avait si souvent puni lorsqu’il était enfant l’invitait maintenant à rester dîner. Il accepta et remercia son hôte. Ce jour serait l’un des plus importants de sa vie. Soudain, tous les coups de règle reçus sur ses paumes se changèrent en coraux rouges, un trésor qui ne le quitterait plus jamais. María était sa passion, et cet homme lui souriait maintenant pour la première fois.`,
         },
+        9: {
+            content: `Lilie naquit avec une apparence affreuse. Il était trois heures de l’après-midi, par une journée d’hiver parisienne. La petite avait d’immenses yeux noirs, la peau fripée et des cheveux de jais plus raides que l’alfa qui lui couvraient presque tout le visage. À tel point que la voisine de chambre de María, à l’hôpital, la regardait du coin de l’œil en chuchotant à son mari : — Comment est-il possible que cette enfant soit si laide ? *Et pourtant la femme est belle !!!* Laide et pleurnicheuse. Telle était la petite Lilie, semblable à un caneton noir tout juste sorti d’une coquille blanche en terre française.
+
+     Ses premières lumières furent grises. Elle aimait l’école et vivait mille aventures avec ses amis. Sans doute une affaire de gènes : les mathématiques ne lui entraient pas dans la tête. Malgré tous les efforts de sa mère, impossible d’y faire tenir les tables de multiplication. Elle adorait pourtant les contes. Les chansons de *Joe Dassin*, de *Sheila* et de *Georges Moustaki* la passionnaient. Ils étaient ses idoles. À travers leurs disques, elle s’imaginait vivre ces histoires tout en inventant de nouvelles situations. *« Le Métèque »* de Moustaki, *« Mon village du bout du monde »* de Joe Dassin, *« Le Tam-Tam du vent »* de Sheila… Elle adorait aussi les contes pour enfants. Chaque dimanche matin, son père la surprenait avec une histoire glissée entre les draps, face à sa fenêtre, celle qui laissait entrer la lumière du réverbère de son château imaginaire.
+
+     L’un de ces contes l’amena à donner vie au grand requin blanc toujours garé devant sa maison.
+
+     — Comment cela ? Cendrillon voyageait dans une citrouille tirée par quatre destriers ? Ce n’est pas vrai ! se répétait-elle. Ce qui arriva réellement, c’est que Cendrillon, qui était une petite Française, partit un jour avec sa sœur aînée se promener sur la *Seine* à bord d’un *bateau-mouche*. Elle y rencontra *Pierre Antoine*, qui épouserait plus tard sa sœur, et aperçut un grand poisson aux écailles argentées. Il leva la tête et regarda Cendrillon. (Qui, d’ailleurs, ne s’appelait pas Cendrillon, mais… hum… Claudine !) Le poisson la supplia de l’aider à sortir de la *Seine*, à trouver le chemin de la mer, et elle lui conseilla de suivre le courant. Peu après, reconnaissant, le poisson conclut un pacte avec la lune : il lui céderait une partie de sa vie si elle le transformait en un être terrestre rapide, car il désirait retrouver la petite fille qui lui avait sauvé la vie. La lune le changea alors en une majestueuse voiture blanche. Quelque temps plus tard, après avoir parcouru toutes les rues de *Paris*, la voiture se gara devant la maison de la fillette qui lui avait sauvé la vie. Elle le reconnut en contemplant ses grands yeux de lumière et de métal. Et ils vécurent heureux… Voilà la véritable histoire de Cendrillon !
+
+     Voilà tout ce qu’imaginait la petite Lilie, se délectant de ses histoires, si heureuse de savoir que ce requin blanc était son ami. Le grand poisson albinos qu’elle avait sauvé de la Seine.`,
+        },
+        10: {
+            content: `La pluie tombait avec violence sur un asphalte qui exhalait une forte odeur de carburant. Elle marchait sous la lumière des réverbères parisiens, éclaboussant les souvenirs d’une enfance heureuse dévorée par le temps et la mémoire. L’ombre de son corps sur ces trottoirs marquait une distance de quarante années ; pourtant, tous ces souvenirs et toutes ces expériences demeuraient intacts sous ses tempes. Qu’était devenue son amie juive, avec laquelle elle avait vécu tant d’aventures ? Soudain, une voiture lancée à vive allure la trempa de la tête aux pieds. Furieuse, elle leva les yeux sur l’*avenue Kléber* qu’elle parcourait : *quel sauvage pouvait conduire ainsi, sans le moindre respect pour les passants sur les trottoirs ?* Son visage se figea ; la surprise envahit ses traits mouillés par les projections de cette immense flaque, brutalement lancée sur elle avec la force de la nageoire caudale d’un gigantesque poisson océanique traversant les avenues. Ce n’était pas lui, mais il lui rappelait quelqu’un. Cette DS 25 « Requin » aux reflets métalliques, probablement conduite par quelque millionnaire capricieux, filait à grande vitesse, faisant honneur à sa vieillesse si parfaite, à son moteur qui rugissait avec l’élégance d’un dieu, à ses yeux lumineux et métalliques qui pivotaient à volonté, à cette suspension hydraulique qui l’élevait au-dessus du vent comme un condor noir. Ce n’était pas lui, mais son image éclata comme un immense cri sur son visage mouillé.
+
+     Le lendemain matin, elle se leva tôt et quitta l’*Hôtel Étoile Trocadéro*, *rue Saint-Didier*, avec la sensation de ne savoir ni ce qu’elle attendait ni ce qu’elle trouverait. Elle se dirigea vers la *station de métro Boissière* et poursuivit son chemin jusqu’à la *station Hoche*. Une fois dehors, sur le trottoir, elle sentit comme un aimant attirer ses pas vers le 25, rue *Honoré-d’Estienne-d’Orves*, à Pantin. Elle continua d’avancer jusqu’à sentir enfin qu’elle était parvenue à une destination aussi incertaine que surprenante. Après avoir payé une entrée de dix euros, elle pénétra dans l’enceinte où se trouvait le *Centre international de l’automobile*. Elle parcourut un long couloir avec la lenteur de ses quarante années d’attente. Elle s’arrêta devant la porte d’une immense salle à la moquette grise et aux murs métallisés. D’énormes phares, effilés comme le maquillage d’une femme des années soixante-dix, s’allumèrent et la regardèrent avec stupeur et une âme de graphite. Il était là, décorant l’existence d’un musée d’antiquités et de reliques, prison où sa condition d’animal de race l’avait relégué. Il était là, face à Lilie devenue femme.`,
+        },
+        11: {
+            content: `Ils redevinrent des vagabonds dans les vieilles rues de Paris. *Sa maison n’était désormais plus une chanson.* Son père lui rendait le Temps qui avait si souvent marqué les heures sévillanes de sa jeunesse, un temps qui se mesurait à présent sous le capot dissimulant le cœur rugissant de la plus souveraine des automobiles conçues au XXe siècle.
+
+*Jamais plus elle ne se sépara de son squale. Jamais plus l’exil ne briserait ses rêves…*`,
+        },
+    },
+};
+
+const FR_STORY_SECTION_CONTINUATIONS: Record<string, Record<number, string>> = {
+    'al-otro-lado-del-mundo': {
+        10: [
+            `Elle s’avança et caressa doucement le dos neigeux du grand requin pacifique, dont les articulations s’étaient figées dans l’immobilité des années. Elle ouvrit la portière arrière et se glissa à l’intérieur, un sourire franc dessiné sur le visage. La portière se referma doucement, silencieusement, tandis que se levait le rideau de son enfance.`,
+            `Sur le siège avant se trouvait son père, coiffé d’un bonnet de laine à pompon vert. À ses côtés, une très belle femme aux cheveux dorés et doux comme la soie se retourna vers elle en souriant. Elle regarda par la vitre : là se trouvait le *manège de chevaux de bois*, celui qui avait si souvent bercé son vertige. Elle regarda devant elle et aperçut dans le rétroviseur un visage d’enfant : Lilie était là, avec l’innocence de ses jeunes années et ses yeux noirs si purs. Lilie était là, si triste, si muette, versant la larme qui imprégnerait la banquette arrière, la larme de l’exil, la larme des années qu’elle n’avait pas vécues dans le giron français de son grand requin blanc. Soudain, une chanson de *Joe Dassin* commença à jouer à la radio :`,
+            `*Mon village est loin,  \nà l’autre bout du monde  \net ma maison n’est plus qu’une chanson  \ncomme la neige,  \nmes rêves fondent  \nbuvons, mes frères, les vagabonds…*`,
+            `Son grand ami lui déchira le cœur. Il lui chantait que sa maison n’avait été qu’une chanson, une fragile chanson résonnant pendant près de quarante ans, tandis qu’il demeurait prisonnier de cette immortalité de musée, regrettant sa fillette et désirant parfois mourir sous le métal ferreux d’une grue ou par la décision de quelque magnat collectionneur de carrosseries…`,
+            `Sans hésiter, elle acheta cette voiture dès le lendemain. Drapée dans un manteau d’astrakan et coiffée d’un chapeau de velours noir, elle se déguisa en puissance et en ambition devant ces vendeurs sans scrupules qui applaudissaient leur profit. Un autre squale prendrait sa place…`,
+        ].join('\n\n'),
     },
 };
 
@@ -170,10 +203,17 @@ export const localizeStory = (story: ShortStory, locale: Locale): ShortStory => 
     return sectionOverrides
         ? {
             ...localized,
-            sections: localized.sections.map((section, index) => ({
-                ...section,
-                ...sectionOverrides[index],
-            })),
+            sections: localized.sections.map((section, index) => {
+                const override = sectionOverrides[index];
+                const content = override?.content ?? section.content;
+                const continuation = FR_STORY_SECTION_CONTINUATIONS[story.id]?.[index];
+
+                return {
+                    ...section,
+                    ...override,
+                    content: continuation ? `${content}\n\n${continuation}` : content,
+                };
+            }),
         }
         : localized;
 };
