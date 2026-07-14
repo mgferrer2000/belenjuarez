@@ -2,25 +2,30 @@ import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, BookOpen, ExternalLink, ShoppingCart } from 'lucide-react';
 import { COLLABORATIONS } from '../../constants';
+import { useI18n } from '../../i18n/I18nProvider';
+import { COLLABORATION_UI, localizeCollaboration } from '../../i18n/collaborationMessages';
 
 const CollaborationDetail: React.FC = () => {
+    const { locale, path } = useI18n();
+    const ui = COLLABORATION_UI[locale];
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const collaboration = COLLABORATIONS.find(c => c.id === id);
+    const originalCollaboration = COLLABORATIONS.find(c => c.id === id);
 
-    if (!collaboration) {
+    if (!originalCollaboration) {
         return (
             <div className="pt-24 pb-16 text-center">
-                <h2 className="text-2xl font-serif text-ink mb-4">Publicación no encontrada</h2>
+                <h2 className="text-2xl font-serif text-ink mb-4">{ui.notFound}</h2>
                 <button
-                    onClick={() => navigate('/obra-literaria/antologias')}
+                    onClick={() => navigate(path('/obra-literaria/antologias'))}
                     className="text-deep-red hover:underline flex items-center justify-center gap-2"
                 >
-                    <ArrowLeft size={16} /> Volver a Antologías
+                    <ArrowLeft size={16} /> {ui.back}
                 </button>
             </div>
         );
     }
+    const collaboration = localizeCollaboration(originalCollaboration, locale);
 
     // Split full text into paragraphs
     const paragraphs = collaboration.fullText
@@ -30,11 +35,11 @@ const CollaborationDetail: React.FC = () => {
     return (
         <div className={`${collaboration.id === '14' ? 'max-w-6xl' : 'max-w-4xl'} mx-auto pb-20 fade-in`}>
             <Link
-                to="/obra-literaria/antologias"
+                to={path('/obra-literaria/antologias')}
                 className="inline-flex items-center text-gray-500 hover:text-deep-red mb-8 transition-colors"
             >
                 <ArrowLeft size={16} className="mr-2" />
-                Volver a Antologías
+                {ui.back}
             </Link>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -68,7 +73,7 @@ const CollaborationDetail: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="block w-full text-center py-2 px-4 border border-ink text-ink text-sm uppercase tracking-widest hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
                                 >
-                                    Visitar <ExternalLink size={14} />
+                                    {ui.visit} <ExternalLink size={14} />
                                 </a>
                             )}
                         </div>
@@ -91,7 +96,7 @@ const CollaborationDetail: React.FC = () => {
                             {collaboration.title}
                         </h1>
                         <h2 className="text-xl text-gray-600 font-serif italic mb-4">
-                            En: {collaboration.publication}
+                            {ui.inPublication} {collaboration.publication}
                         </h2>
                     </div>
 
@@ -123,7 +128,7 @@ const CollaborationDetail: React.FC = () => {
                                             <div key={i} className="rounded-lg overflow-hidden shadow-md border border-gray-100">
                                                 <img
                                                     src={imgUrl}
-                                                    alt={`Ilustración para ${collaboration.title}`}
+                                                    alt={ui.illustrationAlt(collaboration.title)}
                                                     className="w-full h-auto object-cover"
                                                 />
                                             </div>
@@ -196,7 +201,7 @@ const CollaborationDetail: React.FC = () => {
                                                     <div key={i} className={`${useWideBottomImage ? 'w-full md:w-[118%] md:-ml-[9%]' : 'w-48 md:w-56 flex-shrink-0'} rounded-lg overflow-hidden shadow-md border border-gray-100`}>
                                                         <img
                                                             src={imgUrl}
-                                                            alt={`Ilustración para ${collaboration.title}`}
+                                                            alt={ui.illustrationAlt(collaboration.title)}
                                                             className="w-full h-auto object-cover"
                                                         />
                                                     </div>

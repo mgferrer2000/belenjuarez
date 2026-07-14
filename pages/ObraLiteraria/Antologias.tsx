@@ -2,23 +2,30 @@ import React from 'react';
 import { COLLABORATIONS } from '../../constants';
 import { BookOpen, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useI18n } from '../../i18n/I18nProvider';
+import { COLLABORATION_UI, localizeCollaboration } from '../../i18n/collaborationMessages';
 
 const Antologias: React.FC = () => {
+    const { locale, path } = useI18n();
+    const ui = COLLABORATION_UI[locale];
+
     return (
         <div className="max-w-5xl mx-auto">
             <h3 className="text-2xl font-serif text-ink mb-12 flex items-center gap-3 border-b border-gray-200 pb-4">
                 <BookOpen size={24} className="text-deep-red" />
-                Poemas en antologías y revistas
+                {ui.heading}
             </h3>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
                 {[...COLLABORATIONS]
                     .sort((a, b) => parseInt(a.date) - parseInt(b.date))
-                    .map((collab) => (
+                    .map((originalCollab) => {
+                        const collab = localizeCollaboration(originalCollab, locale);
+                        return (
                         <article key={collab.id} className="flex flex-col sm:flex-row gap-6 items-start fade-in">
                             {/* Image Column */}
                             <div className="w-full sm:w-1/3 flex-shrink-0">
-                                <Link to={`/obra-literaria/antologias/${collab.id}`} className="block group">
+                                <Link to={path(`/obra-literaria/antologias/${collab.id}`)} className="block group">
                                     <div className="aspect-video overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300">
                                         <img
                                             src={collab.coverUrl}
@@ -55,12 +62,12 @@ const Antologias: React.FC = () => {
                                     </span>
                                 </div>
 
-                                <Link to={`/obra-literaria/antologias/${collab.id}`} className="group block mb-3">
+                                <Link to={path(`/obra-literaria/antologias/${collab.id}`)} className="group block mb-3">
                                     <h2 className="text-2xl font-serif text-ink group-hover:text-deep-red transition-colors mb-1">
                                         {collab.title}
                                     </h2>
                                     <h3 className="text-lg text-gray-600 font-serif italic">
-                                        En: {collab.publication}
+                                        {ui.inPublication} {collab.publication}
                                     </h3>
                                 </Link>
 
@@ -69,15 +76,16 @@ const Antologias: React.FC = () => {
                                 </p>
 
                                 <Link
-                                    to={`/obra-literaria/antologias/${collab.id}`}
+                                    to={path(`/obra-literaria/antologias/${collab.id}`)}
                                     className="inline-flex items-center text-deep-red uppercase tracking-widest text-xs font-bold hover:text-ink transition-colors group"
                                 >
-                                    Leer más
+                                    {ui.readMore}
                                     <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
                                 </Link>
                             </div>
                         </article>
-                    ))}
+                        );
+                    })}
             </div>
         </div>
     );
