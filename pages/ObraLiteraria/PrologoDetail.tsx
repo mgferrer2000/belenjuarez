@@ -2,13 +2,18 @@ import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, BookOpenText } from 'lucide-react';
 import { getPrologueWorkBySlug } from './prologosData';
+import { useI18n } from '../../i18n/I18nProvider';
+import { localizePrologueWork, PROLOGUE_UI } from '../../i18n/prologueMessages';
 
 const PrologoDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
-    const work = slug ? getPrologueWorkBySlug(slug) : undefined;
+    const { locale, path } = useI18n();
+    const ui = PROLOGUE_UI[locale];
+    const originalWork = slug ? getPrologueWorkBySlug(slug) : undefined;
+    const work = originalWork ? localizePrologueWork(originalWork, locale) : undefined;
 
     if (!work) {
-        return <Navigate to="/obra-literaria/prologos" replace />;
+        return <Navigate to={path('/obra-literaria/prologos')} replace />;
     }
 
     const officialWebsite = work.slug === 'gustavo-vega-poeticas-visuales' ? 'https://www.gustavovega.com/' : null;
@@ -17,18 +22,18 @@ const PrologoDetail: React.FC = () => {
         <div className="max-w-6xl mx-auto pb-24">
             <div className="mb-10">
                 <Link
-                    to="/obra-literaria/prologos"
+                    to={path('/obra-literaria/prologos')}
                     className="inline-flex items-center gap-2 text-deep-red text-sm font-sans uppercase tracking-widest hover:text-ink transition-colors mb-8 group"
                 >
                     <ArrowLeft size={14} />
-                    Volver a prologos
+                    {ui.back}
                 </Link>
             </div>
 
             <header className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-16 items-start mb-16 border-b border-gold/10 pb-12">
                 <div>
                     <div className="overflow-hidden rounded-sm border border-gold/10 bg-white shadow-xl">
-                        <img src={work.coverUrl} alt={`Portada de ${work.title}`} className="w-full h-auto object-cover" />
+                        <img src={work.coverUrl} alt={ui.coverAlt(work.title)} className="w-full h-auto object-cover" />
                     </div>
                 </div>
 
@@ -53,7 +58,7 @@ const PrologoDetail: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="border-b border-ink/20 pb-[1px] transition-colors hover:text-deep-red hover:border-deep-red/40"
                                 >
-                                    Web oficial de Gustavo Vega
+                                    {ui.officialWebsite}
                                 </a>
                             </p>
                         )}
