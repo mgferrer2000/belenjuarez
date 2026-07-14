@@ -1,13 +1,15 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import { useI18n } from '../../i18n/I18nProvider';
 
 const Musica: React.FC = () => {
     const location = useLocation();
+    const { messages, path } = useI18n();
     const contentRef = useRef<HTMLDivElement>(null);
     const shouldFocusContent = (location.state as { scrollToSectionContent?: boolean } | null)?.scrollToSectionContent;
     const links = [
-        { name: 'Música y Poesía', path: '/musica/poesia' },
-        { name: 'Horizonte de Sucesos', path: '/musica/horizonte' },
+        { name: messages.nav.musicPoetry, path: path('/musica/poesia') },
+        { name: messages.nav.horizonte, path: path('/musica/horizonte') },
     ];
 
     useLayoutEffect(() => {
@@ -20,7 +22,7 @@ const Musica: React.FC = () => {
         <div className="pt-24 min-h-screen bg-ink text-paper">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-serif text-white mb-6">Música: La Sonoridad del Verso</h1>
+                    <h1 className="text-4xl md:text-5xl font-serif text-white mb-6">{messages.sectionTitles.music}</h1>
                     <div className="grid grid-cols-2 gap-px overflow-hidden border border-white/15 bg-white/15 lg:flex lg:flex-wrap lg:gap-4 lg:overflow-visible lg:border-x-0 lg:border-t-0 lg:border-b-white/20 lg:bg-transparent lg:pb-4">
                         {links.map((link) => (
                             <Link

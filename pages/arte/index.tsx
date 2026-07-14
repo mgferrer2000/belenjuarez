@@ -1,14 +1,16 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import { useI18n } from '../../i18n/I18nProvider';
 
 const Arte: React.FC = () => {
     const location = useLocation();
+    const { messages, path } = useI18n();
     const contentRef = useRef<HTMLDivElement>(null);
     const shouldFocusContent = (location.state as { scrollToSectionContent?: boolean } | null)?.scrollToSectionContent;
     const links = [
-        { name: 'Cuadros', path: '/arte/cuadros' },
-        { name: 'Ilustración de Libros', path: '/arte/ilustracion' },
-        { name: 'Crítica Artística', path: '/arte/critica' },
+        { name: messages.nav.paintings, path: path('/arte/cuadros') },
+        { name: messages.nav.bookIllustration, path: path('/arte/ilustracion') },
+        { name: messages.nav.artCriticism, path: path('/arte/critica') },
     ];
 
     useLayoutEffect(() => {
@@ -21,7 +23,7 @@ const Arte: React.FC = () => {
         <div className="pt-24 min-h-screen bg-paper">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-serif text-ink mb-6">Arte: La Geometría del Verso</h1>
+                    <h1 className="text-4xl md:text-5xl font-serif text-ink mb-6">{messages.sectionTitles.art}</h1>
                     <div className="grid grid-cols-2 gap-px overflow-hidden border border-ink/10 bg-ink/10 lg:flex lg:flex-wrap lg:gap-4 lg:overflow-visible lg:border-x-0 lg:border-t-0 lg:border-b-gray-200 lg:bg-transparent lg:pb-4">
                         {links.map((link) => (
                             <Link

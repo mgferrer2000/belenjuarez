@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useI18n } from '../i18n/I18nProvider';
+import { stripLocalePrefix, SUPPORTED_LOCALES } from '../i18n/config';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,6 +11,9 @@ const Navbar: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const bodyOverflowBeforeMenu = React.useRef<string | null>(null);
   const location = useLocation();
+  const { locale, messages, path, switchLanguagePath } = useI18n();
+  const unlocalizedPath = stripLocalePrefix(location.pathname);
+  const nav = messages.nav;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,53 +43,53 @@ const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   const navLinks = [
-    { name: 'Inicio', path: '/' },
+    { name: nav.home, path: path('/') },
     {
-      name: 'Sobre Belén',
-      path: '/sobre-belen',
+      name: nav.about,
+      path: path('/sobre-belen'),
       submenu: [
-        { name: 'Biografía', path: '/sobre-belen' },
-        { name: 'Currículum literario y artístico', path: '/sobre-belen/curriculum-literario-artistico' },
-        { name: 'Currículum científico', path: '/sobre-belen/curriculum-cientifico' },
+        { name: nav.biography, path: path('/sobre-belen') },
+        { name: nav.literaryCv, path: path('/sobre-belen/curriculum-literario-artistico') },
+        { name: nav.scientificCv, path: path('/sobre-belen/curriculum-cientifico') },
       ]
     },
     {
-      name: 'Obra Literaria',
-      path: '/obra-literaria',
+      name: nav.literaryWork,
+      path: path('/obra-literaria'),
       submenu: [
-        { name: 'Libros', path: '/obra-literaria/libros' },
-        { name: 'Reseñas sobre libros', path: '/obra-literaria/resenas-libros' },
-        { name: 'Poemas en antologías y revistas', path: '/obra-literaria/antologias' },
-        { name: 'Plaquettes', path: '/obra-literaria/plaquettes' },
-        { name: 'Relatos', path: '/obra-literaria/relatos' },
-        { name: 'Crítica literaria', path: '/obra-literaria/critica' },
-        { name: 'Crítica libros legado andalusí', path: '/obra-literaria/critica-andalusi' },
-        { name: 'Prólogos y capítulos de libro', path: '/obra-literaria/prologos' },
-        { name: 'Traducción', path: '/obra-literaria/traduccion' },
-        { name: 'Entrevistas a escritores', path: '/obra-literaria/entrevistas' },
+        { name: nav.books, path: path('/obra-literaria/libros') },
+        { name: nav.bookReviews, path: path('/obra-literaria/resenas-libros') },
+        { name: nav.anthologies, path: path('/obra-literaria/antologias') },
+        { name: nav.plaquettes, path: path('/obra-literaria/plaquettes') },
+        { name: nav.stories, path: path('/obra-literaria/relatos') },
+        { name: nav.literaryCriticism, path: path('/obra-literaria/critica') },
+        { name: nav.andalusiCriticism, path: path('/obra-literaria/critica-andalusi') },
+        { name: nav.prologues, path: path('/obra-literaria/prologos') },
+        { name: nav.translation, path: path('/obra-literaria/traduccion') },
+        { name: nav.interviews, path: path('/obra-literaria/entrevistas') },
       ]
     },
-    { name: 'Poesía Visual', path: '/poesia-visual' },
+    { name: nav.visualPoetry, path: path('/poesia-visual') },
     {
-      name: 'Arte',
-      path: '/arte',
+      name: nav.art,
+      path: path('/arte'),
       submenu: [
-        { name: 'Cuadros', path: '/arte/cuadros' },
-        { name: 'Ilustración de Libros', path: '/arte/ilustracion' },
-        { name: 'Crítica Artística', path: '/arte/critica' },
+        { name: nav.paintings, path: path('/arte/cuadros') },
+        { name: nav.bookIllustration, path: path('/arte/ilustracion') },
+        { name: nav.artCriticism, path: path('/arte/critica') },
       ]
     },
     {
-      name: 'Música',
-      path: '/musica',
+      name: nav.music,
+      path: path('/musica'),
       submenu: [
-        { name: 'Música y Poesía', path: '/musica/poesia' },
-        { name: 'Horizonte de Sucesos', path: '/musica/horizonte' },
-        { name: 'Vídeos', path: '/musica/videos' },
+        { name: nav.musicPoetry, path: path('/musica/poesia') },
+        { name: nav.horizonte, path: path('/musica/horizonte') },
+        { name: nav.videos, path: path('/musica/videos') },
       ]
     },
-    { name: 'Diario Abierto', path: '/blog' },
-    { name: 'Contacto', path: '/contacto' },
+    { name: nav.openDiary, path: path('/blog') },
+    { name: nav.contact, path: path('/contacto') },
   ];
 
   const toggleDropdown = (name: string) => {
@@ -105,13 +110,13 @@ const Navbar: React.FC = () => {
   };
 
   const shouldFocusSectionContent = (path: string) => (
-    path.startsWith('/obra-literaria/')
-    || path.startsWith('/arte/')
-    || path.startsWith('/musica/')
+    stripLocalePrefix(path).startsWith('/obra-literaria/')
+    || stripLocalePrefix(path).startsWith('/arte/')
+    || stripLocalePrefix(path).startsWith('/musica/')
   );
 
   // Determine text color based on route and scroll state
-  const isDarkPage = location.pathname.startsWith('/musica');
+  const isDarkPage = unlocalizedPath.startsWith('/musica');
   const textColorClass = isScrolled || !isDarkPage ? 'text-ink' : 'text-paper';
   const hoverColorClass = isScrolled || !isDarkPage ? 'hover:text-deep-red' : 'hover:text-gold-accent';
   const activeColorClass = isScrolled || !isDarkPage ? 'text-deep-red font-bold' : 'text-gold-accent font-bold';
@@ -122,7 +127,7 @@ const Navbar: React.FC = () => {
         }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 flex justify-between items-center">
-        <Link to="/" className={`text-xl lg:text-2xl font-serif font-bold tracking-wider z-50 transition-colors ${textColorClass}`}>
+        <Link to={path('/')} className={`text-xl lg:text-2xl font-serif font-bold tracking-wider z-50 transition-colors ${textColorClass}`}>
           BELÉN JUÁREZ
         </Link>
 
@@ -167,6 +172,19 @@ const Navbar: React.FC = () => {
               )}
             </div>
           ))}
+          <div className={`flex items-center gap-1 border-l pl-3 xl:pl-5 ${isScrolled || !isDarkPage ? 'border-ink/15' : 'border-paper/20'}`} aria-label={messages.languageLabel}>
+            {SUPPORTED_LOCALES.map((language) => (
+              <Link
+                key={language}
+                to={switchLanguagePath(language)}
+                lang={language}
+                aria-current={locale === language ? 'page' : undefined}
+                className={`px-1 py-1 text-[10px] font-sans font-medium uppercase tracking-[0.12em] transition-colors ${locale === language ? activeColorClass : `${textColorClass}/45 ${hoverColorClass}`}`}
+              >
+                {language}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -175,7 +193,7 @@ const Navbar: React.FC = () => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={isMenuOpen ? messages.closeMenu : messages.openMenu}
         >
           {isMenuOpen ? <X /> : <Menu />}
         </button>
@@ -184,6 +202,23 @@ const Navbar: React.FC = () => {
       {/* Mobile Nav */}
       {isMenuOpen && createPortal(
         <div id="mobile-navigation" className="fixed inset-0 bg-paper z-40 flex flex-col pt-20 px-5 overflow-y-auto overscroll-contain">
+          <div className="mb-5 flex items-center justify-between border-y border-ink/10 py-3 font-sans text-[10px] uppercase tracking-[0.18em] text-ink/45">
+            <span>{messages.languageLabel}</span>
+            <div className="flex items-center gap-2">
+              {SUPPORTED_LOCALES.map((language) => (
+                <Link
+                  key={language}
+                  to={switchLanguagePath(language)}
+                  lang={language}
+                  aria-current={locale === language ? 'page' : undefined}
+                  onClick={closeMobileMenu}
+                  className={`min-w-9 px-2 py-1 text-center transition-colors ${locale === language ? 'bg-deep-red text-paper' : 'text-ink/50'}`}
+                >
+                  {language}
+                </Link>
+              ))}
+            </div>
+          </div>
           <div className="flex flex-col space-y-2 pb-10">
             {navLinks.map((link) => (
               <div key={link.name} className="border-b border-gray-100 pb-2">
