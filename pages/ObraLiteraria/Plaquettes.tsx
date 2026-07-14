@@ -2,14 +2,18 @@ import React from 'react';
 import { PLAQUETTES } from '../../constants';
 import { Bookmark, Calendar, MapPin, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useI18n } from '../../i18n/I18nProvider';
+import { PLAQUETTE_MESSAGES } from '../../i18n/pageMessages';
 
 const Plaquettes: React.FC = () => {
+    const { locale } = useI18n();
+    const content = PLAQUETTE_MESSAGES[locale];
     const plaquette = PLAQUETTES[0]; // Currently only one
 
     if (!plaquette) {
         return (
             <div className="py-24 text-center">
-                <h3 className="text-xl font-serif text-ink/60 italic">Sección en actualización</h3>
+                <h3 className="text-xl font-serif text-ink/60 italic">{content.updating}</h3>
             </div>
         );
     }
@@ -31,14 +35,14 @@ const Plaquettes: React.FC = () => {
                     >
                         <img
                             src={plaquette.coverUrl}
-                            alt={`Portada de ${plaquette.title}`}
+                            alt={content.coverAlt(plaquette.title)}
                             className="w-full h-auto"
                         />
                     </motion.div>
 
                     <div className="flex-1 text-center lg:text-left space-y-6">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-deep-red/5 text-deep-red text-[10px] uppercase tracking-[0.2em] font-bold">
-                            <Bookmark size={12} /> Colección Plaquettes
+                            <Bookmark size={12} /> {content.collection}
                         </div>
 
                         <h1 className="text-5xl md:text-7xl xl:text-8xl font-serif text-ink italic leading-tight">
@@ -48,18 +52,18 @@ const Plaquettes: React.FC = () => {
                         <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 text-sm font-sans text-ink/60 uppercase tracking-widest border-t border-gray-100 pt-8 mt-8">
                             <div className="flex items-center gap-2">
                                 <Calendar size={16} className="text-gold-accent" />
-                                <span>{plaquette.date}</span>
+                                <span>{content.date}</span>
                             </div>
                             {plaquette.event && (
                                 <div className="hidden md:block w-px h-4 bg-gray-200 self-center" />
                             )}
                             <div className="flex items-center gap-2 text-gold-accent">
-                                <span>{plaquette.event}</span>
+                                <span>{content.event}</span>
                             </div>
                             <div className="w-full md:hidden" />
                             <div className="flex items-center gap-2">
                                 <MapPin size={16} className="text-gold-accent" />
-                                <span>{plaquette.location}</span>
+                                <span>{content.location}</span>
                             </div>
                         </div>
                     </div>
@@ -78,12 +82,12 @@ const Plaquettes: React.FC = () => {
                         >
                             <img
                                 src={plaquette.illustrationUrl}
-                                alt="Ilustración principal de la obra"
+                                alt={content.illustrationAlt}
                                 className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
                             />
                             <div className="p-4 bg-white border-t border-gray-50 text-center">
                                 <p className="text-[10px] font-sans text-ink/40 uppercase tracking-[0.2em]">
-                                    Ilustración Belén Juárez
+                                    {content.illustrationCredit}
                                 </p>
                             </div>
                         </motion.div>
@@ -91,10 +95,10 @@ const Plaquettes: React.FC = () => {
 
                     <div className="bg-paper/50 p-6 border-l-2 border-gold-accent italic space-y-2">
                         <p className="text-ink/80 font-serif text-sm leading-relaxed">
-                            {plaquette.publication}
+                            {content.publication}
                         </p>
                         <p className="text-[10px] font-sans text-gold-accent uppercase tracking-widest font-bold">
-                            {plaquette.credits}
+                            {content.credits}
                         </p>
                     </div>
                 </div>
@@ -141,7 +145,7 @@ const Plaquettes: React.FC = () => {
                     {/* Closing Element */}
                     <div className="pt-12 text-center text-ink/30 italic font-serif">
                         <Quote size={24} className="mx-auto mb-4 text-gold-accent/40" />
-                        <p>Fin de la Plaquette</p>
+                        <p>{content.end}</p>
                     </div>
                 </div>
             </div>

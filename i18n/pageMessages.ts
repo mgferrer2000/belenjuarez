@@ -270,3 +270,26 @@ export const BOOKS_MESSAGES: Record<Locale, BooksMessages> = {
         },
     },
 };
+
+export const PLAQUETTE_MESSAGES: Record<Locale, {
+    updating: string; collection: string; coverAlt: (title: string) => string;
+    illustrationAlt: string; illustrationCredit: string; end: string;
+    event: string; date: string; location: string; publication: string; credits: string;
+}> = {
+    es: {
+        updating: 'Sección en actualización', collection: 'Colección Plaquettes',
+        coverAlt: (title) => `Portada de ${title}`, illustrationAlt: 'Ilustración principal de la obra',
+        illustrationCredit: 'Ilustración Belén Juárez', end: 'Fin de la Plaquette',
+        event: 'Día mundial de la Poesía', date: '21 de marzo de 2025',
+        location: 'Recital en Librería sostiene Pereira, Granada',
+        publication: 'Revista Alhucema, Colección libros', credits: 'Textos y poemas',
+    },
+    fr: {
+        updating: 'Section en cours de mise à jour', collection: 'Collection Plaquettes',
+        coverAlt: (title) => `Couverture de ${title}`, illustrationAlt: 'Illustration principale de l’œuvre',
+        illustrationCredit: 'Illustration de Belén Juárez', end: 'Fin de la plaquette',
+        event: 'Journée mondiale de la poésie', date: '21 mars 2025',
+        location: 'Récital à la librairie Sostiene Pereira, Grenade',
+        publication: 'Revue Alhucema, collection Livres', credits: 'Textes et poèmes',
+    },
+};
