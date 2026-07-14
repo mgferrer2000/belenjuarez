@@ -1,4 +1,4 @@
-import type { ShortStory } from '../types';
+import type { ShortStory, StorySection } from '../types';
 import type { Locale } from './config';
 
 export const STORY_UI: Record<Locale, {
@@ -83,5 +83,55 @@ const FR_STORY_METADATA: Record<string, Partial<ShortStory>> = {
     },
 };
 
-export const localizeStory = (story: ShortStory, locale: Locale): ShortStory =>
-    locale === 'fr' ? { ...story, ...FR_STORY_METADATA[story.id] } : story;
+const FR_STORY_SECTIONS: Record<string, Record<number, Partial<StorySection>>> = {
+    'al-otro-lado-del-mundo': {
+        0: {
+            content: `IL ÉTAIT QUATRE HEURES du matin lorsqu’elle quitta son pays. Le grand requin blanc DS 21, garé devant la maison, attendait paisiblement ce qui serait son dernier grand voyage. Il savait qu’il se dirigeait vers une mort aussi certaine que réelle : sa condition d’automobile à essence et l’imminente révolution pétrolière de ces derniers mois le condamnaient sans appel. Son dos blanc et courbé reflétait l’éclat des réverbères, et ses grands yeux de cristal et de plomb dégageaient une chaleur qui condensait sur leurs rétines les gouttes glacées de la pluie nocturne. Les rêves et les expériences partagés l’avaient maintenu fidèle à la famille, peut-être comme un membre de plus, fait de métal, sans âme ni témoignage de vie ; pourtant, il pressentait — d’une certaine manière — que ce serait son dernier voyage. Elle le comprit ainsi quarante ans plus tard. En ce temps-là, le grand requin se transformait dans ses rêves en un être animé, compagnon de mille aventures ; tous deux étaient des marcheurs de boue dans les vieilles rues de *Paris*, tels les explorateurs d’une ville infinie qui offrait le charme de l’anonymat. Ils étaient tous deux, la fillette et le soldat cartilagineux cuirassé d’un acier invincible et de cuirs élégants. La petite Lilie découvrait le monde à travers ses vitres, tandis qu’il filait comme la lumière sur ses larges roues de nickel, qu’elle imaginait comme quatre chevaux rapides capables de s’engager dans les innombrables rues du vieux *Paris*. Ils parcouraient le *Quartier latin*, la *place de la Concorde*, le *pont des Arts*, l’*Arc de Triomphe* et les *Champs-Élysées* ; elle faisait bouillonner ses rêveries, lui parlait, les cheveux dénoués, emmitouflée dans ses manteaux de maille tressée, les yeux si noirs et si curieux, s’éveillant au monde.`,
+        },
+        1: {
+            content: `Elle entendit rugir son moteur, telle la respiration d’un géant, tandis que des bras l’enveloppaient dans une couverture pour la protéger du froid de la nuit. La fièvre la faisait abondamment transpirer ; depuis plusieurs jours, une terrible grippe lui fermait les poings et les yeux, comme si son inconscient tentait désespérément de retarder le départ, de s’agripper à l’air, à ses aventures et à la maison qu’elle laissait derrière elle, au 23 de la *rue Championnet*. Cette fillette de sept ans ne pouvait imaginer qu’au fil des années à venir elle pleurerait mille fois tout ce qu’elle abandonnait. Elle leva une dernière fois les yeux vers la fenêtre de son amie juive, qu’elle ne reverrait jamais, puis se blottit sur les genoux de son protecteur, qui l’emporterait très loin, vers un avenir incertain. Cette aube hivernale fut comme la première phrase écrite de sa mémoire. Elle prit conscience d’habiter un monde étrangement aimable qui l’invitait à rompre brutalement avec son passé français, un monde déguisé en hasard civilisé.
+
+     Le fidèle squale blanc éteignit ses lumières intérieures et s’engagea dans le corridor des deux mille kilomètres, comme dans l’ultime mission qu’il accomplirait pour sa fillette. Il la conduirait de l’autre côté de la frontière, lui ferait traverser la mer de la civilisation et la ramènerait à ses origines, accomplissant fidèlement son dernier exploit vital. Elle regarda en arrière et vit s’estomper les trottoirs de sa rue, les murs de pierre grise, le grand réverbère à la lumière tamisée, si souvent devenu le mât de son château derrière la fenêtre de sa chambre. Elle vit disparaître dans l’horizon noir l’épicerie, le salon de coiffure, l’école et les hautes grilles immobiles de tous ses amis. À bord de son grand requin albinos, elle allait traverser le monde. Elle n’éprouva pas de peur, mais un profond désespoir devant la souffrance des heures qui avançaient vers l’adieu au terme du voyage. Lui mourrait pour toujours, et elle naîtrait de nouveau dans un lieu inconnu.`,
+        },
+        2: {
+            content: `Bien des années auparavant, son père s’était acheté une montre à Séville. Il lui avait fallu économiser plusieurs mois sur sa maigre solde de soldat pour l’obtenir ; plus tard, elle lui fit comprendre que les heures étaient un piège mortel, que le temps était l’habit dans lequel se dessine le destin des personnes et que, pour tous, les heures avançaient inexorablement. Chaque fois qu’il contemplait sa merveilleuse montre, il avait l’impression d’étrenner une seconde de sa vie, un temps qui lui échappait sans qu’il puisse le retenir. Il se sentait mal à l’aise, prisonnier de ce mélange de misère et de temps. Sa jeunesse s’usait, et sa vie avec elle. Que pouvait-il faire ? Les perspectives de progrès social étaient alors rares ; seule une petite partie de la population de ce pays pouvait s’offrir le luxe d’un repas chaud quotidien. C’était l’après-guerre, et la faim de tant de personnes était aussi habituelle que le lever du jour. Il avait donc d’abord accepté de poursuivre la tradition militaire familiale. Trouver un moyen de subsister, quel qu’il fût, était une priorité. Pourtant, cette montre qu’il avait si souvent arborée avec fierté au poignet le week-end, en compagnie de ses camarades de l’école militaire, celle qui lui avait donné de l’importance auprès des jeunes filles et que, quelques mois plus tard, on lui volerait dans son casier, fut peut-être ce qui fit basculer sa vie à cent quatre-vingts degrés. Il pensait que le temps nous est volé par le Temps lui-même, sans que personne puisse le dénoncer ni l’arrêter. Cette montre allait marquer le destin des vingt années suivantes et éveilla en lui le courage de prendre la décision la plus importante de sa vie : abandonner sa solde d’officier à peine acquise, ses camarades, sa famille et son foyer andalou.
+
+     — Père, je veux partir.
+     — Tu veux partir ? Où cela ?
+     — En France. Deux amis et moi avons décidé de nous en aller. Ici, on gagne une misère, et l’on nous a dit qu’en France les choses étaient différentes. Je veux vérifier cette vérité que l’on raconte au sujet de la République.
+     — Mon fils, tu n’iras nulle part ! Ici, tu as ton emploi, ta famille. N’as-tu donc pas obtenu ce que tu désirais ? Démonter des avions de combat, n’était-ce pas ce que tu voulais ? Tu as réussi à en vivre, et maintenant tu dis que tu t’en vas ? Que tu abandonnes tout ? Tu n’iras nulle part ! C’est moi qui le dis, je suis ton père, et que l’on n’en parle plus !
+     — Père, je pars. Ici, j’étouffe au milieu de tant de misère. On ne permet pas aux gens de penser, de connaître. Je veux savoir ce qu’il y a au-delà de cette pure vérité si fausse. Et je jure que je reviendrai ; un jour, même lointain, je reviendrai, et vous pourrez être fier de votre fils. Je jure que je le ferai.`,
+        },
+        3: {
+            content: `Cette conversation fut pour lui un supplice. Jamais il n’avait désobéi à son père ; jamais auparavant il n’avait osé prendre une décision aussi capitale sans le consentement de cet homme de taille moyenne, aux traits durs, marqués par le froid de tant d’aurores. Pour son père, tout tournait autour de la famille. Existait-il donc autre chose pour laquelle lutter ? Ses sept enfants et une épouse docile constituaient tout son univers. Il ne pouvait accepter que le benjamin de la maison rompe avec les traditions. Que deviendrait-il ?
+
+     L’amertume se leva avec lui ce matin-là. Le vent secouait les feuilles de tabac suspendues dans le séchoir, près de la maison. Il perçut dans ces feuilles de tabac noir un doux parfum d’incertitude qui agitait le silence des premières lueurs du jour et annonçait le départ de son plus jeune fils. Dans ses pensées bouillonnait l’idée poignante, blessante, que son fils avait peut-être raison ; mais il ne pouvait l’admettre, et sa colère était imminente. À quelques mètres de sa fenêtre, il entendit rugir un moteur impossible à démarrer : un homme sans identité s’acharnait désespérément sur la camionnette avec laquelle il se rendait chaque jour au marché vendre ses légumes. Ce moteur à la gorge rouillée semblait lui exposer toutes les raisons pour lesquelles son fils voulait partir. Ici, il n’y a rien, sinon des supplications adressées au hasard pour parvenir, jour après jour, à faire démarrer le moteur de la survie. L’autorité du chef de famille était la seule arme dont il disposait pour se défendre contre ce monde aux arêtes tranchantes, aussi gris que les mille rayures de son costume du dimanche. Survivre et maintenir la famille unie était sa loi, la raison pour laquelle il était né ; pourtant, son fils partait à présent. Découvrir le monde, disait-il… Quel monde existe hors de cette jungle de moteurs inutilisables ? Son visage grave exprimait son rejet de l’aventure projetée par son fils ; au plus profond de lui-même, pourtant, il songeait qu’avec quarante ans de moins il aurait peut-être fait la même chose.`,
+        },
+        4: {
+            content: `Deux amis, une valise, la discipline apprise à l’école militaire et un dictionnaire. Voilà tout le bagage qu’il déroba à son pays. Derrière lui restaient les soirées autour de l’âtre, les conversations et les rires avec ses frères aînés, la bonté des quignons de pain et l’odeur du lait de chèvre que sa mère faisait bouillir le matin. Derrière lui restaient les jeunes filles qui souriaient et soupiraient devant le bleu de ses yeux, le bruit de l’eau des fontaines de *Grenade* et la musique des moteurs de tant d’avions dont il avait vu les entrailles. En arrière et en avant. Ses pensées se balançaient comme un lourd pendule sous le vertige de la conscience ; pourtant, jamais il n’eut peur, jamais il ne songea à renoncer. Sa vie commençait maintenant, et il lutterait pour obtenir tout ce à quoi il aspirait. Il lutterait pour la seule femme qu’il aimait véritablement depuis l’enfance, celle qu’il abandonnait aux caprices du destin, la seule femme pour laquelle il faisait tout cela. Pour elle, il reviendrait un jour au volant d’une voiture étincelante afin de l’emmener dans ce monde qu’il cherchait à découvrir pour elle.
+
+     Il ne voulut perdre aucun détail des villes que traversait le train. Il se sentait chaud comme le sang dans les veines d’un nouveau pays, rapide et insignifiant dans ce corps étranger où il pénétrait. Parfois, le sommeil avait raison de lui et il dormait quelques heures, assis sur la banquette de seconde classe qui lui brisait les os ; pourtant, il ne ressentait aucune fatigue. Lorsqu’il rouvrait les yeux, ses amis dormaient et, silencieux, il capturait dans ses rétines les gens, les maisons si différentes, les enseignes lumineuses. Il inaugura son dictionnaire dès la frontière franchie : il avait besoin de savoir encore et encore, de manger et de boire ce pays… Aussi ne cessait-il d’observer les annonces et de les traduire, l’une après l’autre. Tout avait de l’importance.
+
+     — S’il vous plaît, les billets… ! À quoi il répondit : — Les voilà, monsieur.
+
+     Ce furent ses premiers mots en français ! Pour le contrôleur, ce n’était qu’un geste de routine, et il ne remarqua sans doute même pas l’attente dans les yeux du jeune homme qui le regardait avec tant d’enthousiasme et de curiosité. Il conserva longtemps dans sa mémoire ces billets et ce visage fermé et, bien qu’il ne parlât jamais de ses premières impressions, il se souviendrait toujours de ces mots comme de la première phrase écrite du deuxième chapitre de sa vie.`,
+        },
+    },
+};
+
+export const localizeStory = (story: ShortStory, locale: Locale): ShortStory => {
+    if (locale !== 'fr') return story;
+
+    const localized = { ...story, ...FR_STORY_METADATA[story.id] };
+    const sectionOverrides = FR_STORY_SECTIONS[story.id];
+
+    return sectionOverrides
+        ? {
+            ...localized,
+            sections: localized.sections.map((section, index) => ({
+                ...section,
+                ...sectionOverrides[index],
+            })),
+        }
+        : localized;
+};
