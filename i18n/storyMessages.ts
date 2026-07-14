@@ -116,6 +116,48 @@ const FR_STORY_SECTIONS: Record<string, Record<number, Partial<StorySection>>> =
 
      Ce furent ses premiers mots en français ! Pour le contrôleur, ce n’était qu’un geste de routine, et il ne remarqua sans doute même pas l’attente dans les yeux du jeune homme qui le regardait avec tant d’enthousiasme et de curiosité. Il conserva longtemps dans sa mémoire ces billets et ce visage fermé et, bien qu’il ne parlât jamais de ses premières impressions, il se souviendrait toujours de ces mots comme de la première phrase écrite du deuxième chapitre de sa vie.`,
         },
+        5: {
+            content: `Paris le dévora cette nuit-là. Un morceau de fromage gras, du pain et de la charcuterie ornaient humblement la table de cette famille galicienne comme de délicieux mets du nouveau pays. Pedro, réfugié de la guerre civile et ami d’un certain Luis qui vivait à Grenade, avait déjà été prévenu que trois jeunes gens d’un peu plus de vingt ans arriveraient ce soir-là à Paris. Les deux autres avaient des connaissances sur place, mais celui qui venait de l’Académie de l’air partait à l’aventure. Luis l’avait instamment prié de l’accueillir à son arrivée : c’était un bon garçon, presque de la famille. Quelques années auparavant, Luis avait rencontré Pedro, cousin issu de germain de sa femme, en Galice et, par un de ces hasards de la vie, ils avaient noué une profonde amitié qui durerait encore de nombreuses années. C’est pourquoi Pedro accueillit ce soir-là chez lui le jeune homme de Grenade. Puisqu’il venait de la part de Luis, il était digne de confiance.
+
+     — Comment va mon bon ami Luis ?
+     — Il est toujours là-bas. Je lui ai proposé de tenter l’aventure avec nous, mais cela n’a pas été possible. Vous savez, les affaires de famille, et avec deux petits au monde…
+     — Bien sûr, et ma cousine Paquita que personne ne parvient à faire bouger, n’est-ce pas ?
+     — Ma foi, qu’est-ce que j’en sais… que voulez-vous que je vous dise ? Dans leur intimité, je ne pose même pas de questions…
+     — Écoute, mon garçon, si le travail ne te fait pas peur, tu t’en sortiras bien ici. Les Français ont leurs manières bien à eux, mais si tu adoptes leurs coutumes et t’accommodes de leurs usages, tu n’auras pas de problèmes et, sur bien des sujets, tu finiras par penser comme eux. La « Légalité » et la « Fraternité » sont des idées gravées dans le cœur de tout bon Français.
+
+     Pedro vivait à Paris depuis une décennie ; il avait échappé presque par hasard aux balles des nationalistes. Comme tant d’Espagnols, la guerre l’avait surpris dans la taverne de son village galicien, où les quatre amis se retrouvaient chaque soir pour épancher leur malaise et parler du mécontentement social et des tensions politiques qui progressaient à marche forcée. On pressentait les derniers soubresauts du Bienio Negro, qui étoufferaient à jamais la République et ensanglanteraient les innombrables rues d’Espagne.
+
+     Miguel écoutait avec une profonde peine et un grand trouble les raisons pour lesquelles cet homme avait quitté la Galice. Dans son cas, les choses étaient différentes : il ne fuyait le cri d’aucun coup de feu. Pourtant, la mort métallique décrite par son nouvel ami lui fit saigner les entrailles ; il ressentit la tristesse de cette famille et celle de tant d’autres familles anonymes dispersées à travers l’Europe. Il découvrait l’Espagne depuis ses coulisses.`,
+        },
+        6: {
+            content: `Cette nuit-là, il s’effondra d’épuisement sur le lit. Il rêverait qu’il parlait déjà parfaitement français, que sa décision avait été juste et que ce pays lui révélerait peut-être la vérité d’une Espagne que personne ne lui avait montrée auparavant. Telles étaient ses pensées tandis qu’il s’endormait dans le parfum de savon de Marseille des doux draps blancs.`,
+        },
+        7: {
+            content: `Sept années, deux patrons, puis une affaire personnelle florissante. Michel, puisque tel était désormais son nom, vivait au nord de Paris dans sa propre maison, parlait correctement français, portait des pardessus et des chapeaux à bord court, connaissait chaque recoin et chaque cercle du vieux Paris nocturne, et pensait comme les Français, ainsi que son ami Pedro le lui avait prédit. Les incertitudes des premières années et l’innocence du jeune homme aventureux et turbulent appartenaient au passé. Il se sentait victorieux. Tous les efforts et toutes les difficultés qu’il avait dû surmonter des années auparavant lui avaient appris à aimer le temps. Chaque minute de ces sept années avait compté dix fois plus ; le vertige des sensations, les émotions et tout ce qu’il découvrait jour après jour lui faisaient goûter pleinement sa condition d’émigré francisé. Pourtant, quelque chose bouillonnait dans son esprit. À contretemps, parmi ses pensées, se dessinait la silhouette de cette belle jeune fille aux yeux couleur de miel et aux cheveux dorés qu’il avait laissée des années auparavant sur les terres de Grenade. Qu’était-elle devenue ? Elle s’était sûrement mariée, pensait-il, mais quelque chose lui disait qu’il devait tenter de la revoir. Il retournerait bientôt à Grenade, comme il le faisait chaque année pendant les vacances, et cette fois il chercherait à le savoir. Elle avait maintenant vingt et un ans ; il ne l’avait pas vue depuis près de dix ans et se souvenait d’elle comme d’une enfant aux longues tresses, vêtue de robes brodées de petites fleurs.
+
+     — Mère, vous souvenez-vous de María, la fille de Don Ramón et de Doña Concha ?
+     — Bien sûr, mon fils…
+     — Où est-elle à présent ? J’aimerais la saluer, évoquer le bon vieux temps et prendre des nouvelles de son frère Ramón, qui était un bon ami, vous savez…
+     — Bien sûr, bien sûr… son frère, un brave garçon ; il est maintenant prêtre à Guadix. Quel excellent jeune homme, oui…
+
+     Sa mère sourit légèrement, avec discrétion, tout en conservant l’attitude sobre et convenable d’une respectable dame. Elle connaissait pourtant bien son fils et percevait l’intérêt qu’il portait à cette jeune fille. D’une manière subtile, il lui demandait conseil pour se rapprocher de celle dont il était éperdument amoureux. Elle savait que Miguel, devenu un bel homme, aimait cette femme, la femme de ses rêves, et elle ne voyait pas d’un mauvais œil la possibilité de leur union.
+
+     Il la chercha dans son village. Il monta dans les *Alpujarras* rendre visite à une sœur de son père, surtout, comme si de rien n’était, pour saluer la famille…
+
+     Vêtu de son costume couleur cannelle et au volant d’une Citroën ID 19 rouge, il se gara sur la place du village. Il ne voulut pas demander après elle dès son arrivée : il n’était pas convenable de l’aborder sans autre forme de procès, pensait-il ; cela devait paraître « naturel », comme une rencontre fortuite… Nerveux, il pressentait qu’elle savait déjà qu’il était arrivé. Dans quelle maison vivait-elle désormais ? Il fut plus nerveux encore en apprenant qu’elle habitait toujours chez ses parents ; cette circonstance lui offrait l’occasion parfaite d’accomplir son dessein : il irait également saluer son ancien instituteur, le père de María.
+
+     — María, tu te souviens de Miguel ? Apporte donc à ce jeune homme quelques beignets et un verre d’eau-de-vie. Ah ! Quel temps c’était ! Miguel, quand les mathématiques ne voulaient pas entrer dans ta tête et que je te les y faisais entrer à coups de règle, n’est-ce pas, mon garçon ?
+     — Bien sûr, bien sûr, Don Ramón, et je vous en suis très reconnaissant ! C’est grâce à vos efforts et à votre persévérance que j’ai appris les « mathématiques »…`,
+        },
+        8: {
+            content: `Le pauvre Miguel transpirait en se souvenant de la règle que cet homme avait si souvent abattue sur ses mains. La liqueur d’anis lui brûlait la gorge tandis que son cœur bondissait, battant désespérément chaque fois que María lui offrait son merveilleux sourire. Elle était devenue une belle femme aux longs cheveux dorés et à la peau de nacre. Son corps élancé, proche de la perfection, lui aveuglait les yeux et l’esprit. Un léger tremblement de sa main trahit son amour. Elle continuait de sourire, assise autour de la table auprès de Doña María, femme au visage tout aussi beau qu’un instituteur fraîchement arrivé de Cordoue avait, des années auparavant, réussi à ravir au cœur des Alpujarras.
+
+     Don Ramón prolongea la visite.
+
+     — Reste dîner, Miguel, et raconte-nous ta vie à Paris. Que fais-tu là-bas ?
+
+     Miguel transpirait davantage encore : la main qui l’avait si souvent puni lorsqu’il était enfant l’invitait maintenant à rester dîner. Il accepta et remercia son hôte. Ce jour serait l’un des plus importants de sa vie. Soudain, tous les coups de règle reçus sur ses paumes se changèrent en coraux rouges, un trésor qui ne le quitterait plus jamais. María était sa passion, et cet homme lui souriait maintenant pour la première fois.`,
+        },
     },
 };
 
