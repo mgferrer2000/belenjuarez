@@ -3,14 +3,19 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { BOOK_REVIEWS } from '../../constants';
 import { ArrowLeft, Share2, Printer } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useI18n } from '../../i18n/I18nProvider';
+import { localizeBookReview, REVIEW_UI } from '../../i18n/reviewMessages';
 
 const ResenaDetail: React.FC = () => {
+    const { locale, path } = useI18n();
+    const ui = REVIEW_UI[locale];
     const { id } = useParams<{ id: string }>();
-    const review = BOOK_REVIEWS.find(r => r.id === id);
+    const originalReview = BOOK_REVIEWS.find(r => r.id === id);
 
-    if (!review) {
-        return <Navigate to="/obra-literaria/resenas-libros" replace />;
+    if (!originalReview) {
+        return <Navigate to={path('/obra-literaria/resenas-libros')} replace />;
     }
+    const review = localizeBookReview(originalReview, locale);
 
     return (
         <motion.div
@@ -21,16 +26,16 @@ const ResenaDetail: React.FC = () => {
             <div className="max-w-4xl mx-auto px-6">
                 {/* Back Button */}
                 <Link
-                    to="/obra-literaria/resenas-libros"
+                    to={path('/obra-literaria/resenas-libros')}
                     className="inline-flex items-center gap-2 text-ink/40 hover:text-deep-red transition-colors text-xs uppercase tracking-widest mb-12"
                 >
-                    <ArrowLeft size={14} /> Volver a reseñas
+                    <ArrowLeft size={14} /> {ui.back}
                 </Link>
 
                 {/* Header Section */}
                 <header className="mb-16 text-center space-y-6">
                     <div className="space-y-4">
-                        <h4 className="text-gold-accent font-sans text-xs uppercase tracking-[0.4em] font-bold">Crítica Literaria</h4>
+                        <h4 className="text-gold-accent font-sans text-xs uppercase tracking-[0.4em] font-bold">{ui.literaryCriticism}</h4>
                         <h1 className="text-5xl md:text-6xl font-serif text-ink italic leading-tight max-w-3xl mx-auto">
                             {review.title}
                         </h1>
@@ -79,7 +84,7 @@ const ResenaDetail: React.FC = () => {
                     <figure className="mt-16">
                         <img
                             src={review.detailImageUrl}
-                            alt={review.detailImageCaption ?? `Imagen relacionada con ${review.title}`}
+                            alt={review.detailImageCaption ?? ui.relatedImageAlt(review.title)}
                             className="w-full rounded-sm shadow-2xl border border-gray-100"
                         />
                         {review.detailImageCaption && (
@@ -94,13 +99,13 @@ const ResenaDetail: React.FC = () => {
                 <footer className="mt-16 pt-8 border-t border-gray-100 flex justify-between items-center text-ink/40">
                     <div className="flex gap-6">
                         <button className="hover:text-ink transition-colors flex items-center gap-2 text-[10px] uppercase tracking-widest">
-                            <Share2 size={14} /> Compartir
+                            <Share2 size={14} /> {ui.share}
                         </button>
                         <button
                             onClick={() => window.print()}
                             className="hover:text-ink transition-colors flex items-center gap-2 text-[10px] uppercase tracking-widest"
                         >
-                            <Printer size={14} /> Imprimir
+                            <Printer size={14} /> {ui.print}
                         </button>
                     </div>
                     <p className="text-[10px] uppercase tracking-[0.2em]">© {review.date} {review.author}</p>
