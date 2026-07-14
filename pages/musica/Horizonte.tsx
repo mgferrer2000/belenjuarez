@@ -118,7 +118,7 @@ const Horizonte: React.FC = () => {
                             </AnimatePresence>
                         </div>
 
-                        <div className="p-8 bg-white/5 border border-white/10 rounded-sm">
+                        <div className="-mx-10 w-[calc(100%+5rem)] border-y border-white/10 bg-white/5 p-5 md:mx-0 md:w-auto md:rounded-sm md:border md:p-8">
                             <div className="flex items-center gap-3 mb-6">
                                 <Disc className="text-[#d4af37] animate-spin-slow" size={24} />
                                 <h5 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">Nota de la Autora</h5>
@@ -150,18 +150,18 @@ const Horizonte: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-10 md:p-14 bg-white/5 border border-gold/10 rounded-sm relative overflow-hidden group shadow-2xl"
+                className="relative -mx-10 w-[calc(100%+5rem)] overflow-hidden border-y border-gold/10 bg-white/5 p-5 shadow-2xl md:mx-0 md:w-auto md:rounded-sm md:border md:p-14 group"
             >
                 <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                     <MusicIcon size={120} className="text-gold" />
                 </div>
                 
                 <div className="flex flex-col gap-1 mb-8">
-                    <h5 className="text-gold font-sans text-[12px] uppercase tracking-[0.5em] font-bold">Reseña del Álbum</h5>
+                    <h5 className="text-gold font-sans text-[12px] uppercase tracking-[0.25em] md:tracking-[0.5em] font-bold">Reseña del Álbum</h5>
                     <p className="text-white/40 font-sans text-[11px] uppercase tracking-wider">Pedro Luis Ibáñez Lérida · 10 de octubre, 2025</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 text-white/70 font-serif text-lg leading-relaxed italic">
+                <div className="grid grid-cols-1 gap-8 text-left font-serif text-base italic leading-relaxed text-white/70 md:grid-cols-2 md:gap-16 md:text-lg">
                     <div className="space-y-6">
                         <p>
                             "A veces, solo a veces, el roce de lo evanescente toma cuerpo y nos abraza hasta desasirnos de la penuria de lo banal. Ese decir musitado que dibuja en la conciencia la plenitud de lo verdadero; el germen de la levedad que poderoso nos desata de libérrima humanidad. Más aún cuando es motivo de venturoso regreso, de desandar los pasos después de más de veinte años de silencio lírico."
@@ -180,7 +180,7 @@ const Horizonte: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="mt-12 pt-8 border-t border-white/10 flex justify-end items-center">
+                <div className="mt-10 flex items-center justify-start border-t border-white/10 pt-6 md:mt-12 md:justify-end md:pt-8">
                     <a 
                         href="https://www.facebook.com/share/1ApEXkNRGF/?mibextid=wwXIfr" 
                         target="_blank" 

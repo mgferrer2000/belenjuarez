@@ -43,13 +43,13 @@ const Cuadros: React.FC = () => {
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-ink/60 font-sans max-w-2xl mx-auto italic mb-8"
+                    className="text-ink/60 font-sans max-w-2xl mx-auto italic mb-0 md:mb-8"
                 >
                     Dibujos, pinturas y bocetos. La línea como extensión del verso
                 </motion.p>
 
                 {/* Filter Controls */}
-                <div className="flex justify-center gap-8 border-b border-ink/5 pb-4 max-w-md mx-auto">
+                <div className="hidden md:flex justify-center gap-8 border-b border-ink/5 pb-4 max-w-md mx-auto">
                     {[
                         { id: 'todos', label: 'Todo el Arte' },
                         { id: 'cuadros', label: 'Cuadros/Pinturas' },

@@ -14,7 +14,7 @@ const Musica: React.FC = () => {
         if (shouldFocusContent && window.matchMedia('(max-width: 1023px)').matches) {
             contentRef.current?.scrollIntoView({ block: 'start' });
         }
-    }, [location.pathname, shouldFocusContent]);
+    }, [location.key, location.pathname, shouldFocusContent]);
 
     return (
         <div className="pt-24 min-h-screen bg-ink text-paper">

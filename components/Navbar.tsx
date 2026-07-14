@@ -7,6 +7,7 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const bodyOverflowBeforeMenu = React.useRef<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -26,10 +27,13 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     if (!isMenuOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
+    bodyOverflowBeforeMenu.current = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = previousOverflow;
+      if (bodyOverflowBeforeMenu.current !== null) {
+        document.body.style.overflow = bodyOverflowBeforeMenu.current;
+        bodyOverflowBeforeMenu.current = null;
+      }
     };
   }, [isMenuOpen]);
 
@@ -90,6 +94,21 @@ const Navbar: React.FC = () => {
       setActiveDropdown(name);
     }
   };
+
+  const closeMobileMenu = () => {
+    if (bodyOverflowBeforeMenu.current !== null) {
+      document.body.style.overflow = bodyOverflowBeforeMenu.current;
+      bodyOverflowBeforeMenu.current = null;
+    }
+    setIsMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const shouldFocusSectionContent = (path: string) => (
+    path.startsWith('/obra-literaria/')
+    || path.startsWith('/arte/')
+    || path.startsWith('/musica/')
+  );
 
   // Determine text color based on route and scroll state
   const isDarkPage = location.pathname.startsWith('/musica');
@@ -187,6 +206,8 @@ const Navbar: React.FC = () => {
                           <Link
                             key={subItem.path}
                             to={subItem.path}
+                            state={shouldFocusSectionContent(subItem.path) ? { scrollToSectionContent: true } : undefined}
+                            onClick={closeMobileMenu}
                             className={`flex min-h-[42px] items-center bg-paper px-3 py-2 font-sans text-[11px] leading-snug tracking-[0.02em] text-ink/65 transition-colors hover:text-deep-red ${location.pathname === subItem.path ? 'bg-deep-red text-paper font-medium hover:text-paper' : ''}`}
                           >
                             {subItem.name}
@@ -198,6 +219,7 @@ const Navbar: React.FC = () => {
                 ) : (
                   <Link
                     to={link.path}
+                    onClick={closeMobileMenu}
                     className={`flex min-h-12 items-center text-lg font-serif text-ink py-2 ${location.pathname === link.path ? 'text-deep-red font-semibold' : ''}`}
                   >
                     {link.name}

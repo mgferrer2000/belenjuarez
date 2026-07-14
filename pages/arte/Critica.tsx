@@ -10,11 +10,11 @@ const Critica: React.FC = () => {
     if (!article) return null;
 
     return (
-        <div className="pb-24 max-w-5xl mx-auto px-4 md:px-0">
+        <div className="pb-24 w-[calc(100%+3rem)] -mx-6 max-w-none md:w-auto md:max-w-5xl md:mx-auto md:px-0">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white shadow-2xl overflow-hidden rounded-sm border border-ink/5"
+                className="bg-white shadow-none md:shadow-2xl overflow-hidden rounded-none md:rounded-sm border-y border-ink/5 md:border"
             >
                 {/* Header/Hero Section */}
                 <div className="relative h-80 md:h-96 overflow-hidden">
@@ -49,12 +49,12 @@ const Critica: React.FC = () => {
                 </div>
 
                 {/* Article Content Grid */}
-                <div className="p-8 md:p-16 grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16">
+                <div className="px-6 py-10 md:p-16 grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
                     <div className="lg:col-span-2 space-y-8">
                         {article.content.split('\n\n').map((paragraph, idx) => (
                             <p
                                 key={idx}
-                                className={`text-ink/80 font-serif text-lg leading-relaxed text-justify ${idx === 0 ? 'first-letter:text-6xl first-letter:font-serif first-letter:mr-4 first-letter:float-left first-letter:text-gold/80 first-letter:leading-none' : ''}`}
+                                className={`text-ink/80 font-serif text-[17px] md:text-lg leading-relaxed text-left md:text-justify ${idx === 0 ? 'first-letter:text-6xl first-letter:font-serif first-letter:mr-4 first-letter:float-left first-letter:text-gold/80 first-letter:leading-none' : ''}`}
                             >
                                 {paragraph}
                                 {idx === 0 && <div className="clear-both"></div>}

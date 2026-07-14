@@ -7,7 +7,7 @@ const metrics = [
     { label: 'Tramos autonómicos', value: '5' },
     { label: 'Publicaciones', value: '44' },
     { label: 'Índice H', value: '20' },
-    { label: 'Citas recibidas', value: '1292' },
+    { label: 'Citas recibidas', value: '+1300' },
     { label: 'Tesis dirigidas', value: '4' },
 ];
 
@@ -21,7 +21,7 @@ const formationParagraphs = [
 
 const productionParagraphs = [
     'Su producción científica reúne 44 publicaciones indexadas. De estas, 24 pertenecen al primer cuartil (Q1, 54,5%), 8 al segundo (Q2, 15,9%), 3 al tercero (Q3, 6,8%) y 4 al cuarto (Q4, 9,1%).',
-    'Ha recibido 1292 citas y presenta un índice H de 20. A ello se suman 3 capítulos de libro, diversas publicaciones en revistas no indexadas y 20 participaciones en congresos nacionales e internacionales.'
+    'Ha recibido más de 1300 citas y presenta un índice H de 20. A ello se suman 3 capítulos de libro, diversas publicaciones en revistas no indexadas y 20 participaciones en congresos nacionales e internacionales.'
 ];
 
 const leadershipParagraphs = [
