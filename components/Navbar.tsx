@@ -132,14 +132,14 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex space-x-3 xl:space-x-6 items-center">
+        <div className={`hidden lg:flex items-center ${locale === 'fr' ? 'space-x-2 xl:space-x-4' : 'space-x-3 xl:space-x-6'}`}>
           {navLinks.map((link) => (
             <div key={link.name} className="relative group">
               {link.submenu ? (
                 <button
                   type="button"
                   aria-haspopup="true"
-                  className={`flex items-center gap-1 text-[12px] xl:text-sm uppercase tracking-widest transition-colors ${location.pathname.startsWith(link.path) ? activeColorClass : `${textColorClass}/80`
+                  className={`flex items-center gap-1 whitespace-nowrap uppercase transition-colors ${locale === 'fr' ? 'text-[10px] xl:text-[12px] tracking-[0.08em]' : 'text-[12px] xl:text-sm tracking-widest'} ${location.pathname.startsWith(link.path) ? activeColorClass : `${textColorClass}/80`
                     } ${hoverColorClass}`}
                 >
                   {link.name} <ChevronDown size={14} />
@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
               ) : (
                 <Link
                   to={link.path}
-                  className={`text-[12px] xl:text-sm uppercase tracking-widest transition-colors ${location.pathname === link.path ? activeColorClass : `${textColorClass}/80`
+                  className={`whitespace-nowrap uppercase transition-colors ${locale === 'fr' ? 'text-[10px] xl:text-[12px] tracking-[0.08em]' : 'text-[12px] xl:text-sm tracking-widest'} ${location.pathname === link.path ? activeColorClass : `${textColorClass}/80`
                     } ${hoverColorClass}`}
                 >
                   {link.name}
