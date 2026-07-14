@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Download, Languages } from 'lucide-react';
 import { getTranslationWorkBySlug } from './traduccionData';
+import { useI18n } from '../../i18n/I18nProvider';
+import { localizeTranslationWork, TRANSLATION_UI } from '../../i18n/translationMessages';
 
 const renderInlineFormatting = (text: string) => {
     const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g).filter(Boolean);
@@ -35,35 +37,38 @@ const renderPoem = (text: string) => {
 
 const TraduccionDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
-    const work = slug ? getTranslationWorkBySlug(slug) : undefined;
+    const { locale, path } = useI18n();
+    const ui = TRANSLATION_UI[locale];
+    const originalWork = slug ? getTranslationWorkBySlug(slug) : undefined;
+    const work = originalWork ? localizeTranslationWork(originalWork, locale) : undefined;
 
     if (!work) {
-        return <Navigate to="/obra-literaria/traduccion" replace />;
+        return <Navigate to={path('/obra-literaria/traduccion')} replace />;
     }
 
     return (
         <div className="max-w-6xl mx-auto pb-24">
             <div className="mb-10">
                 <Link
-                    to="/obra-literaria/traduccion"
+                    to={path('/obra-literaria/traduccion')}
                     className="inline-flex items-center gap-2 text-deep-red text-sm font-sans uppercase tracking-widest hover:text-ink transition-colors mb-8 group"
                 >
                     <ArrowLeft size={14} />
-                    Volver a traduccion
+                    {ui.back}
                 </Link>
             </div>
 
             <header className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-16 items-start mb-16 border-b border-gold/10 pb-12">
                 <div>
                     <div className="overflow-hidden rounded-sm border border-gold/10 bg-white shadow-xl">
-                        <img src={work.coverUrl} alt={`Portada de ${work.title}`} className="w-full h-auto object-cover" />
+                        <img src={work.coverUrl} alt={ui.coverAlt(work.title)} className="w-full h-auto object-cover" />
                     </div>
                 </div>
 
                 <div className="space-y-6">
                     <div className="flex items-center gap-3 text-deep-red font-sans text-xs uppercase tracking-[0.3em] font-bold">
                         <Languages size={16} />
-                        <span>Edicion bilingue</span>
+                        <span>{ui.bilingualEdition}</span>
                     </div>
 
                     <div>
@@ -91,7 +96,7 @@ const TraduccionDetail: React.FC = () => {
                             className="inline-flex items-center gap-3 px-8 py-3 bg-ink text-paper font-sans text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-deep-red transition-colors shadow-lg"
                         >
                             <Download size={14} />
-                            Descargar PDF
+                            {ui.downloadPdf}
                         </a>
                     </div>
                 </div>
@@ -130,7 +135,7 @@ const TraduccionDetail: React.FC = () => {
             {work.supplementaryNotes && work.supplementaryNotes.length > 0 && (
                 <section className="mt-16 border-t border-gold/10 pt-12 max-w-4xl">
                     <p className="text-[10px] font-sans uppercase tracking-[0.3em] text-deep-red font-bold mb-6">
-                        Notas
+                        {ui.notes}
                     </p>
                     <div className="space-y-4 text-ink/70 font-light leading-relaxed text-base text-justify">
                         {work.supplementaryNotes.map((note, index) => (
@@ -143,7 +148,7 @@ const TraduccionDetail: React.FC = () => {
             {work.analysis && (
                 <section className="mt-16 border-t border-gold/10 pt-12 max-w-4xl">
                     <p className="text-[10px] font-sans uppercase tracking-[0.3em] text-deep-red font-bold mb-6">
-                        Lectura critica
+                        {ui.criticalReading}
                     </p>
                     <div className="space-y-6 text-ink/75 font-light leading-relaxed text-lg text-justify">
                         {work.analysis.split('\n\n').map((paragraph, index) => (
