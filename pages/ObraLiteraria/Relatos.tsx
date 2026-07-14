@@ -3,8 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { SHORT_STORIES } from '../../constants';
 import { BookOpen, Calendar, ArrowRight } from 'lucide-react';
+import { useI18n } from '../../i18n/I18nProvider';
+import { localizeStory, STORY_UI } from '../../i18n/storyMessages';
 
 const Relatos: React.FC = () => {
+    const { locale, path } = useI18n();
+    const ui = STORY_UI[locale];
+
     return (
         <div className="max-w-7xl mx-auto px-4 py-12">
             <motion.div
@@ -12,15 +17,17 @@ const Relatos: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center mb-16"
             >
-                <h2 className="text-4xl md:text-5xl font-serif text-ink italic mb-4">Relatos</h2>
+                <h2 className="text-4xl md:text-5xl font-serif text-ink italic mb-4">{ui.heading}</h2>
                 <div className="w-24 h-1 bg-gold/30 mx-auto mb-6"></div>
                 <p className="text-ink/70 max-w-2xl mx-auto font-serif">
-                    Narrativas breves que exploran la memoria, el exilio y la identidad a través de prosa poética e ilustraciones sugerentes.
+                    {ui.introduction}
                 </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                {SHORT_STORIES.map((story, index) => (
+                {SHORT_STORIES.map((originalStory, index) => {
+                    const story = localizeStory(originalStory, locale);
+                    return (
                     <motion.div
                         key={story.id}
                         initial={{ opacity: 0, y: 20 }}
@@ -28,7 +35,7 @@ const Relatos: React.FC = () => {
                         transition={{ delay: index * 0.1 }}
                         className="group"
                     >
-                        <Link to={story.id} className="block space-y-6">
+                        <Link to={path(`/obra-literaria/relatos/${story.id}`)} className="block space-y-6">
                             <div className="relative aspect-[3/4] overflow-hidden rounded-sm shadow-xl transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
                                 <img
                                     src={story.coverUrl}
@@ -40,7 +47,7 @@ const Relatos: React.FC = () => {
                                 {story.sections.length === 0 && (
                                     <div className="absolute inset-0 flex items-center justify-center bg-paper/20 backdrop-blur-[2px]">
                                         <div className="bg-paper/80 px-4 py-2 border border-gold/30 rounded-sm">
-                                            <span className="text-ink/80 font-serif italic">Próximamente</span>
+                                            <span className="text-ink/80 font-serif italic">{ui.comingSoon}</span>
                                         </div>
                                     </div>
                                 )}
@@ -55,7 +62,7 @@ const Relatos: React.FC = () => {
                                     {story.pdfUrl && (
                                         <span className="flex items-center gap-1">
                                             <BookOpen size={12} />
-                                            Disponible PDF
+                                            {ui.pdfAvailable}
                                         </span>
                                     )}
                                 </div>
@@ -69,12 +76,13 @@ const Relatos: React.FC = () => {
                                 </p>
 
                                 <div className="pt-2 flex items-center gap-2 text-gold text-sm font-sans tracking-wider uppercase transition-colors duration-300 group-hover:text-gold/80">
-                                    Leer relato <ArrowRight size={16} />
+                                    {ui.readStory} <ArrowRight size={16} />
                                 </div>
                             </div>
                         </Link>
                     </motion.div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

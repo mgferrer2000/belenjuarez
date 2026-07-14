@@ -3,10 +3,15 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { SHORT_STORIES } from '../../constants';
 import { ArrowLeft, Download, BookOpen, Clock, Calendar } from 'lucide-react';
+import { useI18n } from '../../i18n/I18nProvider';
+import { localizeStory, STORY_UI } from '../../i18n/storyMessages';
 
 const RelatoDetail: React.FC = () => {
+    const { locale, path } = useI18n();
+    const ui = STORY_UI[locale];
     const { id } = useParams<{ id: string }>();
-    const story = SHORT_STORIES.find(s => s.id === id);
+    const originalStory = SHORT_STORIES.find(s => s.id === id);
+    const story = originalStory ? localizeStory(originalStory, locale) : undefined;
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -23,15 +28,15 @@ const RelatoDetail: React.FC = () => {
             setReadingTime(minutes);
         }
         window.scrollTo(0, 0);
-    }, [story]);
+    }, [id, locale]);
 
     if (!story) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
-                    <h2 className="text-2xl font-serif text-ink italic mb-4">Relato no encontrado</h2>
-                    <Link to="/obra-literaria/relatos" className="text-gold hover:underline flex items-center gap-2">
-                        <ArrowLeft size={20} /> Volver a relatos
+                    <h2 className="text-2xl font-serif text-ink italic mb-4">{ui.notFound}</h2>
+                    <Link to={path('/obra-literaria/relatos')} className="text-gold hover:underline flex items-center gap-2">
+                        <ArrowLeft size={20} /> {ui.back}
                     </Link>
                 </div>
             </div>
@@ -69,10 +74,10 @@ const RelatoDetail: React.FC = () => {
                         className="space-y-6"
                     >
                         <Link
-                            to="/obra-literaria/relatos"
+                            to={path('/obra-literaria/relatos')}
                             className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors uppercase tracking-widest text-xs mb-8"
                         >
-                            <ArrowLeft size={16} /> Volver a relatos
+                            <ArrowLeft size={16} /> {ui.back}
                         </Link>
                         <h1 className="text-5xl md:text-7xl font-serif italic">{story.title}</h1>
                         {story.subtitle && (
@@ -83,7 +88,7 @@ const RelatoDetail: React.FC = () => {
                                 <Calendar size={16} /> {story.year}
                             </span>
                             <span className="flex items-center gap-2">
-                                <Clock size={16} /> {readingTime} min de lectura
+                                <Clock size={16} /> {ui.readingMinutes(readingTime)}
                             </span>
                             <span className="flex items-center gap-2">
                                 <BookOpen size={16} /> {story.publicationInfo}
@@ -100,7 +105,7 @@ const RelatoDetail: React.FC = () => {
                     <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-12 order-2 lg:order-1">
                         <div className="bg-ink/5 p-8 rounded-sm space-y-8 border border-ink/10">
                             <div className="space-y-4">
-                                <h4 className="text-sm font-sans tracking-widest uppercase text-gold">Sinopsis</h4>
+                                <h4 className="text-sm font-sans tracking-widest uppercase text-gold">{ui.synopsis}</h4>
                                 <p className="text-ink/80 font-serif leading-relaxed italic">
                                     "{story.synopsis}"
                                 </p>
@@ -114,10 +119,10 @@ const RelatoDetail: React.FC = () => {
                                         download
                                     >
                                         <Download size={18} />
-                                        Descargar Edición PDF
+                                        {ui.downloadPdf}
                                     </a>
                                     <p className="text-[10px] text-ink/40 text-center mt-2 uppercase tracking-tighter">
-                                        Ideal para lectura offline e impresión
+                                        {ui.downloadHint}
                                     </p>
                                 </div>
                             )}
@@ -126,7 +131,7 @@ const RelatoDetail: React.FC = () => {
                         <div className="hidden lg:block border-l-2 border-gold/20 pl-6 space-y-4">
                             <p className="text-xs text-ink/40 uppercase tracking-widest font-sans">Belén Juárez</p>
                             <p className="text-sm text-ink/60 font-serif italic">
-                                "La memoria no es lo que recordamos, sino lo que nos recuerda."
+                                “{ui.authorQuote}”
                             </p>
                         </div>
                     </aside>
@@ -158,7 +163,7 @@ const RelatoDetail: React.FC = () => {
                                         <div className="absolute -inset-4 bg-gold/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
                                         <img
                                             src={section.illustrationUrl}
-                                            alt={`Ilustración de la sección ${section.title || index + 1}`}
+                                            alt={ui.sectionIllustrationAlt(section.title || index + 1)}
                                             className="w-full h-auto rounded-sm shadow-2xl transition-transform duration-700 hover:scale-[1.01]"
                                         />
                                         <div className="flex justify-center mt-4">
@@ -246,14 +251,14 @@ const RelatoDetail: React.FC = () => {
                         <footer className="pt-20 border-t border-ink/10 text-center space-y-8">
                             <div className="flex justify-center items-center gap-4">
                                 <div className="w-12 h-px bg-gold/30"></div>
-                                <span className="text-gold font-serif italic tracking-widest uppercase text-sm">Fin del relato</span>
+                                <span className="text-gold font-serif italic tracking-widest uppercase text-sm">{ui.end}</span>
                                 <div className="w-12 h-px bg-gold/30"></div>
                             </div>
                             <Link
-                                to="/obra-literaria/relatos"
+                                to={path('/obra-literaria/relatos')}
                                 className="inline-flex items-center gap-2 py-4 px-8 border border-ink/20 hover:border-gold hover:text-gold transition-all duration-300 font-sans tracking-widest uppercase text-xs"
                             >
-                                <ArrowLeft size={16} /> Volver a la galería de relatos
+                                <ArrowLeft size={16} /> {ui.backToGallery}
                             </Link>
                         </footer>
                     </main>
