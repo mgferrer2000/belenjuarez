@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { SOCIALS } from '../constants';
 import { Instagram, Twitter, Mail, Send, Youtube, Music, CheckCircle, AlertCircle, Loader2, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useI18n } from '../i18n/I18nProvider';
+import { CONTACT_MESSAGES } from '../i18n/pageMessages';
 
 // Brand colors for social platforms
 const BRAND_COLORS: Record<string, { text: string; bg: string }> = {
@@ -20,6 +22,8 @@ const BRAND_COLORS: Record<string, { text: string; bg: string }> = {
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
 const Contact: React.FC = () => {
+  const { locale } = useI18n();
+  const content = CONTACT_MESSAGES[locale];
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -61,7 +65,7 @@ const Contact: React.FC = () => {
           name: name,
           email: email,
           message: message,
-          _subject: `Nuevo mensaje de ${name} — Web Belén Juárez`,
+          _subject: content.emailSubject(name),
         }),
       });
 
@@ -85,14 +89,14 @@ const Contact: React.FC = () => {
     <section id="contact" className="bg-stone-100 pt-24 pb-12 px-6 flex-grow flex flex-col">
       <div className="max-w-4xl mx-auto w-full bg-white shadow-xl p-8 md:p-12 -mt-12 relative z-10 flex-grow">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-serif text-ink mb-2">Contacto</h2>
-          <p className="text-ink/60 font-sans text-sm">Para lecturas, colaboraciones o prensa.</p>
+          <h2 className="text-3xl font-serif text-ink mb-2">{content.title}</h2>
+          <p className="text-ink/60 font-sans text-sm">{content.introduction}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Social Links */}
           <div className="flex flex-col justify-center space-y-6">
-            <h3 className="font-serif text-xl text-ink">Encuéntrame en</h3>
+            <h3 className="font-serif text-xl text-ink">{content.socialHeading}</h3>
             <div className="space-y-4">
               {SOCIALS.map((social) => {
                 const colors = getBrandColor(social.platform);
@@ -134,7 +138,7 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Nombre</label>
+              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">{content.nameLabel}</label>
               <input
                 type="text"
                 value={name}
@@ -145,7 +149,7 @@ const Contact: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Email</label>
+              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">{content.emailLabel}</label>
               <input
                 type="email"
                 value={email}
@@ -156,7 +160,7 @@ const Contact: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Mensaje</label>
+              <label className="block text-xs font-bold uppercase text-gray-500 mb-1">{content.messageLabel}</label>
               <textarea
                 rows={4}
                 value={message}
@@ -176,9 +180,9 @@ const Contact: React.FC = () => {
                 }`}
             >
               {status === 'sending' ? (
-                <>Enviando <Loader2 size={14} className="animate-spin" /></>
+                <>{content.sending} <Loader2 size={14} className="animate-spin" /></>
               ) : (
-                <>Enviar <Send size={14} /></>
+                <>{content.send} <Send size={14} /></>
               )}
             </button>
 
@@ -192,7 +196,7 @@ const Contact: React.FC = () => {
                   className="flex items-center gap-2 text-emerald-600 text-sm font-sans mt-2"
                 >
                   <CheckCircle size={16} />
-                  <span>¡Mensaje enviado correctamente! Te responderé lo antes posible.</span>
+                  <span>{content.success}</span>
                 </motion.div>
               )}
               {status === 'error' && (
@@ -203,7 +207,7 @@ const Contact: React.FC = () => {
                   className="flex items-center gap-2 text-red-600 text-sm font-sans mt-2"
                 >
                   <AlertCircle size={16} />
-                  <span>Error al enviar. Inténtalo de nuevo o escríbeme directamente a mi email.</span>
+                  <span>{content.error}</span>
                 </motion.div>
               )}
             </AnimatePresence>

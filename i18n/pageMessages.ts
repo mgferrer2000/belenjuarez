@@ -49,6 +49,20 @@ type BioMessages = {
     };
 };
 
+type ContactMessages = {
+    title: string;
+    introduction: string;
+    socialHeading: string;
+    nameLabel: string;
+    emailLabel: string;
+    messageLabel: string;
+    send: string;
+    sending: string;
+    success: string;
+    error: string;
+    emailSubject: (name: string) => string;
+};
+
 export const HOME_MESSAGES: Record<Locale, HomeMessages> = {
     es: {
         imageAlt: 'Textura de fondo con libros',
@@ -164,5 +178,34 @@ export const BIO_MESSAGES: Record<Locale, BioMessages> = {
             lastNight: 'La noche de Ayer. 2001',
             almunecar2026: 'Almuñécar, Grenade. 2026',
         },
+    },
+};
+
+export const CONTACT_MESSAGES: Record<Locale, ContactMessages> = {
+    es: {
+        title: 'Contacto',
+        introduction: 'Para lecturas, colaboraciones o prensa.',
+        socialHeading: 'Encuéntrame en',
+        nameLabel: 'Nombre',
+        emailLabel: 'Email',
+        messageLabel: 'Mensaje',
+        send: 'Enviar',
+        sending: 'Enviando',
+        success: '¡Mensaje enviado correctamente! Te responderé lo antes posible.',
+        error: 'Error al enviar. Inténtalo de nuevo o escríbeme directamente a mi email.',
+        emailSubject: (name) => `Nuevo mensaje de ${name} — Web Belén Juárez`,
+    },
+    fr: {
+        title: 'Contact',
+        introduction: 'Pour les lectures, collaborations ou demandes de presse.',
+        socialHeading: 'Retrouvez-moi sur',
+        nameLabel: 'Nom',
+        emailLabel: 'E-mail',
+        messageLabel: 'Message',
+        send: 'Envoyer',
+        sending: 'Envoi en cours',
+        success: 'Votre message a bien été envoyé. Je vous répondrai dans les meilleurs délais.',
+        error: 'Une erreur est survenue. Réessayez ou écrivez-moi directement par e-mail.',
+        emailSubject: (name) => `Nouveau message de ${name} — Site de Belén Juárez`,
     },
 };
