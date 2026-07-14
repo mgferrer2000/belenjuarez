@@ -1,15 +1,19 @@
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useI18n } from '../i18n/I18nProvider';
+import { HOME_MESSAGES } from '../i18n/pageMessages';
 
 const Hero: React.FC = () => {
+  const { locale } = useI18n();
+  const content = HOME_MESSAGES[locale];
+
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80"
-          alt="Background Texture"
+          alt={content.imageAlt}
           className="w-full h-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-paper/50 to-paper"></div>
@@ -22,7 +26,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.2 }}
         >
           <h2 className="text-lg md:text-xl font-sans tracking-[0.3em] text-deep-red uppercase mb-4">
-            Poesía • Música • Arte Visual
+            {content.disciplines}
           </h2>
         </motion.div>
 
@@ -32,7 +36,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.4 }}
           className="text-5xl md:text-8xl font-serif font-medium text-ink mb-8 leading-tight"
         >
-          La arquitectura <br /> del verso
+          {content.titleLineOne} <br /> {content.titleLineTwo}
         </motion.h1>
 
         <motion.p
@@ -41,9 +45,9 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.8 }}
           className="text-lg md:text-xl font-sans font-light text-ink/70 max-w-2xl mx-auto leading-relaxed"
         >
-          "Escribo para encontrar el nombre exacto de las cosas que no existen hasta que se nombran"
+          “{content.firstQuote}”
           <br /><br />
-          “Siempre habrá un verso libre y entregado que nazca de la garganta del poeta, para todo aquel que le sostenga la mirada”
+          “{content.secondQuote}”
         </motion.p>
       </div>
 
