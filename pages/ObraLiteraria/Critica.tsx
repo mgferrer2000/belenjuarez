@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { LITERARY_CRITICISMS } from '../../constants';
 import { useI18n } from '../../i18n/I18nProvider';
-import { LITERARY_CRITICISM_UI } from '../../i18n/literaryMessages';
+import { LITERARY_CRITICISM_UI, localizeLiteraryCriticism } from '../../i18n/literaryMessages';
 
 const Critica: React.FC = () => {
     const { locale, path } = useI18n();
@@ -18,7 +18,10 @@ const Critica: React.FC = () => {
             </div>
 
             <div className="space-y-12">
-                {LITERARY_CRITICISMS.map((criticism) => (
+                {LITERARY_CRITICISMS.map((originalCriticism) => {
+                    const criticism = localizeLiteraryCriticism(originalCriticism, locale);
+
+                    return (
                     <article key={criticism.id} className="flex flex-col md:flex-row gap-8 bg-white/50 p-6 rounded-lg hover:bg-white transition-colors duration-300">
                         {/* Image Column */}
                         <div className="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
@@ -71,7 +74,8 @@ const Critica: React.FC = () => {
                             </div>
                         </div>
                     </article>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

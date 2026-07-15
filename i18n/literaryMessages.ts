@@ -1,4 +1,5 @@
 import type { Locale } from './config';
+import type { LiteraryCriticism } from '../types';
 
 export const LITERARY_CRITICISM_UI: Record<Locale, {
     title: string;
@@ -69,3 +70,20 @@ export const ANDALUSI_UI: Record<Locale, {
         issues: { 'Numeros 14-15-16': 'Numéros 14-15-16', 'Numeros 17-19-20': 'Numéros 17-19-20', 'Numero 21': 'Numéro 21' },
     },
 };
+
+const FR_LITERARY_CRITICISMS: Record<string, Partial<LiteraryCriticism>> = {
+    alhucema: {
+        excerpt: `RAFAEL RODRÍGUEZ ALMODÓVAR Y EL VERSO DE LOS AÑOS. Compte rendu du livre : MEMORIA DE UN TIEMPO CUMPLIDO. Collection littéraire CAROAL. 2001
+
+Des vers qui retracent le parcours d'un temps qui s'est évanoui entre les mains de ce poète, laissant derrière lui une trace d'acceptation, de tristesse et d'une étonnante clairvoyance. L'auteur condense son temps dans ce recueil avec élégance et maîtrise. Le livre est préfacé par Mari Luz Escribano, elle aussi disparue, avec qui l'auteur entretint une relation littéraire étroite et harmonieuse dans la revue Extramuros, qui fut une référence des Lettres espagnoles de ces années-là. Il demeure, sans le moindre doute, l'essence de ces années baignées par l'éclat de poètes remarquables et d'une poésie plurielle. Nous trouvons ici des vers limpides et profonds d'un poète aujourd'hui disparu. Dès les premières pages se laisse percevoir la paisible tristesse d'un temps accompli.`,
+    },
+};
+
+export const localizeLiteraryCriticism = (
+    criticism: LiteraryCriticism,
+    locale: Locale,
+): LiteraryCriticism => (
+    locale === 'fr'
+        ? { ...criticism, ...FR_LITERARY_CRITICISMS[criticism.slug] }
+        : criticism
+);

@@ -3,13 +3,16 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { LITERARY_CRITICISMS } from '../../constants';
 import { ArrowLeft } from 'lucide-react';
 import { useI18n } from '../../i18n/I18nProvider';
-import { LITERARY_CRITICISM_UI } from '../../i18n/literaryMessages';
+import { LITERARY_CRITICISM_UI, localizeLiteraryCriticism } from '../../i18n/literaryMessages';
 
 const CriticaDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const { locale, path } = useI18n();
     const ui = LITERARY_CRITICISM_UI[locale];
-    const criticism = LITERARY_CRITICISMS.find((c) => c.slug === slug);
+    const originalCriticism = LITERARY_CRITICISMS.find((c) => c.slug === slug);
+    const criticism = originalCriticism
+        ? localizeLiteraryCriticism(originalCriticism, locale)
+        : undefined;
 
     if (!criticism) {
         return <Navigate to={path('/obra-literaria/critica')} replace />;
