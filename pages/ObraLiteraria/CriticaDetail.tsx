@@ -2,23 +2,27 @@ import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { LITERARY_CRITICISMS } from '../../constants';
 import { ArrowLeft } from 'lucide-react';
+import { useI18n } from '../../i18n/I18nProvider';
+import { LITERARY_CRITICISM_UI } from '../../i18n/literaryMessages';
 
 const CriticaDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
+    const { locale, path } = useI18n();
+    const ui = LITERARY_CRITICISM_UI[locale];
     const criticism = LITERARY_CRITICISMS.find((c) => c.slug === slug);
 
     if (!criticism) {
-        return <Navigate to="/obra-literaria/critica" replace />;
+        return <Navigate to={path('/obra-literaria/critica')} replace />;
     }
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             <Link
-                to="/obra-literaria/critica"
+                to={path('/obra-literaria/critica')}
                 className="inline-flex items-center text-deep-red text-sm font-sans uppercase tracking-widest hover:text-ink transition-colors mb-8 group"
             >
                 <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-                Volver
+                {ui.back}
             </Link>
 
             <div className="mb-12">
@@ -45,7 +49,7 @@ const CriticaDetail: React.FC = () => {
                                         />
                                     ) : (
                                         <div className="w-full h-full bg-paper-dark flex items-center justify-center text-ink/20">
-                                            Sin imagen
+                                            {ui.noImage}
                                         </div>
                                     )}
                                 </div>
@@ -80,7 +84,7 @@ const CriticaDetail: React.FC = () => {
                                                         <div key={i} className="float-right ml-6 mb-4 max-w-[150px] md:max-w-[200px] clear-left">
                                                             <img
                                                                 src={review.images[imgIndex]}
-                                                                alt={`Imagen ilustrativa ${imgIndex + 1}`}
+                                                                alt={ui.illustrativeImage(imgIndex + 1)}
                                                                 className="w-full h-auto object-contain rounded-sm shadow-sm"
                                                             />
                                                         </div>
@@ -91,7 +95,7 @@ const CriticaDetail: React.FC = () => {
                                                     <div key={i} className="my-8 flex justify-center">
                                                         <img
                                                             src={review.images[imgIndex]}
-                                                            alt={`Imagen ilustrativa ${imgIndex + 1}`}
+                                                            alt={ui.illustrativeImage(imgIndex + 1)}
                                                             className="max-w-full h-auto max-h-[500px] object-contain rounded-sm shadow-sm"
                                                         />
                                                     </div>
@@ -124,7 +128,7 @@ const CriticaDetail: React.FC = () => {
             ) : (
                 <div className="bg-white/50 p-8 rounded-lg text-center">
                     <p className="text-ink/60 italic whitespace-pre-line">
-                        {criticism.excerpt || "Contenido no disponible."}
+                        {criticism.excerpt || ui.unavailable}
                     </p>
                 </div>
             )}

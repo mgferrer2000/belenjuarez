@@ -1,5 +1,7 @@
 import React from 'react';
 import { BookOpen, Library, ScrollText } from 'lucide-react';
+import { useI18n } from '../../i18n/I18nProvider';
+import { ANDALUSI_UI } from '../../i18n/literaryMessages';
 
 type AndalusiBook = {
     title: string;
@@ -62,28 +64,28 @@ const ANDALUSI_ISSUES: AndalusiIssue[] = [
 ];
 
 const CriticaAndalusi: React.FC = () => {
+    const { locale } = useI18n();
+    const ui = ANDALUSI_UI[locale];
     return (
         <div className="max-w-5xl mx-auto pb-24">
             <header className="mb-16 border-b border-gold/10 pb-10">
                 <div className="flex items-center gap-3 text-deep-red font-sans text-xs uppercase tracking-[0.3em] font-bold mb-6">
                     <Library size={16} />
-                    <span>Archivo Critico</span>
+                    <span>{ui.archive}</span>
                 </div>
 
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-ink leading-tight mb-5">
-                    Critica libros legado andalusi
+                    {ui.title}
                 </h2>
 
                 <div className="w-24 h-[1px] bg-deep-red/60 mb-8"></div>
 
                 <div className="max-w-3xl space-y-5 text-ink/70 font-light leading-relaxed text-lg text-justify">
                     <p>
-                        Relacion de libros reseñados por Belen Juarez en la revista <em className="font-serif italic text-ink">El Legado andalusi</em>,
-                        subtitulada <em className="font-serif italic text-ink">Una nueva sociedad mediterranea</em>.
+                        {ui.introduction[0]}
                     </p>
                     <p>
-                        La seleccion recoge distintas entregas de la publicacion y deja ver un horizonte de lectura amplio: historia,
-                        memoria, mundo mediterraneo, al-Andalus, narrativa, poesia y ensayo cultural.
+                        {ui.introduction[1]}
                     </p>
                 </div>
             </header>
@@ -101,17 +103,17 @@ const CriticaAndalusi: React.FC = () => {
                                 <div className="lg:w-64 flex-shrink-0">
                                     <div className="lg:sticky lg:top-32">
                                         <p className="text-[10px] font-sans uppercase tracking-[0.3em] text-deep-red font-bold mb-3">
-                                            Revista
+                                            {ui.magazine}
                                         </p>
                                         <h3 className="text-2xl md:text-3xl font-serif text-ink italic leading-tight mb-2">
                                             El Legado andalusi
                                         </h3>
                                         <p className="text-sm font-sans uppercase tracking-[0.2em] text-ink/45 mb-6">
-                                            {issue.yearLabel}
+                                            {ui.years[issue.yearLabel] ?? issue.yearLabel}
                                         </p>
                                         <div className="inline-flex items-center gap-2 text-ink/60 font-sans text-xs uppercase tracking-widest border-b border-gold/20 pb-2">
                                             <ScrollText size={14} className="text-gold-accent" />
-                                            {issue.issueLabel}
+                                            {ui.issues[issue.issueLabel] ?? issue.issueLabel}
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +122,7 @@ const CriticaAndalusi: React.FC = () => {
                                     <div className="flex items-center gap-3 mb-8">
                                         <BookOpen size={18} className="text-deep-red" />
                                         <p className="text-sm font-sans uppercase tracking-[0.25em] text-ink/50">
-                                            Libros reseñados
+                                            {ui.reviewedBooks}
                                         </p>
                                     </div>
 
