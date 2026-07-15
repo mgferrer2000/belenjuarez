@@ -2191,7 +2191,7 @@ hasta el confín de todos los futuros… venideros.`
 export const SHORT_STORIES: ShortStory[] = [
   {
     id: 'al-otro-lado-del-mundo',
-    title: 'À L´AUTRE DU MONDE',
+    title: 'À L´AUTRE BOUT DU MONDE',
     subtitle: 'Relatos de inmigración',
     year: '2008',
     publicationInfo: 'El tam-Tam de las nubes. Pag 107-123.',

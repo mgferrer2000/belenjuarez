@@ -3,20 +3,12 @@ import { ILLUSTRATED_BOOKS } from '../../constants';
 import { IllustratedBook } from '../../types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2, ArrowLeft } from 'lucide-react';
-
-const NOCHES_AZULES_REVIEW = {
-    pretitle: 'Sobre el trazo de Belén Juárez',
-    title: 'Pintando poesía',
-    author: 'Juan Carlos Lazúen. Profesor de Arte y Pintor. 2001',
-    paragraphs: [
-        'Observando la obra de Belén Juárez, es fácilmente constatable la afirmación de que “la poesía puede ser pintada”.',
-        'Con una formación estrictamente autodidacta, esta infatigable y valiosa creyente de todo tipo de manifestaciones culturales y sobre todo en todo lo referido a literatura y poesía, materializa sentimientos, sensaciones y sueños con asombrosa facilidad y acierto. Son obras absolutas, originadas a partir de la lectura sosegada y atenta de los poemas que componen este libro, valiosos complementos a la poesía de autores consagrados y espléndidas obras de arte en sí mismas que relatan con peculiar y personalísimo lenguaje un mundo interior rico en vivencias en el que prepondera la necesidad de comunicar de forma sosegada y elegante su paraíso interior.',
-        'El rotundo grafismo, de influencias lejanas, casi orientales y un vaporoso y etéreo fondo de poliédricas sugerencias y sutil cromatismo dibujan rostros y personajes que una atenta mirada de quien los contempla, al tiempo que lee los poemas, acaba enriquecido.',
-        'Artistas como Belén Juárez, son merecedores de toda admiración y respeto.'
-    ]
-};
+import { useI18n } from '../../i18n/I18nProvider';
+import { ART_UI } from '../../i18n/artMessages';
 
 const Ilustracion: React.FC = () => {
+    const { locale } = useI18n();
+    const ui = ART_UI[locale];
     const [selectedBook, setSelectedBook] = useState<IllustratedBook | null>(null);
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
@@ -45,8 +37,8 @@ const Ilustracion: React.FC = () => {
                     className="text-ink/60 font-sans max-w-2xl mx-auto italic mb-8"
                 >
                     {selectedBook
-                        ? (selectedBook.description || `Ilustraciones para ${selectedBook.title}`)
-                        : 'Acompañando la palabra. El trazo que da vida a la voz escrita'
+                        ? (selectedBook.description || ui.illustrationsFor(selectedBook.title))
+                        : ui.illustrationsIntro
                     }
                 </motion.p>
 
@@ -57,16 +49,16 @@ const Ilustracion: React.FC = () => {
                         className="max-w-4xl mx-auto mb-10 border border-gold/10 bg-white/70 px-8 py-10 md:px-12 md:py-12 shadow-sm text-left"
                     >
                         <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold mb-4">
-                            {NOCHES_AZULES_REVIEW.pretitle}
+                            {ui.review.pretitle}
                         </p>
                         <h2 className="font-serif text-3xl md:text-4xl italic text-ink mb-3">
-                            {NOCHES_AZULES_REVIEW.title}
+                            {ui.review.title}
                         </h2>
                         <p className="text-ink/45 font-sans text-xs uppercase tracking-[0.22em] mb-8">
-                            {NOCHES_AZULES_REVIEW.author}
+                            {ui.review.author}
                         </p>
                         <div className="space-y-5 text-ink/75 font-light leading-relaxed text-base md:text-lg text-justify">
-                            {NOCHES_AZULES_REVIEW.paragraphs.map((paragraph, index) => (
+                            {ui.review.paragraphs.map((paragraph, index) => (
                                 <p key={index}>{paragraph}</p>
                             ))}
                         </div>
@@ -84,7 +76,7 @@ const Ilustracion: React.FC = () => {
                         className="flex items-center gap-2 text-ink/40 hover:text-ink transition-colors mx-auto font-sans text-xs uppercase tracking-[0.2em]"
                     >
                         <ArrowLeft size={16} />
-                        Volver a los libros
+                        {ui.backToBooks}
                     </motion.button>
                 )}
             </div>
@@ -114,7 +106,7 @@ const Ilustracion: React.FC = () => {
                                     <div className="absolute inset-0 bg-ink/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-8 text-center">
                                         <h3 className="text-white font-serif text-3xl italic mb-4">{book.title}</h3>
                                         <div className="h-[1px] w-12 bg-gold/50 mb-4"></div>
-                                        <p className="text-white/70 font-sans text-xs uppercase tracking-[0.2em]">Ver ilustraciones</p>
+                                        <p className="text-white/70 font-sans text-xs uppercase tracking-[0.2em]">{ui.viewIllustrations}</p>
                                     </div>
                                 </div>
                                 <div className="mt-6 text-center">
@@ -160,7 +152,7 @@ const Ilustracion: React.FC = () => {
                                             <h3 className="font-serif text-2xl text-white italic leading-tight">{piece.title}</h3>
                                             <div className="mt-4 flex items-center gap-2 text-white/50 text-xs">
                                                 <Maximize2 size={14} />
-                                                <span>Ver detalle</span>
+                                                <span>{ui.viewDetail}</span>
                                             </div>
                                         </div>
                                     </div>

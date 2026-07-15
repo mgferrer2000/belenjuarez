@@ -5,10 +5,14 @@ import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import ResponsiveImage from '../../components/ResponsiveImage';
 import { useIsMobile } from '../../src/hooks/useIsMobile';
 import { getMobileImagePath } from '../../src/utils/images';
+import { useI18n } from '../../i18n/I18nProvider';
+import { ART_UI } from '../../i18n/artMessages';
 
 const MOBILE_INITIAL_PIECES = 12;
 
 const Cuadros: React.FC = () => {
+    const { locale } = useI18n();
+    const ui = ART_UI[locale];
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [filter, setFilter] = useState<'todos' | 'cuadros' | 'bocetos'>('todos');
     const [visibleMobilePieces, setVisibleMobilePieces] = useState(MOBILE_INITIAL_PIECES);
@@ -45,15 +49,15 @@ const Cuadros: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-ink/60 font-sans max-w-2xl mx-auto italic mb-0 md:mb-8"
                 >
-                    Dibujos, pinturas y bocetos. La línea como extensión del verso
+                    {ui.paintingsIntro}
                 </motion.p>
 
                 {/* Filter Controls */}
                 <div className="hidden md:flex justify-center gap-8 border-b border-ink/5 pb-4 max-w-md mx-auto">
                     {[
-                        { id: 'todos', label: 'Todo el Arte' },
-                        { id: 'cuadros', label: 'Cuadros/Pinturas' },
-                        { id: 'bocetos', label: 'Bocetos a lápiz' }
+                        { id: 'todos', label: ui.filters.all },
+                        { id: 'cuadros', label: ui.filters.paintings },
+                        { id: 'bocetos', label: ui.filters.sketches }
                     ].map((item) => (
                         <button
                             key={item.id}
@@ -121,7 +125,7 @@ const Cuadros: React.FC = () => {
                                         <h3 className="font-serif text-2xl text-white italic leading-tight">{piece.title}</h3>
                                         <div className="mt-4 flex items-center gap-2 text-white/50 text-xs text-left">
                                             <Maximize2 size={14} />
-                                            <span>Ver detalle</span>
+                                            <span>{ui.viewDetail}</span>
                                         </div>
                                     </motion.div>
                                 </div>
@@ -138,7 +142,7 @@ const Cuadros: React.FC = () => {
                         onClick={() => setVisibleMobilePieces(count => count + MOBILE_INITIAL_PIECES)}
                         className="min-h-11 border border-ink/20 px-6 py-3 font-sans text-xs uppercase tracking-[0.22em] text-ink transition-colors hover:border-deep-red hover:text-deep-red"
                     >
-                        Ver más obras
+                        {ui.moreWorks}
                     </button>
                 </div>
             )}

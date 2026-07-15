@@ -1,0 +1,75 @@
+import type { Locale } from './config';
+
+type ArtUi = {
+    paintingsIntro: string;
+    filters: {
+        all: string;
+        paintings: string;
+        sketches: string;
+    };
+    viewDetail: string;
+    moreWorks: string;
+    illustrationsIntro: string;
+    illustrationsFor: (title: string) => string;
+    backToBooks: string;
+    viewIllustrations: string;
+    review: {
+        pretitle: string;
+        title: string;
+        author: string;
+        paragraphs: string[];
+    };
+};
+
+export const ART_UI: Record<Locale, ArtUi> = {
+    es: {
+        paintingsIntro: 'Dibujos, pinturas y bocetos. La línea como extensión del verso',
+        filters: {
+            all: 'Todo el Arte',
+            paintings: 'Cuadros/Pinturas',
+            sketches: 'Bocetos a lápiz',
+        },
+        viewDetail: 'Ver detalle',
+        moreWorks: 'Ver más obras',
+        illustrationsIntro: 'Acompañando la palabra. El trazo que da vida a la voz escrita',
+        illustrationsFor: (title) => `Ilustraciones para ${title}`,
+        backToBooks: 'Volver a los libros',
+        viewIllustrations: 'Ver ilustraciones',
+        review: {
+            pretitle: 'Sobre el trazo de Belén Juárez',
+            title: 'Pintando poesía',
+            author: 'Juan Carlos Lazúen. Profesor de Arte y Pintor. 2001',
+            paragraphs: [
+                'Observando la obra de Belén Juárez, es fácilmente constatable la afirmación de que “la poesía puede ser pintada”.',
+                'Con una formación estrictamente autodidacta, esta infatigable y valiosa creyente de todo tipo de manifestaciones culturales y sobre todo en todo lo referido a literatura y poesía, materializa sentimientos, sensaciones y sueños con asombrosa facilidad y acierto. Son obras absolutas, originadas a partir de la lectura sosegada y atenta de los poemas que componen este libro, valiosos complementos a la poesía de autores consagrados y espléndidas obras de arte en sí mismas que relatan con peculiar y personalísimo lenguaje un mundo interior rico en vivencias en el que prepondera la necesidad de comunicar de forma sosegada y elegante su paraíso interior.',
+                'El rotundo grafismo, de influencias lejanas, casi orientales y un vaporoso y etéreo fondo de poliédricas sugerencias y sutil cromatismo dibujan rostros y personajes que una atenta mirada de quien los contempla, al tiempo que lee los poemas, acaba enriquecido.',
+                'Artistas como Belén Juárez, son merecedores de toda admiración y respeto.',
+            ],
+        },
+    },
+    fr: {
+        paintingsIntro: 'Dessins, peintures et esquisses. La ligne comme prolongement du vers',
+        filters: {
+            all: 'Tout l’art',
+            paintings: 'Tableaux / peintures',
+            sketches: 'Esquisses au crayon',
+        },
+        viewDetail: 'Voir le détail',
+        moreWorks: 'Voir plus d’œuvres',
+        illustrationsIntro: 'Accompagner la parole. Le trait qui donne vie à la voix écrite',
+        illustrationsFor: (title) => `Illustrations pour ${title}`,
+        backToBooks: 'Retour aux livres',
+        viewIllustrations: 'Voir les illustrations',
+        review: {
+            pretitle: 'À propos du trait de Belén Juárez',
+            title: 'Peindre la poésie',
+            author: 'Juan Carlos Lazúen. Professeur d’art et peintre. 2001',
+            paragraphs: [
+                'En observant l’œuvre de Belén Juárez, on constate aisément que « la poésie peut être peinte ».',
+                'Avec une formation strictement autodidacte, cette infatigable et précieuse croyante en toutes les manifestations culturelles, et surtout en tout ce qui concerne la littérature et la poésie, matérialise sentiments, sensations et rêves avec une facilité et une justesse surprenantes. Ce sont des œuvres absolues, nées d’une lecture paisible et attentive des poèmes qui composent ce livre : de précieux compléments à la poésie d’auteurs consacrés et de splendides œuvres d’art en elles-mêmes. Par un langage singulier et très personnel, elles racontent un monde intérieur riche en expériences, où domine le besoin de communiquer avec sérénité et élégance son paradis intime.',
+                'Un graphisme vigoureux, aux influences lointaines, presque orientales, et un fond vaporeux et éthéré de suggestions polyédriques et de chromatisme subtil dessinent des visages et des personnages. Le regard attentif de celui qui les contemple tout en lisant les poèmes s’en trouve enrichi.',
+                'Des artistes comme Belén Juárez méritent toute notre admiration et notre respect.',
+            ],
+        },
+    },
+};
