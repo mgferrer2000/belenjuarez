@@ -1,4 +1,5 @@
 import type { Locale } from './config';
+import type { ArtArticle } from '../types';
 
 type ArtUi = {
     paintingsIntro: string;
@@ -73,3 +74,52 @@ export const ART_UI: Record<Locale, ArtUi> = {
         },
     },
 };
+
+export const ART_CRITIQUE_UI: Record<Locale, {
+    label: string;
+    by: string;
+    report: string;
+    enlarge: string;
+    illustrationAlt: (index: number) => string;
+    enlargementAlt: string;
+    quote: string;
+}> = {
+    es: {
+        label: 'Crítica de Arte Histórica',
+        by: 'Por',
+        report: 'El Reportaje',
+        enlarge: 'Haz clic para ampliar',
+        illustrationAlt: (index) => `Ilustración ${index}`,
+        enlargementAlt: 'Ampliación de crítica',
+        quote: 'El negro es el protagonista indiscutible de estas misteriosas obras, en las que, más que organicidad, lo que se palpa es el frío metálico y deshumanizado de los submundos imposibles a los que puede abocar la mente humana',
+    },
+    fr: {
+        label: 'Critique d’art historique',
+        by: 'Par',
+        report: 'Le reportage',
+        enlarge: 'Cliquez pour agrandir',
+        illustrationAlt: (index) => `Illustration ${index}`,
+        enlargementAlt: 'Agrandissement de la critique',
+        quote: 'Le noir est le protagoniste incontestable de ces œuvres mystérieuses où, plus que l’organicité, on perçoit le froid métallique et déshumanisé de sous-mondes impossibles auxquels peut conduire l’esprit humain.',
+    },
+};
+
+const FR_ART_CRITIQUE: Partial<ArtArticle> = {
+    date: 'Juin 1991',
+    extraInfo: 'Numéro 54, publié par l’Université de Grenade',
+    content: `Belén Juárez a exposé ses « Rostros » à la Faculté des sciences jusqu’au 10 mai. Autour de cette thématique obsessionnelle, la jeune artiste a développé une intéressante série de travaux qui pose clairement les bases de ce qui pourra, à l’avenir, devenir un déploiement plus vaste des idées ésotériques donnant forme et vigueur à ces souvenirs, prémonitions et sensations qui imprègnent entièrement son élan créateur.
+
+La grande inquiétude de Belén, qui cherche à exprimer le vaste flot de sentiment artistique qui l’anime, ces « fantômes » du passé et de l’avenir qu’elle tente d’exorciser par son geste, ces formes enchevêtrées, clair reflet de l’amalgame viscéral d’ambiguïtés qui constitue en somme l’existence, s’est manifestée dans cette récente exposition. L’ensemble de l’œuvre présentée, réuni en trois séries très définies, comprenait aussi une sculpture suggestive, germe évident de productions futures plus ambitieuses.
+
+Dans ces trois séries — pastel, encre et huile, toutes réalisées sur papier — apparaît la détermination claire de la jeune autrice à progresser dans le domaine de l’art, tant par ses ressources matérielles que par ses concepts de fond et de forme. Le geste et le graphisme constituent logiquement une base extraordinaire, au début de tout parcours artistique, pour l’établissement des fondements de connaissance indispensables dans ce domaine difficile. Parfois avec timidité, Belén Juárez s’est engagée sur le chemin que sa propre intuition créatrice lui indiquait.
+
+Le noir est le protagoniste incontestable de ces œuvres mystérieuses où, plus que l’organicité, on perçoit le froid métallique et déshumanisé de sous-mondes impossibles auxquels peut conduire l’esprit humain. Le noir, contrepoint parfaitement adapté des tons pastel, des empâtements d’huile francs et vifs, définit à lui seul cette dichotomie particulière entre le surréel et l’abstrait, le kandinskien et le postmoderne, qui caractérise fondamentalement l’œuvre exposée par Belén. Le noir, expression du tragique, sert d’équilibre et de repère parmi les masses chromatiques disloquées que la jeune peintre parvient à relier grâce à lui. Car la couleur et les formes qu’elle peut suggérer ou définir, par ses gradations, son interprétation, sa profondeur et ses contrastes, constituent clairement le défi le plus ardu que Belén Juárez doit maintenant relever. Dans ces premières conceptions, on apprécie la netteté et l’équilibre de son sens chromatique ; ils s’accroîtront et s’enrichiront nécessairement par la pratique, à mesure que son évident effort de recherche développera de nouvelles possibilités techniques plus exigeantes, donnant toujours plus d’élan à son incontestable imagination artistique, peuplée de visages, de couleur, de traits et de sentiment.`,
+    images: [
+        { url: '/images/Critica-artistica/revista_campus_grande.jpg' },
+        { url: '/images/Critica-artistica/rostro_de_perro.jpg', caption: 'Cráneo de perro, 1990. Marbre / huile.' },
+        { url: '/images/Critica-artistica/rostros2.jpg', caption: 'Quelques tableaux de la série « Rostro de los siete colores », 1987. Cire / encre sur papier.' },
+    ],
+};
+
+export const localizeArtCritique = (article: ArtArticle, locale: Locale): ArtArticle =>
+    locale === 'fr' ? { ...article, ...FR_ART_CRITIQUE } : article;
