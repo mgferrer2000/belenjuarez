@@ -77,6 +77,16 @@ const FR_LITERARY_CRITICISMS: Record<string, Partial<LiteraryCriticism>> = {
 
 Des vers qui retracent le parcours d'un temps qui s'est évanoui entre les mains de ce poète, laissant derrière lui une trace d'acceptation, de tristesse et d'une étonnante clairvoyance. L'auteur condense son temps dans ce recueil avec élégance et maîtrise. Le livre est préfacé par Mari Luz Escribano, elle aussi disparue, avec qui l'auteur entretint une relation littéraire étroite et harmonieuse dans la revue Extramuros, qui fut une référence des Lettres espagnoles de ces années-là. Il demeure, sans le moindre doute, l'essence de ces années baignées par l'éclat de poètes remarquables et d'une poésie plurielle. Nous trouvons ici des vers limpides et profonds d'un poète aujourd'hui disparu. Dès les premières pages se laisse percevoir la paisible tristesse d'un temps accompli.`,
     },
+    extramuros: {
+        excerpt: `LO MIRÉ A LOS OJOS
+
+Compte rendu du livre : DE(S)APARICIONES
+PEDRO J. DE LA PEÑA
+
+Ediciones Libertarias, Poesía. 1994
+
+Je voudrais préciser le début du compte rendu de ce livre : « Lors d'une chaude aube dans le désert effrayant de l'aéroport de Valence, entre rires et émotions, je conversais avec un vieil ami, tandis que moi, peu naïve et plus antarctique que jamais, je flairais parmi les anonymes, entamant mon voyage et mon aventure vers les terres orientales de dattes et de soupirs. » J'ai connu Pedro J. Peña il y a plus de vingt ans, à l'aéroport de Valence, en route vers l'Institut Cervantes de Beyrouth. Avec Ricardo Bellveser et Antonio Porpetta, nous avions été invités à porter nos vers sur les rivages les plus orientaux de la Méditerranée. Aujourd'hui, aucun des trois n'est encore parmi nous ; leur départ continue de me bouleverser et leurs vers de m'émouvoir. Le livre de Pedro J. de la Peña, écrit en 1994 et ici recensé, débordait de passion, d'ironie et de silences majestueux écrits en vers. « Le poète doit faire ressentir », a-t-il dit un jour. Il nous reste aujourd'hui son âme, son sourire et ce haut-de-forme foisonnant de vers.`,
+    },
 };
 
 export const localizeLiteraryCriticism = (
