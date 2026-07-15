@@ -1,4 +1,6 @@
 import React from 'react';
+import { useI18n } from '../i18n/I18nProvider';
+import { SCIENTIFIC_CV_UI, localizeScientificText } from '../i18n/cvMessages';
 
 const metrics = [
     { label: 'Horas de docencia', value: '+2.500' },
@@ -389,25 +391,29 @@ const projectItems = [
 ];
 
 const CvaCientifico: React.FC = () => {
+    const { locale } = useI18n();
+    const ui = SCIENTIFIC_CV_UI[locale];
+    const tr = (text: string) => localizeScientificText(text, locale);
+
     return (
         <div className="pt-28 pb-24 bg-paper">
             <div className="max-w-7xl mx-auto px-6 md:px-10">
                 <section className="border-b border-gold/10 pb-14 mb-14">
                     <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold mb-5">
-                        Actividad académica e investigadora
+                        {ui.eyebrow}
                     </p>
                     <div className="grid grid-cols-1 xl:grid-cols-[1.25fr_0.75fr] gap-10 xl:gap-16 items-start">
                         <div>
                             <h1 className="font-serif text-4xl md:text-6xl italic text-ink leading-tight mb-6">
-                                C.V.A. Científico
+                                {ui.title}
                             </h1>
                             <p className="text-ink/70 font-light text-lg md:text-xl leading-relaxed max-w-4xl text-justify">
-                                Síntesis del currículum científico de Belén Juárez, centrado en docencia universitaria, microbiología ambiental, producción científica, liderazgo investigador y dirección académica.
+                                {ui.introduction}
                             </p>
                         </div>
 
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
-                            <p className="text-ink/40 font-sans text-[10px] uppercase tracking-[0.3em] mb-4">Identificadores</p>
+                            <p className="text-ink/40 font-sans text-[10px] uppercase tracking-[0.3em] mb-4">{ui.identifiers}</p>
                             <div className="space-y-5">
                                 <div>
                                     <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.25em] mb-1">ResearchID</p>
@@ -426,7 +432,7 @@ const CvaCientifico: React.FC = () => {
                     {metrics.map((metric) => (
                         <div key={metric.label} className="bg-white/75 px-5 py-6 md:px-6 md:py-8 text-center">
                             <p className="font-serif text-3xl md:text-4xl italic text-ink mb-2">{metric.value}</p>
-                            <p className="text-ink/50 font-sans text-[10px] md:text-xs uppercase tracking-[0.24em] leading-relaxed">{metric.label}</p>
+                            <p className="text-ink/50 font-sans text-[10px] md:text-xs uppercase tracking-[0.24em] leading-relaxed">{tr(metric.label)}</p>
                         </div>
                     ))}
                 </section>
@@ -434,16 +440,16 @@ const CvaCientifico: React.FC = () => {
                 <div className="space-y-16">
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Formación y trayectoria</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.formation}</p>
                         </div>
                         <div className="space-y-5 text-ink/75 font-light text-lg leading-relaxed text-justify">
-                            {formationParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                            {formationParagraphs.map((paragraph, index) => <p key={index}>{tr(paragraph)}</p>)}
                         </div>
                     </section>
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Estancias en otros centros</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.stays}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -452,14 +458,14 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.duration}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.duration)}</p>
                                             <span className="text-ink/30">·</span>
                                             <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.dates}</p>
                                         </div>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.institution}</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{tr(item.institution)}</h3>
                                         <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.role}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.location)}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.role)}</span>
                                         </div>
                                     </article>
                                 ))}
@@ -469,34 +475,34 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Producción científica</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.production}</p>
                         </div>
                         <div className="space-y-5 text-ink/75 font-light text-lg leading-relaxed text-justify">
-                            {productionParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                            {productionParagraphs.map((paragraph, index) => <p key={index}>{tr(paragraph)}</p>)}
                         </div>
                     </section>
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Proyectos y liderazgo</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.leadership}</p>
                         </div>
                         <div className="space-y-5 text-ink/75 font-light text-lg leading-relaxed text-justify">
-                            {leadershipParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                            {leadershipParagraphs.map((paragraph, index) => <p key={index}>{tr(paragraph)}</p>)}
                         </div>
                     </section>
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Otros méritos</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.merits}</p>
                         </div>
                         <div className="space-y-5 text-ink/75 font-light text-lg leading-relaxed text-justify">
-                            {meritsParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                            {meritsParagraphs.map((paragraph, index) => <p key={index}>{tr(paragraph)}</p>)}
                         </div>
                     </section>
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Conferencias de divulgación</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.outreach}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -505,21 +511,21 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.date}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.date)}</p>
                                             {item.duration && (
                                                 <>
                                                     <span className="text-ink/30">·</span>
-                                                    <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.duration}</p>
+                                                    <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.duration)}</p>
                                                 </>
                                             )}
                                         </div>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{tr(item.title)}</h3>
                                         <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.context}</span>
-                                            {item.location && <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>}
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.context)}</span>
+                                            {item.location && <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.location)}</span>}
                                         </div>
                                         {item.audience && (
-                                            <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{item.audience}</p>
+                                            <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{tr(item.audience)}</p>
                                         )}
                                     </article>
                                 ))}
@@ -529,7 +535,7 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Reuniones internacionales</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.meetings}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -538,11 +544,11 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.year)}</p>
                                         </div>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{tr(item.title)}</h3>
                                         <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60">
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.location)}</span>
                                         </div>
                                     </article>
                                 ))}
@@ -552,7 +558,7 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Seminarios y actos científicos</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.seminars}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -561,12 +567,12 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.year)}</p>
                                         </div>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{tr(item.title)}</h3>
                                         <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.context}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.location)}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.context)}</span>
                                         </div>
                                     </article>
                                 ))}
@@ -576,7 +582,7 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Organización y coordinación</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.coordination}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -585,13 +591,13 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.date}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.date)}</p>
                                         </div>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{tr(item.title)}</h3>
                                         <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.institution}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.institution)}</span>
                                         </div>
-                                        <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{item.details}</p>
+                                        <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{tr(item.details)}</p>
                                     </article>
                                 ))}
                             </div>
@@ -600,7 +606,7 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Reconocimientos y evaluación</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.distinctions}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -609,17 +615,17 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.year)}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-deep-red/80 font-sans text-[10px] uppercase tracking-[0.2em]">{item.type}</p>
+                                            <p className="text-deep-red/80 font-sans text-[10px] uppercase tracking-[0.2em]">{tr(item.type)}</p>
                                         </div>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{tr(item.title)}</h3>
                                         {item.location && (
                                             <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
-                                                <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>
+                                                <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.location)}</span>
                                             </div>
                                         )}
-                                        <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{item.details}</p>
+                                        <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{tr(item.details)}</p>
                                     </article>
                                 ))}
                             </div>
@@ -628,8 +634,8 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Artículos científicos</p>
-                            <p className="mt-4 text-ink/45 font-sans text-xs uppercase tracking-[0.22em] leading-relaxed">Selección de publicaciones</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.articles}</p>
+                            <p className="mt-4 text-ink/45 font-sans text-xs uppercase tracking-[0.22em] leading-relaxed">{ui.publicationsSelection}</p>
                         </div>
                         <div className="space-y-4">
                             {selectedArticles.map((article, index) => (
@@ -652,7 +658,7 @@ const CvaCientifico: React.FC = () => {
                                         {article.doi && <span className="border border-gold/15 bg-paper/70 px-3 py-1">DOI: {article.doi}</span>}
                                         {article.impact && <span className="border border-gold/15 bg-paper/70 px-3 py-1">{article.impact}</span>}
                                         {article.category && <span className="border border-gold/15 bg-paper/70 px-3 py-1">{article.category}</span>}
-                                        {article.cites && <span className="border border-gold/15 bg-paper/70 px-3 py-1">{article.cites}</span>}
+                                        {article.cites && <span className="border border-gold/15 bg-paper/70 px-3 py-1">{tr(article.cites)}</span>}
                                     </div>
                                 </article>
                             ))}
@@ -661,8 +667,8 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Congresos</p>
-                            <p className="mt-4 text-ink/45 font-sans text-xs uppercase tracking-[0.22em] leading-relaxed">Aportaciones recientes</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.congresses}</p>
+                            <p className="mt-4 text-ink/45 font-sans text-xs uppercase tracking-[0.22em] leading-relaxed">{ui.recentContributions}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -671,21 +677,21 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.year)}</p>
                                             {item.format && (
                                                 <>
                                                     <span className="text-ink/30">·</span>
-                                                    <p className="text-deep-red/80 font-sans text-[10px] uppercase tracking-[0.2em]">{item.format}</p>
+                                                    <p className="text-deep-red/80 font-sans text-[10px] uppercase tracking-[0.2em]">{tr(item.format)}</p>
                                                 </>
                                             )}
                                         </div>
                                         <p className="text-ink/65 font-sans text-sm md:text-[15px] leading-relaxed mb-3 text-justify">{item.authors}</p>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{item.title}.</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-3">{tr(item.title)}.</h3>
                                         <p className="font-serif italic text-deep-red text-lg md:text-xl mb-4">{item.event}</p>
                                         <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60">
-                                            {item.context && <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.context}</span>}
-                                            {item.organizer && <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.organizer}</span>}
-                                            {item.location && <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.location}</span>}
+                                            {item.context && <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.context)}</span>}
+                                            {item.organizer && <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.organizer)}</span>}
+                                            {item.location && <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.location)}</span>}
                                         </div>
                                     </article>
                                 ))}
@@ -695,8 +701,8 @@ const CvaCientifico: React.FC = () => {
 
                     <section className="grid grid-cols-1 xl:grid-cols-[240px_1fr] gap-8 xl:gap-12">
                         <div>
-                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">Proyectos de investigación</p>
-                            <p className="mt-4 text-ink/45 font-sans text-xs uppercase tracking-[0.22em] leading-relaxed">Selección destacada</p>
+                            <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.35em] font-bold">{ui.projects}</p>
+                            <p className="mt-4 text-ink/45 font-sans text-xs uppercase tracking-[0.22em] leading-relaxed">{ui.featuredSelection}</p>
                         </div>
                         <div className="border border-gold/10 bg-white/70 shadow-sm px-6 py-6 md:px-8 md:py-8">
                             <div className="space-y-4">
@@ -705,7 +711,7 @@ const CvaCientifico: React.FC = () => {
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold">{String(index + 1).padStart(2, '0')}</p>
                                             <span className="text-ink/30">·</span>
-                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{item.year}</p>
+                                            <p className="text-ink/45 font-sans text-[10px] uppercase tracking-[0.25em]">{tr(item.year)}</p>
                                             <span className="text-ink/30">·</span>
                                             <p className="text-deep-red/80 font-sans text-[10px] uppercase tracking-[0.2em]">{item.code}</p>
                                             {item.shortName && (
@@ -715,15 +721,15 @@ const CvaCientifico: React.FC = () => {
                                                 </>
                                             )}
                                         </div>
-                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-4">{item.title}.</h3>
+                                        <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-4">{tr(item.title)}.</h3>
                                         <div className="flex flex-wrap gap-2 text-[11px] font-sans leading-relaxed text-ink/60 mb-4">
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.funding}</span>
-                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">IP: {item.principalInvestigators}</span>
-                                            {item.duration && <span className="border border-gold/15 bg-white/70 px-3 py-1">Duración: {item.duration}</span>}
-                                            {item.role && <span className="border border-gold/15 bg-white/70 px-3 py-1">{item.role}</span>}
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.funding)}</span>
+                                            <span className="border border-gold/15 bg-white/70 px-3 py-1">{ui.principalInvestigator}: {item.principalInvestigators}</span>
+                                            {item.duration && <span className="border border-gold/15 bg-white/70 px-3 py-1">{ui.duration}: {tr(item.duration)}</span>}
+                                            {item.role && <span className="border border-gold/15 bg-white/70 px-3 py-1">{tr(item.role)}</span>}
                                         </div>
                                         {item.contribution && (
-                                            <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{item.contribution}</p>
+                                            <p className="text-ink/70 font-light text-sm md:text-[15px] leading-relaxed text-justify">{tr(item.contribution)}</p>
                                         )}
                                     </article>
                                 ))}

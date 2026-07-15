@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useI18n } from '../i18n/I18nProvider';
+import { LITERARY_CV_UI, localizeLiteraryCv } from '../i18n/cvMessages';
 
 const literaryCvSections = [
   {
@@ -144,18 +146,22 @@ const recentLiteraryLinks = [
 ];
 
 const CurriculumLiterarioArtistico: React.FC = () => {
+  const { locale } = useI18n();
+  const ui = LITERARY_CV_UI[locale];
+  const content = localizeLiteraryCv(locale, literaryCvSections, recentActivity, recentLiteraryLinks);
+
   return (
     <section className="bg-paper pt-32 pb-20 text-ink md:pb-24 lg:pb-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-16 md:mb-20 text-center">
           <span className="text-gold font-sans text-[10px] sm:text-xs uppercase tracking-[0.35em] sm:tracking-[0.5em] mb-4 block">
-            Sobre Belén
+            {ui.eyebrow}
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif leading-tight mb-6">
-            Currículum literario y artístico
+            {ui.title}
           </h1>
           <p className="max-w-3xl mx-auto font-sans font-light text-ink/70 text-base sm:text-lg leading-relaxed text-justify">
-            Relación sintética de exposiciones, libros, colaboraciones editoriales, traducciones, referencias críticas y actividades públicas vinculadas a la trayectoria literaria y artística de Belén Juárez.
+            {ui.introduction}
           </p>
         </div>
 
@@ -167,10 +173,10 @@ const CurriculumLiterarioArtistico: React.FC = () => {
             className="border border-gold/10 bg-white/70 px-7 py-8 md:px-8 md:py-10 shadow-sm"
           >
             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold mb-5">
-              Actividades recientes 2024-2026
+              {ui.recentActivities}
             </p>
             <div className="space-y-4">
-              {recentActivity.map((item) => (
+              {content.activity.map((item) => (
                 <div key={item.title} className="border-l border-gold/20 pl-4 md:pl-5">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-4">
                     <span className="font-sans text-[10px] uppercase tracking-[0.28em] text-deep-red font-bold">
@@ -190,7 +196,7 @@ const CurriculumLiterarioArtistico: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {literaryCvSections.map((section, index) => (
+          {content.sections.map((section, index) => (
             <motion.div
               key={section.title}
               initial={{ opacity: 0, y: 24 }}
@@ -221,10 +227,10 @@ const CurriculumLiterarioArtistico: React.FC = () => {
             className="max-w-2xl"
           >
             <p className="text-deep-red font-sans text-[10px] uppercase tracking-[0.3em] font-bold mb-5">
-              Enlaces y plataformas
+              {ui.links}
             </p>
             <ul className="space-y-4">
-              {recentLiteraryLinks.map((item) => (
+              {content.links.map((item) => (
                 <li key={item.url} className="border-b border-gold/10 pb-4 last:border-b-0">
                   <a
                     href={item.url}
