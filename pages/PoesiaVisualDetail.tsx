@@ -3,10 +3,15 @@ import { useParams, Link } from 'react-router-dom';
 import { VISUAL_POETRY } from '../constants';
 import { ArrowLeft, Image as ImageIcon, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useI18n } from '../i18n/I18nProvider';
+import { localizeVisualPoetry, VISUAL_POETRY_UI } from '../i18n/visualPoetryMessages';
 
 const PoesiaVisualDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
-    const collection = VISUAL_POETRY.find(p => p.id === id);
+    const { locale, path } = useI18n();
+    const originalCollection = VISUAL_POETRY.find(p => p.id === id);
+    const collection = originalCollection ? localizeVisualPoetry(originalCollection, locale) : undefined;
+    const ui = VISUAL_POETRY_UI[locale];
     const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null);
 
     // Scroll to top on mount
@@ -18,9 +23,9 @@ const PoesiaVisualDetail: React.FC = () => {
         return (
             <div className="pt-32 min-h-screen bg-paper flex items-center justify-center">
                 <div className="text-center space-y-4">
-                    <h2 className="text-2xl font-serif text-ink italic">Colección no encontrada</h2>
-                    <Link to="/poesia-visual" className="text-deep-red hover:text-gold-accent transition-colors flex items-center justify-center gap-2">
-                        <ArrowLeft size={16} /> Volver a Poesía Visual
+                    <h2 className="text-2xl font-serif text-ink italic">{ui.notFound}</h2>
+                    <Link to={path('/poesia-visual')} className="text-deep-red hover:text-gold-accent transition-colors flex items-center justify-center gap-2">
+                        <ArrowLeft size={16} /> {ui.back}
                     </Link>
                 </div>
             </div>
@@ -33,8 +38,8 @@ const PoesiaVisualDetail: React.FC = () => {
 
                 {/* Header Nav */}
                 <div className="mb-12">
-                    <Link to="/poesia-visual" className="inline-flex items-center text-ink/60 hover:text-deep-red transition-colors mb-8 group tracking-widest text-sm uppercase">
-                        <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" size={16} /> Volver
+                    <Link to={path('/poesia-visual')} className="inline-flex items-center text-ink/60 hover:text-deep-red transition-colors mb-8 group tracking-widest text-sm uppercase">
+                        <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" size={16} /> {ui.back}
                     </Link>
 
                     <motion.div
@@ -64,11 +69,11 @@ const PoesiaVisualDetail: React.FC = () => {
                             <div
                                 key={imgIdx}
                                 className="group cursor-pointer aspect-[3/4] relative overflow-hidden rounded-sm bg-gray-50 flex items-center justify-center p-4 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
-                                onClick={() => setSelectedImage({ url: img, title: `${collection.title} - Obra ${imgIdx + 1}` })}
+                                onClick={() => setSelectedImage({ url: img, title: `${collection.title} - ${ui.artwork(imgIdx + 1)}` })}
                             >
                                 <img
                                     src={img}
-                                    alt={`${collection.title} - Obra ${imgIdx + 1}`}
+                                    alt={`${collection.title} - ${ui.artwork(imgIdx + 1)}`}
                                     className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out"
                                 />
                                 <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/5 transition-colors duration-300 flex items-center justify-center">
