@@ -4,7 +4,7 @@ import { IllustratedBook } from '../../types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2, ArrowLeft } from 'lucide-react';
 import { useI18n } from '../../i18n/I18nProvider';
-import { ART_UI } from '../../i18n/artMessages';
+import { ART_UI, localizeIllustratedBook } from '../../i18n/artMessages';
 
 const Ilustracion: React.FC = () => {
     const { locale } = useI18n();
@@ -26,7 +26,8 @@ const Ilustracion: React.FC = () => {
         }
     };
 
-    const selectedPiece = (selectedBook && selectedIndex !== null) ? selectedBook.illustrations[selectedIndex] : null;
+    const localizedSelectedBook = selectedBook ? localizeIllustratedBook(selectedBook, locale) : null;
+    const selectedPiece = (localizedSelectedBook && selectedIndex !== null) ? localizedSelectedBook.illustrations[selectedIndex] : null;
 
     return (
         <div className="pb-20">
@@ -36,13 +37,13 @@ const Ilustracion: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-ink/60 font-sans max-w-2xl mx-auto italic mb-8"
                 >
-                    {selectedBook
-                        ? (selectedBook.description || ui.illustrationsFor(selectedBook.title))
+                    {localizedSelectedBook
+                        ? (localizedSelectedBook.description || ui.illustrationsFor(localizedSelectedBook.title))
                         : ui.illustrationsIntro
                     }
                 </motion.p>
 
-                {selectedBook?.id === 'noches-azules' && (
+                {localizedSelectedBook?.id === 'noches-azules' && (
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -65,7 +66,7 @@ const Ilustracion: React.FC = () => {
                     </motion.div>
                 )}
 
-                {selectedBook && (
+                {localizedSelectedBook && (
                     <motion.button
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -123,7 +124,7 @@ const Ilustracion: React.FC = () => {
                         animate={{ opacity: 1 }}
                         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                     >
-                        {selectedBook.illustrations.map((piece, index) => (
+                        {localizedSelectedBook?.illustrations.map((piece, index) => (
                             <motion.div
                                 key={piece.id}
                                 initial={{ opacity: 0, scale: 0.95 }}

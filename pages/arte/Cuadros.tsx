@@ -6,7 +6,7 @@ import ResponsiveImage from '../../components/ResponsiveImage';
 import { useIsMobile } from '../../src/hooks/useIsMobile';
 import { getMobileImagePath } from '../../src/utils/images';
 import { useI18n } from '../../i18n/I18nProvider';
-import { ART_UI } from '../../i18n/artMessages';
+import { ART_UI, localizeArtPiece } from '../../i18n/artMessages';
 
 const MOBILE_INITIAL_PIECES = 12;
 
@@ -20,7 +20,7 @@ const Cuadros: React.FC = () => {
 
     const filteredPieces = ART_PIECES.filter(piece =>
         filter === 'todos' || piece.category === filter
-    );
+    ).map((piece) => localizeArtPiece(piece, locale));
     const displayedPieces = isMobile
         ? filteredPieces.slice(0, visibleMobilePieces)
         : filteredPieces;

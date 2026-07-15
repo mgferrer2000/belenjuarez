@@ -1,5 +1,5 @@
 import type { Locale } from './config';
-import type { ArtArticle } from '../types';
+import type { ArtArticle, ArtPiece, IllustratedBook } from '../types';
 
 type ArtUi = {
     paintingsIntro: string;
@@ -123,3 +123,84 @@ Le noir est le protagoniste incontestable de ces œuvres mystérieuses où, plus
 
 export const localizeArtCritique = (article: ArtArticle, locale: Locale): ArtArticle =>
     locale === 'fr' ? { ...article, ...FR_ART_CRITIQUE } : article;
+
+const FR_MEDIA: Record<string, string> = {
+    'TINTA': 'ENCRE',
+    'ACUARELA': 'AQUARELLE',
+    'LÁPIZ': 'CRAYON',
+    'ROTULADOR NEGRO': 'MARQUEUR NOIR',
+    'ROTULADOR NEGRO Y CERA': 'MARQUEUR NOIR ET CIRE',
+    'SANGUINA, CARBONCILLO': 'SANGUINE, FUSAIN',
+    'TINTA CHINA, PINCEL CHINO': 'ENCRE DE CHINE, PINCEAU CHINOIS',
+    'TINTA CHINA, ACUARELA': 'ENCRE DE CHINE, AQUARELLE',
+    'TINTA CHINA ROJA Y NEGRA': 'ENCRE DE CHINE ROUGE ET NOIRE',
+    'TINTA CHINA Y ACUARELA': 'ENCRE DE CHINE ET AQUARELLE',
+    'DIBUJO ENTINTADO, TINTA CHINA': 'DESSIN ENCRÉ, ENCRE DE CHINE',
+    'MIXTA OLEO SOBRE PAPEL, TINTA CHINA': 'TECHNIQUE MIXTE, HUILE SUR PAPIER, ENCRE DE CHINE',
+    'CARBONCILLO, PASTEL': 'FUSAIN, PASTEL',
+    'Oleo sobre lienzo': 'Huile sur toile',
+    'Tinta china pincel chino. Exposición Internacional de Torres Vedras (Portugal) 1998 ': 'Encre de Chine, pinceau chinois. Exposition internationale de Torres Vedras (Portugal), 1998.',
+    'TINTA CHINA, PINCEL CHINO. Exposición Internacional de Torres Vedras (Portugal) 1998 ': 'ENCRE DE CHINE, PINCEAU CHINOIS. Exposition internationale de Torres Vedras (Portugal), 1998.',
+};
+
+const FR_PIECE_DETAILS: Record<string, Pick<ArtPiece, 'mediumDetail' | 'description'>> = {
+    '7': {
+        mediumDetail: 'Dialogue silencieux avec Pedro Garciarias : P. G. « Mientras la tarde de abril se elevaba en rosa y eran las 7:45, la mano en flor y la mirada quieta firmaron este papel en Granada y Abril ». B. J. « Y siempre desde el trazo existe el verso »',
+    },
+    '30': {
+        mediumDetail: 'Série « Rostro de los siete colores ». Exposition « Rostros », 1991.',
+        description: 'Verde. Rostro de los siete colores. Cette œuvre appartient à la série « Rostro de los siete colores » et a fait partie de l’exposition « Rostros » de 1991.',
+    },
+    '31': {
+        mediumDetail: 'Série « Rostro de los siete colores ». Exposition « Rostros », 1991.',
+        description: 'Azul. Rostro de los siete colores. Cette œuvre appartient à la série « Rostro de los siete colores » et a fait partie de l’exposition « Rostros » de 1991.',
+    },
+    '32': {
+        mediumDetail: 'Série « Rostro de los siete colores ». Exposition « Rostros », 1991.',
+        description: 'Violeta. Rostro de los siete colores. Cette œuvre appartient à la série « Rostro de los siete colores » et a fait partie de l’exposition « Rostros » de 1991.',
+    },
+    '33': {
+        mediumDetail: 'Série « Rostro de los siete colores ». Exposition « Rostros », 1991.',
+        description: 'Rosa. Rostro de los siete colores. Cette œuvre appartient à la série « Rostro de los siete colores » et a fait partie de l’exposition « Rostros » de 1991.',
+    },
+    '34': {
+        mediumDetail: 'Série « Rostro de los siete colores ». Exposition « Rostros », 1991.',
+        description: 'Rojo. Rostro de los siete colores. Cette œuvre appartient à la série « Rostro de los siete colores » et a fait partie de l’exposition « Rostros » de 1991.',
+    },
+    '35': {
+        mediumDetail: 'Série « Rostro de los siete colores ». Exposition « Rostros », 1991.',
+        description: 'Naranja. Rostro de los siete colores. Cette œuvre appartient à la série « Rostro de los siete colores » et a fait partie de l’exposition « Rostros » de 1991.',
+    },
+    '36': {
+        mediumDetail: 'Série « Rostro de los siete colores ». Exposition « Rostros », 1991.',
+        description: 'Amarillo. Rostro de los siete colores. Cette œuvre appartient à la série « Rostro de los siete colores » et a fait partie de l’exposition « Rostros » de 1991.',
+    },
+    '42': {
+        mediumDetail: 'Exposition internationale de Torres Vedras (Portugal), 1998.',
+    },
+};
+
+export const localizeArtPiece = (piece: ArtPiece, locale: Locale): ArtPiece => {
+    if (locale !== 'fr') return piece;
+
+    return {
+        ...piece,
+        medium: FR_MEDIA[piece.medium] ?? piece.medium,
+        ...FR_PIECE_DETAILS[piece.id],
+    };
+};
+
+export const localizeIllustratedBook = (book: IllustratedBook, locale: Locale): IllustratedBook => {
+    if (locale !== 'fr') return book;
+
+    const descriptions: Record<string, string> = {
+        'noches-azules': 'Illustrations intérieures pour le recueil Noches Azules del Alma.',
+        'plaquette-ficciones': 'Collection d’illustrations pour Plaquette Ficciones 4.',
+    };
+
+    return {
+        ...book,
+        description: descriptions[book.id] ?? book.description,
+        illustrations: book.illustrations.map((piece) => localizeArtPiece(piece, locale)),
+    };
+};
