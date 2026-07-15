@@ -125,6 +125,11 @@ const FR_INTERVIEW_CONTENT: Record<string, Record<number, string>> = {
         70: 'A. C. : C’est le problème des jurys. Pour les prix, je dis la même chose que pour les anthologies : ce n’est ni la personne retenue ni le lauréat qu’il faut interroger, mais les anthologistes et les jurys, qui doivent répondre de leurs actes.',
         71: 'F. : Mais Antonio Carvajal n’en a pas besoin...',
         72: 'A. C. : (Rires.) À vrai dire, cinq millions de pesetas ne me feraient pas de mal !...',
+        73: 'F. : Je ne faisais pas précisément référence à la question économique... Antonio Carvajal n’a plus besoin de ce prix.',
+        74: 'A. C. : Les marques de reconnaissance d’autrui sont toujours bienvenues. On a beau prétendre se suffire à soi-même, si la récompense arrive, qu’elle soit bénie ! Ce que je ne peux pas faire, c’est m’abaisser à la mendier. S’ils ne me la donnent pas, ils auront leurs raisons ; qu’ils ne viennent pas me les demander ! (Rires.) Je ne souffre pas de ne pas la recevoir, et je ne vais pas non plus me réjouir excessivement si on me l’accorde.',
+        75: 'F. : C’est précisément ce que je voulais dire...',
+        76: 'A. C. : Je ne me souviens même pas de celui qui a reçu le prix il y a cinq, six ou sept ans. Les prix sont absolument éphémères. En revanche, si vous m’interrogez sur le Premio de las Letras Españolas, je m’en souviens, parce que le ministère de la Culture réalise de merveilleuses publications. Lorsqu’on les feuillette ensuite, on comprend qu’il s’agit d’un prix véritablement consistant, non seulement par sa dotation financière, mais aussi par la publication d’une série d’œuvres qui justifie une récompense de cette catégorie.',
+        78: 'Antonio Carvajal, au nom de tous les lecteurs, nous souhaitons vous remercier ici de votre collaboration et de ces moments partagés de réflexion et de dialogue. Comme l’a dit Rubén Darío :',
     },
 };
 
