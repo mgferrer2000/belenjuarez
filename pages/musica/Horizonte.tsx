@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { ALBUM_TRACKS } from '../../constants';
 import { Music as MusicIcon, Disc, ChevronRight, X, ListMusic, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useI18n } from '../../i18n/I18nProvider';
+import { MUSIC_HORIZON_MESSAGES } from '../../i18n/musicMessages';
 
 const Horizonte: React.FC = () => {
+    const { locale } = useI18n();
+    const content = MUSIC_HORIZON_MESSAGES[locale];
     const youtubePlaylistId = 'OLAK5uy_nDUfLuFMPYEaeLx1Lyqcj_pBlOxhEE_pE';
     const [currentVideoId, setCurrentVideoId] = useState<string>(ALBUM_TRACKS[0].youtubeId || '');
     const [activeTrackId, setActiveTrackId] = useState<string | null>(ALBUM_TRACKS[0].id);
@@ -23,12 +27,12 @@ const Horizonte: React.FC = () => {
                     <div className="mb-10">
                         <div className="flex items-center gap-3 mb-4">
                             <ListMusic className="text-[#d4af37]" size={28} />
-                            <h2 className="text-4xl md:text-5xl font-serif text-white italic">Horizonte de Sucesos</h2>
+                            <h2 className="text-4xl md:text-5xl font-serif text-white italic">{content.title}</h2>
                         </div>
                         <p className="text-gray-400 font-light max-w-2xl leading-relaxed">
-                            El nuevo álbum de Belén Juárez (2025). Una travesía sonora de 21 piezas que exploran los límites entre la realidad y el subconsciente.
+                            {content.introduction}
                             <br />
-                            <span className="text-[#d4af37]/80 text-sm mt-2 block font-medium">Pulsa en un tema para seleccionarlo en el reproductor.</span>
+                            <span className="text-[#d4af37]/80 text-sm mt-2 block font-medium">{content.selectionPrompt}</span>
                         </p>
                     </div>
 
@@ -121,21 +125,14 @@ const Horizonte: React.FC = () => {
                         <div className="-mx-10 w-[calc(100%+5rem)] border-y border-white/10 bg-white/5 p-5 md:mx-0 md:w-auto md:rounded-sm md:border md:p-8">
                             <div className="flex items-center gap-3 mb-6">
                                 <Disc className="text-[#d4af37] animate-spin-slow" size={24} />
-                                <h5 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">Nota de la Autora</h5>
+                                <h5 className="text-[#d4af37] font-sans text-[11px] uppercase tracking-[0.4em] font-bold">{content.authorNote}</h5>
                             </div>
                             <div className="space-y-4 text-white/80 font-serif text-base leading-relaxed">
-                                <p>
-                                    Este álbum representa la culminación de un proceso de investigación sonora donde el verso se proyecta desde la palabra para convertirse en acordes de un atlas de emociones. Las letras proceden de poemas del libro Horizonte de Sucesos (Huerga & Fierro, 2026).
-                                </p>
-                                <p>
-                                    El libro se compone de diez capítulos que siguen la secuencia de Fibonacci y con temas que giran alrededor de una única idea: el Amor en nuestro planeta, y más allá. Versos que se convierten en secuencias, música trenzada con la Poesía. Las voces de este álbum no son de nadie, no se identifican con ninguna persona, pertenecen a la Poesía como ecos de versos que cabalgan en la mente del poeta.
-                                </p>
-                                <p>
-                                    Las canciones se caracterizan por tener un número total de compases de 2105 (1 hora, 10 minutos), canciones que van desde 68 a 130 compases. El arco de este álbum se compone de géneros musicales variados, blues, baladas, a capella, con variedad de ritmos y tempos, y diferentes matices dentro de cada género.
-                                </p>
-                                <p className="italic text-white/60">
-                                    En este álbum, el verso abandona el libro para elevarse a la condición de horizonte infinito donde cada estrofa respira al son de la música y la voz.
-                                </p>
+                                {content.authorParagraphs.map((paragraph, index) => (
+                                    <p key={paragraph} className={index === content.authorParagraphs.length - 1 ? 'italic text-white/60' : undefined}>
+                                        {paragraph}
+                                    </p>
+                                ))}
                             </div>
                             <div className="mt-8 pt-6 border-t border-white/10">
                                 <p className="text-white/20 text-[10px] uppercase tracking-widest text-right italic font-sans">— Belén Juárez</p>
@@ -157,26 +154,16 @@ const Horizonte: React.FC = () => {
                 </div>
                 
                 <div className="flex flex-col gap-1 mb-8">
-                    <h5 className="text-gold font-sans text-[12px] uppercase tracking-[0.25em] md:tracking-[0.5em] font-bold">Reseña del Álbum</h5>
-                    <p className="text-white/40 font-sans text-[11px] uppercase tracking-wider">Pedro Luis Ibáñez Lérida · 10 de octubre, 2025</p>
+                    <h5 className="text-gold font-sans text-[12px] uppercase tracking-[0.25em] md:tracking-[0.5em] font-bold">{content.reviewTitle}</h5>
+                    <p className="text-white/40 font-sans text-[11px] uppercase tracking-wider">{content.reviewMeta}</p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-8 text-left font-serif text-base italic leading-relaxed text-white/70 md:grid-cols-2 md:gap-16 md:text-lg">
                     <div className="space-y-6">
-                        <p>
-                            "A veces, solo a veces, el roce de lo evanescente toma cuerpo y nos abraza hasta desasirnos de la penuria de lo banal. Ese decir musitado que dibuja en la conciencia la plenitud de lo verdadero; el germen de la levedad que poderoso nos desata de libérrima humanidad. Más aún cuando es motivo de venturoso regreso, de desandar los pasos después de más de veinte años de silencio lírico."
-                        </p>
-                        <p>
-                            "Y es que la poesía, la verdadera poesía, hace cantar el silencio. Así la concelebra felicísima Belen Juárez, con un universo propio que entorna las puertas y nos convoca a disfrutar del edén que sostiene su palabra celeste. Viene a alcanzararnos para hacernos afortunados con su decir chiquito de pluma de jilguero que aletea en el alma. ¡Ah, que generoso su corazón sembrador de belleza…!"
-                        </p>
+                        {content.reviewParagraphs.slice(0, 2).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                     </div>
                     <div className="space-y-6">
-                        <p>
-                            "«Horizonte de sucesos», palabra poética que se canta, irrumpe con la verticalidad de los «gitanos del mar», que en estado de apnea se adentran en la profundidad insondable del océano. Así el ser de la poeta granadina, con la sencilla esbeltez del nadador de Paestum, reafirmando el latido, su latido con eco telúrico y célico, a la par."
-                        </p>
-                        <p>
-                            "Os invito a dejaros leer por la claridad y transparencia de esta vivencia musical, que en próximas fechas tendrá su extensión editorial y visual. Belen Juárez nos propone e invita a acercarnos a la poesía con la mano extendida para recorrer en su compañía el laberinto de las emociones con la tea de la palabra encendida en el pentagrama."
-                        </p>
+                        {content.reviewParagraphs.slice(2).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                     </div>
                 </div>
 
@@ -187,7 +174,7 @@ const Horizonte: React.FC = () => {
                         rel="noopener noreferrer"
                         className="text-gold/60 hover:text-gold text-xs uppercase tracking-[0.2em] font-sans transition-colors flex items-center gap-3 group/link"
                     >
-                        Leer reseña completa en Facebook 
+                        {content.reviewLink}
                         <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                     </a>
                 </div>

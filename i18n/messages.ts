@@ -39,6 +39,7 @@ export type CommonMessages = {
         horizonte: string;
         videos: string;
         openDiary: string;
+        literaryReviews: string;
         contact: string;
     };
 };
@@ -83,6 +84,7 @@ export const COMMON_MESSAGES: Record<Locale, CommonMessages> = {
             horizonte: 'Horizonte de Sucesos',
             videos: 'Vídeos',
             openDiary: 'Diario Abierto',
+            literaryReviews: 'Reseñas literarias',
             contact: 'Contacto',
         },
     },
@@ -125,8 +127,8 @@ export const COMMON_MESSAGES: Record<Locale, CommonMessages> = {
             horizonte: 'Horizonte de Sucesos',
             videos: 'Vidéos',
             openDiary: 'Journal ouvert',
+            literaryReviews: 'Critiques littéraires',
             contact: 'Contact',
         },
     },
 };
-

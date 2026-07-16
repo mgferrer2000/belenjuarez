@@ -5,6 +5,32 @@ import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nProvider';
 import { stripLocalePrefix, SUPPORTED_LOCALES } from '../i18n/config';
 
+const LANGUAGE_DETAILS = {
+  es: { shortLabel: 'ES', accessibleLabel: 'Español' },
+  fr: { shortLabel: 'FR', accessibleLabel: 'Français' },
+} as const;
+
+const LanguageFlag: React.FC<{ language: keyof typeof LANGUAGE_DETAILS }> = ({ language }) => (
+  <svg
+    viewBox="0 0 18 12"
+    aria-hidden="true"
+    className="h-[10px] w-[15px] shrink-0 overflow-hidden rounded-[1px] ring-1 ring-current/15"
+  >
+    {language === 'es' ? (
+      <>
+        <rect width="18" height="12" fill="#AA151B" />
+        <rect y="3" width="18" height="6" fill="#F1BF00" />
+      </>
+    ) : (
+      <>
+        <rect width="6" height="12" fill="#0055A4" />
+        <rect x="6" width="6" height="12" fill="#FFFFFF" />
+        <rect x="12" width="6" height="12" fill="#EF4135" />
+      </>
+    )}
+  </svg>
+);
+
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -88,7 +114,15 @@ const Navbar: React.FC = () => {
         { name: nav.videos, path: path('/musica/videos') },
       ]
     },
-    { name: nav.openDiary, path: path('/blog') },
+    {
+      name: nav.openDiary,
+      path: path('/blog'),
+      activePaths: [path('/blog'), path('/resenas-literarias')],
+      submenu: [
+        { name: nav.openDiary, path: path('/blog') },
+        { name: nav.literaryReviews, path: path('/resenas-literarias') },
+      ]
+    },
     { name: nav.contact, path: path('/contacto') },
   ];
 
@@ -98,6 +132,11 @@ const Navbar: React.FC = () => {
     } else {
       setActiveDropdown(name);
     }
+  };
+
+  const isNavLinkActive = (link: typeof navLinks[number]) => {
+    const activePaths = 'activePaths' in link ? link.activePaths : [link.path];
+    return activePaths.some((activePath) => location.pathname.startsWith(activePath));
   };
 
   const closeMobileMenu = () => {
@@ -126,20 +165,20 @@ const Navbar: React.FC = () => {
       className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-paper/95 backdrop-blur-sm shadow-sm py-4' : 'bg-transparent py-6'
         }`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 flex justify-between items-center">
-        <Link to={path('/')} className={`text-xl lg:text-2xl font-serif font-bold tracking-wider z-50 transition-colors ${textColorClass}`}>
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 min-[1366px]:px-4 min-[1440px]:px-8 flex justify-between min-[1366px]:justify-start items-center">
+        <Link to={path('/')} className={`shrink-0 whitespace-nowrap text-xl min-[1440px]:text-2xl font-serif font-bold tracking-wider z-50 transition-colors ${textColorClass}`}>
           BELÉN JUÁREZ
         </Link>
 
         {/* Desktop Nav */}
-        <div className={`hidden lg:flex items-center ${locale === 'fr' ? 'space-x-2 xl:space-x-4' : 'space-x-3 xl:space-x-6'}`}>
+        <div className={`hidden min-[1366px]:ml-8 min-[1366px]:flex min-[1366px]:items-center ${locale === 'fr' ? 'gap-2.5 min-[1440px]:gap-4' : 'gap-3 min-[1440px]:gap-5'}`}>
           {navLinks.map((link) => (
-            <div key={link.name} className="relative group">
+            <div key={link.name} className="relative group flex items-center">
               {link.submenu ? (
                 <button
                   type="button"
                   aria-haspopup="true"
-                  className={`flex items-center gap-1 whitespace-nowrap uppercase transition-colors ${locale === 'fr' ? 'text-[10px] xl:text-[12px] tracking-[0.08em]' : 'text-[12px] xl:text-sm tracking-widest'} ${location.pathname.startsWith(link.path) ? activeColorClass : `${textColorClass}/80`
+                  className={`inline-flex h-6 items-center gap-1 whitespace-nowrap uppercase leading-none transition-colors ${locale === 'fr' ? 'text-[11px] tracking-[0.05em] min-[1440px]:tracking-[0.08em]' : 'text-[12px] tracking-[0.08em] min-[1440px]:tracking-widest'} ${isNavLinkActive(link) ? activeColorClass : `${textColorClass}/80`
                     } ${hoverColorClass}`}
                 >
                   {link.name} <ChevronDown size={14} />
@@ -147,7 +186,7 @@ const Navbar: React.FC = () => {
               ) : (
                 <Link
                   to={link.path}
-                  className={`whitespace-nowrap uppercase transition-colors ${locale === 'fr' ? 'text-[10px] xl:text-[12px] tracking-[0.08em]' : 'text-[12px] xl:text-sm tracking-widest'} ${location.pathname === link.path ? activeColorClass : `${textColorClass}/80`
+                  className={`inline-flex h-6 items-center whitespace-nowrap uppercase leading-none transition-colors ${locale === 'fr' ? 'text-[11px] tracking-[0.05em] min-[1440px]:tracking-[0.08em]' : 'text-[12px] tracking-[0.08em] min-[1440px]:tracking-widest'} ${location.pathname === link.path ? activeColorClass : `${textColorClass}/80`
                     } ${hoverColorClass}`}
                 >
                   {link.name}
@@ -172,53 +211,67 @@ const Navbar: React.FC = () => {
               )}
             </div>
           ))}
-          <div className={`flex items-center gap-1 border-l pl-3 xl:pl-5 ${isScrolled || !isDarkPage ? 'border-ink/15' : 'border-paper/20'}`} aria-label={messages.languageLabel}>
+          <div className={`flex items-center gap-0.5 border-l pl-2 min-[1440px]:gap-1 min-[1440px]:pl-4 ${isScrolled || !isDarkPage ? 'border-ink/15' : 'border-paper/20'}`} aria-label={messages.languageLabel}>
             {SUPPORTED_LOCALES.map((language) => (
               <Link
                 key={language}
                 to={switchLanguagePath(language)}
                 lang={language}
+                aria-label={LANGUAGE_DETAILS[language].accessibleLabel}
                 aria-current={locale === language ? 'page' : undefined}
-                className={`px-1 py-1 text-[10px] font-sans font-medium uppercase tracking-[0.12em] transition-colors ${locale === language ? activeColorClass : `${textColorClass}/45 ${hoverColorClass}`}`}
+                className={`flex items-center gap-1 px-1 py-1 text-[10px] font-sans font-medium uppercase tracking-[0.1em] transition-colors ${locale === language ? activeColorClass : `${textColorClass}/45 ${hoverColorClass}`}`}
               >
-                {language}
+                <LanguageFlag language={language} />
+                {LANGUAGE_DETAILS[language].shortLabel}
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className={`lg:hidden z-50 transition-colors ${isMenuOpen ? 'text-ink' : textColorClass}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? messages.closeMenu : messages.openMenu}
-        >
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
+        {/* Compact navigation controls */}
+        <div className="min-[1366px]:hidden z-50 flex items-center gap-3">
+          <div
+            className={`flex items-center gap-1 border-r pr-3 ${isMenuOpen || isScrolled || !isDarkPage ? 'border-ink/15' : 'border-paper/20'}`}
+            aria-label={messages.languageLabel}
+          >
+            {SUPPORTED_LOCALES.map((language) => (
+              <Link
+                key={language}
+                to={switchLanguagePath(language)}
+                lang={language}
+                aria-label={LANGUAGE_DETAILS[language].accessibleLabel}
+                aria-current={locale === language ? 'page' : undefined}
+                onClick={closeMobileMenu}
+                className={`flex items-center gap-1 px-1 py-1 font-sans text-[10px] font-medium uppercase tracking-[0.08em] transition-colors ${
+                  locale === language
+                    ? (isMenuOpen ? 'text-deep-red font-bold' : activeColorClass)
+                    : `${isMenuOpen ? 'text-ink/45 hover:text-deep-red' : `${textColorClass}/45 ${hoverColorClass}`}`
+                }`}
+              >
+                <LanguageFlag language={language} />
+                {LANGUAGE_DETAILS[language].shortLabel}
+              </Link>
+            ))}
+          </div>
+
+          <button
+            className={`transition-colors ${isMenuOpen ? 'text-ink' : textColorClass}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMenuOpen ? messages.closeMenu : messages.openMenu}
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
       {isMenuOpen && createPortal(
-        <div id="mobile-navigation" className="fixed inset-0 bg-paper z-40 flex flex-col pt-20 px-5 overflow-y-auto overscroll-contain">
-          <div className="mb-5 flex items-center justify-between border-y border-ink/10 py-3 font-sans text-[10px] uppercase tracking-[0.18em] text-ink/45">
-            <span>{messages.languageLabel}</span>
-            <div className="flex items-center gap-2">
-              {SUPPORTED_LOCALES.map((language) => (
-                <Link
-                  key={language}
-                  to={switchLanguagePath(language)}
-                  lang={language}
-                  aria-current={locale === language ? 'page' : undefined}
-                  onClick={closeMobileMenu}
-                  className={`min-w-9 px-2 py-1 text-center transition-colors ${locale === language ? 'bg-deep-red text-paper' : 'text-ink/50'}`}
-                >
-                  {language}
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div
+          id="mobile-navigation"
+          className="fixed inset-0 z-40 flex flex-col overflow-y-auto overscroll-contain bg-paper px-5 pt-20 sm:left-auto sm:w-[420px] sm:border-l sm:border-ink/10 sm:shadow-2xl"
+        >
           <div className="flex flex-col space-y-2 pb-10">
             {navLinks.map((link) => (
               <div key={link.name} className="border-b border-gray-100 pb-2">

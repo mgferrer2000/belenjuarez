@@ -1,10 +1,15 @@
+import type { Locale } from '../../i18n/config';
+
 const isDev = import.meta.env.DEV;
 
 // Local development still goes to Vite's proxy, but Production uses our secure PHP bridge
 const API_KEY = import.meta.env.VITE_NOTION_API_KEY;
 const DATABASE_ID = import.meta.env.VITE_NOTION_DATABASE_ID;
+const REVIEWS_DATABASE_ID = import.meta.env.VITE_NOTION_REVIEWS_DATABASE_ID;
 const NOTION_VERSION = '2022-06-28';
 const MAX_CONCURRENT_NOTION_REQUESTS = 3;
+
+export type NotionSection = 'blog' | 'reviews';
 
 let activeNotionRequests = 0;
 const notionRequestQueue: Array<() => void> = [];
@@ -120,6 +125,24 @@ const extractDate = (page: any): string => {
     return dateProp?.date?.start || page?.created_time || new Date().toISOString();
 };
 
+const getNotionLanguage = (locale: Locale) => locale === 'fr' ? 'Français' : 'Español';
+
+const getDatabaseId = (section: NotionSection) =>
+    section === 'reviews' ? REVIEWS_DATABASE_ID : DATABASE_ID;
+
+const extractPageLanguage = (page: any): string => {
+    const languageProperty = findProperty(page?.properties ?? {}, ['Idioma', 'Language', 'Langue']);
+    return languageProperty?.select?.name || 'Español';
+};
+
+const extractOriginalSpanishId = (page: any): string => {
+    const originalProperty = findProperty(page?.properties ?? {}, ['Original ES', 'Original español']);
+    return originalProperty?.rich_text
+        ?.map((item: any) => item?.plain_text || '')
+        .join('')
+        .trim() || '';
+};
+
 const mapPageToPost = (page: any): BlogPost => ({
     id: page.id,
     title: extractTitle(page),
@@ -140,22 +163,28 @@ const getHeaders = () => {
     return {};
 };
 
-export const getPublishedPosts = async (): Promise<BlogPost[]> => {
+export const getPublishedPosts = async (locale: Locale = 'es', section: NotionSection = 'blog'): Promise<BlogPost[]> => {
     try {
         let response;
+        const databaseId = getDatabaseId(section);
 
-        if (isDev && DATABASE_ID) {
+        if (isDev && databaseId) {
             // MODO DESARROLLO (Vite Localhost Proxy)
-            response = await fetchNotion(`/notion-api/v1/databases/${DATABASE_ID}/query`, {
+            response = await fetchNotion(`/notion-api/v1/databases/${databaseId}/query`, {
                 method: 'POST',
                 headers: getHeaders(),
                 body: JSON.stringify({
-                    filter: { property: 'Publicado', checkbox: { equals: true } },
+                    filter: {
+                        and: [
+                            { property: 'Publicado', checkbox: { equals: true } },
+                            { property: 'Idioma', select: { equals: getNotionLanguage(locale) } },
+                        ],
+                    },
                 }),
             });
         } else {
             // MODO PRODUCCIÓN (Hostinger PHP Proxy)
-            response = await fetchNotion('/notion-proxy.php?action=getPosts');
+            response = await fetchNotion(`/notion-proxy.php?action=getPosts&locale=${locale}&section=${section}`);
         }
 
         if (!response.ok) {
@@ -175,8 +204,74 @@ export const getPublishedPosts = async (): Promise<BlogPost[]> => {
     }
 };
 
-export const getPost = async (pageId: string): Promise<BlogPost | null> => {
-    const existingRequest = inFlightPostRequests.get(pageId);
+const fetchDevPage = async (pageId: string): Promise<any | null> => {
+    const response = await fetchNotion(`/notion-api/v1/pages/${pageId}`, {
+        method: 'GET',
+        headers: getHeaders(),
+    });
+
+    if (!response.ok) {
+        return null;
+    }
+
+    return response.json();
+};
+
+const findDevFrenchTranslation = async (spanishPageId: string, section: NotionSection): Promise<any | null> => {
+    const databaseId = getDatabaseId(section);
+    if (!databaseId) {
+        return null;
+    }
+
+    const response = await fetchNotion(`/notion-api/v1/databases/${databaseId}/query`, {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify({
+            filter: {
+                and: [
+                    { property: 'Publicado', checkbox: { equals: true } },
+                    { property: 'Idioma', select: { equals: 'Français' } },
+                    { property: 'Original ES', rich_text: { equals: spanishPageId } },
+                ],
+            },
+            page_size: 1,
+        }),
+    });
+
+    if (!response.ok) {
+        return null;
+    }
+
+    const data = await response.json();
+    return data.results?.[0] || null;
+};
+
+const resolveDevLocalizedPage = async (pageId: string, locale: Locale, section: NotionSection): Promise<any | null> => {
+    const sourcePage = await fetchDevPage(pageId);
+    if (!sourcePage) {
+        return null;
+    }
+
+    const sourceLanguage = extractPageLanguage(sourcePage);
+    if (sourceLanguage === getNotionLanguage(locale)) {
+        return sourcePage;
+    }
+
+    if (locale === 'es') {
+        const originalId = extractOriginalSpanishId(sourcePage);
+        return originalId ? (await fetchDevPage(originalId) || sourcePage) : sourcePage;
+    }
+
+    const originalId = sourceLanguage === 'Français'
+        ? extractOriginalSpanishId(sourcePage)
+        : sourcePage.id;
+
+    return originalId ? (await findDevFrenchTranslation(originalId, section) || sourcePage) : sourcePage;
+};
+
+export const getPost = async (pageId: string, locale: Locale = 'es', section: NotionSection = 'blog'): Promise<BlogPost | null> => {
+    const requestKey = `${section}:${locale}:${pageId}`;
+    const existingRequest = inFlightPostRequests.get(requestKey);
     if (existingRequest) {
         return existingRequest;
     }
@@ -184,21 +279,17 @@ export const getPost = async (pageId: string): Promise<BlogPost | null> => {
     const request = (async () => {
         try {
             let response;
+            let page;
 
             if (isDev) {
-                response = await fetchNotion(`/notion-api/v1/pages/${pageId}`, {
-                    method: 'GET',
-                    headers: getHeaders(),
-                });
+                page = await resolveDevLocalizedPage(pageId, locale, section);
             } else {
-                response = await fetchNotion(`/notion-proxy.php?action=getPost&pageId=${pageId}`);
+                response = await fetchNotion(`/notion-proxy.php?action=getPost&pageId=${pageId}&locale=${locale}&section=${section}`);
+                if (!response.ok) {
+                    throw new Error(`Proxy/API error: ${response.status} ${response.statusText}`);
+                }
+                page = await response.json();
             }
-
-            if (!response.ok) {
-                throw new Error(`Proxy/API error: ${response.status} ${response.statusText}`);
-            }
-
-            const page = await response.json();
 
             if (!page?.id || !page?.properties) {
                 return null;
@@ -211,13 +302,13 @@ export const getPost = async (pageId: string): Promise<BlogPost | null> => {
         }
     })();
 
-    inFlightPostRequests.set(pageId, request);
+    inFlightPostRequests.set(requestKey, request);
 
     try {
         return await request;
     } finally {
-        if (inFlightPostRequests.get(pageId) === request) {
-            inFlightPostRequests.delete(pageId);
+        if (inFlightPostRequests.get(requestKey) === request) {
+            inFlightPostRequests.delete(requestKey);
         }
     }
 };

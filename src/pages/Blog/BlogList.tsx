@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { getPublishedPosts, BlogPost } from '../../services/notion';
+import { getPublishedPosts, BlogPost, type NotionSection } from '../../services/notion';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import NotionResponsiveImage from '../../components/NotionResponsiveImage';
+import { useI18n } from '../../../i18n/I18nProvider';
+import { BLOG_MESSAGES, LITERARY_REVIEWS_MESSAGES } from '../../../i18n/blogMessages';
 
-const BlogList: React.FC = () => {
+type BlogListProps = {
+    section?: NotionSection;
+};
+
+const BlogList: React.FC<BlogListProps> = ({ section = 'blog' }) => {
+    const { locale, path } = useI18n();
+    const content = section === 'reviews'
+        ? LITERARY_REVIEWS_MESSAGES[locale]
+        : BLOG_MESSAGES[locale];
+    const sectionPath = section === 'reviews' ? '/resenas-literarias' : '/blog';
     const [posts, setPosts] = useState<BlogPost[]>([]);
-    const [selectedTag, setSelectedTag] = useState<string>('Todas');
+    const [selectedTag, setSelectedTag] = useState<string>(content.allTags);
     const [loading, setLoading] = useState(true);
     const isMobile = useIsMobile();
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const publishedPosts = await getPublishedPosts();
+                setLoading(true);
+                setPosts([]);
+                setSelectedTag(content.allTags);
+                const publishedPosts = await getPublishedPosts(locale, section);
                 setPosts(publishedPosts);
             } catch (error) {
                 console.error("Error fetching Notion posts:", error);
@@ -24,26 +38,26 @@ const BlogList: React.FC = () => {
             }
         };
         fetchPosts();
-    }, []);
+    }, [content.allTags, locale, section]);
 
-    const availableTags = ['Todas', ...Array.from(new Set(posts.flatMap(post => post.tags ?? []))).sort((a, b) => a.localeCompare(b, 'es'))];
-    const filteredPosts = selectedTag === 'Todas'
+    const availableTags = [content.allTags, ...Array.from(new Set(posts.flatMap(post => post.tags ?? []))).sort((a, b) => a.localeCompare(b, locale))];
+    const filteredPosts = selectedTag === content.allTags
         ? posts
         : posts.filter(post => (post.tags ?? []).includes(selectedTag));
 
     useEffect(() => {
         if (!availableTags.includes(selectedTag)) {
-            setSelectedTag('Todas');
+            setSelectedTag(content.allTags);
         }
-    }, [availableTags, selectedTag]);
+    }, [availableTags, content.allTags, selectedTag]);
 
     return (
         <div className="pt-32 pb-24 min-h-screen bg-paper text-ink">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="mb-16">
-                    <h1 className="text-4xl md:text-5xl font-serif text-ink mb-6">Diario Abierto</h1>
+                    <h1 className="text-4xl md:text-5xl font-serif text-ink mb-6">{content.title}</h1>
                     <p className="text-xl text-gray-600 font-light max-w-2xl">
-                        Últimas participaciones en recitales y encuentros poéticos: poemas y textos inéditos.
+                        {content.introduction}
                     </p>
                 </div>
 
@@ -79,8 +93,8 @@ const BlogList: React.FC = () => {
                 ) : filteredPosts.length === 0 ? (
                     <div className="text-center py-20 text-gray-500 font-serif italic text-lg">
                         {posts.length === 0
-                            ? 'Aún no se han publicado artículos. Vuelve pronto para leer nuevos textos.'
-                            : 'No hay artículos publicados con esa etiqueta.'}
+                            ? content.noArticles
+                            : content.noTaggedArticles}
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -95,7 +109,7 @@ const BlogList: React.FC = () => {
                                 }}
                                 className="group border border-ink/10 rounded-sm overflow-hidden bg-white hover:border-deep-red transition-colors flex flex-col h-full"
                             >
-                                <Link to={`/blog/${post.id}`} className="block relative aspect-video overflow-hidden">
+                                <Link to={path(`${sectionPath}/${post.id}`)} className="block relative aspect-video overflow-hidden">
                                     {post.coverImage ? (
                                         <NotionResponsiveImage
                                             notionId={post.id}
@@ -132,7 +146,7 @@ const BlogList: React.FC = () => {
                                     <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-deep-red mb-4">
                                         <Calendar size={14} />
                                         <time dateTime={post.date}>
-                                            {new Date(post.date).toLocaleDateString('es-ES', {
+                                            {new Date(post.date).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'es-ES', {
                                                 year: 'numeric',
                                                 month: 'long',
                                                 day: 'numeric'
@@ -140,15 +154,15 @@ const BlogList: React.FC = () => {
                                         </time>
                                     </div>
 
-                                    <Link to={`/blog/${post.id}`}>
+                                    <Link to={path(`${sectionPath}/${post.id}`)}>
                                         <h2 className="text-2xl font-serif text-ink mb-4 group-hover:text-deep-red transition-colors">
                                             {post.title}
                                         </h2>
                                     </Link>
 
                                     <div className="mt-auto pt-6 flex items-center gap-2 text-sm text-gray-500 group-hover:text-deep-red transition-colors">
-                                        <Link to={`/blog/${post.id}`} className="flex items-center gap-2 font-mono uppercase tracking-wider">
-                                            Leer más <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                        <Link to={path(`${sectionPath}/${post.id}`)} className="flex items-center gap-2 font-mono uppercase tracking-wider">
+                                            {content.readMore} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                         </Link>
                                     </div>
                                 </div>

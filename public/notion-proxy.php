@@ -135,19 +135,111 @@ function executeNotionRequest($url, $apiKey, $notionVersion, $method, $body) {
     );
 }
 
-function publishedPostsQueryBody() {
+function notionLanguageName($locale) {
+    return $locale === 'fr' ? 'Français' : 'Español';
+}
+
+function publishedPostsQueryBody($locale) {
     return json_encode(array(
         'filter' => array(
-            'property' => 'Publicado',
-            'checkbox' => array('equals' => true),
+            'and' => array(
+                array('property' => 'Publicado', 'checkbox' => array('equals' => true)),
+                array('property' => 'Idioma', 'select' => array('equals' => notionLanguageName($locale))),
+            ),
         ),
         'page_size' => 100,
     ), JSON_UNESCAPED_UNICODE);
 }
 
-function fetchPublishedPosts($databaseId, $apiKey, $notionVersion) {
+function fetchPublishedPosts($databaseId, $apiKey, $notionVersion, $locale) {
     $url = 'https://api.notion.com/v1/databases/' . rawurlencode($databaseId) . '/query';
-    return executeNotionRequest($url, $apiKey, $notionVersion, 'POST', publishedPostsQueryBody());
+    return executeNotionRequest($url, $apiKey, $notionVersion, 'POST', publishedPostsQueryBody($locale));
+}
+
+function fetchNotionPage($pageId, $apiKey, $notionVersion) {
+    $url = 'https://api.notion.com/v1/pages/' . rawurlencode($pageId);
+    return executeNotionRequest($url, $apiKey, $notionVersion, 'GET', null);
+}
+
+function notionSelectPropertyName($page, $propertyName) {
+    if (!isset($page['properties'][$propertyName]['select']['name'])) {
+        return '';
+    }
+
+    return (string) $page['properties'][$propertyName]['select']['name'];
+}
+
+function notionRichTextPropertyValue($page, $propertyName) {
+    if (!isset($page['properties'][$propertyName]['rich_text']) || !is_array($page['properties'][$propertyName]['rich_text'])) {
+        return '';
+    }
+
+    $value = '';
+    foreach ($page['properties'][$propertyName]['rich_text'] as $item) {
+        if (isset($item['plain_text'])) {
+            $value .= $item['plain_text'];
+        }
+    }
+
+    return trim($value);
+}
+
+function fetchFrenchTranslation($databaseId, $spanishPageId, $apiKey, $notionVersion) {
+    $body = json_encode(array(
+        'filter' => array(
+            'and' => array(
+                array('property' => 'Publicado', 'checkbox' => array('equals' => true)),
+                array('property' => 'Idioma', 'select' => array('equals' => 'Français')),
+                array('property' => 'Original ES', 'rich_text' => array('equals' => $spanishPageId)),
+            ),
+        ),
+        'page_size' => 1,
+    ), JSON_UNESCAPED_UNICODE);
+    $url = 'https://api.notion.com/v1/databases/' . rawurlencode($databaseId) . '/query';
+    $result = executeNotionRequest($url, $apiKey, $notionVersion, 'POST', $body);
+
+    if (!$result['ok'] || empty($result['body']['results'][0])) {
+        return null;
+    }
+
+    return $result['body']['results'][0];
+}
+
+function fetchLocalizedPost($databaseId, $pageId, $locale, $apiKey, $notionVersion) {
+    $sourceResult = fetchNotionPage($pageId, $apiKey, $notionVersion);
+    if (!$sourceResult['ok']) {
+        return $sourceResult;
+    }
+
+    $sourcePage = $sourceResult['body'];
+    $sourceLanguage = notionSelectPropertyName($sourcePage, 'Idioma');
+    if ($sourceLanguage === '') {
+        $sourceLanguage = 'Español';
+    }
+
+    if ($sourceLanguage === notionLanguageName($locale)) {
+        return $sourceResult;
+    }
+
+    if ($locale === 'es') {
+        $originalId = notionRichTextPropertyValue($sourcePage, 'Original ES');
+        return $originalId && isValidNotionId($originalId)
+            ? fetchNotionPage($originalId, $apiKey, $notionVersion)
+            : $sourceResult;
+    }
+
+    $originalId = $sourceLanguage === 'Français'
+        ? notionRichTextPropertyValue($sourcePage, 'Original ES')
+        : $pageId;
+    $translation = $originalId && isValidNotionId($originalId)
+        ? fetchFrenchTranslation($databaseId, $originalId, $apiKey, $notionVersion)
+        : null;
+
+    if (!$translation) {
+        return $sourceResult;
+    }
+
+    return array('ok' => true, 'status' => 200, 'body' => $translation);
 }
 
 function isValidNotionId($value) {
@@ -361,6 +453,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'OPTIONS
 
 $NOTION_API_KEY = readConfigValue(array('NOTION_API_KEY', 'VITE_NOTION_API_KEY'));
 $DATABASE_ID = readConfigValue(array('NOTION_DATABASE_ID', 'VITE_NOTION_DATABASE_ID'));
+$REVIEWS_DATABASE_ID = readConfigValue(array('NOTION_REVIEWS_DATABASE_ID', 'VITE_NOTION_REVIEWS_DATABASE_ID'));
 $NOTION_VERSION = readConfigValue(array('NOTION_VERSION'));
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -376,12 +469,25 @@ if (!$NOTION_API_KEY) {
     respondJson(500, array('error' => 'Missing NOTION_API_KEY server configuration'));
 }
 
+$section = isset($_GET['section']) ? $_GET['section'] : 'blog';
+if ($section === 'reviews') {
+    if (!$REVIEWS_DATABASE_ID || !isValidNotionId($REVIEWS_DATABASE_ID)) {
+        respondJson(500, array('error' => 'Missing NOTION_REVIEWS_DATABASE_ID server configuration'));
+    }
+    $ACTIVE_DATABASE_ID = $REVIEWS_DATABASE_ID;
+} elseif ($section === 'blog') {
+    $ACTIVE_DATABASE_ID = $DATABASE_ID;
+} else {
+    respondJson(400, array('error' => 'Invalid Notion section'));
+}
+
 if ($action === 'getImage') {
     serveMobileNotionImage($NOTION_API_KEY, $NOTION_VERSION);
 }
 
 if ($action === 'getPosts') {
-    $result = fetchPublishedPosts($DATABASE_ID, $NOTION_API_KEY, $NOTION_VERSION);
+    $locale = isset($_GET['locale']) && $_GET['locale'] === 'fr' ? 'fr' : 'es';
+    $result = fetchPublishedPosts($ACTIVE_DATABASE_ID, $NOTION_API_KEY, $NOTION_VERSION, $locale);
     respondJson($result['status'], $result['body']);
 }
 
@@ -392,8 +498,8 @@ if ($action === 'getPost') {
         respondJson(400, array('error' => 'Invalid pageId'));
     }
 
-    $url = 'https://api.notion.com/v1/pages/' . rawurlencode($pageId);
-    $result = executeNotionRequest($url, $NOTION_API_KEY, $NOTION_VERSION, 'GET', null);
+    $locale = isset($_GET['locale']) && $_GET['locale'] === 'fr' ? 'fr' : 'es';
+    $result = fetchLocalizedPost($ACTIVE_DATABASE_ID, $pageId, $locale, $NOTION_API_KEY, $NOTION_VERSION);
     respondJson($result['status'], $result['body']);
 }
 

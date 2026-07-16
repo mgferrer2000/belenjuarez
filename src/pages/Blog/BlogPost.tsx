@@ -1,8 +1,10 @@
 import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getPostContent, getPost, BlogPost } from '../../services/notion';
+import { getPostContent, getPost, BlogPost, type NotionSection } from '../../services/notion';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import NotionResponsiveImage from '../../components/NotionResponsiveImage';
+import { useI18n } from '../../../i18n/I18nProvider';
+import { BLOG_MESSAGES, LITERARY_REVIEWS_MESSAGES, type BlogMessages } from '../../../i18n/blogMessages';
 
 type RichTextAnnotation = {
     bold?: boolean;
@@ -38,9 +40,12 @@ type DeferredNotionImageProps = {
     blockId: string;
     src: string;
     alt: string;
+    loadingLabel: string;
+    pendingLabel: string;
+    errorLabel: string;
 };
 
-const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ blockId, src, alt }) => {
+const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ blockId, src, alt, loadingLabel, pendingLabel, errorLabel }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [shouldLoad, setShouldLoad] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -79,7 +84,7 @@ const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ blockId, src,
         >
             {!isLoaded && !hasError ? (
                 <span className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.2em] text-ink/35">
-                    {shouldLoad ? 'Cargando imagen' : 'Imagen pendiente'}
+                    {shouldLoad ? loadingLabel : pendingLabel}
                 </span>
             ) : null}
 
@@ -103,7 +108,7 @@ const DeferredNotionImage: React.FC<DeferredNotionImageProps> = ({ blockId, src,
 
             {hasError ? (
                 <span className="px-6 py-12 text-center font-serif italic text-ink/45">
-                    No se ha podido cargar esta imagen.
+                    {errorLabel}
                 </span>
             ) : null}
         </div>
@@ -232,7 +237,7 @@ const isPoetryParagraph = (text: string) => {
     return averageLength <= 42 || text.includes('\n\n');
 };
 
-function renderBlock(block: NotionBlock) {
+function renderBlock(block: NotionBlock, imageMessages: Pick<BlogMessages, 'imageAltPrefix' | 'loadingImage' | 'pendingImage' | 'imageError'>) {
     const type = block.type;
     const richText = getBlockRichText(block);
     const text = getPlainText(richText);
@@ -286,14 +291,14 @@ function renderBlock(block: NotionBlock) {
             const gridClass = cols === 3 ? 'md:grid-cols-3' : cols === 2 ? 'md:grid-cols-2' : 'grid-cols-1';
             return (
                 <div key={block.id} className={`grid grid-cols-1 ${gridClass} gap-6 my-8 items-start`}>
-                    {block.children ? renderBlocks(block.children) : null}
+                    {block.children ? renderBlocks(block.children, imageMessages) : null}
                 </div>
             );
         }
         case 'column':
             return (
                 <div key={block.id} className="flex flex-col gap-4">
-                    {block.children ? renderBlocks(block.children) : null}
+                    {block.children ? renderBlocks(block.children, imageMessages) : null}
                 </div>
             );
         case 'video': {
@@ -346,7 +351,10 @@ function renderBlock(block: NotionBlock) {
                         <DeferredNotionImage
                             blockId={block.id}
                             src={imageUrl}
-                            alt={getPlainText(value?.caption ?? []) || postTitleFallback(block)}
+                            alt={getPlainText(value?.caption ?? []) || postTitleFallback(block, imageMessages.imageAltPrefix)}
+                            loadingLabel={imageMessages.loadingImage}
+                            pendingLabel={imageMessages.pendingImage}
+                            errorLabel={imageMessages.imageError}
                         />
                     </div>
                     {caption ? <figcaption className="mt-3 text-sm text-ink/55 font-sans leading-relaxed">{caption}</figcaption> : null}
@@ -372,9 +380,9 @@ function renderBlock(block: NotionBlock) {
     }
 };
 
-const postTitleFallback = (block: NotionBlock) => `Imagen del post ${block.id}`;
+const postTitleFallback = (block: NotionBlock, prefix: string) => `${prefix} ${block.id}`;
 
-function renderBlocks(blocks: NotionBlock[]) {
+function renderBlocks(blocks: NotionBlock[], imageMessages: Pick<BlogMessages, 'imageAltPrefix' | 'loadingImage' | 'pendingImage' | 'imageError'>) {
     const elements: ReactNode[] = [];
 
     for (let index = 0; index < blocks.length; index += 1) {
@@ -407,14 +415,23 @@ function renderBlocks(blocks: NotionBlock[]) {
             continue;
         }
 
-        elements.push(renderBlock(block));
+        elements.push(renderBlock(block, imageMessages));
     }
 
     return elements;
 };
 
-const BlogPostView: React.FC = () => {
+type BlogPostViewProps = {
+    section?: NotionSection;
+};
+
+const BlogPostView: React.FC<BlogPostViewProps> = ({ section = 'blog' }) => {
     const { id } = useParams<{ id: string }>();
+    const { locale, path } = useI18n();
+    const contentMessages = section === 'reviews'
+        ? LITERARY_REVIEWS_MESSAGES[locale]
+        : BLOG_MESSAGES[locale];
+    const sectionPath = section === 'reviews' ? '/resenas-literarias' : '/blog';
     const [post, setPost] = useState<BlogPost | null>(null);
     const [content, setContent] = useState<NotionBlock[]>([]);
     const [loading, setLoading] = useState(true);
@@ -424,12 +441,14 @@ const BlogPostView: React.FC = () => {
             if (!id) return;
 
             try {
-                const [currentPost, blocks] = await Promise.all([
-                    getPost(id),
-                    getPostContent(id)
-                ]);
+                setLoading(true);
+                setPost(null);
+                setContent([]);
+
+                const currentPost = await getPost(id, locale, section);
+                const blocks = currentPost ? await getPostContent(currentPost.id) : [];
                 if (currentPost) setPost(currentPost);
-                if (blocks) setContent(blocks);
+                setContent(blocks);
             } catch (error) {
                 console.error('Error fetching post content:', error);
             } finally {
@@ -438,7 +457,7 @@ const BlogPostView: React.FC = () => {
         };
 
         fetchContent();
-    }, [id]);
+    }, [id, locale, section]);
 
     if (loading) {
         return (
@@ -451,8 +470,8 @@ const BlogPostView: React.FC = () => {
     if (!post && !content.length) {
         return (
             <div className="min-h-screen bg-paper pt-32 text-center text-ink">
-                <h1 className="text-2xl font-serif">Artículo no encontrado</h1>
-                <Link to="/blog" className="text-deep-red mt-4 inline-block hover:underline">Volver al blog</Link>
+                <h1 className="text-2xl font-serif">{contentMessages.articleNotFound}</h1>
+                <Link to={path(sectionPath)} className="text-deep-red mt-4 inline-block hover:underline">{contentMessages.backToBlog}</Link>
             </div>
         );
     }
@@ -460,18 +479,18 @@ const BlogPostView: React.FC = () => {
     return (
         <article className="min-h-screen bg-paper text-ink pt-32 pb-24">
             <div className="max-w-3xl mx-auto px-6 mb-12">
-                <Link to="/blog" className="inline-flex items-center gap-2 text-deep-red hover:text-ink/70 transition-colors uppercase tracking-widest text-xs font-mono mb-12">
-                    <ArrowLeft size={14} /> Volver al índice
+                <Link to={path(sectionPath)} className="inline-flex items-center gap-2 text-deep-red hover:text-ink/70 transition-colors uppercase tracking-widest text-xs font-mono mb-12">
+                    <ArrowLeft size={14} /> {contentMessages.backToIndex}
                 </Link>
 
                 <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 mb-6 font-mono">
                     <Calendar size={14} />
                     <time dateTime={post?.date}>
-                        {post?.date ? new Date(post.date).toLocaleDateString('es-ES', {
+                        {post?.date ? new Date(post.date).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'es-ES', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric'
-                        }) : 'Fecha desconocida'}
+                        }) : contentMessages.unknownDate}
                     </time>
                 </div>
 
@@ -498,7 +517,7 @@ const BlogPostView: React.FC = () => {
 
             <div className="max-w-3xl mx-auto px-6">
                 <div className="max-w-none">
-                    {renderBlocks(content)}
+                    {renderBlocks(content, contentMessages)}
                 </div>
             </div>
         </article>

@@ -118,6 +118,8 @@ const renderLocalizedRoutes = (locale: Locale) => {
 
       <Route path={`${root}/blog`} element={<BlogList />} />
       <Route path={`${root}/blog/:id`} element={<BlogPostView />} />
+      <Route path={`${root}/resenas-literarias`} element={<BlogList section="reviews" />} />
+      <Route path={`${root}/resenas-literarias/:id`} element={<BlogPostView section="reviews" />} />
 
       <Route
         path={`${root}/cva-cientifico`}
