@@ -1,3 +1,59 @@
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/montserrat-latin-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/montserrat-latin-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/montserrat-latin-normal.woff2') format('woff2');
+}
+
 :root {
   --paper: #fdfbf7;
   --paper-deep: #f2ece2;
@@ -180,6 +236,7 @@ main { min-height: calc(100vh - 160px); padding-top: 80px; }
   inset: 0;
 }
 
+.hero-media picture { display: block; width: 100%; height: 100%; }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; opacity: .2; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, rgba(253,251,247,.5), var(--paper)); }
 .hero-content { position: relative; z-index: 1; width: min(56rem, calc(100% - 48px)); }

@@ -371,6 +371,9 @@ a su obra y pagina canonica.
 
 Mantener una experiencia rapida y estable, especialmente en movil.
 
+Seguimiento detallado de la portada:
+`docs/OPTIMIZACION_RENDIMIENTO_MOVIL.md`.
+
 ### Tareas
 
 - [ ] Medir Inicio, Sobre Belen, una galeria, Diario Abierto y un articulo.

@@ -56,10 +56,39 @@ const schemas = [
 >
   <section class="hero">
     <div class="hero-media">
-      <img
-        src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80"
-        alt={content.imageAlt}
-      />
+      <picture>
+        <source
+          media="(max-width: 767px)"
+          type="image/avif"
+          srcset="/images/home/hero-books-480.avif 480w, /images/home/hero-books-768.avif 768w"
+          sizes="100vw"
+        />
+        <source
+          media="(max-width: 767px)"
+          type="image/webp"
+          srcset="/images/home/hero-books-480.webp 480w, /images/home/hero-books-768.webp 768w"
+          sizes="100vw"
+        />
+        <source
+          type="image/avif"
+          srcset="/images/home/hero-books-1280.avif 1280w, /images/home/hero-books-1920.avif 1920w"
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          srcset="/images/home/hero-books-1280.webp 1280w, /images/home/hero-books-1920.webp 1920w"
+          sizes="100vw"
+        />
+        <img
+          src="/images/home/hero-books-1280.webp"
+          width="1280"
+          height="720"
+          alt={content.imageAlt}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
       <div class="hero-overlay" aria-hidden="true"></div>
     </div>
     <div class="hero-content">
