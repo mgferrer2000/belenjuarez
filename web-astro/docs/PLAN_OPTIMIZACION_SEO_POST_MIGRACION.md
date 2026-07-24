@@ -48,14 +48,24 @@ Poder comparar el antes y el despues y revertir cualquier cambio.
 
 ### Tareas
 
-- [ ] Confirmar que `main` contiene la version actualmente publicada.
-- [ ] Guardar una copia del `dist` de produccion.
-- [ ] Crear una etiqueta Git anterior a la optimizacion SEO.
-- [ ] Crear una rama especifica para los cambios SEO.
-- [ ] Ejecutar `npm run build` y `npm run audit`.
-- [ ] Registrar el numero actual de paginas, titulos, descripciones, `H1`,
+- [x] Confirmar que `main` contiene la version actualmente publicada.
+- [x] Guardar una copia del `dist` de produccion.
+- [x] Crear una etiqueta Git anterior a la optimizacion SEO.
+- [x] Crear una rama especifica para los cambios SEO.
+- [x] Ejecutar `npm run build` y `npm run audit`.
+- [x] Registrar el numero actual de paginas, titulos, descripciones, `H1`,
       canonical, `hreflang`, datos estructurados e imagenes sin `alt`.
-- [ ] Registrar las metricas iniciales disponibles en Search Console.
+- [ ] Registrar las metricas iniciales disponibles en Search Console. Requiere
+      acceso del propietario a la propiedad de `belenjuarez.com`.
+
+Referencia tecnica: `docs/BASELINE_SEO_2026-07-24.md`.
+
+Puntos de restauracion:
+
+- etiqueta Git: `pre-seo-optimizacion-2026-07-24`;
+- rama de trabajo: `codex/seo-optimizacion`;
+- copia local del despliegue:
+  `backups/pre-seo-2026-07-24-dist-astro.zip`.
 
 ### Criterio de salida
 
