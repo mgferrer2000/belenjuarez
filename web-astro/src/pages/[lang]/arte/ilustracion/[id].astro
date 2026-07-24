@@ -1,0 +1,68 @@
+---
+import { ILLUSTRATED_BOOKS } from '@legacy/constants';
+import ArtPageShell from '../../../../components/ArtPageShell.astro';
+import { artContent, getArtUi, getIllustratedBooks } from '../../../../data/art';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.flatMap((lang) => ILLUSTRATED_BOOKS.map((book) => ({ params: { lang, id: book.id }, props: { lang, id: book.id } }))); }
+const { lang, id } = Astro.props as { lang: Locale; id: string };
+const content = artContent[lang]; const ui = getArtUi(lang); const book = getIllustratedBooks(lang).find((item) => item.id === id)!;
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es'; const canonicalPath = localizedPath(lang, `arte/ilustracion/${id}`); const alternatePath = localizedPath(otherLang, `arte/ilustracion/${id}`);
+const schema = { '@context': 'https://schema.org', '@type': 'Book', name: book.title, datePublished: book.year, description: book.description, image: new URL(book.coverUrl, SITE_URL).href, illustrator: { '@type': 'Person', name: 'Belén Juárez Jiménez' }, inLanguage: lang, associatedMedia: book.illustrations.map((piece) => ({ '@type': 'ImageObject', name: piece.title, contentUrl: new URL(piece.imageUrl, SITE_URL).href })) };
+---
+<BaseLayout lang={lang} title={`${book.title} | ${content.sections[1].title}`} description={book.description ?? ui.illustrationsFor(book.title)} canonicalPath={canonicalPath} alternatePath={alternatePath} image={book.coverUrl} type="book" schemas={[schema]}>
+  <ArtPageShell lang={lang} activePath="ilustracion">
+    <section class="react-art-illustration react-art-illustration-detail">
+      <header class="react-art-intro"><p>{book.description || ui.illustrationsFor(book.title)}</p></header>
+      {book.id === 'noches-azules' && (
+        <section class="react-art-review">
+          <p class="pretitle">{ui.review.pretitle}</p><h2>{ui.review.title}</h2><p class="author">{ui.review.author}</p>
+          <div>{ui.review.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+        </section>
+      )}
+      <p class="react-art-back"><a href={localizedPath(lang, 'arte/ilustracion')}>← {ui.backToBooks}</a></p>
+      <div class="react-art-illustrations">
+        {book.illustrations.map((piece, index) => (
+          <article style={`--art-delay:${Math.min(index * 50, 500)}ms`}>
+            <button type="button" class="react-art-card" data-index={index} data-src={piece.imageUrl} data-title={piece.title} data-description={piece.description ?? ''} aria-label={`${content.enlarge}: ${piece.title}`}>
+              <img src={piece.imageUrl} alt={piece.title} loading={index < 3 ? 'eager' : 'lazy'} />
+              <span class="react-art-overlay">
+                <span class="react-art-meta"><i></i><small><b>{piece.medium}</b>{piece.mediumDetail && <em>{piece.mediumDetail}</em>}</small></span>
+                <strong>{piece.title}</strong><span class="react-art-detail">⌗ <span>{ui.viewDetail}</span></span>
+              </span>
+            </button>
+          </article>
+        ))}
+      </div>
+    </section>
+  </ArtPageShell>
+  <dialog class="react-art-dialog react-illustration-dialog" aria-label={content.close}>
+    <button class="react-art-dialog-close" type="button" aria-label={content.close}>×</button>
+    <button class="react-art-dialog-prev" type="button" aria-label={content.previous}>‹</button>
+    <div class="react-art-dialog-inner">
+      <div class="react-art-dialog-image"><img src="" alt="" /></div>
+      <div class="react-art-dialog-copy"><div><h2></h2></div><i></i><p class="description"></p></div>
+    </div>
+    <button class="react-art-dialog-next" type="button" aria-label={content.next}>›</button>
+  </dialog>
+  <script>
+    const dialog = document.querySelector<HTMLDialogElement>('.react-illustration-dialog');
+    const triggers = [...document.querySelectorAll<HTMLButtonElement>('.react-art-illustrations .react-art-card')];
+    let current = 0;
+    const show = (index: number) => {
+      if (!dialog || !triggers.length) return; current = (index + triggers.length) % triggers.length;
+      const trigger = triggers[current]; const image = dialog.querySelector<HTMLImageElement>('.react-art-dialog-image img')!;
+      image.src = trigger.dataset.src ?? ''; image.alt = trigger.dataset.title ?? '';
+      dialog.querySelector<HTMLElement>('h2')!.textContent = trigger.dataset.title ?? '';
+      dialog.querySelector<HTMLElement>('.description')!.textContent = trigger.dataset.description ?? '';
+    };
+    triggers.forEach((trigger, index) => trigger.addEventListener('click', () => { show(index); dialog?.showModal(); }));
+    dialog?.querySelector('.react-art-dialog-prev')?.addEventListener('click', () => show(current - 1));
+    dialog?.querySelector('.react-art-dialog-next')?.addEventListener('click', () => show(current + 1));
+    dialog?.querySelector('.react-art-dialog-close')?.addEventListener('click', () => dialog.close());
+    dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+    dialog?.addEventListener('keydown', (event) => { if (event.key === 'ArrowLeft') show(current - 1); if (event.key === 'ArrowRight') show(current + 1); if (event.key === 'Escape') dialog.close(); });
+  </script>
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { plaquettes, plaquettesContent } from '../../../../data/plaquettes';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = plaquettesContent[lang];
+const plaquette = plaquettes[0];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria/plaquettes');
+const alternatePath = localizedPath(otherLang, 'obra-literaria/plaquettes');
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Book', name: plaquette.title,
+  author: { '@type': 'Person', name: 'Belén Juárez Jiménez', url: SITE_URL }, datePublished: '2025-03-21',
+  inLanguage: 'es', image: new URL(plaquette.coverUrl, SITE_URL).href, description: content.description,
+  publisher: { '@type': 'Organization', name: 'Revista Alhucema' }, url: new URL(canonicalPath, SITE_URL).href,
+  hasPart: plaquette.sections.map((section) => ({ '@type': 'CreativeWork', name: section.title, position: section.number, text: section.content, inLanguage: 'es' })),
+};
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={plaquette.coverUrl} type="book" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="plaquettes" />
+    <div class="react-plaquette">
+      <header class="react-plaquette-header react-plaquette-reveal">
+        <figure class="react-plaquette-cover">
+          <img src={plaquette.coverUrl} alt={content.coverAlt(plaquette.title)} />
+        </figure>
+        <div class="react-plaquette-heading">
+          <p class="react-plaquette-badge">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            {content.collection}
+          </p>
+          <h2>{plaquette.title}</h2>
+          <div class="react-plaquette-meta">
+            <p>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+              <span>{content.date}</span>
+            </p>
+            {plaquette.event && <i aria-hidden="true"></i>}
+            <p class="event"><span>{content.event}</span></p>
+            <span class="mobile-break" aria-hidden="true"></span>
+            <p>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>{content.location}</span>
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div class="react-plaquette-layout">
+        <aside>
+          {plaquette.illustrationUrl && (
+            <figure class="react-plaquette-illustration react-plaquette-observe">
+              <img src={plaquette.illustrationUrl} alt={content.illustrationAlt} loading="lazy" />
+              <figcaption>{content.illustrationCredit}</figcaption>
+            </figure>
+          )}
+          <div class="react-plaquette-credit">
+            <p>{content.publication}</p>
+            <small>{content.credits}</small>
+          </div>
+        </aside>
+
+        <div class="react-plaquette-poems">
+          {plaquette.sections.map((section, index) => (
+            <section class="react-plaquette-poem react-plaquette-observe">
+              <div class="react-plaquette-number" aria-hidden="true">
+                <span>{section.number.toString().padStart(2, '0')}</span>
+                <i></i>
+              </div>
+              <div>
+                <h3>{section.title}</h3>
+                <pre>{section.content}</pre>
+                {index < plaquette.sections.length - 1 && <span class="react-plaquette-separator" aria-hidden="true"></span>}
+              </div>
+            </section>
+          ))}
+          <footer>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4C2.75 3 2 3.75 2 5v6c0 1.25.75 2 2 2h2c0 4-3 4-3 4v4Zm12 0c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h2c0 4-3 4-3 4v4Z"></path></svg>
+            <p>{content.end}</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  const observed = document.querySelectorAll<HTMLElement>('.react-plaquette-observe');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    observed.forEach((element) => element.classList.add('is-visible'));
+  } else {
+    document.documentElement.classList.add('has-plaquette-motion');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -100px', threshold: 0.05 });
+    observed.forEach((element) => observer.observe(element));
+  }
+</script>

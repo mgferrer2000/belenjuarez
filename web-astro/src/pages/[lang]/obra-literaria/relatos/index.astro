@@ -1,0 +1,53 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getStories, storiesContent } from '../../../../data/stories';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = storiesContent[lang];
+const stories = getStories(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria/relatos');
+const alternatePath = localizedPath(otherLang, 'obra-literaria/relatos');
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.title, description: content.description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, hasPart: stories.map((story) => ({ '@type': 'ShortStory', name: story.title, url: new URL(localizedPath(lang, `obra-literaria/relatos/${story.id}`), SITE_URL).href })) };
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={stories[0]?.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="relatos" />
+    <div class="react-stories">
+      <header class="react-stories-heading">
+        <h2>{content.title}</h2>
+        <span aria-hidden="true"></span>
+        <p>{content.introduction}</p>
+      </header>
+      <div class="react-stories-grid">
+        {stories.map((story, index) => (
+          <article class="react-story-card" style={`--story-delay:${index * 100}ms`}>
+            <a class="react-story-cover" href={localizedPath(lang, `obra-literaria/relatos/${story.id}`)}>
+              <img src={story.coverUrl} alt={story.title} loading={index < 3 ? 'eager' : 'lazy'} style={`object-position:${story.coverPosition ?? '90% center'}`} />
+              <span aria-hidden="true"></span>
+              {story.sections.length === 0 && <em>{content.comingSoon}</em>}
+            </a>
+            <div class="react-story-copy">
+              <p class="react-story-meta">
+                <span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                  {story.year}
+                </span>
+                {story.pdfUrl && <span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m16 6 4 14"></path><path d="M12 6v14"></path><path d="M8 8v12"></path><path d="M4 4v16"></path></svg>{content.pdfAvailable}</span>}
+              </p>
+              <h3><a href={localizedPath(lang, `obra-literaria/relatos/${story.id}`)}>{story.title}</a></h3>
+              <p class="react-story-synopsis">{story.synopsis}</p>
+              <a class="react-story-link" href={localizedPath(lang, `obra-literaria/relatos/${story.id}`)}>{content.read}<span>→</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

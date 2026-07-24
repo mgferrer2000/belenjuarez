@@ -1,0 +1,61 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getInterview, getInterviews, interviewContent, interviewee, parseInterview } from '../../../../data/interviews';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { formatLiteraryLine } from '../../../../utils/literaryText';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.flatMap((lang) => getInterviews(lang).map((interview) => ({ params: { lang, slug: interview.slug }, props: { lang, slug: interview.slug } }))); }
+const { lang, slug } = Astro.props as { lang: Locale; slug: string };
+const interview = getInterview(slug, lang)!;
+const content = interviewContent[lang];
+const blocks = parseInterview(interview.content);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, `obra-literaria/entrevistas/${interview.slug}`);
+const alternatePath = localizedPath(otherLang, `obra-literaria/entrevistas/${interview.slug}`);
+const schema = { '@context': 'https://schema.org', '@type': 'Interview', headline: interview.title, description: interview.intro, image: new URL(interview.coverUrl, SITE_URL).href, datePublished: interview.year, inLanguage: lang, interviewer: { '@type': 'Person', name: interview.interviewer ?? 'Belén Juárez', url: new URL(localizedPath(lang, 'sobre-belen'), SITE_URL).href }, interviewee: { '@type': 'Person', name: interviewee(interview.slug) }, isPartOf: { '@type': 'Periodical', name: interview.publication }, url: new URL(canonicalPath, SITE_URL).href };
+---
+
+<BaseLayout lang={lang} title={`${interview.title} | Belén Juárez`} description={interview.intro} canonicalPath={canonicalPath} alternatePath={alternatePath} image={interview.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="entrevistas" />
+    <div class="react-interview-detail">
+      <a class="react-detail-back" href={localizedPath(lang, 'obra-literaria/entrevistas')}><span>←</span>{content.back}</a>
+      <article>
+        <header class="react-interview-detail-heading">
+          <h2>{interview.title}</h2>
+          <span aria-hidden="true"></span>
+          <p><strong>{interview.publication}</strong><i>•</i>{interview.date}{interview.location && <><i>•</i>{interview.location}</>}{interview.interviewer && <><i>•</i>{content.by} {interview.interviewer}</>}</p>
+        </header>
+        <figure class="react-interview-main-cover"><img src={interview.coverUrl} alt={content.cover(interview.title)} /></figure>
+        <section class="react-interview-body">
+          {!interview.hideIntroInDetail && interview.intro && <aside>{interview.intro}</aside>}
+          {blocks.map((block, blockIndex) => {
+        if (block.type === 'space') return <div class="react-interview-space"></div>;
+        if (block.type === 'break') return <div class="react-interview-break"></div>;
+        if (block.type === 'title') return <h3 class="react-interview-inline-title" set:html={formatLiteraryLine(block.text)} />;
+        if (block.type === 'subtitle' || block.type === 'subtitle-italic') return <p class:list={['react-interview-subtitle', { italic: block.type === 'subtitle-italic' }]} set:html={formatLiteraryLine(block.text)} />;
+        if (block.type === 'quote') return <blockquote set:html={formatLiteraryLine(block.text)} />;
+        if (block.type === 'poem') return <p class="react-interview-poem" set:html={formatLiteraryLine(block.text)} />;
+        if (block.type === 'book') {
+          const nextBlock = blocks[blockIndex + 1];
+          const isLast = nextBlock?.type !== 'book' && nextBlock?.type !== 'space';
+          return <div class:list={['react-interview-book', { last: isLast }]}><strong>{block.title}</strong><span>{block.details}</span></div>;
+        }
+        if (block.type === 'double-image') return <figure class="react-interview-double-image">{block.indexes.map((index) => interview.images?.[index] && <img src={interview.images[index]} alt={content.image(index + 1)} loading="lazy" />)}</figure>;
+        if (block.type === 'image') {
+          const src = interview.images?.[block.index];
+          return src && <figure class:list={['react-interview-inline-image', `align-${block.align.toLowerCase()}`]}><img src={src} alt={content.image(block.index + 1)} loading="lazy" /></figure>;
+        }
+        if (block.type === 'question') return <p class="react-interview-question" set:html={formatLiteraryLine(block.text)} />;
+        if (block.type === 'answer') return <p class="react-interview-answer"><strong>—</strong><span set:html={formatLiteraryLine(block.text)} /></p>;
+        if (block.type === 'named-answer') return <p class="react-interview-answer"><strong>{block.prefix}</strong><span set:html={formatLiteraryLine(block.text)} /></p>;
+        return 'text' in block ? <p set:html={formatLiteraryLine(block.text)} /> : null;
+          })}
+        </section>
+      </article>
+    </div>
+  </article>
+</BaseLayout>

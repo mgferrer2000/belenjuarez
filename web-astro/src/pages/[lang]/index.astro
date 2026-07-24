@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { homeContent, LOCALES, SITE_URL, type Locale } from '../../data/site';
+import { localizedPath } from '../../utils/paths';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Locale };
+const content = homeContent[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang);
+const alternatePath = localizedPath(otherLang);
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Belén Juárez',
+    url: SITE_URL,
+    inLanguage: lang,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Belén Juárez Jiménez',
+    url: new URL(canonicalPath, SITE_URL).href,
+    jobTitle: lang === 'es' ? 'Poeta, artista y profesora universitaria' : 'Poète, artiste et professeure universitaire',
+    birthPlace: {
+      '@type': 'Place',
+      name: 'Paris',
+    },
+    homeLocation: {
+      '@type': 'Place',
+      name: 'Granada',
+    },
+    knowsAbout: [
+      'Poesía',
+      'Literatura',
+      'Poesía visual',
+      'Arte',
+      'Música',
+      'Microbiología',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={content.seoTitle}
+  description={content.description}
+  canonicalPath={canonicalPath}
+  alternatePath={alternatePath}
+  schemas={schemas}
+>
+  <section class="hero">
+    <div class="hero-media">
+      <img
+        src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80"
+        alt={content.imageAlt}
+      />
+      <div class="hero-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="hero-content">
+      <h2 class="eyebrow hero-eyebrow-motion">{content.disciplines}</h2>
+      <h1 class="hero-title-motion">
+        <span>{content.titleLineOne}</span><br />
+        <span>{content.titleLineTwo}</span>
+      </h1>
+      <blockquote class="hero-quote-motion">
+        <p>“{content.firstQuote}”</p>
+        <p>“{content.secondQuote}”</p>
+      </blockquote>
+    </div>
+  </section>
+</BaseLayout>

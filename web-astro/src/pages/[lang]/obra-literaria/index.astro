@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { literaryLanding } from '../../../data/literary-landing';
+import { LOCALES, SITE_URL, type Locale } from '../../../data/site';
+import { localizedPath } from '../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = literaryLanding[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria');
+const alternatePath = localizedPath(otherLang, 'obra-literaria');
+const schemas = [{
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.title,
+  description: content.description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang,
+  hasPart: content.sections.map((section) => ({ '@type': 'CollectionPage', name: section.title, url: new URL(localizedPath(lang, `obra-literaria/${section.path}`), SITE_URL).href })),
+}];
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} schemas={schemas}>
+  <main class="literary-landing content-shell">
+    <header>
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h1>{content.title}</h1>
+      <p>{content.introduction}</p>
+    </header>
+    <nav class="literary-directory" aria-label={content.title}>
+      {content.sections.map((section) => <a class:list={['literary-tile', { 'has-image': 'image' in section }]} href={localizedPath(lang, `obra-literaria/${section.path}`)}>
+        {'image' in section && <img src={section.image} alt="" loading="lazy" />}
+        <div><span>{section.number}</span><h2>{section.title}</h2><p>{section.text}</p><small>{content.explore} →</small></div>
+      </a>)}
+    </nav>
+  </main>
+</BaseLayout>

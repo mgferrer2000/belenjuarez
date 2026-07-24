@@ -1,0 +1,26 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { criticismContent, getCriticisms } from '../../../../data/criticism';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = criticismContent[lang];
+const issues = getCriticisms(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria/critica');
+const alternatePath = localizedPath(otherLang, 'obra-literaria/critica');
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.title, description: content.description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, hasPart: issues.map((issue) => ({ '@type': 'PublicationIssue', name: `${issue.publication} ${issue.title ?? ''}`.trim(), datePublished: issue.year, url: new URL(localizedPath(lang, `obra-literaria/critica/${issue.slug}`), SITE_URL).href })) };
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={issues[0]?.coverUrl} type="article" schemas={[schema]}>
+  <article class="criticism-page content-shell">
+    <LiterarySectionNav lang={lang} activePath="critica" />
+    <header class="criticism-heading"><p class="eyebrow">{content.eyebrow}</p><h1>{content.title}</h1><p>{content.introduction}</p></header>
+    <div class="criticism-grid">
+      {issues.map((issue) => <article class="criticism-card"><a href={localizedPath(lang, `obra-literaria/critica/${issue.slug}`)}><img src={issue.coverUrl} alt={`${issue.publication}, ${issue.title ?? issue.year}`} loading="lazy" /></a><div><p>{issue.year} · {issue.reviews?.length ?? 0} {content.reviews}</p><h2>{issue.publication}</h2>{issue.title && <h3>{issue.title}</h3>}<p>{issue.excerpt}</p><a class="text-link" href={localizedPath(lang, `obra-literaria/critica/${issue.slug}`)}>{content.explore} →</a></div></article>)}
+    </div>
+  </article>
+</BaseLayout>

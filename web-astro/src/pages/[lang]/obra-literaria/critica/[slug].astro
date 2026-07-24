@@ -1,0 +1,35 @@
+---
+import { LITERARY_CRITICISMS } from '@legacy/constants';
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { criticismContent, getCriticisms } from '../../../../data/criticism';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { formatLiteraryLine } from '../../../../utils/literaryText';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.flatMap((lang) => LITERARY_CRITICISMS.map((issue) => ({ params: { lang, slug: issue.slug }, props: { lang, slug: issue.slug } }))); }
+const { lang, slug } = Astro.props as { lang: Locale; slug: string };
+const content = criticismContent[lang];
+const issue = getCriticisms(lang).find((item) => item.slug === slug)!;
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, `obra-literaria/critica/${slug}`);
+const alternatePath = localizedPath(otherLang, `obra-literaria/critica/${slug}`);
+const reviews = (issue.reviews ?? []).map((review) => ({ ...review, lines: review.text.split('\n').map((source) => { const right = source.trim().startsWith('[R]'); const clean = right ? source.trim().slice(3).trim() : source; const image = clean.match(/^\[\[IMG:(?:([RL]):)?(\d+)\]\]$/); return { html: formatLiteraryLine(clean), right, empty: clean.trim() === '', image: image ? { align: image[1], index: Number.parseInt(image[2], 10) } : null }; }) }));
+const schema = { '@context': 'https://schema.org', '@type': 'PublicationIssue', name: `${issue.publication} ${issue.title ?? ''}`.trim(), datePublished: issue.year, image: new URL(issue.coverUrl, SITE_URL).href, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, hasPart: reviews.map((review) => ({ '@type': 'Review', name: review.title, author: { '@type': 'Person', name: 'Belén Juárez Jiménez' }, itemReviewed: { '@type': 'Book', name: review.title, author: { '@type': 'Person', name: review.author } }, reviewBody: review.text.replace(/\[\[IMG:(?:[RL]:)?\d+\]\]/g, '').replaceAll('*', '').replaceAll('_', '') })) };
+---
+
+<BaseLayout lang={lang} title={`${issue.publication}: ${issue.title ?? issue.year} | Crítica literaria`} description={issue.excerpt ?? content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={issue.coverUrl} type="article" schemas={[schema]}>
+  <article class="criticism-detail content-shell">
+    <LiterarySectionNav lang={lang} activePath="critica" />
+    <a class="review-back" href={localizedPath(lang, 'obra-literaria/critica')}>← {content.back}</a>
+    <header><figure><img src={issue.coverUrl} alt={`${issue.publication}, ${issue.title ?? issue.year}`} /></figure><div><p class="eyebrow">{issue.year}</p><h1>{issue.publication}</h1>{issue.title && <h2>{issue.title}</h2>}</div></header>
+    <div class="critical-reviews">
+      {reviews.map((review, reviewIndex) => <section class:list={{ reverse: reviewIndex % 2 !== 0 }}>
+        <figure>{review.imageUrl ? <img src={review.imageUrl} alt={review.title} loading="lazy" /> : <span>{content.noImage}</span>}</figure>
+        <div><header><p>{review.author}</p><h2>{review.title}</h2><p>{review.publicationInfo}</p></header><div class="critical-text">
+          {review.lines.map((line) => line.image ? (review.images?.[line.image.index] && <img class:list={{ right: line.image.align === 'R' }} src={review.images[line.image.index]} alt={content.imageAlt(line.image.index + 1)} loading="lazy" />) : <span class:list={['critical-line', { right: line.right, empty: line.empty }]} set:html={line.empty ? '&nbsp;' : line.html} />)}
+        </div></div>
+      </section>)}
+    </div>
+  </article>
+</BaseLayout>

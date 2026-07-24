@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { biography } from '../../../data/about';
+import { aboutContent, LOCALES, SITE_URL, type Locale } from '../../../data/site';
+import { localizedPath } from '../../../utils/paths';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Locale };
+const content = biography[lang];
+const seo = aboutContent[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'sobre-belen');
+const alternatePath = localizedPath(otherLang, 'sobre-belen');
+const schemas = [{
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: seo.title,
+  url: new URL(canonicalPath, SITE_URL).href,
+  inLanguage: lang,
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Belén Juárez Jiménez',
+    birthPlace: { '@type': 'Place', name: 'Paris' },
+    homeLocation: { '@type': 'Place', name: 'Granada' },
+    jobTitle: lang === 'es' ? 'Poeta, artista y profesora titular de Microbiología' : 'Poète, artiste et professeure titulaire de microbiologie',
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidad de Granada' },
+    knowsAbout: ['Poesía', 'Literatura', 'Poesía visual', 'Arte', 'Música', 'Microbiología'],
+  },
+}];
+
+const figures = {
+  career: { src: '/images/sobrebelen/3B3.jpg', alt: content.images.artisticCareerAlt, caption: content.captions.almunecar2025 },
+  mountain: { src: '/images/sobrebelen/5B2.jpg', alt: content.images.mountainAlt, caption: content.captions.penones },
+  arriate: { src: '/images/sobrebelen/6B.jpeg', alt: content.images.detailAlt, caption: content.captions.arriateWithJose },
+  studio: { src: '/images/sobrebelen/9B4.jpg', alt: content.images.studioAlt, caption: content.captions.almunecar2025 },
+  books: { src: '/images/sobrebelen/belen2.jpg', alt: content.images.artisticPortraitAlt, caption: content.captions.motrilBookFair },
+  place: { src: '/images/sobrebelen/7B2.jpeg', alt: content.images.placeAlt, caption: content.captions.arriate2024 },
+  portrait: { src: '/images/sobrebelen/IMG_0314.JPEG', alt: content.images.belenPortraitAlt },
+  valley: { src: '/images/sobrebelen/IMG_7807.JPEG', alt: content.images.poeticDetailAlt, caption: content.captions.lecrin },
+  hands: { src: '/images/sobrebelen/mano.jpg', alt: content.images.handsAlt, caption: content.captions.lastNight },
+  detail: { src: '/images/sobrebelen/2B3.jpg', alt: content.images.artisticDetailAlt, caption: content.captions.almunecar2026 },
+};
+---
+
+<BaseLayout lang={lang} title={seo.seoTitle} description={seo.description} canonicalPath={canonicalPath} alternatePath={alternatePath} type="profile" schemas={schemas}>
+  <article class="biography-page" id="bio">
+    <div class="bio-shell">
+      <header class="bio-intro">
+        <figure class="bio-feather bio-reveal bio-slide-left">
+          <div><img src="/images/sobrebelen/pluma5.jpg" alt={content.images.portraitAlt} loading="eager" fetchpriority="high" /></div>
+        </figure>
+        <div class="bio-intro-copy bio-reveal bio-rise">
+          <p class="bio-kicker">{content.eyebrow}</p>
+          <h1>{content.title}</h1>
+          <p class="bio-lead">{content.introduction}</p>
+        </div>
+      </header>
+
+      <dl class="bio-stats-mobile" aria-label={lang === 'es' ? 'Trayectoria en cifras' : 'Le parcours en chiffres'}>
+        <div><dd>3</dd><dt>{content.stats.books}</dt></div>
+        <div><dd>15+</dd><dt>{content.stats.collaborations}</dt></div>
+        <div><dd>1</dd><dt>{content.stats.album}</dt></div>
+      </dl>
+
+      <section class="bio-feature bio-feature-reverse">
+        <figure class="bio-figure bio-career bio-reveal bio-scale">
+          <img src={figures.career.src} alt={figures.career.alt} loading="lazy" />
+          <figcaption>{figures.career.caption}</figcaption>
+        </figure>
+        <div class="bio-copy">{content.trajectory.map((paragraph) => <p>{paragraph}</p>)}</div>
+      </section>
+
+      <section class="bio-gallery" aria-label={lang === 'es' ? 'Galería biográfica' : 'Galerie biographique'}>
+        <figure class="bio-figure bio-gallery-wide bio-reveal bio-rise">
+          <img src={figures.mountain.src} alt={figures.mountain.alt} loading="lazy" />
+          <figcaption>{figures.mountain.caption}</figcaption>
+        </figure>
+        <div class="bio-gallery-pair">
+          <figure class="bio-figure bio-gallery-side bio-reveal bio-slide-left">
+            <img src={figures.arriate.src} alt={figures.arriate.alt} loading="lazy" />
+            <figcaption>{figures.arriate.caption}</figcaption>
+          </figure>
+          <figure class="bio-figure bio-gallery-side bio-optional bio-reveal bio-slide-right">
+            <img src={figures.studio.src} alt={figures.studio.alt} loading="lazy" />
+            <figcaption>{figures.studio.caption}</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="bio-feature">
+        <figure class="bio-figure bio-publication bio-reveal bio-slide-left">
+          <img src={figures.books.src} alt={figures.books.alt} loading="lazy" />
+          <figcaption>{figures.books.caption}</figcaption>
+        </figure>
+        <div class="bio-copy">{content.publications.map((paragraph) => <p>{paragraph}</p>)}</div>
+      </section>
+
+      <section class="bio-portraits" aria-label={lang === 'es' ? 'Retratos de Belén Juárez' : 'Portraits de Belén Juárez'}>
+        <figure class="bio-figure bio-reveal bio-rise">
+          <img src={figures.place.src} alt={figures.place.alt} loading="lazy" />
+          <figcaption>{figures.place.caption}</figcaption>
+        </figure>
+        <figure class="bio-portrait-focus bio-reveal bio-rise">
+          <img src={figures.portrait.src} alt={figures.portrait.alt} loading="lazy" />
+        </figure>
+        <figure class="bio-figure bio-optional bio-reveal bio-rise">
+          <img src={figures.valley.src} alt={figures.valley.alt} loading="lazy" />
+          <figcaption>{figures.valley.caption}</figcaption>
+        </figure>
+      </section>
+
+      <section class="bio-philosophy">
+        <blockquote>
+          <span aria-hidden="true">&quot;</span>
+          <p>{content.quote}</p>
+          <span aria-hidden="true">&quot;</span>
+        </blockquote>
+        <div class="bio-philosophy-images">
+          <figure class="bio-figure bio-reveal bio-rise">
+            <img src={figures.hands.src} alt={figures.hands.alt} loading="lazy" />
+            <figcaption>{figures.hands.caption}</figcaption>
+          </figure>
+          <figure class="bio-figure bio-optional bio-reveal bio-rise">
+            <img src={figures.detail.src} alt={figures.detail.alt} loading="lazy" />
+            <figcaption>{figures.detail.caption}</figcaption>
+          </figure>
+        </div>
+        <h2>{content.philosophyTitle}</h2>
+        <div class="bio-copy bio-philosophy-copy">{content.philosophy.map((paragraph) => <p>{paragraph}</p>)}</div>
+      </section>
+
+      <dl class="bio-stats-desktop" aria-label={lang === 'es' ? 'Trayectoria en cifras' : 'Le parcours en chiffres'}>
+        <div><dd>3</dd><dt>{content.stats.publishedBooks}</dt></div>
+        <div><dd>15+</dd><dt>{content.stats.collaborations}</dt></div>
+        <div><dd>1</dd><dt>{content.stats.album}</dt></div>
+      </dl>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  const biographyItems = document.querySelectorAll<HTMLElement>('.bio-reveal');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    biographyItems.forEach((item) => item.classList.add('is-visible'));
+  } else {
+    const biographyObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .1 });
+    biographyItems.forEach((item) => biographyObserver.observe(item));
+  }
+</script>

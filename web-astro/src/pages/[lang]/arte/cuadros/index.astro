@@ -1,0 +1,109 @@
+---
+import ArtPageShell from '../../../../components/ArtPageShell.astro';
+import { artContent, getArtPieces, getArtUi, mobileArtPath } from '../../../../data/art';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = artContent[lang];
+const ui = getArtUi(lang);
+const pieces = getArtPieces(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'arte/cuadros');
+const alternatePath = localizedPath(otherLang, 'arte/cuadros');
+const description = lang === 'es' ? 'Galería completa de pinturas, dibujos y bocetos de Belén Juárez, con técnica, fecha y datos de cada obra.' : 'Galerie complète des peintures, dessins et esquisses de Belén Juárez, avec la technique, la date et les informations de chaque œuvre.';
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.sections[0].title, description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, hasPart: pieces.map((piece) => ({ '@type': 'VisualArtwork', name: piece.title, artMedium: piece.medium, dateCreated: piece.year, description: piece.description ?? piece.mediumDetail, image: new URL(piece.imageUrl, SITE_URL).href, creator: { '@type': 'Person', name: 'Belén Juárez Jiménez' } })) };
+---
+<BaseLayout lang={lang} title={`${content.sections[0].title} | ${content.title} de Belén Juárez`} description={description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={pieces[0].imageUrl} type="article" schemas={[schema]}>
+  <ArtPageShell lang={lang} activePath="cuadros">
+    <section class="react-art-gallery" data-art-gallery>
+      <header class="react-art-intro"><p>{ui.paintingsIntro}</p></header>
+      <div class="react-art-filters" role="group" aria-label={lang === 'es' ? 'Filtrar obras' : 'Filtrer les œuvres'}>
+        <button class="active" type="button" data-art-filter="todos">{ui.filters.all}</button>
+        <button type="button" data-art-filter="cuadros">{ui.filters.paintings}</button>
+        <button type="button" data-art-filter="bocetos">{ui.filters.sketches}</button>
+      </div>
+      <div class="react-art-masonry" aria-live="polite">
+        {pieces.map((piece, index) => (
+          <article data-art-category={piece.category ?? 'cuadros'} data-mobile-order={index}>
+            <button type="button" class="react-art-card" data-index={index} data-src={piece.imageUrl} data-title={piece.title} data-medium={piece.medium} data-medium-detail={piece.mediumDetail ?? ''} data-year={piece.year ?? ''} data-description={piece.description ?? ''} aria-label={`${content.enlarge}: ${piece.title}`}>
+              <picture><source media="(max-width: 767px)" srcset={mobileArtPath(piece.imageUrl)} /><img src={piece.imageUrl} alt={piece.title} loading={index < 4 ? 'eager' : 'lazy'} /></picture>
+              <span class="react-art-overlay">
+                <span class="react-art-meta"><i></i><small><b>{piece.medium}</b>{piece.mediumDetail && <em>{piece.mediumDetail}</em>}{piece.year ? ` • ${piece.year}` : ''}</small></span>
+                <strong>{piece.title}</strong>
+                <span class="react-art-detail">⌗ <span>{ui.viewDetail}</span></span>
+              </span>
+            </button>
+          </article>
+        ))}
+      </div>
+      <div class="react-art-more"><button type="button" data-art-more>{ui.moreWorks}</button></div>
+    </section>
+  </ArtPageShell>
+
+  <dialog class="react-art-dialog" aria-label={content.close}>
+    <button class="react-art-dialog-close" type="button" aria-label={content.close}>×</button>
+    <button class="react-art-dialog-prev" type="button" aria-label={content.previous}>‹</button>
+    <div class="react-art-dialog-inner">
+      <div class="react-art-dialog-image"><img src="" alt="" /></div>
+      <div class="react-art-dialog-copy"><div><p class="medium"></p><p class="medium-detail"></p><h2></h2><time></time></div><i></i><p class="description"></p></div>
+    </div>
+    <button class="react-art-dialog-next" type="button" aria-label={content.next}>›</button>
+  </dialog>
+  <script>
+    const gallery = document.querySelector<HTMLElement>('[data-art-gallery]');
+    if (gallery) {
+      const filterButtons = [...gallery.querySelectorAll<HTMLButtonElement>('[data-art-filter]')];
+      const cards = [...gallery.querySelectorAll<HTMLElement>('[data-art-category]')];
+      const moreWrap = gallery.querySelector<HTMLElement>('.react-art-more');
+      const moreButton = gallery.querySelector<HTMLButtonElement>('[data-art-more]');
+      const pageSize = 12;
+      let filter = 'todos';
+      let mobileLimit = pageSize;
+      const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+      const refresh = () => {
+        let matchingIndex = 0;
+        let matchingTotal = 0;
+        cards.forEach((card) => { if (filter === 'todos' || card.dataset.artCategory === filter) matchingTotal += 1; });
+        cards.forEach((card) => {
+          const matches = filter === 'todos' || card.dataset.artCategory === filter;
+          const withinLimit = !isMobile() || matchingIndex < mobileLimit;
+          card.hidden = !matches || !withinLimit;
+          if (matches) matchingIndex += 1;
+        });
+        if (moreWrap) moreWrap.hidden = !isMobile() || mobileLimit >= matchingTotal;
+      };
+      filterButtons.forEach((button) => button.addEventListener('click', () => {
+        filter = button.dataset.artFilter ?? 'todos'; mobileLimit = pageSize;
+        filterButtons.forEach((item) => item.classList.toggle('active', item === button)); refresh();
+      }));
+      moreButton?.addEventListener('click', () => { mobileLimit += pageSize; refresh(); });
+      window.addEventListener('resize', refresh); refresh();
+
+      const dialog = document.querySelector<HTMLDialogElement>('.react-art-dialog');
+      const triggers = [...gallery.querySelectorAll<HTMLButtonElement>('.react-art-card')];
+      let visibleTriggers = triggers; let current = 0;
+      const show = (trigger: HTMLButtonElement) => {
+        if (!dialog) return;
+        visibleTriggers = triggers.filter((item) => !item.closest<HTMLElement>('[data-art-category]')?.hidden);
+        current = Math.max(0, visibleTriggers.indexOf(trigger));
+        const image = dialog.querySelector<HTMLImageElement>('.react-art-dialog-image img')!;
+        image.src = trigger.dataset.src ?? ''; image.alt = trigger.dataset.title ?? '';
+        dialog.querySelector<HTMLElement>('.medium')!.textContent = trigger.dataset.medium ?? '';
+        dialog.querySelector<HTMLElement>('.medium-detail')!.textContent = trigger.dataset.mediumDetail ?? '';
+        dialog.querySelector<HTMLElement>('h2')!.textContent = trigger.dataset.title ?? '';
+        dialog.querySelector<HTMLElement>('time')!.textContent = trigger.dataset.year ?? '';
+        dialog.querySelector<HTMLElement>('.description')!.textContent = trigger.dataset.description ?? '';
+      };
+      triggers.forEach((trigger) => trigger.addEventListener('click', () => { show(trigger); dialog?.showModal(); }));
+      const move = (delta: number) => { if (!visibleTriggers.length) return; current = (current + delta + visibleTriggers.length) % visibleTriggers.length; show(visibleTriggers[current]); };
+      dialog?.querySelector('.react-art-dialog-prev')?.addEventListener('click', () => move(-1));
+      dialog?.querySelector('.react-art-dialog-next')?.addEventListener('click', () => move(1));
+      dialog?.querySelector('.react-art-dialog-close')?.addEventListener('click', () => dialog.close());
+      dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+      dialog?.addEventListener('keydown', (event) => { if (event.key === 'ArrowLeft') move(-1); if (event.key === 'ArrowRight') move(1); if (event.key === 'Escape') dialog.close(); });
+    }
+  </script>
+</BaseLayout>

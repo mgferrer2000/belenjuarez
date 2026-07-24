@@ -1,0 +1,43 @@
+---
+import ArtPageShell from '../../../../components/ArtPageShell.astro';
+import { artContent, getArtCritique, getArtCritiqueUi } from '../../../../data/art';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale }; const content = artContent[lang]; const article = getArtCritique(lang); const ui = getArtCritiqueUi(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es'; const canonicalPath = localizedPath(lang, 'arte/critica'); const alternatePath = localizedPath(otherLang, 'arte/critica');
+const description = lang === 'es' ? `«${article.title}», crítica de ${article.author} sobre la exposición de Belén Juárez publicada en ${article.publication}.` : `« ${article.title} », critique de ${article.author} sur l’exposition de Belén Juárez, publiée dans ${article.publication}.`;
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: article.title, author: { '@type': 'Person', name: article.author }, about: { '@type': 'Person', name: 'Belén Juárez Jiménez' }, publisher: { '@type': 'Organization', name: article.publication }, datePublished: '1991-06', image: [article.coverUrl, ...(article.images?.map((item) => item.url) ?? [])].map((image) => new URL(image, SITE_URL).href), articleBody: article.content, inLanguage: lang, url: new URL(canonicalPath, SITE_URL).href };
+---
+<BaseLayout lang={lang} title={`${article.title} | ${content.sections[2].title}`} description={description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={article.coverUrl} type="article" schemas={[schema]}>
+  <ArtPageShell lang={lang} activePath="critica">
+    <article class="react-art-critique">
+      <header class="react-critique-hero">
+        <img src={article.coverUrl} alt={article.publication} />
+        <div class="react-critique-gradient"></div>
+        <div class="react-critique-heading">
+          <p><strong>{ui.label}</strong><i></i><span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2Z" /></svg>{article.date}</span></p>
+          <h2>"{article.title}"</h2><h3>{ui.by} {article.author}</h3>
+        </div>
+      </header>
+      <div class="react-critique-meta"><span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h13v16H4zM17 8h3v12h-3M7 8h7M7 12h7M7 16h4" /></svg><strong>{article.publication}</strong></span><i>•</i><span>{article.extraInfo}</span></div>
+      <div class="react-critique-layout">
+        <div class="react-critique-body">{article.content.split('\n\n').map((paragraph, index) => <p class:list={{ 'drop-cap': index === 0 }}>{paragraph}</p>)}</div>
+        <aside><div><header><h2>{ui.report}</h2><i></i><p>{ui.enlarge}</p></header>
+          {article.images?.map((item, index) => (
+            <figure><button type="button" data-critique-src={item.url} data-critique-alt={item.caption ?? ui.illustrationAlt(index + 1)} aria-label={`${ui.enlarge}: ${ui.illustrationAlt(index + 1)}`}><img src={item.url} alt={item.caption ?? ui.illustrationAlt(index + 1)} loading="lazy" /></button>{item.caption && <figcaption>{item.caption}</figcaption>}</figure>
+          ))}
+          <blockquote>“{ui.quote}”</blockquote>
+        </div></aside>
+      </div>
+    </article>
+  </ArtPageShell>
+  <dialog class="react-critique-dialog" aria-label={content.close}><button type="button" aria-label={content.close}>×</button><img src="" alt="" /><p></p></dialog>
+  <script>
+    const dialog = document.querySelector<HTMLDialogElement>('.react-critique-dialog'); const image = dialog?.querySelector<HTMLImageElement>('img'); const caption = dialog?.querySelector<HTMLElement>('p');
+    document.querySelectorAll<HTMLButtonElement>('[data-critique-src]').forEach((button) => button.addEventListener('click', () => { if (!dialog || !image) return; image.src = button.dataset.critiqueSrc ?? ''; image.alt = button.dataset.critiqueAlt ?? ''; if (caption) caption.textContent = image.alt; dialog.showModal(); }));
+    dialog?.querySelector<HTMLButtonElement>('button')?.addEventListener('click', () => dialog.close()); dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  </script>
+</BaseLayout>

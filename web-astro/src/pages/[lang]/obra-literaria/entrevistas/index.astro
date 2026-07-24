@@ -1,0 +1,46 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getInterviews, interviewContent, interviewee } from '../../../../data/interviews';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = interviewContent[lang];
+const interviews = getInterviews(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria/entrevistas');
+const alternatePath = localizedPath(otherLang, 'obra-literaria/entrevistas');
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.title, description: content.description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, hasPart: interviews.map((interview) => ({ '@type': 'Interview', headline: interview.title, datePublished: interview.year, interviewer: { '@type': 'Person', name: interview.interviewer ?? 'Belén Juárez' }, interviewee: { '@type': 'Person', name: interviewee(interview.slug) }, url: new URL(localizedPath(lang, `obra-literaria/entrevistas/${interview.slug}`), SITE_URL).href })) };
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={interviews[0]?.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="entrevistas" />
+    <div class="react-interviews">
+      <header>
+        <h2>{content.title}</h2>
+        <span aria-hidden="true"></span>
+        <p>{content.introduction}</p>
+      </header>
+      <div class="react-interview-list">
+        {interviews.map((interview) => {
+          const detailPath = localizedPath(lang, `obra-literaria/entrevistas/${interview.slug}`);
+          return (
+            <article class="react-interview-card">
+              <a href={detailPath}><img src={interview.coverUrl} alt={content.cover(interview.title)} loading="lazy" /><span aria-hidden="true"></span></a>
+              <div>
+                <h3><a href={detailPath}>{interview.title}</a></h3>
+                <p class="react-interview-meta"><strong>{interview.publication}</strong><span>{interview.date}{interview.location && ` • ${interview.location}`}</span>{interview.interviewer && <span>{content.by} {interview.interviewer}</span>}</p>
+                <p class="react-interview-intro">{interview.intro}</p>
+                <a class="react-interview-link" href={detailPath}>{content.read}</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

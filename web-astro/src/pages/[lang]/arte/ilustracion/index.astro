@@ -1,0 +1,34 @@
+---
+import ArtPageShell from '../../../../components/ArtPageShell.astro';
+import { artContent, getArtUi, getIllustratedBooks } from '../../../../data/art';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = artContent[lang]; const ui = getArtUi(lang); const books = getIllustratedBooks(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es'; const canonicalPath = localizedPath(lang, 'arte/ilustracion'); const alternatePath = localizedPath(otherLang, 'arte/ilustracion');
+const description = lang === 'es' ? 'Libros ilustrados por Belén Juárez y galerías completas de las imágenes creadas para cada publicación.' : 'Livres illustrés par Belén Juárez et galeries complètes des images créées pour chaque publication.';
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.sections[1].title, description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, hasPart: books.map((book) => ({ '@type': 'Book', name: book.title, datePublished: book.year, image: new URL(book.coverUrl, SITE_URL).href, illustrator: { '@type': 'Person', name: 'Belén Juárez Jiménez' }, url: new URL(localizedPath(lang, `arte/ilustracion/${book.id}`), SITE_URL).href })) };
+---
+<BaseLayout lang={lang} title={`${content.sections[1].title} | ${content.title} de Belén Juárez`} description={description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={books[0].coverUrl} type="article" schemas={[schema]}>
+  <ArtPageShell lang={lang} activePath="ilustracion">
+    <section class="react-art-illustration">
+      <header class="react-art-intro"><p>{ui.illustrationsIntro}</p></header>
+      <div class="react-art-books">
+        {books.map((book, index) => (
+          <article style={`--art-delay:${index * 80}ms`}>
+            <a href={localizedPath(lang, `arte/ilustracion/${book.id}`)}>
+              <div class="react-art-book-cover">
+                <img src={book.coverUrl} alt={book.title} loading={index === 0 ? 'eager' : 'lazy'} />
+                <span><strong>{book.title}</strong><i></i><small>{ui.viewIllustrations}</small></span>
+              </div>
+              <div class="react-art-book-copy"><h2>{book.title}</h2>{book.year && <p>{book.year}</p>}</div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </ArtPageShell>
+</BaseLayout>

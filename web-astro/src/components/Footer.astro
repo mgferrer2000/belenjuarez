@@ -1,0 +1,20 @@
+---
+import type { Locale } from '../data/site';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const credit = lang === 'es'
+  ? 'Diseño web y programación por'
+  : 'Conception et développement web par';
+---
+
+<footer class="site-footer">
+  <p>
+    {credit}{' '}
+    <a href="mailto:mgferrer2000@gmail.com">Miguel A. González Ferrer</a>{' '}
+    © {new Date().getFullYear()}
+  </p>
+</footer>

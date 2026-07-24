@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {
+  LOCALES,
+  sectionContent,
+  type Locale,
+  type SectionSlug,
+} from '../../../data/site';
+import { localizedPath } from '../../../utils/paths';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) =>
+    (Object.keys(sectionContent) as SectionSlug[]).filter((section) => !['obra-literaria', 'poesia-visual', 'arte', 'musica', 'blog', 'resenas-literarias', 'contacto'].includes(section)).map((section) => ({
+      params: { lang, section },
+      props: { lang, section },
+    })),
+  );
+}
+
+const { lang, section } = Astro.props as { lang: Locale; section: SectionSlug };
+const content = sectionContent[section][lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, section);
+const alternatePath = localizedPath(otherLang, section);
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${content.title} | Belén Juárez`}
+  description={content.description}
+  canonicalPath={canonicalPath}
+  alternatePath={alternatePath}
+>
+  <section class="section-landing content-shell">
+    <p class="eyebrow">Belén Juárez</p>
+    <h1>{content.title}</h1>
+    <p class="lead">{content.introduction}</p>
+    <div class="migration-note" role="note">
+      <p>{lang === 'es'
+        ? 'Estructura SEO preparada. El contenido completo se migrará desde la web de referencia en el siguiente bloque.'
+        : 'Structure SEO préparée. Le contenu complet sera migré depuis le site de référence lors de la prochaine étape.'}</p>
+    </div>
+  </section>
+</BaseLayout>

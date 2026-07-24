@@ -1,0 +1,5 @@
+---
+import { musicContent } from '../data/music'; import type { Locale } from '../data/site'; import { localizedPath } from '../utils/paths';
+interface Props { lang: Locale; activePath?: string; } const { lang, activePath } = Astro.props; const content = musicContent[lang];
+---
+<nav class="music-section-nav" aria-label={content.title}>{content.sections.slice(0, 2).map((section) => <a class:list={{ active: section.path === activePath }} href={localizedPath(lang, `musica/${section.path}`)} aria-current={section.path === activePath ? 'page' : undefined}>{section.navTitle}</a>)}</nav>

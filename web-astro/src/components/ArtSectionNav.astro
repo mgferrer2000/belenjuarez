@@ -1,0 +1,16 @@
+---
+import { artContent } from '../data/art';
+import type { Locale } from '../data/site';
+import { localizedPath } from '../utils/paths';
+
+interface Props { lang: Locale; activePath?: string; }
+const { lang, activePath } = Astro.props;
+const content = artContent[lang];
+---
+<nav class="art-section-nav" aria-label={content.title}>
+  {content.sections.map((section) => (
+    <a class:list={{ active: section.path === activePath }} href={localizedPath(lang, `arte/${section.path}`)} aria-current={section.path === activePath ? 'page' : undefined}>
+      {section.navTitle}
+    </a>
+  ))}
+</nav>

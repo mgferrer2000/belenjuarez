@@ -1,0 +1,20 @@
+---
+import ArtSectionNav from './ArtSectionNav.astro';
+import { artContent } from '../data/art';
+import type { Locale } from '../data/site';
+
+interface Props { lang: Locale; activePath: string; }
+const { lang, activePath } = Astro.props;
+const content = artContent[lang];
+---
+<article class="react-art-page">
+  <div class="react-art-shell">
+    <header class="react-art-header">
+      <h1>{content.pageTitle}</h1>
+      <ArtSectionNav lang={lang} activePath={activePath} />
+    </header>
+    <div class="react-art-content">
+      <slot />
+    </div>
+  </div>
+</article>

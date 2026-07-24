@@ -1,0 +1,85 @@
+---
+import { BOOK_REVIEWS } from '@legacy/constants';
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getReviews, reviewsContent } from '../../../../data/reviews';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => BOOK_REVIEWS.map((review) => ({ params: { lang, id: review.id }, props: { lang, id: review.id } })));
+}
+const { lang, id } = Astro.props as { lang: Locale; id: string };
+const content = reviewsContent[lang];
+const review = getReviews(lang).find((item) => item.id === id)!;
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, `obra-literaria/resenas-libros/${id}`);
+const alternatePath = localizedPath(otherLang, `obra-literaria/resenas-libros/${id}`);
+const paragraphs = review.fullContent.split(/\n\n+/).filter(Boolean);
+const inlineParts = (text: string) => text.split(/(\*[^*]+\*)/).map((part) => ({
+  text: part.startsWith('*') && part.endsWith('*') ? part.slice(1, -1) : part,
+  emphasis: part.startsWith('*') && part.endsWith('*'),
+}));
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Review', name: review.title,
+  author: { '@type': 'Person', name: review.author }, datePublished: review.date,
+  reviewBody: review.fullContent.replaceAll('*', ''), inLanguage: lang,
+  itemReviewed: { '@type': 'Book', name: review.bookTitle, author: { '@type': 'Person', name: 'Belén Juárez Jiménez' } },
+  publisher: { '@type': 'Organization', name: review.publication }, url: new URL(canonicalPath, SITE_URL).href,
+};
+---
+
+<BaseLayout lang={lang} title={`${review.title} | ${review.author}`} description={review.condensedQuote.replaceAll('*', '').slice(0, 158)} canonicalPath={canonicalPath} alternatePath={alternatePath} image={review.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="resenas-libros" />
+    <div class="react-review-detail">
+      <div class="react-review-detail-shell">
+        <a class="react-review-back" href={localizedPath(lang, 'obra-literaria/resenas-libros')}>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+          {content.back}
+        </a>
+        <header class="react-review-detail-header">
+          <div>
+            <p>{content.criticism}</p>
+            <h2>{review.title}</h2>
+            <span aria-hidden="true"></span>
+          </div>
+          <p class="react-review-detail-meta">
+            <span>{review.author}</span><i aria-hidden="true">•</i><span>{review.publication}</span><i aria-hidden="true">•</i><time>{review.date}</time>
+          </p>
+        </header>
+        <div class="react-review-article">
+          <i class="corner top-left" aria-hidden="true"></i><i class="corner top-right" aria-hidden="true"></i>
+          <i class="corner bottom-left" aria-hidden="true"></i><i class="corner bottom-right" aria-hidden="true"></i>
+          <div>
+            {paragraphs.map((paragraph) => <p>{inlineParts(paragraph).map((part) => part.emphasis ? <em>{part.text}</em> : part.text)}</p>)}
+          </div>
+        </div>
+        {review.detailImageUrl && (
+          <figure class="react-review-detail-image">
+            <img src={review.detailImageUrl} alt={review.detailImageCaption ?? (lang === 'es' ? `Imagen relacionada con ${review.title}` : `Image associée à ${review.title}`)} loading="lazy" />
+            {review.detailImageCaption && <figcaption>{review.detailImageCaption}</figcaption>}
+          </figure>
+        )}
+        <footer class="react-review-detail-footer">
+          <div>
+            <button type="button">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.59 13.51 6.83 3.98"></path><path d="m15.41 6.51-6.82 3.98"></path></svg>
+              {content.share}
+            </button>
+            <button type="button" data-review-print>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect width="12" height="8" x="6" y="14"></rect></svg>
+              {content.print}
+            </button>
+          </div>
+          <p>© {review.date} {review.author}</p>
+        </footer>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  document.querySelector<HTMLButtonElement>('[data-review-print]')?.addEventListener('click', () => window.print());
+</script>

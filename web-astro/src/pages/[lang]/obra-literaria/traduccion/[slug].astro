@@ -1,0 +1,53 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getTranslationWork, getTranslationWorks, translationContent, translationLines } from '../../../../data/translations';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { formatLiteraryLine } from '../../../../utils/literaryText';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.flatMap((lang) => getTranslationWorks(lang).map((work) => ({ params: { lang, slug: work.slug }, props: { lang, slug: work.slug } }))); }
+const { lang, slug } = Astro.props as { lang: Locale; slug: string };
+const work = getTranslationWork(slug, lang)!;
+const content = translationContent[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, `obra-literaria/traduccion/${work.slug}`);
+const alternatePath = localizedPath(otherLang, `obra-literaria/traduccion/${work.slug}`);
+const schema = { '@context': 'https://schema.org', '@type': 'Book', name: work.title, description: work.description, image: new URL(work.coverUrl, SITE_URL).href, datePublished: work.year, translator: { '@type': 'Person', name: 'Belén Juárez', url: new URL(localizedPath(lang, 'sobre-belen'), SITE_URL).href }, publisher: { '@type': 'Organization', name: work.publication }, hasPart: work.sections.map((section) => ({ '@type': 'CreativeWork', name: section.title, inLanguage: [section.sourceLanguage, section.targetLanguage] })), url: new URL(canonicalPath, SITE_URL).href };
+---
+
+<BaseLayout lang={lang} title={`${work.title} | Belén Juárez`} description={work.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={work.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="traduccion" />
+    <div class="react-translation-detail">
+      <a class="react-detail-back" href={localizedPath(lang, 'obra-literaria/traduccion')}><span>←</span>{content.back}</a>
+      <header class="react-detail-header">
+        <figure><img src={work.coverUrl} alt={content.cover(work.title)} /></figure>
+        <div>
+          <p class="react-detail-kicker"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>{content.edition}</p>
+          <h2>{work.title}</h2>
+          <p class="react-detail-publication">{work.publication} · {work.year}</p>
+          <span class="react-detail-rule" aria-hidden="true"></span>
+          <div class="react-detail-introduction">
+            <p>{work.description}</p><p>{work.authorsLine}</p><p>{work.roleLine}</p>{work.note && <p>{work.note}</p>}
+          </div>
+          <a class="react-detail-download" href={work.pdfUrl} target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>{content.download}</a>
+        </div>
+      </header>
+      <section class="react-translation-sections">
+        {work.sections.map((section) => (
+          <article>
+            <header>{section.title && !/^Poema\s+[IVXLCDM]+$/i.test(section.title) && <h3>{section.title}</h3>}</header>
+            <div class="react-translation-pair">
+              <div><h4>{section.sourceLanguage}</h4><div class="react-translation-poem">{translationLines(section.sourceText).map((line) => line === '' ? <span class="empty"></span> : <span set:html={formatLiteraryLine(line)} />)}</div></div>
+              <div><h4>{section.targetLanguage}</h4><div class="react-translation-poem">{translationLines(section.targetText).map((line) => line === '' ? <span class="empty"></span> : <span set:html={formatLiteraryLine(line)} />)}</div></div>
+            </div>
+          </article>
+        ))}
+      </section>
+      {work.supplementaryNotes && work.supplementaryNotes.length > 0 && <section class="react-translation-notes"><h3>{content.notes}</h3>{work.supplementaryNotes.map((note) => <p set:html={formatLiteraryLine(note)} />)}</section>}
+      {work.analysis && <section class="react-translation-analysis"><h3>{content.analysis}</h3>{work.analysis.split('\n\n').map((paragraph) => <p set:html={formatLiteraryLine(paragraph)} />)}</section>}
+    </div>
+  </article>
+</BaseLayout>

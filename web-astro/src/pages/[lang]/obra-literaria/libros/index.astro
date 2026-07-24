@@ -1,0 +1,79 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { booksContent } from '../../../../data/books';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = booksContent[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria/libros');
+const alternatePath = localizedPath(otherLang, 'obra-literaria/libros');
+const schemas = content.books.map((book) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: book.title,
+  author: { '@type': 'Person', name: 'Belén Juárez Jiménez', url: SITE_URL },
+  datePublished: book.year,
+  inLanguage: lang,
+  publisher: { '@type': 'Organization', name: book.publisher, url: book.publisherUrl },
+  image: new URL(book.cover, SITE_URL).href,
+  description: book.description,
+  url: new URL(`${canonicalPath}#${book.id}`, SITE_URL).href,
+}));
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={content.books[0].cover} type="book" schemas={schemas}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="libros" />
+    <div class="react-books-grid">
+      {content.books.map((book) => (
+        book.featured ? (
+          <section id={book.id} class="react-book-featured">
+            <div class="react-book-featured-cover">
+              <img src={book.cover} alt={content.coverAlt(book.title)} loading="eager" />
+            </div>
+            <div class="react-book-featured-copy">
+              <p class="react-book-status">{content.latest}</p>
+              <h2>{book.title}</h2>
+              <p class="react-book-year">{book.year}</p>
+              <p class="react-book-publisher">
+                <a href={book.publisherUrl} target="_blank" rel="noopener noreferrer">{content.publisherLinks[book.id]}</a>
+              </p>
+              <div class="react-book-prose">
+                <p class="react-book-lead">{book.description}</p>
+                {book.extendedDescription && <p>{book.extendedDescription}</p>}
+                {book.backCoverVerses && (
+                  <blockquote>
+                    {book.backCoverVerses.map((verse) => <span>{verse}</span>)}
+                    <cite>— {content.backCoverLabel}</cite>
+                  </blockquote>
+                )}
+              </div>
+            </div>
+          </section>
+        ) : (
+          <article id={book.id} class="react-book-standard">
+            <div class="react-book-standard-cover">
+              <img src={book.cover} alt={content.coverAlt(book.title)} loading="lazy" />
+              {book.resources && (
+                <div class="react-book-overlay">
+                  {book.resources.map((resource) => <a href={resource.url} download>{resource.label}</a>)}
+                </div>
+              )}
+            </div>
+            <h2>{book.title}</h2>
+            <p class="react-book-year">{book.year}</p>
+            <p class="react-book-publisher">
+              <a href={book.publisherUrl} target="_blank" rel="noopener noreferrer">{content.publisherLinks[book.id]}</a>
+            </p>
+            <p class="react-book-standard-description">{book.description}</p>
+          </article>
+        )
+      ))}
+    </div>
+  </article>
+</BaseLayout>

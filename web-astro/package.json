@@ -1,0 +1,24 @@
+{
+  "name": "belen-juarez-seo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/run-astro.mjs dev --port 4321",
+    "check": "node scripts/run-astro.mjs check",
+    "build": "node scripts/run-astro.mjs check && node scripts/run-astro.mjs build",
+    "audit": "node scripts/audit-dist.mjs",
+    "preview": "node scripts/run-astro.mjs preview --port 4322"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.1",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
+  }
+}

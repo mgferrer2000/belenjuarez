@@ -1,0 +1,139 @@
+---
+import MusicPageShell from '../../../../components/MusicPageShell.astro';
+import { albumTracks, getMusicHorizon } from '../../../../data/music';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Locale };
+const page = getMusicHorizon(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'musica/horizonte');
+const alternatePath = localizedPath(otherLang, 'musica/horizonte');
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicAlbum',
+  name: page.title,
+  datePublished: '2025',
+  byArtist: { '@type': 'Person', name: 'Belén Juárez Jiménez' },
+  image: new URL('/images/Horizonte_de_Sucesos/1 PORTADA.JPG', SITE_URL).href,
+  description: page.introduction,
+  inLanguage: lang,
+  url: new URL(canonicalPath, SITE_URL).href,
+  track: albumTracks.map((track, index) => ({
+    '@type': 'MusicRecording',
+    position: index + 1,
+    name: track.title,
+    duration: track.duration,
+    url: `https://www.youtube.com/watch?v=${track.youtubeId}`,
+  })),
+};
+---
+<BaseLayout
+  lang={lang}
+  title={`${page.title} | Álbum de Belén Juárez`}
+  description={page.introduction}
+  canonicalPath={canonicalPath}
+  alternatePath={alternatePath}
+  image="/images/Horizonte_de_Sucesos/1 PORTADA.JPG"
+  type="article"
+  schemas={[schema]}
+>
+  <MusicPageShell lang={lang} activePath="horizonte">
+    <section class="react-horizon">
+      <div class="react-horizon-layout">
+        <div class="react-horizon-playlist">
+          <header class="react-music-section-heading react-horizon-heading">
+            <div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/><path d="M18 15v6m0 0 2-2m-2 2-2-2"/></svg>
+              <h2>{page.title}</h2>
+            </div>
+            <p>{page.introduction}<br /><span>{page.selectionPrompt}</span></p>
+          </header>
+
+          <div class="react-track-list" aria-label={page.title}>
+            {albumTracks.map((track, index) => (
+              <button
+                type="button"
+                data-track-video={track.youtubeId}
+                data-track-title={track.title}
+                class:list={{ active: index === 0 }}
+              >
+                <span class="react-track-number">{String(index + 1).padStart(2, '0')}</span>
+                <span class="react-track-copy">
+                  <strong>{track.title}</strong>
+                  <small>{track.poemSource}</small>
+                </span>
+                <time>{track.duration}</time>
+                <i aria-hidden="true"></i>
+              </button>
+            ))}
+          </div>
+
+          <nav class="react-music-platforms" aria-label={lang === 'es' ? 'Plataformas musicales' : 'Plateformes musicales'}>
+            <a class="youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_nDUfLuFMPYEaeLx1Lyqcj_pBlOxhEE_pE" target="_blank" rel="noopener noreferrer">YouTube Music</a>
+            <a class="spotify" href="https://open.spotify.com/intl-es/album/32YXuhIAqGlZm9qnewcgRl" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a class="apple" href="https://music.apple.com/es/album/horizonte-de-sucesos/1879665293" target="_blank" rel="noopener noreferrer">Apple Music</a>
+          </nav>
+        </div>
+
+        <aside class="react-horizon-player-column">
+          <div class="react-horizon-sticky">
+            <div class="react-album-player" data-current-video={albumTracks[0].youtubeId}>
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${albumTracks[0].youtubeId}?rel=0`}
+                title={albumTracks[0].title}
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <section class="react-author-note">
+              <header>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3v7"/></svg>
+                <h5>{page.authorNote}</h5>
+              </header>
+              {page.authorParagraphs.map((paragraph, index) => (
+                <p class:list={{ closing: index === page.authorParagraphs.length - 1 }}>{paragraph}</p>
+              ))}
+              <footer>— Belén Juárez</footer>
+            </section>
+          </div>
+        </aside>
+      </div>
+
+      <section class="react-album-review">
+        <svg class="react-review-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+        <header>
+          <h5>{page.reviewTitle}</h5>
+          <p>{page.reviewMeta}</p>
+        </header>
+        <div class="react-review-columns">
+          <div>{page.reviewParagraphs.slice(0, 2).map((paragraph) => <p>{paragraph}</p>)}</div>
+          <div>{page.reviewParagraphs.slice(2).map((paragraph) => <p>{paragraph}</p>)}</div>
+        </div>
+        <a href="https://www.facebook.com/share/1ApEXkNRGF/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">{page.reviewLink} →</a>
+      </section>
+    </section>
+  </MusicPageShell>
+
+  <script>
+    const player = document.querySelector<HTMLElement>('.react-album-player');
+    const tracks = [...document.querySelectorAll<HTMLButtonElement>('[data-track-video]')];
+
+    tracks.forEach((button) => {
+      button.addEventListener('click', () => {
+        const id = button.dataset.trackVideo;
+        const title = button.dataset.trackTitle || 'YouTube Music Player';
+        if (!player || !id) return;
+        tracks.forEach((item) => item.classList.toggle('active', item === button));
+        player.dataset.currentVideo = id;
+        player.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${title}" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      });
+    });
+  </script>
+</BaseLayout>

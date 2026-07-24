@@ -1,0 +1,246 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import {
+  DEFAULT_SOCIAL_IMAGE,
+  localeDetails,
+  SITE_NAME,
+  SITE_URL,
+  type Locale,
+} from '../data/site';
+
+type Schema = Record<string, unknown>;
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  alternatePath: string;
+  image?: string;
+  type?: 'website' | 'article' | 'book' | 'profile';
+  noindex?: boolean;
+  schemas?: Schema[];
+}
+
+const {
+  lang,
+  title,
+  description,
+  canonicalPath,
+  alternatePath,
+  image = DEFAULT_SOCIAL_IMAGE,
+  type = 'website',
+  noindex = false,
+  schemas = [],
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, SITE_URL).href;
+const alternate = new URL(alternatePath, SITE_URL).href;
+const socialImage = new URL(image, SITE_URL).href;
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const defaultPath = lang === 'es' ? canonicalPath : alternatePath;
+const defaultUrl = new URL(defaultPath, SITE_URL).href;
+---
+
+<!doctype html>
+<html lang={localeDetails[lang].htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={otherLang} href={alternate} />
+    <link rel="alternate" hreflang="x-default" href={defaultUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:locale" content={localeDetails[lang].ogLocale} />
+    <meta property="og:locale:alternate" content={localeDetails[otherLang].ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
+    {schemas.map((schema) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body>
+    <div class="journal-navigation-loader" aria-hidden="true">
+      <span class="journal-navigation-bar"></span>
+    </div>
+    <Header lang={lang} currentPath={canonicalPath} alternatePath={alternatePath} />
+    <main id="contenido-principal">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      const journalPath = /^\/(es|fr)\/(blog|resenas-literarias)\/[a-f0-9-]{32,36}\/?$/i;
+      let navigationPending = false;
+      let pendingCard: HTMLElement | null = null;
+
+      const createCardLoader = () => {
+        const status = document.createElement('div');
+        status.className = 'journal-card-loader';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+
+        const lines = document.createElement('span');
+        lines.className = 'journal-card-loader-lines';
+        lines.setAttribute('aria-hidden', 'true');
+        for (let index = 0; index < 5; index += 1) lines.append(document.createElement('i'));
+
+        const label = document.createElement('span');
+        label.textContent = document.documentElement.lang.startsWith('fr')
+          ? 'Chargement de l’article…'
+          : 'Cargando artículo…';
+        status.append(lines, label);
+        return status;
+      };
+
+      const resetJournalLoader = () => {
+        navigationPending = false;
+        document.body.classList.remove('journal-navigation-pending');
+        pendingCard?.querySelector('.journal-card-loader')?.remove();
+        pendingCard?.classList.remove('is-opening');
+        pendingCard?.removeAttribute('aria-busy');
+        pendingCard = null;
+      };
+
+      const warmedJournalUrls = new Set<string>();
+      const journalWarmQueue: string[] = [];
+      let journalWarmActive = false;
+
+      const journalDestination = (target: EventTarget | null) => {
+        if (!(target instanceof Element)) return null;
+        const link = target.closest<HTMLAnchorElement>('.journal-grid a[href]');
+        if (!link) return null;
+        const destination = new URL(link.href, window.location.href);
+        return destination.origin === window.location.origin && journalPath.test(destination.pathname)
+          ? destination
+          : null;
+      };
+
+      const runJournalWarmQueue = async () => {
+        if (journalWarmActive) return;
+        journalWarmActive = true;
+
+        while (journalWarmQueue.length) {
+          const canonicalUrl = journalWarmQueue.shift();
+          if (!canonicalUrl || warmedJournalUrls.has(canonicalUrl)) continue;
+          warmedJournalUrls.add(canonicalUrl);
+
+          try {
+            const warmUrl = new URL(canonicalUrl);
+            warmUrl.searchParams.set('warm', '1');
+            const response = await fetch(warmUrl, {
+              credentials: 'same-origin',
+              cache: 'no-store',
+              headers: { 'X-Purpose': 'journal-prefetch' },
+            });
+            if (!response.ok) warmedJournalUrls.delete(canonicalUrl);
+          } catch {
+            warmedJournalUrls.delete(canonicalUrl);
+          }
+        }
+
+        journalWarmActive = false;
+      };
+
+      const queueJournalWarm = (destination: URL, priority = false) => {
+        destination.hash = '';
+        destination.search = '';
+        const canonicalUrl = destination.href;
+        if (warmedJournalUrls.has(canonicalUrl)) return;
+
+        const queuedIndex = journalWarmQueue.indexOf(canonicalUrl);
+        if (queuedIndex >= 0) journalWarmQueue.splice(queuedIndex, 1);
+        priority ? journalWarmQueue.unshift(canonicalUrl) : journalWarmQueue.push(canonicalUrl);
+        void runJournalWarmQueue();
+      };
+
+      const connection = (navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }).connection;
+      const allowAutomaticWarm = !connection?.saveData && !/2g/.test(connection?.effectiveType ?? '');
+      const observedJournalLinks = new WeakSet<Element>();
+      const journalObserver = 'IntersectionObserver' in window && allowAutomaticWarm
+        ? new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting || !(entry.target instanceof HTMLAnchorElement)) return;
+              const link = entry.target;
+              observer.unobserve(link);
+              window.setTimeout(() => {
+                const destination = new URL(link.href, window.location.href);
+                if (journalPath.test(destination.pathname)) queueJournalWarm(destination);
+              }, 650);
+            });
+          }, { rootMargin: '320px 0px' })
+        : null;
+
+      const observeJournalLinks = (root: ParentNode = document) => {
+        if (!journalObserver) return;
+        root.querySelectorAll<HTMLAnchorElement>('.journal-grid h2 a[href]').forEach((link) => {
+          if (observedJournalLinks.has(link)) return;
+          observedJournalLinks.add(link);
+          journalObserver.observe(link);
+        });
+      };
+
+      observeJournalLinks();
+      new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
+          if (node instanceof Element) observeJournalLinks(node);
+        }));
+      }).observe(document.getElementById('contenido-principal') ?? document.body, { childList: true, subtree: true });
+
+      ['pointerover', 'focusin', 'touchstart'].forEach((eventName) => {
+        document.addEventListener(eventName, (event) => {
+          const destination = journalDestination(event.target);
+          if (destination) queueJournalWarm(destination, true);
+        }, { passive: true });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element)) return;
+        const link = event.target.closest<HTMLAnchorElement>('a[href]');
+        if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (link.target && link.target !== '_self') return;
+
+        const destination = new URL(link.href, window.location.href);
+        if (destination.origin !== window.location.origin || !journalPath.test(destination.pathname)) return;
+
+        if (navigationPending) {
+          event.preventDefault();
+          return;
+        }
+
+        navigationPending = true;
+        pendingCard = link.closest<HTMLElement>('.journal-grid > article');
+        pendingCard?.classList.add('is-opening');
+        pendingCard?.setAttribute('aria-busy', 'true');
+        if (pendingCard) pendingCard.append(createCardLoader());
+        document.body.classList.add('journal-navigation-pending');
+      }, { capture: true });
+
+      window.addEventListener('pageshow', resetJournalLoader);
+    </script>
+  </body>
+</html>

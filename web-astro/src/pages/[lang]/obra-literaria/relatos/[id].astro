@@ -1,0 +1,75 @@
+---
+import { SHORT_STORIES } from '@legacy/constants';
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getStories, storiesContent } from '../../../../data/stories';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { formatLiteraryLine } from '../../../../utils/literaryText';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.flatMap((lang) => SHORT_STORIES.map((story) => ({ params: { lang, id: story.id }, props: { lang, id: story.id } }))); }
+const { lang, id } = Astro.props as { lang: Locale; id: string };
+const content = storiesContent[lang];
+const story = getStories(lang).find((item) => item.id === id)!;
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, `obra-literaria/relatos/${id}`);
+const alternatePath = localizedPath(otherLang, `obra-literaria/relatos/${id}`);
+const words = story.sections.reduce((total, section) => total + section.content.trim().split(/\s+/).filter(Boolean).length, 0);
+const readingTime = Math.max(1, Math.ceil(words / 200));
+const sections = story.sections.map((section) => ({
+  ...section,
+  lines: section.content.split('\n').map((line) => {
+    const dialogue = /^\s*—/.test(line);
+    return {
+      html: formatLiteraryLine(line.replace(/^\s*\+/, '')),
+      dialogue,
+      indented: !dialogue && /^\s+\S/.test(line),
+      empty: line.trim() === '',
+    };
+  }),
+}));
+const schema = { '@context': 'https://schema.org', '@type': 'ShortStory', name: story.title, alternativeHeadline: story.subtitle, description: story.synopsis, author: { '@type': 'Person', name: 'Belén Juárez Jiménez', url: SITE_URL }, datePublished: story.year, inLanguage: lang, image: new URL(story.coverUrl, SITE_URL).href, text: story.sections.map((section) => section.content).join('\n\n'), url: new URL(canonicalPath, SITE_URL).href };
+---
+
+<BaseLayout lang={lang} title={`${story.title} | Relato de Belén Juárez`} description={story.synopsis} canonicalPath={canonicalPath} alternatePath={alternatePath} image={story.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="relatos" />
+    <div class="react-story-detail">
+      <div class="react-story-progress" aria-hidden="true"><span></span></div>
+      <header style={`--story-cover:url('${story.coverUrl}')`}>
+        <div>
+          <a href={localizedPath(lang, 'obra-literaria/relatos')}>← {content.back}</a>
+          <h2>{story.title}</h2>
+          {story.subtitle && <p class="subtitle">{story.subtitle}</p>}
+          <p class="react-story-detail-meta"><span>▣ {story.year}</span><span>◷ {content.minutes(readingTime)}</span><span>▤ {story.publicationInfo}</span></p>
+        </div>
+      </header>
+      <div class="react-story-detail-layout">
+        <aside>
+          <div><h3>{content.synopsis}</h3><p>“{story.synopsis}”</p>{story.pdfUrl && <><a href={story.pdfUrl} download>↓ {content.download}</a><small>{content.downloadHint}</small></>}</div>
+          <blockquote><strong>Belén Juárez</strong><p>“{content.authorQuote}”</p></blockquote>
+        </aside>
+        <main>
+          {sections.map((section, index) => <section>
+            {section.title && <header><h3>{section.title}</h3><span></span></header>}
+            {section.illustrationUrl && <figure class={`size-${section.illustrationSize ?? 'full'}`}><img src={section.illustrationUrl} alt={content.illustration(section.title || index + 1)} loading="lazy" /><span></span></figure>}
+            <div class:list={{ 'with-drop-cap': index === 0 }}>{section.lines.map((line) => <span class:list={['react-story-line', { dialogue: line.dialogue, indented: line.indented, empty: line.empty }]} set:html={line.empty ? '&nbsp;' : line.html} />)}</div>
+          </section>)}
+          <footer><div><i></i><span>{content.end}</span><i></i></div><a href={localizedPath(lang, 'obra-literaria/relatos')}>← {content.backToGallery}</a></footer>
+        </main>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  const progress = document.querySelector<HTMLElement>('.react-story-progress span');
+  const updateProgress = () => {
+    if (!progress) return;
+    const maximum = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = `scaleX(${maximum > 0 ? window.scrollY / maximum : 0})`;
+  };
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+</script>

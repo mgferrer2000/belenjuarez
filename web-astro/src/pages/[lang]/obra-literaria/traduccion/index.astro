@@ -1,0 +1,53 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getTranslationWorks, translationContent } from '../../../../data/translations';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = translationContent[lang];
+const works = getTranslationWorks(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria/traduccion');
+const alternatePath = localizedPath(otherLang, 'obra-literaria/traduccion');
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.title, description: content.description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, hasPart: works.map((work) => ({ '@type': 'Book', name: work.title, datePublished: work.year, translator: { '@type': 'Person', name: 'Belén Juárez' }, url: new URL(localizedPath(lang, `obra-literaria/traduccion/${work.slug}`), SITE_URL).href })) };
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={works[0]?.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="traduccion" />
+    <div class="react-translations">
+      <header class="react-archive-heading">
+        <p class="react-archive-kicker"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>{content.eyebrow}</p>
+        <h2>{content.title}</h2>
+        <span aria-hidden="true"></span>
+        <div>{content.introduction.map((paragraph) => <p>{paragraph}</p>)}</div>
+      </header>
+      <div class="react-editorial-grid react-translation-grid">
+        {works.map((work) => {
+          const detailPath = localizedPath(lang, `obra-literaria/traduccion/${work.slug}`);
+          return (
+            <article class="react-editorial-card">
+              <a class="react-editorial-cover" href={detailPath}>
+                <img src={work.coverUrl} alt={content.cover(work.title)} />
+                <span><small>{content.openDetail}</small><strong>{work.title}</strong></span>
+              </a>
+              <div class="react-editorial-copy">
+                <p class="react-editorial-year">{work.year}</p>
+                <div class="react-editorial-title compact">
+                  <h3><a href={detailPath}>{work.title}</a></h3>
+                  <p>{work.publication}</p>
+                </div>
+                <p class="react-editorial-description">{work.description}</p>
+                <a class="react-editorial-link" href={detailPath}>{content.open}<span>→</span></a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

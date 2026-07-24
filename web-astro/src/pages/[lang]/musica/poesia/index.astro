@@ -1,0 +1,24 @@
+---
+import MusicPageShell from '../../../../components/MusicPageShell.astro';
+import { getMusicPoetry } from '../../../../data/music';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale }; const page = getMusicPoetry(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es'; const canonicalPath = localizedPath(lang, 'musica/poesia'); const alternatePath = localizedPath(otherLang, 'musica/poesia'); const description = page.introduction;
+const schema = { '@context': 'https://schema.org', '@type': 'VideoObject', name: page.videoTitle, description, thumbnailUrl: 'https://img.youtube.com/vi/CvybR4sOgBM/maxresdefault.jpg', embedUrl: 'https://www.youtube.com/embed/CvybR4sOgBM', contentUrl: 'https://www.youtube.com/watch?v=CvybR4sOgBM', creator: { '@type': 'Person', name: 'Belén Juárez Jiménez' }, inLanguage: lang, url: new URL(canonicalPath, SITE_URL).href };
+---
+<BaseLayout lang={lang} title={`${page.title} | Belén Juárez`} description={description} canonicalPath={canonicalPath} alternatePath={alternatePath} image="https://img.youtube.com/vi/CvybR4sOgBM/maxresdefault.jpg" type="article" schemas={[schema]}>
+  <MusicPageShell lang={lang} activePath="poesia">
+    <section class="react-music-poetry">
+      <header class="react-music-section-heading"><div><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 5v14M16 5v14M4 9h4M4 15h4M16 9h4M16 15h4" /></svg><h2>{page.title}</h2></div><p>{page.introduction}</p></header>
+      <div class="react-music-video"><iframe src="https://www.youtube.com/embed/CvybR4sOgBM" title={page.videoTitle} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+      <div class="react-music-context">
+        <section><header><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>{page.liveExhibition}</h3></header><div class="react-context-copy"><p>{page.exhibitionText}</p></div></section>
+        <section><header><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></svg><h3>{page.pieceTitle}</h3></header><div class="react-context-copy">{page.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div></section>
+      </div>
+    </section>
+  </MusicPageShell>
+</BaseLayout>

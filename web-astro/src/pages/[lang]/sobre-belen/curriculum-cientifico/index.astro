@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { scientificCvData as data } from '../../../../data/scientific-cv';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import { localizedPath } from '../../../../utils/paths';
+import { SCIENTIFIC_CV_UI, localizeScientificText } from '@legacy/i18n/cvMessages';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+
+const { lang } = Astro.props as { lang: Locale };
+const ui = SCIENTIFIC_CV_UI[lang];
+const tr = (text: string) => localizeScientificText(text, lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const slug = 'sobre-belen/curriculum-cientifico';
+const canonicalPath = localizedPath(lang, slug);
+const alternatePath = localizedPath(otherLang, slug);
+const seoTitle = lang === 'es' ? 'Currículum científico de Belén Juárez | Microbiología UGR' : 'Curriculum scientifique de Belén Juárez | Microbiologie UGR';
+const description = lang === 'es' ? 'Trayectoria científica de Belén Juárez: microbiología ambiental, docencia en la Universidad de Granada, publicaciones, proyectos, congresos y dirección de tesis.' : 'Parcours scientifique de Belén Juárez : microbiologie environnementale, enseignement à l’Université de Grenade, publications, projets, congrès et direction de thèses.';
+const schemas = [
+  { '@context': 'https://schema.org', '@type': 'ProfilePage', name: ui.title, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang, mainEntity: { '@type': 'Person', name: 'M.J. Belén Juárez Jiménez', jobTitle: lang === 'es' ? 'Profesora Titular de Microbiología' : 'Professeure titulaire de microbiologie', affiliation: { '@type': 'CollegeOrUniversity', name: 'Universidad de Granada' }, identifier: [{ '@type': 'PropertyValue', propertyID: 'ORCID', value: '0000-0001-8495-7093' }, { '@type': 'PropertyValue', propertyID: 'ResearcherID', value: 'L-4241-2014' }] } },
+  ...data.articles.map((article) => ({ '@context': 'https://schema.org', '@type': 'ScholarlyArticle', headline: article.title, author: article.authors.split(/[;,]/).map((name) => ({ '@type': 'Person', name: name.trim() })), datePublished: article.year, isPartOf: { '@type': 'Periodical', name: article.journal }, ...('doi' in article && article.doi ? { identifier: article.doi } : {}) })),
+];
+
+const indexLabel = (index: number) => String(index + 1).padStart(2, '0');
+type Outreach = { title: string; context: string; date: string; duration?: string; location?: string; audience?: string };
+type Distinction = { type: string; title: string; year: string; location?: string; details: string };
+type Article = { authors: string; year: string; title: string; journal: string; status?: string; doi?: string; impact?: string; category?: string; cites?: string };
+type Congress = { authors: string; year: string; title: string; event: string; organizer: string; location: string; context?: string; format?: string };
+type Project = { code: string; year: string; title: string; funding: string; principalInvestigators: string; shortName?: string; duration?: string; role?: string; contribution?: string };
+const outreach = data.outreach as readonly Outreach[];
+const distinctions = data.distinctions as readonly Distinction[];
+const articles = data.articles as readonly Article[];
+const congresses = data.congresses as readonly Congress[];
+const projects = data.projects as readonly Project[];
+---
+
+<BaseLayout lang={lang} title={seoTitle} description={description} canonicalPath={canonicalPath} alternatePath={alternatePath} type="profile" schemas={schemas}>
+  <div class="scientific-cv-page">
+   <div class="scientific-cv-shell">
+    <header class="scientific-cv-heading">
+      <div><p class="scientific-eyebrow">{ui.eyebrow}</p><h1>{ui.title}</h1><p class="scientific-intro">{ui.introduction}</p></div>
+      <aside aria-label={ui.identifiers}><h2>{ui.identifiers}</h2><dl><div><dt>ResearcherID</dt><dd>L-4241-2014</dd></div><div><dt>ORCID</dt><dd>0000-0001-8495-7093</dd></div></dl></aside>
+    </header>
+
+    <dl class="scientific-metrics">{data.metrics.map((metric) => <div><dd>{metric.value}</dd><dt>{tr(metric.label)}</dt></div>)}</dl>
+
+    <main class="scientific-sections">
+      <section class="scientific-text-section"><h2>{ui.formation}</h2><div>{data.formation.map((paragraph) => <p>{tr(paragraph)}</p>)}</div></section>
+
+      <section class="scientific-record-section"><h2>{ui.stays}</h2><div class="scientific-record-box"><div class="scientific-record-list">{data.stays.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.duration)}</span><i>·</i><span>{item.dates}</span></div><h3>{tr(item.institution)}</h3><div class="scientific-tags with-margin"><span>{tr(item.location)}</span><span>{tr(item.role)}</span></div></article>)}</div></div></section>
+
+      <section class="scientific-text-section"><h2>{ui.production}</h2><div>{data.production.map((paragraph) => <p>{tr(paragraph)}</p>)}</div></section>
+      <section class="scientific-text-section"><h2>{ui.leadership}</h2><div>{data.leadership.map((paragraph) => <p>{tr(paragraph)}</p>)}</div></section>
+      <section class="scientific-text-section"><h2>{ui.merits}</h2><div>{data.merits.map((paragraph) => <p>{tr(paragraph)}</p>)}</div></section>
+
+      <section class="scientific-record-section"><h2>{ui.outreach}</h2><div class="scientific-record-box"><div class="scientific-record-list">{outreach.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.date)}</span>{item.duration && <><i>·</i><span>{tr(item.duration)}</span></>}</div><h3>{tr(item.title)}</h3><div class="scientific-tags with-margin"><span>{tr(item.context)}</span>{item.location && <span>{tr(item.location)}</span>}</div>{item.audience && <p>{tr(item.audience)}</p>}</article>)}</div></div></section>
+
+      <section class="scientific-record-section"><h2>{ui.meetings}</h2><div class="scientific-record-box"><div class="scientific-record-list">{data.meetings.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.year)}</span></div><h3>{tr(item.title)}</h3><div class="scientific-tags"><span>{tr(item.location)}</span></div></article>)}</div></div></section>
+
+      <section class="scientific-record-section"><h2>{ui.seminars}</h2><div class="scientific-record-box"><div class="scientific-record-list">{data.seminars.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.year)}</span></div><h3>{tr(item.title)}</h3><div class="scientific-tags with-margin"><span>{tr(item.location)}</span><span>{tr(item.context)}</span></div></article>)}</div></div></section>
+
+      <section class="scientific-record-section"><h2>{ui.coordination}</h2><div class="scientific-record-box"><div class="scientific-record-list">{data.coordination.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.date)}</span></div><h3>{tr(item.title)}</h3><div class="scientific-tags with-margin"><span>{tr(item.institution)}</span></div><p>{tr(item.details)}</p></article>)}</div></div></section>
+
+      <section class="scientific-record-section"><h2>{ui.distinctions}</h2><div class="scientific-record-box"><div class="scientific-record-list">{distinctions.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.year)}</span><i>·</i><em>{tr(item.type)}</em></div><h3>{tr(item.title)}</h3>{item.location && <div class="scientific-tags with-margin"><span>{tr(item.location)}</span></div>}<p>{tr(item.details)}</p></article>)}</div></div></section>
+
+      <section class="scientific-record-section scientific-publications"><header><h2>{ui.articles}</h2><p>{ui.publicationsSelection}</p></header><div class="scientific-record-list">{articles.map((article, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{article.year}</span>{article.status && <><i>·</i><em>{article.status}</em></>}</div><p class="scientific-authors">{article.authors}.</p><h3>{article.title}.</h3><p class="scientific-journal">{article.journal}</p><div class="scientific-tags paper-tags">{article.doi && <span>DOI: {article.doi}</span>}{article.impact && <span>{article.impact}</span>}{article.category && <span>{article.category}</span>}{article.cites && <span>{tr(article.cites)}</span>}</div></article>)}</div></section>
+
+      <section class="scientific-record-section"><header><h2>{ui.congresses}</h2><p>{ui.recentContributions}</p></header><div class="scientific-record-box"><div class="scientific-record-list">{congresses.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.year)}</span>{item.format && <><i>·</i><em>{tr(item.format)}</em></>}</div><p class="scientific-authors">{item.authors}</p><h3>{tr(item.title)}.</h3><p class="scientific-journal">{item.event}</p><div class="scientific-tags">{item.context && <span>{tr(item.context)}</span>}<span>{tr(item.organizer)}</span><span>{tr(item.location)}</span></div></article>)}</div></div></section>
+
+      <section class="scientific-record-section"><header><h2>{ui.projects}</h2><p>{ui.featuredSelection}</p></header><div class="scientific-record-box"><div class="scientific-record-list">{projects.map((item, index) => <article><div class="scientific-meta"><b>{indexLabel(index)}</b><i>·</i><span>{tr(item.year)}</span><i>·</i><em>{item.code}</em>{item.shortName && <><i>·</i><span>{item.shortName}</span></>}</div><h3 class="project-title">{tr(item.title)}.</h3><div class="scientific-tags with-margin"><span>{tr(item.funding)}</span><span>{ui.principalInvestigator}: {item.principalInvestigators}</span>{item.duration && <span>{ui.duration}: {tr(item.duration)}</span>}{item.role && <span>{tr(item.role)}</span>}</div>{item.contribution && <p>{tr(item.contribution)}</p>}</article>)}</div></div></section>
+    </main>
+   </div>
+  </div>
+</BaseLayout>

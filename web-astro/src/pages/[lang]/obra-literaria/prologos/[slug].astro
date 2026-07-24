@@ -1,0 +1,41 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getPrologueWork, getPrologueWorks, isPrologueHeading, prologueContent } from '../../../../data/prologues';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.flatMap((lang) => getPrologueWorks(lang).map((work) => ({ params: { lang, slug: work.slug }, props: { lang, slug: work.slug } }))); }
+const { lang, slug } = Astro.props as { lang: Locale; slug: string };
+const work = getPrologueWork(slug, lang)!;
+const content = prologueContent[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, `obra-literaria/prologos/${work.slug}`);
+const alternatePath = localizedPath(otherLang, `obra-literaria/prologos/${work.slug}`);
+const officialWebsite = work.slug === 'gustavo-vega-poeticas-visuales' ? 'https://www.gustavovega.com/' : undefined;
+const schema = { '@context': 'https://schema.org', '@type': work.slug === 'quimica-del-amor' ? 'Chapter' : 'Article', headline: work.title, description: work.description, image: new URL(work.coverUrl, SITE_URL).href, datePublished: work.year, inLanguage: lang, author: { '@type': 'Person', name: 'Belén Juárez', url: new URL(localizedPath(lang, 'sobre-belen'), SITE_URL).href }, isPartOf: { '@type': 'CreativeWork', name: work.publication }, url: new URL(canonicalPath, SITE_URL).href };
+---
+
+<BaseLayout lang={lang} title={`${work.title} | Belén Juárez`} description={work.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={work.coverUrl} type="article" schemas={[schema]}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="prologos" />
+    <div class="react-prologue-detail">
+      <a class="react-detail-back" href={localizedPath(lang, 'obra-literaria/prologos')}><span>←</span>{content.back}</a>
+      <header class="react-detail-header">
+        <figure><img src={work.coverUrl} alt={content.cover(work.title)} /></figure>
+        <div>
+          <p class="react-detail-kicker"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V5a2 2 0 0 1 2-2h5a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3Z"></path><path d="M21 18a1 1 0 0 0 1-1V5a2 2 0 0 0-2-2h-5a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3Z"></path></svg>{work.typeLabel}</p>
+          <h2>{work.title}</h2>
+          <p class="react-detail-publication">{work.publication}{work.year && ` · ${work.year}`}</p>
+          {officialWebsite && <p class="react-detail-website"><a href={officialWebsite} target="_blank" rel="noopener noreferrer">{content.official}</a></p>}
+          <span class="react-detail-rule" aria-hidden="true"></span>
+          <div class="react-detail-introduction"><p>{work.description}</p><p>{work.authorsLine}</p></div>
+        </div>
+      </header>
+      <section class="react-prologue-body">
+        {work.content.map((paragraph) => isPrologueHeading(paragraph) ? <h3>{paragraph}</h3> : <p>{paragraph}</p>)}
+      </section>
+    </div>
+  </article>
+</BaseLayout>

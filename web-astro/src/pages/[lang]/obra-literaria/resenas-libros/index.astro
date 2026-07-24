@@ -1,0 +1,86 @@
+---
+import LiterarySectionNav from '../../../../components/LiterarySectionNav.astro';
+import { getReviews, reviewsContent } from '../../../../data/reviews';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = reviewsContent[lang];
+const reviews = getReviews(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'obra-literaria/resenas-libros');
+const alternatePath = localizedPath(otherLang, 'obra-literaria/resenas-libros');
+const inlineParts = (text: string) => text.split(/(\*[^*]+\*)/).map((part) => ({
+  text: part.startsWith('*') && part.endsWith('*') ? part.slice(1, -1) : part,
+  emphasis: part.startsWith('*') && part.endsWith('*'),
+}));
+const schemas = [{
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: content.title,
+  description: content.description, url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang,
+  hasPart: reviews.map((review) => ({ '@type': 'Review', name: review.title, url: new URL(localizedPath(lang, `obra-literaria/resenas-libros/${review.id}`), SITE_URL).href })),
+}];
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={reviews[0].coverUrl} type="article" schemas={schemas}>
+  <article class="react-literary-page content-shell">
+    <h1>{content.sectionTitle}</h1>
+    <LiterarySectionNav lang={lang} activePath="resenas-libros" />
+    <div class="react-reviews-list">
+      {reviews.map((review, index) => {
+        const actionUrl = review.externalUrl ?? localizedPath(lang, `obra-literaria/resenas-libros/${review.id}`);
+        return (
+          <article class:list={['react-review-card', { reverse: index % 2 !== 0 }]}>
+            <div class="react-review-cover review-motion" style={`--review-shift: ${index % 2 === 0 ? '-20px' : '20px'}`}>
+              <div class="react-review-cover-frame">
+                <img src={review.coverUrl} alt={lang === 'es' ? `Portada de ${review.publication}` : `Couverture de ${review.publication}`} loading={index < 2 ? 'eager' : 'lazy'} />
+                <span aria-hidden="true"></span>
+              </div>
+              {review.sourceUrl && (
+                <a class="react-review-source" href={review.sourceUrl} target="_blank" rel="noopener noreferrer">
+                  {review.sourceLabel ?? content.source}
+                </a>
+              )}
+            </div>
+            <div class="react-review-copy">
+              <header>
+                <p class="react-review-kicker">{content.reviewOf} {review.bookTitle}</p>
+                <h2>"{review.title}"</h2>
+                <p class="react-review-author">{review.author}</p>
+              </header>
+              <blockquote class="react-review-quote">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4C2.75 3 2 3.75 2 5v6c0 1.25.75 2 2 2h2c0 4-3 4-3 4v4Zm12 0c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h2c0 4-3 4-3 4v4Z"></path></svg>
+                <p>{inlineParts(review.condensedQuote).map((part) => part.emphasis ? <em>{part.text}</em> : part.text)}</p>
+              </blockquote>
+              <div class="react-review-action">
+                <a href={actionUrl} target={review.externalUrl ? '_blank' : undefined} rel={review.externalUrl ? 'noopener noreferrer' : undefined}>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V5a2 2 0 0 1 2-2h5a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3Z"></path><path d="M21 18a1 1 0 0 0 1-1V5a2 2 0 0 0-2-2h-5a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3Z"></path></svg>
+                  {content.read}
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  const covers = document.querySelectorAll<HTMLElement>('.review-motion');
+  const showAll = () => covers.forEach((cover) => cover.classList.add('is-visible'));
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    showAll();
+  } else {
+    document.documentElement.classList.add('has-review-motion');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    covers.forEach((cover) => observer.observe(cover));
+  }
+</script>

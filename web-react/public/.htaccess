@@ -1,0 +1,15 @@
+# Bloquear acceso a archivos ocultos (como .env)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Opcional (pero ultra recomendado para React Router): Redirigir siempre al index.html para evitar errores 404 al recargar subpaginas
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>

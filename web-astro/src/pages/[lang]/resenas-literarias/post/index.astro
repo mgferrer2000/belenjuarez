@@ -1,0 +1,5 @@
+---
+import NotionJournal from '../../../../components/NotionJournal'; import { LITERARY_REVIEWS_MESSAGES } from '@legacy/i18n/blogMessages'; import { LOCALES, type Locale } from '../../../../data/site'; import BaseLayout from '../../../../layouts/BaseLayout.astro'; import { localizedPath } from '../../../../utils/paths';
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); } const { lang } = Astro.props as { lang: Locale }; const page = LITERARY_REVIEWS_MESSAGES[lang]; const otherLang: Locale = lang === 'es' ? 'fr' : 'es'; const canonicalPath = localizedPath(lang, 'resenas-literarias/post'); const alternatePath = localizedPath(otherLang, 'resenas-literarias/post');
+---
+<BaseLayout lang={lang} title={`${page.title} | Belén Juárez`} description={page.introduction} canonicalPath={canonicalPath} alternatePath={alternatePath} type="article" noindex><section class="journal-post-shell content-shell"><NotionJournal client:load locale={lang} section="reviews" mode="detail" /></section></BaseLayout>

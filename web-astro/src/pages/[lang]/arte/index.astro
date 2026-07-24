@@ -1,0 +1,16 @@
+---
+import { artContent } from '../../../data/art';
+import { LOCALES, type Locale } from '../../../data/site';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../utils/paths';
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang }, props: { lang } })); }
+const { lang } = Astro.props as { lang: Locale };
+const content = artContent[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const targetPath = localizedPath(lang, 'arte/cuadros');
+const alternatePath = localizedPath(otherLang, 'arte/cuadros');
+---
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={targetPath} alternatePath={alternatePath} image={content.sections[0].image}>
+  <p class="sr-only"><a href={targetPath}>{content.sections[0].navTitle}</a></p>
+  <script is:inline define:vars={{ targetPath }}>window.location.replace(targetPath);</script>
+</BaseLayout>

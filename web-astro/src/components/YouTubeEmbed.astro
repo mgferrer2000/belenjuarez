@@ -1,0 +1,14 @@
+---
+interface Props { videoId: string; title: string; playLabel: string; square?: boolean; }
+const { videoId, title, playLabel, square = false } = Astro.props;
+---
+<div class:list={['youtube-embed', { square }]} data-youtube={videoId}>
+  <button type="button" aria-label={`${playLabel}: ${title}`}><img src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} alt="" loading="lazy" /><span aria-hidden="true">▶</span></button>
+  <noscript><a href={`https://www.youtube.com/watch?v=${videoId}`}>{playLabel}: {title}</a></noscript>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-youtube]').forEach((container) => {
+    if (container.dataset.ready) return; container.dataset.ready = 'true';
+    container.querySelector('button')?.addEventListener('click', () => { const id = container.dataset.youtube; const iframe = document.createElement('iframe'); iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`; iframe.title = container.querySelector('button')?.getAttribute('aria-label') ?? 'YouTube'; iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen'; iframe.allowFullscreen = true; container.replaceChildren(iframe); });
+  });
+</script>

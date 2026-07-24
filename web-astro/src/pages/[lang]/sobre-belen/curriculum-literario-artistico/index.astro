@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { literaryCv } from '../../../../data/literary-cv';
+import { LOCALES, SITE_URL, type Locale } from '../../../../data/site';
+import { localizedPath } from '../../../../utils/paths';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Locale };
+const content = literaryCv[lang];
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const slug = 'sobre-belen/curriculum-literario-artistico';
+const canonicalPath = localizedPath(lang, slug);
+const alternatePath = localizedPath(otherLang, slug);
+const schemas = [{
+  '@context': 'https://schema.org', '@type': 'ProfilePage', name: content.title,
+  url: new URL(canonicalPath, SITE_URL).href, inLanguage: lang,
+  mainEntity: { '@type': 'Person', name: 'Belén Juárez Jiménez', knowsAbout: ['Poesía', 'Literatura', 'Poesía visual', 'Traducción literaria', 'Gestión cultural'] },
+}];
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} type="profile" schemas={schemas}>
+  <section class="literary-cv-page">
+   <div class="literary-cv-shell">
+    <header class="literary-cv-heading">
+      <span>{content.eyebrow}</span>
+      <h1>{content.title}</h1>
+      <p>{content.introduction}</p>
+    </header>
+
+    <div class="literary-cv-recent-wrap">
+      <section class="literary-cv-recent cv-motion" aria-labelledby="recent-heading">
+        <h2 id="recent-heading">{content.recentTitle}</h2>
+        <div class="literary-cv-activity-list">
+          {content.activities.map((item) => <article><div><time>{item.year}</time><h3>{item.title}</h3></div><p>{item.detail}</p></article>)}
+        </div>
+      </section>
+    </div>
+
+    <div class="literary-cv-grid">
+      {content.sections.map((section, index) => <section class="literary-cv-card cv-motion" style={`--cv-delay:${index * 0.04}s`}><h2>{section.title}</h2><ul>{section.items.map((item) => <li><span aria-hidden="true"></span><p>{item}</p></li>)}</ul></section>)}
+    </div>
+
+    <div class="literary-cv-links-grid">
+      <section class="literary-cv-links cv-motion" aria-labelledby="links-heading">
+        <h2 id="links-heading">{content.linksTitle}</h2>
+        <ul>{content.links.map((item) => <li><a href={item.url} target="_blank" rel="noopener noreferrer"><span aria-hidden="true"></span><span>{item.text}</span></a></li>)}</ul>
+      </section>
+    </div>
+   </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const revealCv = () => {
+    const nodes = document.querySelectorAll<HTMLElement>('.cv-motion');
+    if (!('IntersectionObserver' in window)) { nodes.forEach((node) => node.classList.add('is-visible')); return; }
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    }), { threshold: 0.08 });
+    nodes.forEach((node) => observer.observe(node));
+  };
+  revealCv();
+</script>

@@ -1,0 +1,105 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="es" data-error-locale="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página no encontrada | Belén Juárez</title>
+    <meta name="description" content="La página solicitada no existe." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      (() => {
+        const isFrench = /^\/fr(?:\/|$)/i.test(window.location.pathname);
+        const locale = isFrench ? 'fr' : 'es';
+        document.documentElement.lang = locale;
+        document.documentElement.dataset.errorLocale = locale;
+        document.title = isFrench
+          ? 'Page introuvable | Belén Juárez'
+          : 'Página no encontrada | Belén Juárez';
+      })();
+    </script>
+  </head>
+  <body class="error-page-body">
+    <header class="error-page-header">
+      <a class="brand" href="/es/" data-error-home>Belén Juárez</a>
+      <nav class="error-language-switch" aria-label="Elegir idioma / Choisir la langue">
+        <a href="/es/" lang="es"><span class="language-flag flag-es" aria-hidden="true"></span>ES</a>
+        <a href="/fr/" lang="fr"><span class="language-flag flag-fr" aria-hidden="true"></span>FR</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="not-found not-found-creative content-shell">
+        <div class="not-found-copy error-locale error-locale-es">
+          <p class="eyebrow">Error 404 · Página extraviada</p>
+          <p class="not-found-number" aria-hidden="true">404</p>
+          <h1>El verso que buscabas se ha perdido</h1>
+          <p class="not-found-lead">
+            Tal vez quedó entre dos páginas, o siguió el camino de una estrella. La obra de Belén Juárez continúa
+            desde su portada.
+          </p>
+          <blockquote>“A veces una página en blanco es el comienzo de otro poema.”</blockquote>
+          <div class="not-found-actions">
+            <a class="not-found-primary" href="/es/">Volver al inicio <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="not-found-copy error-locale error-locale-fr" lang="fr">
+          <p class="eyebrow">Erreur 404 · Page égarée</p>
+          <p class="not-found-number" aria-hidden="true">404</p>
+          <h1>Le vers que vous cherchiez s’est égaré</h1>
+          <p class="not-found-lead">
+            Il est peut-être resté entre deux pages, ou a suivi le chemin d’une étoile. L’œuvre de Belén Juárez se
+            poursuit depuis sa page d’accueil.
+          </p>
+          <blockquote>« Parfois, une page blanche est le commencement d’un autre poème. »</blockquote>
+          <div class="not-found-actions">
+            <a class="not-found-primary" href="/fr/">Revenir à l’accueil <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <figure class="not-found-art not-found-art-raster">
+          <div class="not-found-image-frame">
+            <img
+              src="/images/404/libro-pagina-estrellas-niebla.webp?v=2"
+              width="864"
+              height="1152"
+              alt="Libro abierto junto a una ventana mientras una hoja escapa hacia un cielo nocturno lleno de estrellas"
+              data-error-art
+              data-alt-es="Libro abierto junto a una ventana mientras una hoja escapa hacia un cielo nocturno lleno de estrellas"
+              data-alt-fr="Livre ouvert près d’une fenêtre tandis qu’une page s’envole vers un ciel nocturne étoilé"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="error-locale error-locale-es">Una página puede perderse; la poesía siempre encuentra otro camino.</figcaption>
+          <figcaption class="error-locale error-locale-fr" lang="fr">Une page peut se perdre ; la poésie trouve toujours un autre chemin.</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="error-locale error-locale-es">Diseño web y programación por <a href="mailto:mgferrer2000@gmail.com">Miguel A. González Ferrer</a> © 2026</p>
+      <p class="error-locale error-locale-fr" lang="fr">Conception et développement web par <a href="mailto:mgferrer2000@gmail.com">Miguel A. González Ferrer</a> © 2026</p>
+    </footer>
+
+    <script is:inline>
+      (() => {
+        const locale = document.documentElement.dataset.errorLocale || 'es';
+        const home = document.querySelector('[data-error-home]');
+        const artwork = document.querySelector('[data-error-art]');
+        if (home) home.setAttribute('href', `/${locale}/`);
+        if (artwork) artwork.setAttribute('alt', artwork.getAttribute(`data-alt-${locale}`) || '');
+      })();
+    </script>
+  </body>
+</html>

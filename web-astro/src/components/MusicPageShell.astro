@@ -1,0 +1,18 @@
+---
+import MusicSectionNav from './MusicSectionNav.astro';
+import { musicContent } from '../data/music';
+import type { Locale } from '../data/site';
+
+interface Props { lang: Locale; activePath?: string; }
+const { lang, activePath } = Astro.props;
+const content = musicContent[lang];
+---
+<article class="react-music-page">
+  <div class="react-music-shell">
+    <header class="react-music-header">
+      <h1>{content.pageTitle}</h1>
+      <MusicSectionNav lang={lang} activePath={activePath} />
+    </header>
+    <div class="react-music-content"><slot /></div>
+  </div>
+</article>

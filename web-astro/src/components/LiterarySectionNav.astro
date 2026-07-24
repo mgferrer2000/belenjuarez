@@ -1,0 +1,64 @@
+---
+import { literaryLanding } from '../data/literary-landing';
+import type { Locale } from '../data/site';
+import { localizedPath } from '../utils/paths';
+
+interface Props { lang: Locale; activePath: string; }
+const { lang, activePath } = Astro.props;
+const content = literaryLanding[lang];
+const activeIndex = Math.max(0, content.sections.findIndex((section) => section.path === activePath));
+const activeSection = content.sections[activeIndex];
+const labels = lang === 'es'
+  ? { change: 'Cambiar sección', shortChange: 'Secciones' }
+  : { change: 'Changer de section', shortChange: 'Sections' };
+---
+
+<nav class="literary-section-nav" aria-label={content.title}>
+  <details class="literary-section-selector">
+    <summary>
+      <span class="literary-selector-current">
+        <span class="literary-selector-eyebrow">
+          {content.title} · {String(activeIndex + 1).padStart(2, '0')}/{String(content.sections.length).padStart(2, '0')}
+        </span>
+        <strong>{activeSection.title}</strong>
+      </span>
+      <span class="literary-selector-action" aria-hidden="true">
+        <span class="literary-selector-action-full">{labels.change}</span>
+        <span class="literary-selector-action-short">{labels.shortChange}</span>
+        <svg viewBox="0 0 12 8" focusable="false">
+          <path d="m1 1 5 5 5-5"></path>
+        </svg>
+      </span>
+    </summary>
+
+    <div class="literary-selector-panel">
+      {content.sections.map((section) => (
+        <a
+          class:list={{ active: section.path === activePath }}
+          href={localizedPath(lang, `obra-literaria/${section.path}`)}
+          aria-current={section.path === activePath ? 'page' : undefined}
+        >
+          <span>{section.number}</span>
+          <strong>{section.title}</strong>
+        </a>
+      ))}
+    </div>
+  </details>
+</nav>
+
+<script>
+  document.addEventListener('click', (event) => {
+    document.querySelectorAll<HTMLDetailsElement>('.literary-section-selector[open]').forEach((selector) => {
+      if (!selector.contains(event.target as Node)) selector.removeAttribute('open');
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+
+    document.querySelectorAll<HTMLDetailsElement>('.literary-section-selector[open]').forEach((selector) => {
+      selector.removeAttribute('open');
+      selector.querySelector<HTMLElement>('summary')?.focus();
+    });
+  });
+</script>

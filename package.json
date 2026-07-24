@@ -1,30 +1,18 @@
 {
-  "name": "belén-juarez---poesía-y-arte",
+  "name": "belen-juarez-web",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "images:mobile": "node scripts/generate-mobile-images.mjs"
-  },
-  "dependencies": {
-    "@notionhq/client": "^5.11.1",
-    "framer-motion": "^12.23.24",
-    "lucide-react": "^0.554.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-markdown": "^10.1.0",
-    "react-router-dom": "^7.9.6"
-  },
-  "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "baseline-browser-mapping": "^2.9.15",
-    "fast-glob": "^3.3.3",
-    "sharp": "^0.34.5",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "dev": "npm --prefix web-astro run dev",
+    "check": "npm --prefix web-astro run check",
+    "audit": "npm --prefix web-astro run audit",
+    "build": "npm --prefix web-astro run build",
+    "dev:react": "npm --prefix web-react run dev",
+    "dev:astro": "npm --prefix web-astro run dev",
+    "build:react": "npm --prefix web-react run build",
+    "build:astro": "npm --prefix web-astro run build",
+    "check:astro": "npm --prefix web-astro run check",
+    "audit:astro": "npm --prefix web-astro run audit",
+    "build:all": "npm run build:astro && npm run build:react"
   }
 }

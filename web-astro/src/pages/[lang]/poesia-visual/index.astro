@@ -1,0 +1,91 @@
+---
+import { VISUAL_POETRY } from '@legacy/constants';
+import { getVisualPoetry, visualPoetryContent } from '../../../data/visual-poetry';
+import { LOCALES, SITE_URL, type Locale } from '../../../data/site';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { localizedPath } from '../../../utils/paths';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Locale };
+const content = visualPoetryContent[lang];
+const collections = getVisualPoetry(lang);
+const otherLang: Locale = lang === 'es' ? 'fr' : 'es';
+const canonicalPath = localizedPath(lang, 'poesia-visual');
+const alternatePath = localizedPath(otherLang, 'poesia-visual');
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: content.title,
+  description: content.description,
+  url: new URL(canonicalPath, SITE_URL).href,
+  inLanguage: lang,
+  creator: { '@type': 'Person', name: 'Belén Juárez Jiménez', url: SITE_URL },
+  hasPart: collections.map((collection) => ({
+    '@type': 'CreativeWorkSeries',
+    name: collection.title,
+    description: collection.description,
+    image: new URL(collection.coverImage, SITE_URL).href,
+    url: new URL(localizedPath(lang, `poesia-visual/${collection.id}`), SITE_URL).href,
+  })),
+};
+---
+
+<BaseLayout lang={lang} title={content.seoTitle} description={content.description} canonicalPath={canonicalPath} alternatePath={alternatePath} image={VISUAL_POETRY[0].coverImage} type="article" schemas={[schema]}>
+  <article class="react-visual-page">
+    <div class="react-visual-shell">
+      <div class="react-visual-layout">
+        <header class="react-visual-intro">
+          <h1>{content.title}</h1>
+          <div class="react-visual-prose">
+            <h2>{content.subtitle}</h2>
+            {content.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            <p class="react-visual-closing">{content.closing}</p>
+          </div>
+        </header>
+
+        <div class="react-visual-grid">
+          {collections.map((collection, index) => (
+            <article class="react-visual-card" style={`--visual-delay:${index * 0.1}s`}>
+              <a href={localizedPath(lang, `poesia-visual/${collection.id}`)}>
+                <div class="react-visual-cover">
+                  <img
+                    src={collection.coverImage}
+                    alt={collection.title}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                  />
+                  <span aria-hidden="true"></span>
+                </div>
+                <div class="react-visual-card-copy">
+                  <h2>{collection.title}</h2>
+                  {collection.description && <p>{collection.description}</p>}
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <script>
+    const visualPage = document.querySelector<HTMLElement>('.react-visual-page');
+    const cards = document.querySelectorAll<HTMLElement>('.react-visual-card');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      cards.forEach((card) => card.classList.add('is-visible'));
+    } else {
+      visualPage?.classList.add('has-visual-motion');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -50px' });
+      cards.forEach((card) => observer.observe(card));
+    }
+  </script>
+</BaseLayout>
